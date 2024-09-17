@@ -15,10 +15,13 @@ export async function twentyApiRequest(
 	uri?: string,
 ) {
 	const options: IRequestOptions = {
-		headers: {},
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json',
+		},
 		body,
 		qs,
-		uri: uri ?? `https://twenty.onemri.novamps.com/rest${endpoint}`,
+		uri: `uri${endpoint}`,
 		json: true,
 	};
 
@@ -38,7 +41,7 @@ export async function twentyApiRequest(
 
 	try {
 		// return await this.helpers.requestOAuth2.call(this, 'twentyOAuth2Api', options);
-		return await this.helpers.requestWithAuthentication.call(this, 'twentyApi', options)
+		return await this.helpers.requestWithAuthentication.call(this, 'twentyApi', options);
 	} catch (error) {
 		throw new NodeApiError(this.getNode(), error);
 	}
