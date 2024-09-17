@@ -6,7 +6,7 @@ import {
 } from 'n8n-workflow';
 
 export class TwentyApi implements ICredentialType {
-	name = 'TwentyApi';
+	name = 'twentyApi';
 	displayName = 'Twenty API';
 	properties: INodeProperties[] = [
 		{

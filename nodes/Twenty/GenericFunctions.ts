@@ -22,7 +22,7 @@ export async function twentyApiRequest(
 		json: true,
 	};
 
-	const credentials = await this.getCredentials('TwentyApi');
+	const credentials = await this.getCredentials('twentyApi');
 
 	if (credentials === undefined) {
 		throw new NodeOperationError(this.getNode(), 'No credentials got returned!');
@@ -38,7 +38,7 @@ export async function twentyApiRequest(
 
 	try {
 		// return await this.helpers.requestOAuth2.call(this, 'twentyOAuth2Api', options);
-		return await this.helpers.requestWithAuthentication.call(this, 'TwentyApi', options)
+		return await this.helpers.requestWithAuthentication.call(this, 'twentyApi', options)
 	} catch (error) {
 		throw new NodeApiError(this.getNode(), error);
 	}

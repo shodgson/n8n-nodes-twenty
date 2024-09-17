@@ -95,7 +95,7 @@ export class Twenty implements INodeType {
 		outputs: ['main'],
 		credentials: [
 			{
-				name: 'TwentyApi',
+				name: 'twentyApi',
 				required: true,
 			},
 		],
