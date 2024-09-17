@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-base.Twenty",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Sales", "Marketing & Content"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://twenty.com/developers/rest-api/core#/"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://twenty.com/developers"
+			}
+		]
+	}
+}
