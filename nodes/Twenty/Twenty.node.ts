@@ -354,7 +354,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -376,7 +376,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -408,7 +408,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -495,7 +495,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -518,7 +518,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -551,7 +551,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -640,7 +640,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -665,7 +665,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -697,7 +697,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -786,7 +786,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -811,7 +811,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -843,7 +843,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -933,7 +933,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -955,7 +955,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -987,7 +987,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1074,7 +1074,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1099,7 +1099,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1131,7 +1131,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1221,7 +1221,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1247,7 +1247,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1280,7 +1280,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1372,7 +1372,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1399,7 +1399,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1433,7 +1433,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1527,7 +1527,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1550,7 +1550,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1582,7 +1582,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1669,7 +1669,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1695,7 +1695,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1729,7 +1729,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1822,7 +1822,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1848,7 +1848,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1880,7 +1880,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1970,7 +1970,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -1992,7 +1992,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2024,7 +2024,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2111,7 +2111,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2137,7 +2137,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2170,7 +2170,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2262,7 +2262,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2287,7 +2287,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2319,7 +2319,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2409,7 +2409,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2431,7 +2431,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2478,7 +2478,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2549,7 +2549,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2575,7 +2575,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2623,7 +2623,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2700,7 +2700,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2723,7 +2723,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2773,7 +2773,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2847,7 +2847,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2873,7 +2873,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2921,7 +2921,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -2998,7 +2998,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3021,7 +3021,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3068,7 +3068,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3140,7 +3140,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3162,7 +3162,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3209,7 +3209,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3280,7 +3280,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3302,7 +3302,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3349,7 +3349,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3421,7 +3421,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3443,7 +3443,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3507,7 +3507,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3562,7 +3562,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3584,7 +3584,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3648,7 +3648,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3702,7 +3702,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3724,7 +3724,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3788,7 +3788,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3842,7 +3842,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3864,7 +3864,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3928,7 +3928,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -3983,7 +3983,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4006,7 +4006,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4072,7 +4072,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4128,7 +4128,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4153,7 +4153,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4217,7 +4217,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4274,7 +4274,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4299,7 +4299,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4363,7 +4363,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4421,7 +4421,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4446,7 +4446,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4510,7 +4510,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4568,7 +4568,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4593,7 +4593,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4657,7 +4657,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4715,7 +4715,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4737,7 +4737,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4801,7 +4801,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4855,7 +4855,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4881,7 +4881,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -4947,7 +4947,7 @@ export class Twenty implements INodeType {
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
+						Object.assign(body, flattenObject(additionalFields));
 					}
 
 					const qs = {} as IDataObject;
@@ -5012,3 +5012,21 @@ export class Twenty implements INodeType {
 		return this.prepareOutputData(returnData);
 	}
 } 
+
+function flattenObject<T extends Record<string, any>>(obj: T): T {
+    let result: any = {};
+
+    for (let key in obj) {
+        if (obj[key] && typeof obj[key] === 'object' && obj[key].hasOwnProperty(`${key}Fields`)) {
+            // Replace the object with 'keyFields' with the content of 'keyFields'
+            result[key] = { ...obj[key][`${key}Fields`] };
+        } else if (obj[key] && typeof obj[key] === 'object') {
+            // If it's an object, recursively flatten it
+            result[key] = flattenObject(obj[key]);
+        } else {
+            result[key] = obj[key];
+        }
+    }
+
+    return result as T;
+}

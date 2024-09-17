@@ -39,7 +39,6 @@ export async function twentyApiRequest(
 	}
 
 	try {
-		console.log(options)
 		return await this.helpers.requestWithAuthentication.call(this, 'twentyApi', options);
 	} catch (error) {
 		throw new NodeApiError(this.getNode(), error);
