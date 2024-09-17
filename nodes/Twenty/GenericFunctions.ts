@@ -2,34 +2,33 @@ import {
 	IDataObject,
 	IExecuteFunctions,
 	IRequestOptions,
+	IHttpRequestMethods,
 	NodeApiError,
 	NodeOperationError,
 } from 'n8n-workflow';
 
 export async function twentyApiRequest(
 	this: IExecuteFunctions,
-	method: string,
+	method: IHttpRequestMethods,
 	endpoint: string,
 	body: IDataObject = {},
 	qs: IDataObject = {},
 	uri?: string,
 ) {
-	const options: IRequestOptions = {
-		headers: {
-			Accept: 'application/json',
-			'Content-Type': 'application/json',
-		},
-		body,
-		qs,
-		uri: `uri${endpoint}`,
-		json: true,
-	};
-
 	const credentials = await this.getCredentials('twentyApi');
 
 	if (credentials === undefined) {
 		throw new NodeOperationError(this.getNode(), 'No credentials got returned!');
 	}
+
+	const options: IRequestOptions = {
+		method,
+		body,
+		qs,
+		uri: `${credentials.domain}/rest${endpoint}`,
+		json: true,
+	};
+
 
 	if (!Object.keys(body).length) {
 		delete options.body;
@@ -40,7 +39,7 @@ export async function twentyApiRequest(
 	}
 
 	try {
-		// return await this.helpers.requestOAuth2.call(this, 'twentyOAuth2Api', options);
+		console.log(options)
 		return await this.helpers.requestWithAuthentication.call(this, 'twentyApi', options);
 	} catch (error) {
 		throw new NodeApiError(this.getNode(), error);
@@ -49,7 +48,7 @@ export async function twentyApiRequest(
 
 export async function twentyApiRequestAllItems(
 	this: IExecuteFunctions,
-	method: string,
+	method: IHttpRequestMethods,
 	endpoint: string,
 	body: IDataObject = {},
 	qs: IDataObject = {},
@@ -70,7 +69,7 @@ export async function twentyApiRequestAllItems(
 
 export async function handleListing(
 	this: IExecuteFunctions,
-	method: string,
+	method: IHttpRequestMethods,
 	endpoint: string,
 	body: IDataObject = {},
 	qs: IDataObject = {},
