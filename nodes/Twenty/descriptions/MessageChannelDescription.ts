@@ -92,7 +92,7 @@ export const messageChannelFields: INodeProperties[] = [
 						},
 					],
 					default: '1',
-					description: 'Limits the depth objects returned',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
@@ -172,7 +172,7 @@ export const messageChannelFields: INodeProperties[] = [
 						},
 					],
 					default: '1',
-					description: 'Limits the depth objects returned',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
@@ -244,13 +244,6 @@ export const messageChannelFields: INodeProperties[] = [
 				],
 			},
 			{
-				displayName: 'Created At',
-				name: 'createdAt',
-				type: 'string',
-				default: '',
-				description: 'Creation date',
-			},
-			{
 				displayName: 'Exclude Group Emails',
 				name: 'excludeGroupEmails',
 				type: 'boolean',
@@ -267,13 +260,6 @@ export const messageChannelFields: INodeProperties[] = [
 			{
 				displayName: 'Handle',
 				name: 'handle',
-				type: 'string',
-				default: '',
-
-			},
-			{
-				displayName: 'ID',
-				name: 'id',
 				type: 'string',
 				default: '',
 
@@ -307,35 +293,35 @@ export const messageChannelFields: INodeProperties[] = [
 
 				options: [
 					{
-						name: 'Failed',
-						value: 'FAILED',
-					},
-					{
 						name: 'Full Message List Fetch Pending',
 						value: 'FULL_MESSAGE_LIST_FETCH_PENDING',
+					},
+					{
+						name: 'Partial Message List Fetch Pending',
+						value: 'PARTIAL_MESSAGE_LIST_FETCH_PENDING',
 					},
 					{
 						name: 'Message List Fetch Ongoing',
 						value: 'MESSAGE_LIST_FETCH_ONGOING',
 					},
 					{
-						name: 'Messages Import Ongoing',
-						value: 'MESSAGES_IMPORT_ONGOING',
-					},
-					{
 						name: 'Messages Import Pending',
 						value: 'MESSAGES_IMPORT_PENDING',
 					},
 					{
-						name: 'Partial Message List Fetch Pending',
-						value: 'PARTIAL_MESSAGE_LIST_FETCH_PENDING',
+						name: 'Messages Import Ongoing',
+						value: 'MESSAGES_IMPORT_ONGOING',
+					},
+					{
+						name: 'Failed',
+						value: 'FAILED',
 					},
 				],
 			},
 			{
 				displayName: 'Sync Stage Started At',
 				name: 'syncStageStartedAt',
-				type: 'string',
+				type: 'dateTime',
 				default: '',
 
 			},
@@ -346,6 +332,14 @@ export const messageChannelFields: INodeProperties[] = [
 				default: 'ONGOING',
 
 				options: [
+					{
+						name: 'Ongoing',
+						value: 'ONGOING',
+					},
+					{
+						name: 'Not Synced',
+						value: 'NOT_SYNCED',
+					},
 					{
 						name: 'Active',
 						value: 'ACTIVE',
@@ -358,20 +352,12 @@ export const messageChannelFields: INodeProperties[] = [
 						name: 'Failed Unknown',
 						value: 'FAILED_UNKNOWN',
 					},
-					{
-						name: 'Not Synced',
-						value: 'NOT_SYNCED',
-					},
-					{
-						name: 'Ongoing',
-						value: 'ONGOING',
-					},
 				],
 			},
 			{
 				displayName: 'Synced At',
 				name: 'syncedAt',
-				type: 'string',
+				type: 'dateTime',
 				default: '',
 				description: 'Last sync date',
 			},
@@ -398,13 +384,6 @@ export const messageChannelFields: INodeProperties[] = [
 						value: 'sms',
 					},
 				],
-			},
-			{
-				displayName: 'Updated At',
-				name: 'updatedAt',
-				type: 'dateTime',
-				default: '',
-				description: 'Last time the record was changed',
 			},
 			{
 				displayName: 'Visibility',
@@ -513,7 +492,7 @@ export const messageChannelFields: INodeProperties[] = [
 						},
 					],
 					default: '1',
-					description: 'Limits the depth objects returned',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 				{
 					displayName: 'Ending Before',
@@ -527,7 +506,7 @@ export const messageChannelFields: INodeProperties[] = [
 					name: 'filter',
 					type: 'string',
 					default: '',
-					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2,...** Available comparators are **eq**, **neq**, **in**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
+					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
 				},
 				{
 					displayName: 'Limit',
@@ -612,7 +591,7 @@ export const messageChannelFields: INodeProperties[] = [
 						},
 					],
 					default: '1',
-					description: 'Limits the depth objects returned',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
@@ -714,7 +693,7 @@ description: 'Last sync cursor',
 {
 displayName: 'Synced At',
 name: 'syncedAt',
-type: 'string',
+type: 'dateTime',
 default: '',
 description: 'Last sync date',
 },
@@ -733,7 +712,7 @@ default: '',
 {
 displayName: 'Sync Stage Started At',
 name: 'syncStageStartedAt',
-type: 'string',
+type: 'dateTime',
 default: '',
 },
 {
@@ -741,26 +720,6 @@ displayName: 'Throttle Failure Count',
 name: 'throttleFailureCount',
 type: 'number',
 default: 0,
-},
-{
-displayName: 'ID',
-name: 'id',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Created At',
-name: 'createdAt',
-type: 'string',
-default: '',
-description: 'Creation date',
-},
-{
-displayName: 'Updated At',
-name: 'updatedAt',
-type: 'dateTime',
-default: '',
-description: 'Last time the record was changed',
 },
 {
 displayName: 'Connected Account ID',
@@ -771,12 +730,6 @@ description: 'Connected Account ID foreign key',
 },
 ]}],
 },
-			{
-				displayName: 'IDs',
-				name: 'ids',
-				type: 'string',
-				default: '',
-			},
 		],
 	},
 		{
@@ -843,7 +796,7 @@ description: 'Connected Account ID foreign key',
 						},
 					],
 					default: '1',
-					description: 'Limits the depth objects returned',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
@@ -922,28 +875,10 @@ description: 'Connected Account ID foreign key',
 						},
 					],
 					default: '1',
-					description: 'Limits the depth objects returned',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'messageChannel',
-				],
-				operation: [
-					'updateOneMessageChannel',
-				],
-			},
-		},
-	},
-	{
-		displayName: 'Connected Account ID',
-		name: 'connectedAccountId',
-		description: 'Connected Account ID foreign key',
-		type: 'string',
-		required: true,
-		default: '',
 		displayOptions: {
 			show: {
 				resource: [
@@ -973,6 +908,13 @@ description: 'Connected Account ID foreign key',
 		},
 		options: [
 			{
+				displayName: 'Connected Account ID',
+				name: 'connectedAccountId',
+				type: 'string',
+				default: '',
+				description: 'Connected Account ID foreign key',
+			},
+			{
 				displayName: 'Contact Auto Creation Policy',
 				name: 'contactAutoCreationPolicy',
 				type: 'options',
@@ -994,13 +936,6 @@ description: 'Connected Account ID foreign key',
 				],
 			},
 			{
-				displayName: 'Created At',
-				name: 'createdAt',
-				type: 'string',
-				default: '',
-				description: 'Creation date',
-			},
-			{
 				displayName: 'Exclude Group Emails',
 				name: 'excludeGroupEmails',
 				type: 'boolean',
@@ -1017,13 +952,6 @@ description: 'Connected Account ID foreign key',
 			{
 				displayName: 'Handle',
 				name: 'handle',
-				type: 'string',
-				default: '',
-
-			},
-			{
-				displayName: 'ID',
-				name: 'id',
 				type: 'string',
 				default: '',
 
@@ -1057,35 +985,35 @@ description: 'Connected Account ID foreign key',
 
 				options: [
 					{
-						name: 'Failed',
-						value: 'FAILED',
-					},
-					{
 						name: 'Full Message List Fetch Pending',
 						value: 'FULL_MESSAGE_LIST_FETCH_PENDING',
+					},
+					{
+						name: 'Partial Message List Fetch Pending',
+						value: 'PARTIAL_MESSAGE_LIST_FETCH_PENDING',
 					},
 					{
 						name: 'Message List Fetch Ongoing',
 						value: 'MESSAGE_LIST_FETCH_ONGOING',
 					},
 					{
-						name: 'Messages Import Ongoing',
-						value: 'MESSAGES_IMPORT_ONGOING',
-					},
-					{
 						name: 'Messages Import Pending',
 						value: 'MESSAGES_IMPORT_PENDING',
 					},
 					{
-						name: 'Partial Message List Fetch Pending',
-						value: 'PARTIAL_MESSAGE_LIST_FETCH_PENDING',
+						name: 'Messages Import Ongoing',
+						value: 'MESSAGES_IMPORT_ONGOING',
+					},
+					{
+						name: 'Failed',
+						value: 'FAILED',
 					},
 				],
 			},
 			{
 				displayName: 'Sync Stage Started At',
 				name: 'syncStageStartedAt',
-				type: 'string',
+				type: 'dateTime',
 				default: '',
 
 			},
@@ -1096,6 +1024,14 @@ description: 'Connected Account ID foreign key',
 				default: 'ONGOING',
 
 				options: [
+					{
+						name: 'Ongoing',
+						value: 'ONGOING',
+					},
+					{
+						name: 'Not Synced',
+						value: 'NOT_SYNCED',
+					},
 					{
 						name: 'Active',
 						value: 'ACTIVE',
@@ -1108,20 +1044,12 @@ description: 'Connected Account ID foreign key',
 						name: 'Failed Unknown',
 						value: 'FAILED_UNKNOWN',
 					},
-					{
-						name: 'Not Synced',
-						value: 'NOT_SYNCED',
-					},
-					{
-						name: 'Ongoing',
-						value: 'ONGOING',
-					},
 				],
 			},
 			{
 				displayName: 'Synced At',
 				name: 'syncedAt',
-				type: 'string',
+				type: 'dateTime',
 				default: '',
 				description: 'Last sync date',
 			},
@@ -1148,13 +1076,6 @@ description: 'Connected Account ID foreign key',
 						value: 'sms',
 					},
 				],
-			},
-			{
-				displayName: 'Updated At',
-				name: 'updatedAt',
-				type: 'dateTime',
-				default: '',
-				description: 'Last time the record was changed',
 			},
 			{
 				displayName: 'Visibility',

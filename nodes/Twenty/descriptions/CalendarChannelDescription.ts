@@ -1,4 +1,6 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type {
+	INodeProperties,
+} from 'n8n-workflow';
 
 export const calendarChannelOperations: INodeProperties[] = [
 	{
@@ -8,7 +10,9 @@ export const calendarChannelOperations: INodeProperties[] = [
 		noDataExpression: true,
 		displayOptions: {
 			show: {
-				resource: ['calendarChannel'],
+				resource: [
+					'calendarChannel',
+				],
 			},
 		},
 		options: [
@@ -20,8 +24,7 @@ export const calendarChannelOperations: INodeProperties[] = [
 			{
 				name: 'Create One Calendar Channel',
 				value: 'createOneCalendarChannel',
-				description:
-					'**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **calendarChannels**',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **calendarChannels**',
 				action: 'Create one calendar channel',
 			},
 			{
@@ -39,8 +42,7 @@ export const calendarChannelOperations: INodeProperties[] = [
 			{
 				name: 'Find Many Calendar Channels',
 				value: 'findManyCalendarChannels',
-				description:
-					'**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **calendarChannels**',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **calendarChannels**',
 				action: 'Find many calendar channels',
 			},
 			{
@@ -71,33 +73,37 @@ export const calendarChannelFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description: 'Limits the depth objects returned',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarChannel'],
-				operation: ['createManyCalendarChannels'],
+				resource: [
+					'calendarChannel',
+				],
+				operation: [
+					'createManyCalendarChannels',
+				],
 			},
 		},
 	},
@@ -109,25 +115,34 @@ export const calendarChannelFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarChannel'],
-				operation: ['createManyCalendarChannels'],
+				resource: [
+					'calendarChannel',
+				],
+				operation: [
+					'createManyCalendarChannels',
+				],
 			},
 		},
-		options: [],
+		options: [
+		],
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['calendarChannel'],
-				operation: ['createManyCalendarChannels'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'calendarChannel',
+					],
+					operation: [
+						'createManyCalendarChannels',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// calendarChannel: createOneCalendarChannel
 	// ----------------------------------------
@@ -138,33 +153,37 @@ export const calendarChannelFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description: 'Limits the depth objects returned',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarChannel'],
-				operation: ['createOneCalendarChannel'],
+				resource: [
+					'calendarChannel',
+				],
+				operation: [
+					'createOneCalendarChannel',
+				],
 			},
 		},
 	},
@@ -177,8 +196,12 @@ export const calendarChannelFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['calendarChannel'],
-				operation: ['createOneCalendarChannel'],
+				resource: [
+					'calendarChannel',
+				],
+				operation: [
+					'createOneCalendarChannel',
+				],
 			},
 		},
 	},
@@ -190,8 +213,12 @@ export const calendarChannelFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarChannel'],
-				operation: ['createOneCalendarChannel'],
+				resource: [
+					'calendarChannel',
+				],
+				operation: [
+					'createOneCalendarChannel',
+				],
 			},
 		},
 		options: [
@@ -221,35 +248,25 @@ export const calendarChannelFields: INodeProperties[] = [
 				],
 			},
 			{
-				displayName: 'Created At',
-				name: 'createdAt',
-				type: 'string',
-				default: '',
-				description: 'Creation date',
-			},
-			{
 				displayName: 'Handle',
 				name: 'handle',
 				type: 'string',
 				default: '',
-			},
-			{
-				displayName: 'ID',
-				name: 'id',
-				type: 'string',
-				default: '',
+
 			},
 			{
 				displayName: 'Is Contact Auto Creation Enabled',
 				name: 'isContactAutoCreationEnabled',
 				type: 'boolean',
 				default: false,
+
 			},
 			{
 				displayName: 'Is Sync Enabled',
 				name: 'isSyncEnabled',
 				type: 'boolean',
 				default: false,
+
 			},
 			{
 				displayName: 'Sync Cursor',
@@ -266,22 +283,6 @@ export const calendarChannelFields: INodeProperties[] = [
 
 				options: [
 					{
-						name: 'Calendar Event List Fetch Ongoing',
-						value: 'CALENDAR_EVENT_LIST_FETCH_ONGOING',
-					},
-					{
-						name: 'Calendar Events Import Ongoing',
-						value: 'CALENDAR_EVENTS_IMPORT_ONGOING',
-					},
-					{
-						name: 'Calendar Events Import Pending',
-						value: 'CALENDAR_EVENTS_IMPORT_PENDING',
-					},
-					{
-						name: 'Failed',
-						value: 'FAILED',
-					},
-					{
 						name: 'Full Calendar Event List Fetch Pending',
 						value: 'FULL_CALENDAR_EVENT_LIST_FETCH_PENDING',
 					},
@@ -289,13 +290,30 @@ export const calendarChannelFields: INodeProperties[] = [
 						name: 'Partial Calendar Event List Fetch Pending',
 						value: 'PARTIAL_CALENDAR_EVENT_LIST_FETCH_PENDING',
 					},
+					{
+						name: 'Calendar Event List Fetch Ongoing',
+						value: 'CALENDAR_EVENT_LIST_FETCH_ONGOING',
+					},
+					{
+						name: 'Calendar Events Import Pending',
+						value: 'CALENDAR_EVENTS_IMPORT_PENDING',
+					},
+					{
+						name: 'Calendar Events Import Ongoing',
+						value: 'CALENDAR_EVENTS_IMPORT_ONGOING',
+					},
+					{
+						name: 'Failed',
+						value: 'FAILED',
+					},
 				],
 			},
 			{
 				displayName: 'Sync Stage Started At',
 				name: 'syncStageStartedAt',
-				type: 'string',
+				type: 'dateTime',
 				default: '',
+
 			},
 			{
 				displayName: 'Sync Status',
@@ -304,6 +322,14 @@ export const calendarChannelFields: INodeProperties[] = [
 				default: 'ONGOING',
 
 				options: [
+					{
+						name: 'Ongoing',
+						value: 'ONGOING',
+					},
+					{
+						name: 'Not Synced',
+						value: 'NOT_SYNCED',
+					},
 					{
 						name: 'Active',
 						value: 'ACTIVE',
@@ -316,28 +342,21 @@ export const calendarChannelFields: INodeProperties[] = [
 						name: 'Failed Unknown',
 						value: 'FAILED_UNKNOWN',
 					},
-					{
-						name: 'Not Synced',
-						value: 'NOT_SYNCED',
-					},
-					{
-						name: 'Ongoing',
-						value: 'ONGOING',
-					},
 				],
+			},
+			{
+				displayName: 'Synced At',
+				name: 'syncedAt',
+				type: 'dateTime',
+				default: '',
+				description: 'Last sync date',
 			},
 			{
 				displayName: 'Throttle Failure Count',
 				name: 'throttleFailureCount',
 				type: 'number',
 				default: 0,
-			},
-			{
-				displayName: 'Updated At',
-				name: 'updatedAt',
-				type: 'dateTime',
-				default: '',
-				description: 'Last time the record was changed',
+
 			},
 			{
 				displayName: 'Visibility',
@@ -358,19 +377,23 @@ export const calendarChannelFields: INodeProperties[] = [
 			},
 		],
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['calendarChannel'],
-				operation: ['createOneCalendarChannel'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'calendarChannel',
+					],
+					operation: [
+						'createOneCalendarChannel',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// calendarChannel: deleteOneCalendarChannel
 	// ----------------------------------------
@@ -383,24 +406,32 @@ export const calendarChannelFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['calendarChannel'],
-				operation: ['deleteOneCalendarChannel'],
+				resource: [
+					'calendarChannel',
+				],
+				operation: [
+					'deleteOneCalendarChannel',
+				],
 			},
 		},
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['calendarChannel'],
-				operation: ['deleteOneCalendarChannel'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'calendarChannel',
+					],
+					operation: [
+						'deleteOneCalendarChannel',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// calendarChannel: findCalendarChannelDuplicates
 	// ----------------------------------------
@@ -411,33 +442,37 @@ export const calendarChannelFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description: 'Limits the depth objects returned',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarChannel'],
-				operation: ['findCalendarChannelDuplicates'],
+				resource: [
+					'calendarChannel',
+				],
+				operation: [
+					'findCalendarChannelDuplicates',
+				],
 			},
 		},
 	},
@@ -449,137 +484,122 @@ export const calendarChannelFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarChannel'],
-				operation: ['findCalendarChannelDuplicates'],
+				resource: [
+					'calendarChannel',
+				],
+				operation: [
+					'findCalendarChannelDuplicates',
+				],
 			},
 		},
 		options: [
-			{
-				displayName: 'Data',
-				name: 'data',
-				placeholder: 'Add Data Field',
-				type: 'fixedCollection',
-				default: {},
-				options: [
-					{
-						displayName: 'Data Fields',
-						name: 'dataFields',
-						values: [
-							{
-								displayName: 'Handle',
-								name: 'handle',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Sync Status',
-								name: 'syncStatus',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Sync Stage',
-								name: 'syncStage',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Visibility',
-								name: 'visibility',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Is Contact Auto Creation Enabled',
-								name: 'isContactAutoCreationEnabled',
-								type: 'boolean',
-								default: false,
-							},
-							{
-								displayName: 'Contact Auto Creation Policy',
-								name: 'contactAutoCreationPolicy',
-								type: 'string',
-								default: '',
-								description:
-									'Automatically create records for people you participated with in an event',
-							},
-							{
-								displayName: 'Is Sync Enabled',
-								name: 'isSyncEnabled',
-								type: 'boolean',
-								default: false,
-							},
-							{
-								displayName: 'Sync Cursor',
-								name: 'syncCursor',
-								type: 'string',
-								default: '',
-								description: 'Sync Cursor. Used for syncing events from the calendar provider.',
-							},
-							{
-								displayName: 'Sync Stage Started At',
-								name: 'syncStageStartedAt',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Throttle Failure Count',
-								name: 'throttleFailureCount',
-								type: 'number',
-								default: 0,
-							},
-							{
-								displayName: 'ID',
-								name: 'id',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Created At',
-								name: 'createdAt',
-								type: 'string',
-								default: '',
-								description: 'Creation date',
-							},
-							{
-								displayName: 'Updated At',
-								name: 'updatedAt',
-								type: 'dateTime',
-								default: '',
-								description: 'Last time the record was changed',
-							},
-							{
-								displayName: 'Connected Account ID',
-								name: 'connectedAccountId',
-								type: 'string',
-								default: '',
-								description: 'Connected Account ID foreign key',
-							},
-						],
-					},
-				],
-			},
-			{
-				displayName: 'IDs',
-				name: 'ids',
-				type: 'string',
-				default: '',
-			},
+				{
+displayName: 'Data',
+name: 'data',
+placeholder: 'Add Data Field',
+type: 'fixedCollection',
+default: {},
+options: [{
+displayName: 'Data Fields',
+name: 'dataFields',
+values: [
+{
+displayName: 'Handle',
+name: 'handle',
+type: 'string',
+default: '',
+},
+{
+displayName: 'Sync Status',
+name: 'syncStatus',
+type: 'string',
+default: '',
+},
+{
+displayName: 'Sync Stage',
+name: 'syncStage',
+type: 'string',
+default: '',
+},
+{
+displayName: 'Visibility',
+name: 'visibility',
+type: 'string',
+default: '',
+},
+{
+displayName: 'Is Contact Auto Creation Enabled',
+name: 'isContactAutoCreationEnabled',
+type: 'boolean',
+default: false,
+},
+{
+displayName: 'Contact Auto Creation Policy',
+name: 'contactAutoCreationPolicy',
+type: 'string',
+default: '',
+description: 'Automatically create records for people you participated with in an event',
+},
+{
+displayName: 'Is Sync Enabled',
+name: 'isSyncEnabled',
+type: 'boolean',
+default: false,
+},
+{
+displayName: 'Sync Cursor',
+name: 'syncCursor',
+type: 'string',
+default: '',
+description: 'Sync Cursor. Used for syncing events from the calendar provider.',
+},
+{
+displayName: 'Synced At',
+name: 'syncedAt',
+type: 'dateTime',
+default: '',
+description: 'Last sync date',
+},
+{
+displayName: 'Sync Stage Started At',
+name: 'syncStageStartedAt',
+type: 'dateTime',
+default: '',
+},
+{
+displayName: 'Throttle Failure Count',
+name: 'throttleFailureCount',
+type: 'number',
+default: 0,
+},
+{
+displayName: 'Connected Account ID',
+name: 'connectedAccountId',
+type: 'string',
+default: '',
+description: 'Connected Account ID foreign key',
+},
+]}],
+},
 		],
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['calendarChannel'],
-				operation: ['findCalendarChannelDuplicates'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'calendarChannel',
+					],
+					operation: [
+						'findCalendarChannelDuplicates',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// calendarChannel: findManyCalendarChannels
 	// ----------------------------------------
@@ -590,91 +610,95 @@ export const calendarChannelFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description: 'Limits the depth objects returned',
-			},
-			{
-				displayName: 'Ending Before',
-				name: 'ending_before',
-				type: 'string',
-				default: '',
-				description:
-					'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
-			},
-			{
-				displayName: 'Filter',
-				name: 'filter',
-				type: 'string',
-				default: '',
-				description:
-					'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2,...** Available comparators are **eq**, **neq**, **in**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
-			},
-			{
-				displayName: 'Limit',
-				name: 'limit',
-				type: 'number',
-				typeOptions: {
-					minValue: 1,
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
-				default: 50,
-				description: 'Max number of results to return',
-			},
-			{
-				displayName: 'Order By',
-				name: 'order_by',
-				type: 'string',
-				default: '',
-				description:
-					'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
-			},
-			{
-				displayName: 'Starting After',
-				name: 'starting_after',
-				type: 'string',
-				default: '',
-				description:
-					'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
-			},
+				{
+					displayName: 'Ending Before',
+					name: 'ending_before',
+					type: 'string',
+					default: '',
+					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+				},
+				{
+					displayName: 'Filter',
+					name: 'filter',
+					type: 'string',
+					default: '',
+					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
+				},
+				{
+					displayName: 'Limit',
+					name: 'limit',
+					type: 'number',
+					typeOptions: {
+						minValue: 1,
+					},
+					default: 50,
+					description: 'Max number of results to return',
+				},
+				{
+					displayName: 'Order By',
+					name: 'order_by',
+					type: 'string',
+					default: '',
+					description: 'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
+				},
+				{
+					displayName: 'Starting After',
+					name: 'starting_after',
+					type: 'string',
+					default: '',
+					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarChannel'],
-				operation: ['findManyCalendarChannels'],
+				resource: [
+					'calendarChannel',
+				],
+				operation: [
+					'findManyCalendarChannels',
+				],
 			},
 		},
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['calendarChannel'],
-				operation: ['findManyCalendarChannels'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'calendarChannel',
+					],
+					operation: [
+						'findManyCalendarChannels',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// calendarChannel: findOneCalendarChannel
 	// ----------------------------------------
@@ -687,8 +711,12 @@ export const calendarChannelFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['calendarChannel'],
-				operation: ['findOneCalendarChannel'],
+				resource: [
+					'calendarChannel',
+				],
+				operation: [
+					'findOneCalendarChannel',
+				],
 			},
 		},
 	},
@@ -699,49 +727,57 @@ export const calendarChannelFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description: 'Limits the depth objects returned',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarChannel'],
-				operation: ['findOneCalendarChannel'],
+				resource: [
+					'calendarChannel',
+				],
+				operation: [
+					'findOneCalendarChannel',
+				],
 			},
 		},
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['calendarChannel'],
-				operation: ['findOneCalendarChannel'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'calendarChannel',
+					],
+					operation: [
+						'findOneCalendarChannel',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// calendarChannel: updateOneCalendarChannel
 	// ----------------------------------------
@@ -754,8 +790,12 @@ export const calendarChannelFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['calendarChannel'],
-				operation: ['updateOneCalendarChannel'],
+				resource: [
+					'calendarChannel',
+				],
+				operation: [
+					'updateOneCalendarChannel',
+				],
 			},
 		},
 	},
@@ -766,47 +806,37 @@ export const calendarChannelFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description: 'Limits the depth objects returned',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarChannel'],
-				operation: ['updateOneCalendarChannel'],
-			},
-		},
-	},
-	{
-		displayName: 'Connected Account ID',
-		name: 'connectedAccountId',
-		description: 'Connected Account ID foreign key',
-		type: 'string',
-		required: true,
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['calendarChannel'],
-				operation: ['updateOneCalendarChannel'],
+				resource: [
+					'calendarChannel',
+				],
+				operation: [
+					'updateOneCalendarChannel',
+				],
 			},
 		},
 	},
@@ -818,11 +848,22 @@ export const calendarChannelFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarChannel'],
-				operation: ['updateOneCalendarChannel'],
+				resource: [
+					'calendarChannel',
+				],
+				operation: [
+					'updateOneCalendarChannel',
+				],
 			},
 		},
 		options: [
+			{
+				displayName: 'Connected Account ID',
+				name: 'connectedAccountId',
+				type: 'string',
+				default: '',
+				description: 'Connected Account ID foreign key',
+			},
 			{
 				displayName: 'Contact Auto Creation Policy',
 				name: 'contactAutoCreationPolicy',
@@ -849,35 +890,25 @@ export const calendarChannelFields: INodeProperties[] = [
 				],
 			},
 			{
-				displayName: 'Created At',
-				name: 'createdAt',
-				type: 'string',
-				default: '',
-				description: 'Creation date',
-			},
-			{
 				displayName: 'Handle',
 				name: 'handle',
 				type: 'string',
 				default: '',
-			},
-			{
-				displayName: 'ID',
-				name: 'id',
-				type: 'string',
-				default: '',
+
 			},
 			{
 				displayName: 'Is Contact Auto Creation Enabled',
 				name: 'isContactAutoCreationEnabled',
 				type: 'boolean',
 				default: false,
+
 			},
 			{
 				displayName: 'Is Sync Enabled',
 				name: 'isSyncEnabled',
 				type: 'boolean',
 				default: false,
+
 			},
 			{
 				displayName: 'Sync Cursor',
@@ -894,22 +925,6 @@ export const calendarChannelFields: INodeProperties[] = [
 
 				options: [
 					{
-						name: 'Calendar Event List Fetch Ongoing',
-						value: 'CALENDAR_EVENT_LIST_FETCH_ONGOING',
-					},
-					{
-						name: 'Calendar Events Import Ongoing',
-						value: 'CALENDAR_EVENTS_IMPORT_ONGOING',
-					},
-					{
-						name: 'Calendar Events Import Pending',
-						value: 'CALENDAR_EVENTS_IMPORT_PENDING',
-					},
-					{
-						name: 'Failed',
-						value: 'FAILED',
-					},
-					{
 						name: 'Full Calendar Event List Fetch Pending',
 						value: 'FULL_CALENDAR_EVENT_LIST_FETCH_PENDING',
 					},
@@ -917,13 +932,30 @@ export const calendarChannelFields: INodeProperties[] = [
 						name: 'Partial Calendar Event List Fetch Pending',
 						value: 'PARTIAL_CALENDAR_EVENT_LIST_FETCH_PENDING',
 					},
+					{
+						name: 'Calendar Event List Fetch Ongoing',
+						value: 'CALENDAR_EVENT_LIST_FETCH_ONGOING',
+					},
+					{
+						name: 'Calendar Events Import Pending',
+						value: 'CALENDAR_EVENTS_IMPORT_PENDING',
+					},
+					{
+						name: 'Calendar Events Import Ongoing',
+						value: 'CALENDAR_EVENTS_IMPORT_ONGOING',
+					},
+					{
+						name: 'Failed',
+						value: 'FAILED',
+					},
 				],
 			},
 			{
 				displayName: 'Sync Stage Started At',
 				name: 'syncStageStartedAt',
-				type: 'string',
+				type: 'dateTime',
 				default: '',
+
 			},
 			{
 				displayName: 'Sync Status',
@@ -932,6 +964,14 @@ export const calendarChannelFields: INodeProperties[] = [
 				default: 'ONGOING',
 
 				options: [
+					{
+						name: 'Ongoing',
+						value: 'ONGOING',
+					},
+					{
+						name: 'Not Synced',
+						value: 'NOT_SYNCED',
+					},
 					{
 						name: 'Active',
 						value: 'ACTIVE',
@@ -944,28 +984,21 @@ export const calendarChannelFields: INodeProperties[] = [
 						name: 'Failed Unknown',
 						value: 'FAILED_UNKNOWN',
 					},
-					{
-						name: 'Not Synced',
-						value: 'NOT_SYNCED',
-					},
-					{
-						name: 'Ongoing',
-						value: 'ONGOING',
-					},
 				],
+			},
+			{
+				displayName: 'Synced At',
+				name: 'syncedAt',
+				type: 'dateTime',
+				default: '',
+				description: 'Last sync date',
 			},
 			{
 				displayName: 'Throttle Failure Count',
 				name: 'throttleFailureCount',
 				type: 'number',
 				default: 0,
-			},
-			{
-				displayName: 'Updated At',
-				name: 'updatedAt',
-				type: 'dateTime',
-				default: '',
-				description: 'Last time the record was changed',
+
 			},
 			{
 				displayName: 'Visibility',
@@ -986,16 +1019,20 @@ export const calendarChannelFields: INodeProperties[] = [
 			},
 		],
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['calendarChannel'],
-				operation: ['updateOneCalendarChannel'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'calendarChannel',
+					],
+					operation: [
+						'updateOneCalendarChannel',
+					],
+				},
 			},
 		},
-	},
 ];

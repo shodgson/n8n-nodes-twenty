@@ -2,7 +2,7 @@ import type {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export const apiKeyOperations: INodeProperties[] = [
+export const viewGroupOperations: INodeProperties[] = [
 	{
 		displayName: 'Operation',
 		name: 'operation',
@@ -11,60 +11,60 @@ export const apiKeyOperations: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewGroup',
 				],
 			},
 		},
 		options: [
 			{
-				name: 'Create Many Api Keys',
-				value: 'createManyApiKeys',
-				action: 'Create many api keys',
+				name: 'Create Many View Groups',
+				value: 'createManyViewGroups',
+				action: 'Create many view groups',
 			},
 			{
-				name: 'Create One Api Key',
-				value: 'createOneApiKey',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **apiKeys**',
-				action: 'Create one api key',
+				name: 'Create One View Group',
+				value: 'createOneViewGroup',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewGroups**',
+				action: 'Create one view group',
 			},
 			{
-				name: 'Delete One Api Key',
-				value: 'deleteOneApiKey',
-				description: '**depth** can be provided to request your **apiKey**',
-				action: 'Delete one api key',
+				name: 'Delete One View Group',
+				value: 'deleteOneViewGroup',
+				description: '**depth** can be provided to request your **viewGroup**',
+				action: 'Delete one view group',
 			},
 			{
-				name: 'Find Api Key Duplicates',
-				value: 'findApiKeyDuplicates',
-				description: '**depth** can be provided to request your **apiKey**',
-				action: 'Find api key duplicates',
+				name: 'Find Many View Groups',
+				value: 'findManyViewGroups',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewGroups**',
+				action: 'Find many view groups',
 			},
 			{
-				name: 'Find Many Api Keys',
-				value: 'findManyApiKeys',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **apiKeys**',
-				action: 'Find many api keys',
+				name: 'Find One View Group',
+				value: 'findOneViewGroup',
+				description: '**depth** can be provided to request your **viewGroup**',
+				action: 'Find one view group',
 			},
 			{
-				name: 'Find One Api Key',
-				value: 'findOneApiKey',
-				description: '**depth** can be provided to request your **apiKey**',
-				action: 'Find one api key',
+				name: 'Find View Group Duplicates',
+				value: 'findViewGroupDuplicates',
+				description: '**depth** can be provided to request your **viewGroup**',
+				action: 'Find view group duplicates',
 			},
 			{
-				name: 'Update One Api Key',
-				value: 'updateOneApiKey',
-				description: '**depth** can be provided to request your **apiKey**',
-				action: 'Update one api key',
+				name: 'Update One View Group',
+				value: 'updateOneViewGroup',
+				description: '**depth** can be provided to request your **viewGroup**',
+				action: 'Update one view group',
 			},
 		],
-		default: 'createManyApiKeys',
+		default: 'createManyViewGroups',
 	},
 ];
 
-export const apiKeyFields: INodeProperties[] = [
+export const viewGroupFields: INodeProperties[] = [
 	// ----------------------------------------
-	//        apiKey: createManyApiKeys
+	//     viewGroup: createManyViewGroups
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -99,10 +99,10 @@ export const apiKeyFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewGroup',
 				],
 				operation: [
-					'createManyApiKeys',
+					'createManyViewGroups',
 				],
 			},
 		},
@@ -116,10 +116,10 @@ export const apiKeyFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewGroup',
 				],
 				operation: [
-					'createManyApiKeys',
+					'createManyViewGroups',
 				],
 			},
 		},
@@ -134,17 +134,17 @@ export const apiKeyFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'apiKey',
+						'viewGroup',
 					],
 					operation: [
-						'createManyApiKeys',
+						'createManyViewGroups',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//         apiKey: createOneApiKey
+	//      viewGroup: createOneViewGroup
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -179,28 +179,28 @@ export const apiKeyFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewGroup',
 				],
 				operation: [
-					'createOneApiKey',
+					'createOneViewGroup',
 				],
 			},
 		},
 	},
 	{
-		displayName: 'Expires At',
-		name: 'expiresAt',
-		description: 'ApiKey expiration date',
-		type: 'dateTime',
+		displayName: 'Field Metadata ID',
+		name: 'fieldMetadataId',
+		description: 'View Group target field',
+		type: 'string',
 		required: true,
 		default: '',
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewGroup',
 				],
 				operation: [
-					'createOneApiKey',
+					'createOneViewGroup',
 				],
 			},
 		},
@@ -214,27 +214,41 @@ export const apiKeyFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewGroup',
 				],
 				operation: [
-					'createOneApiKey',
+					'createOneViewGroup',
 				],
 			},
 		},
 		options: [
 			{
-				displayName: 'Name',
-				name: 'name',
+				displayName: 'Field Value',
+				name: 'fieldValue',
 				type: 'string',
 				default: '',
-				description: 'ApiKey name',
+				description: 'Group by this field value',
 			},
 			{
-				displayName: 'Revoked At',
-				name: 'revokedAt',
-				type: 'dateTime',
+				displayName: 'Is Visible',
+				name: 'isVisible',
+				type: 'boolean',
+				default: false,
+				description: 'View Group visibility',
+			},
+			{
+				displayName: 'Position',
+				name: 'position',
+				type: 'number',
+				default: 0,
+				description: 'View Field position',
+			},
+			{
+				displayName: 'View ID',
+				name: 'viewId',
+				type: 'string',
 				default: '',
-				description: 'ApiKey revocation date',
+				description: 'View Group related view ID foreign key',
 			},
 		],
 	},
@@ -246,17 +260,17 @@ export const apiKeyFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'apiKey',
+						'viewGroup',
 					],
 					operation: [
-						'createOneApiKey',
+						'createOneViewGroup',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//         apiKey: deleteOneApiKey
+	//      viewGroup: deleteOneViewGroup
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -268,10 +282,10 @@ export const apiKeyFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewGroup',
 				],
 				operation: [
-					'deleteOneApiKey',
+					'deleteOneViewGroup',
 				],
 			},
 		},
@@ -284,130 +298,17 @@ export const apiKeyFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'apiKey',
+						'viewGroup',
 					],
 					operation: [
-						'deleteOneApiKey',
+						'deleteOneViewGroup',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//       apiKey: findApiKeyDuplicates
-	// ----------------------------------------
-	{
-		displayName: 'Query',
-		name: 'query',
-
-		type: 'collection',
-		placeholder: 'Add Query',
-		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
-		],
-		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'findApiKeyDuplicates',
-				],
-			},
-		},
-	},
-	{
-		displayName: 'Additional Fields',
-		name: 'additionalFields',
-		type: 'collection',
-		placeholder: 'Add Field',
-		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'findApiKeyDuplicates',
-				],
-			},
-		},
-		options: [
-				{
-displayName: 'Data',
-name: 'data',
-placeholder: 'Add Data Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Data Fields',
-name: 'dataFields',
-values: [
-{
-displayName: 'Name',
-name: 'name',
-type: 'string',
-default: '',
-description: 'ApiKey name',
-},
-{
-displayName: 'Expires At',
-name: 'expiresAt',
-type: 'dateTime',
-default: '',
-description: 'ApiKey expiration date',
-},
-{
-displayName: 'Revoked At',
-name: 'revokedAt',
-type: 'dateTime',
-default: '',
-description: 'ApiKey revocation date',
-},
-]}],
-},
-		],
-	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'apiKey',
-					],
-					operation: [
-						'findApiKeyDuplicates',
-					],
-				},
-			},
-		},
-	
-	// ----------------------------------------
-	//         apiKey: findManyApiKeys
+	//      viewGroup: findManyViewGroups
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -480,10 +381,10 @@ description: 'ApiKey revocation date',
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewGroup',
 				],
 				operation: [
-					'findManyApiKeys',
+					'findManyViewGroups',
 				],
 			},
 		},
@@ -496,17 +397,17 @@ description: 'ApiKey revocation date',
 			displayOptions: {
 				show: {
 					resource: [
-						'apiKey',
+						'viewGroup',
 					],
 					operation: [
-						'findManyApiKeys',
+						'findManyViewGroups',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//          apiKey: findOneApiKey
+	//       viewGroup: findOneViewGroup
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -518,10 +419,10 @@ description: 'ApiKey revocation date',
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewGroup',
 				],
 				operation: [
-					'findOneApiKey',
+					'findOneViewGroup',
 				],
 			},
 		},
@@ -559,10 +460,10 @@ description: 'ApiKey revocation date',
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewGroup',
 				],
 				operation: [
-					'findOneApiKey',
+					'findOneViewGroup',
 				],
 			},
 		},
@@ -575,17 +476,144 @@ description: 'ApiKey revocation date',
 			displayOptions: {
 				show: {
 					resource: [
-						'apiKey',
+						'viewGroup',
 					],
 					operation: [
-						'findOneApiKey',
+						'findOneViewGroup',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//         apiKey: updateOneApiKey
+	//    viewGroup: findViewGroupDuplicates
+	// ----------------------------------------
+	{
+		displayName: 'Query',
+		name: 'query',
+
+		type: 'collection',
+		placeholder: 'Add Query',
+		options: [
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
+		],
+		default: {},
+		displayOptions: {
+			show: {
+				resource: [
+					'viewGroup',
+				],
+				operation: [
+					'findViewGroupDuplicates',
+				],
+			},
+		},
+	},
+	{
+		displayName: 'Additional Fields',
+		name: 'additionalFields',
+		type: 'collection',
+		placeholder: 'Add Field',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: [
+					'viewGroup',
+				],
+				operation: [
+					'findViewGroupDuplicates',
+				],
+			},
+		},
+		options: [
+				{
+displayName: 'Data',
+name: 'data',
+placeholder: 'Add Data Field',
+type: 'fixedCollection',
+default: {},
+options: [{
+displayName: 'Data Fields',
+name: 'dataFields',
+values: [
+{
+displayName: 'Field Metadata ID',
+name: 'fieldMetadataId',
+type: 'string',
+default: '',
+description: 'View Group target field',
+},
+{
+displayName: 'Is Visible',
+name: 'isVisible',
+type: 'boolean',
+default: false,
+description: 'View Group visibility',
+},
+{
+displayName: 'Field Value',
+name: 'fieldValue',
+type: 'string',
+default: '',
+description: 'Group by this field value',
+},
+{
+displayName: 'Position',
+name: 'position',
+type: 'number',
+default: 0,
+description: 'View Field position',
+},
+{
+displayName: 'View ID',
+name: 'viewId',
+type: 'string',
+default: '',
+description: 'View Group related view ID foreign key',
+},
+]}],
+},
+		],
+	},
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'viewGroup',
+					],
+					operation: [
+						'findViewGroupDuplicates',
+					],
+				},
+			},
+		},
+	
+	// ----------------------------------------
+	//      viewGroup: updateOneViewGroup
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -597,10 +625,10 @@ description: 'ApiKey revocation date',
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewGroup',
 				],
 				operation: [
-					'updateOneApiKey',
+					'updateOneViewGroup',
 				],
 			},
 		},
@@ -638,10 +666,10 @@ description: 'ApiKey revocation date',
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewGroup',
 				],
 				operation: [
-					'updateOneApiKey',
+					'updateOneViewGroup',
 				],
 			},
 		},
@@ -655,34 +683,48 @@ description: 'ApiKey revocation date',
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewGroup',
 				],
 				operation: [
-					'updateOneApiKey',
+					'updateOneViewGroup',
 				],
 			},
 		},
 		options: [
 			{
-				displayName: 'Expires At',
-				name: 'expiresAt',
-				type: 'dateTime',
-				default: '',
-				description: 'ApiKey expiration date',
-			},
-			{
-				displayName: 'Name',
-				name: 'name',
+				displayName: 'Field Metadata ID',
+				name: 'fieldMetadataId',
 				type: 'string',
 				default: '',
-				description: 'ApiKey name',
+				description: 'View Group target field',
 			},
 			{
-				displayName: 'Revoked At',
-				name: 'revokedAt',
-				type: 'dateTime',
+				displayName: 'Field Value',
+				name: 'fieldValue',
+				type: 'string',
 				default: '',
-				description: 'ApiKey revocation date',
+				description: 'Group by this field value',
+			},
+			{
+				displayName: 'Is Visible',
+				name: 'isVisible',
+				type: 'boolean',
+				default: false,
+				description: 'View Group visibility',
+			},
+			{
+				displayName: 'Position',
+				name: 'position',
+				type: 'number',
+				default: 0,
+				description: 'View Field position',
+			},
+			{
+				displayName: 'View ID',
+				name: 'viewId',
+				type: 'string',
+				default: '',
+				description: 'View Group related view ID foreign key',
 			},
 		],
 	},
@@ -694,10 +736,10 @@ description: 'ApiKey revocation date',
 			displayOptions: {
 				show: {
 					resource: [
-						'apiKey',
+						'viewGroup',
 					],
 					operation: [
-						'updateOneApiKey',
+						'updateOneViewGroup',
 					],
 				},
 			},

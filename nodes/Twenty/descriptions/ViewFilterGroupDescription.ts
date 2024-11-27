@@ -2,7 +2,7 @@ import type {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export const apiKeyOperations: INodeProperties[] = [
+export const viewFilterGroupOperations: INodeProperties[] = [
 	{
 		displayName: 'Operation',
 		name: 'operation',
@@ -11,60 +11,60 @@ export const apiKeyOperations: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewFilterGroup',
 				],
 			},
 		},
 		options: [
 			{
-				name: 'Create Many Api Keys',
-				value: 'createManyApiKeys',
-				action: 'Create many api keys',
+				name: 'Create Many View Filter Groups',
+				value: 'createManyViewFilterGroups',
+				action: 'Create many view filter groups',
 			},
 			{
-				name: 'Create One Api Key',
-				value: 'createOneApiKey',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **apiKeys**',
-				action: 'Create one api key',
+				name: 'Create One View Filter Group',
+				value: 'createOneViewFilterGroup',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewFilterGroups**',
+				action: 'Create one view filter group',
 			},
 			{
-				name: 'Delete One Api Key',
-				value: 'deleteOneApiKey',
-				description: '**depth** can be provided to request your **apiKey**',
-				action: 'Delete one api key',
+				name: 'Delete One View Filter Group',
+				value: 'deleteOneViewFilterGroup',
+				description: '**depth** can be provided to request your **viewFilterGroup**',
+				action: 'Delete one view filter group',
 			},
 			{
-				name: 'Find Api Key Duplicates',
-				value: 'findApiKeyDuplicates',
-				description: '**depth** can be provided to request your **apiKey**',
-				action: 'Find api key duplicates',
+				name: 'Find Many View Filter Groups',
+				value: 'findManyViewFilterGroups',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewFilterGroups**',
+				action: 'Find many view filter groups',
 			},
 			{
-				name: 'Find Many Api Keys',
-				value: 'findManyApiKeys',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **apiKeys**',
-				action: 'Find many api keys',
+				name: 'Find One View Filter Group',
+				value: 'findOneViewFilterGroup',
+				description: '**depth** can be provided to request your **viewFilterGroup**',
+				action: 'Find one view filter group',
 			},
 			{
-				name: 'Find One Api Key',
-				value: 'findOneApiKey',
-				description: '**depth** can be provided to request your **apiKey**',
-				action: 'Find one api key',
+				name: 'Find View Filter Group Duplicates',
+				value: 'findViewFilterGroupDuplicates',
+				description: '**depth** can be provided to request your **viewFilterGroup**',
+				action: 'Find view filter group duplicates',
 			},
 			{
-				name: 'Update One Api Key',
-				value: 'updateOneApiKey',
-				description: '**depth** can be provided to request your **apiKey**',
-				action: 'Update one api key',
+				name: 'Update One View Filter Group',
+				value: 'updateOneViewFilterGroup',
+				description: '**depth** can be provided to request your **viewFilterGroup**',
+				action: 'Update one view filter group',
 			},
 		],
-		default: 'createManyApiKeys',
+		default: 'createManyViewFilterGroups',
 	},
 ];
 
-export const apiKeyFields: INodeProperties[] = [
+export const viewFilterGroupFields: INodeProperties[] = [
 	// ----------------------------------------
-	//        apiKey: createManyApiKeys
+	// viewFilterGroup: createManyViewFilterGroups
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -99,10 +99,10 @@ export const apiKeyFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewFilterGroup',
 				],
 				operation: [
-					'createManyApiKeys',
+					'createManyViewFilterGroups',
 				],
 			},
 		},
@@ -116,10 +116,10 @@ export const apiKeyFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewFilterGroup',
 				],
 				operation: [
-					'createManyApiKeys',
+					'createManyViewFilterGroups',
 				],
 			},
 		},
@@ -134,17 +134,17 @@ export const apiKeyFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'apiKey',
+						'viewFilterGroup',
 					],
 					operation: [
-						'createManyApiKeys',
+						'createManyViewFilterGroups',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//         apiKey: createOneApiKey
+	// viewFilterGroup: createOneViewFilterGroup
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -179,28 +179,28 @@ export const apiKeyFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewFilterGroup',
 				],
 				operation: [
-					'createOneApiKey',
+					'createOneViewFilterGroup',
 				],
 			},
 		},
 	},
 	{
-		displayName: 'Expires At',
-		name: 'expiresAt',
-		description: 'ApiKey expiration date',
-		type: 'dateTime',
+		displayName: 'View ID',
+		name: 'viewId',
+		description: 'View ID foreign key',
+		type: 'string',
 		required: true,
 		default: '',
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewFilterGroup',
 				],
 				operation: [
-					'createOneApiKey',
+					'createOneViewFilterGroup',
 				],
 			},
 		},
@@ -214,27 +214,48 @@ export const apiKeyFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewFilterGroup',
 				],
 				operation: [
-					'createOneApiKey',
+					'createOneViewFilterGroup',
 				],
 			},
 		},
 		options: [
 			{
-				displayName: 'Name',
-				name: 'name',
-				type: 'string',
-				default: '',
-				description: 'ApiKey name',
+				displayName: 'Logical Operator',
+				name: 'logicalOperator',
+				type: 'options',
+				default: 'AND',
+				description: 'Logical operator for the filter group',
+				options: [
+					{
+						name: 'And',
+						value: 'AND',
+					},
+					{
+						name: 'Or',
+						value: 'OR',
+					},
+					{
+						name: 'Not',
+						value: 'NOT',
+					},
+				],
 			},
 			{
-				displayName: 'Revoked At',
-				name: 'revokedAt',
-				type: 'dateTime',
+				displayName: 'Parent View Filter Group ID',
+				name: 'parentViewFilterGroupId',
+				type: 'string',
 				default: '',
-				description: 'ApiKey revocation date',
+				description: 'Parent View Filter Group',
+			},
+			{
+				displayName: 'Position In View Filter Group',
+				name: 'positionInViewFilterGroup',
+				type: 'number',
+				default: 0,
+				description: 'Position in the parent view filter group',
 			},
 		],
 	},
@@ -246,17 +267,17 @@ export const apiKeyFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'apiKey',
+						'viewFilterGroup',
 					],
 					operation: [
-						'createOneApiKey',
+						'createOneViewFilterGroup',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//         apiKey: deleteOneApiKey
+	// viewFilterGroup: deleteOneViewFilterGroup
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -268,10 +289,10 @@ export const apiKeyFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewFilterGroup',
 				],
 				operation: [
-					'deleteOneApiKey',
+					'deleteOneViewFilterGroup',
 				],
 			},
 		},
@@ -284,130 +305,17 @@ export const apiKeyFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'apiKey',
+						'viewFilterGroup',
 					],
 					operation: [
-						'deleteOneApiKey',
+						'deleteOneViewFilterGroup',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//       apiKey: findApiKeyDuplicates
-	// ----------------------------------------
-	{
-		displayName: 'Query',
-		name: 'query',
-
-		type: 'collection',
-		placeholder: 'Add Query',
-		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
-		],
-		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'findApiKeyDuplicates',
-				],
-			},
-		},
-	},
-	{
-		displayName: 'Additional Fields',
-		name: 'additionalFields',
-		type: 'collection',
-		placeholder: 'Add Field',
-		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'findApiKeyDuplicates',
-				],
-			},
-		},
-		options: [
-				{
-displayName: 'Data',
-name: 'data',
-placeholder: 'Add Data Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Data Fields',
-name: 'dataFields',
-values: [
-{
-displayName: 'Name',
-name: 'name',
-type: 'string',
-default: '',
-description: 'ApiKey name',
-},
-{
-displayName: 'Expires At',
-name: 'expiresAt',
-type: 'dateTime',
-default: '',
-description: 'ApiKey expiration date',
-},
-{
-displayName: 'Revoked At',
-name: 'revokedAt',
-type: 'dateTime',
-default: '',
-description: 'ApiKey revocation date',
-},
-]}],
-},
-		],
-	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'apiKey',
-					],
-					operation: [
-						'findApiKeyDuplicates',
-					],
-				},
-			},
-		},
-	
-	// ----------------------------------------
-	//         apiKey: findManyApiKeys
+	// viewFilterGroup: findManyViewFilterGroups
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -480,10 +388,10 @@ description: 'ApiKey revocation date',
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewFilterGroup',
 				],
 				operation: [
-					'findManyApiKeys',
+					'findManyViewFilterGroups',
 				],
 			},
 		},
@@ -496,17 +404,17 @@ description: 'ApiKey revocation date',
 			displayOptions: {
 				show: {
 					resource: [
-						'apiKey',
+						'viewFilterGroup',
 					],
 					operation: [
-						'findManyApiKeys',
+						'findManyViewFilterGroups',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//          apiKey: findOneApiKey
+	// viewFilterGroup: findOneViewFilterGroup
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -518,10 +426,10 @@ description: 'ApiKey revocation date',
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewFilterGroup',
 				],
 				operation: [
-					'findOneApiKey',
+					'findOneViewFilterGroup',
 				],
 			},
 		},
@@ -559,10 +467,10 @@ description: 'ApiKey revocation date',
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewFilterGroup',
 				],
 				operation: [
-					'findOneApiKey',
+					'findOneViewFilterGroup',
 				],
 			},
 		},
@@ -575,17 +483,137 @@ description: 'ApiKey revocation date',
 			displayOptions: {
 				show: {
 					resource: [
-						'apiKey',
+						'viewFilterGroup',
 					],
 					operation: [
-						'findOneApiKey',
+						'findOneViewFilterGroup',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//         apiKey: updateOneApiKey
+	// viewFilterGroup: findViewFilterGroupDuplicates
+	// ----------------------------------------
+	{
+		displayName: 'Query',
+		name: 'query',
+
+		type: 'collection',
+		placeholder: 'Add Query',
+		options: [
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
+		],
+		default: {},
+		displayOptions: {
+			show: {
+				resource: [
+					'viewFilterGroup',
+				],
+				operation: [
+					'findViewFilterGroupDuplicates',
+				],
+			},
+		},
+	},
+	{
+		displayName: 'Additional Fields',
+		name: 'additionalFields',
+		type: 'collection',
+		placeholder: 'Add Field',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: [
+					'viewFilterGroup',
+				],
+				operation: [
+					'findViewFilterGroupDuplicates',
+				],
+			},
+		},
+		options: [
+				{
+displayName: 'Data',
+name: 'data',
+placeholder: 'Add Data Field',
+type: 'fixedCollection',
+default: {},
+options: [{
+displayName: 'Data Fields',
+name: 'dataFields',
+values: [
+{
+displayName: 'Parent View Filter Group ID',
+name: 'parentViewFilterGroupId',
+type: 'string',
+default: '',
+description: 'Parent View Filter Group',
+},
+{
+displayName: 'Logical Operator',
+name: 'logicalOperator',
+type: 'string',
+default: '',
+description: 'Logical operator for the filter group',
+},
+{
+displayName: 'Position In View Filter Group',
+name: 'positionInViewFilterGroup',
+type: 'number',
+default: 0,
+description: 'Position in the parent view filter group',
+},
+{
+displayName: 'View ID',
+name: 'viewId',
+type: 'string',
+default: '',
+description: 'View ID foreign key',
+},
+]}],
+},
+		],
+	},
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'viewFilterGroup',
+					],
+					operation: [
+						'findViewFilterGroupDuplicates',
+					],
+				},
+			},
+		},
+	
+	// ----------------------------------------
+	// viewFilterGroup: updateOneViewFilterGroup
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -597,10 +625,10 @@ description: 'ApiKey revocation date',
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewFilterGroup',
 				],
 				operation: [
-					'updateOneApiKey',
+					'updateOneViewFilterGroup',
 				],
 			},
 		},
@@ -638,10 +666,10 @@ description: 'ApiKey revocation date',
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewFilterGroup',
 				],
 				operation: [
-					'updateOneApiKey',
+					'updateOneViewFilterGroup',
 				],
 			},
 		},
@@ -655,34 +683,55 @@ description: 'ApiKey revocation date',
 		displayOptions: {
 			show: {
 				resource: [
-					'apiKey',
+					'viewFilterGroup',
 				],
 				operation: [
-					'updateOneApiKey',
+					'updateOneViewFilterGroup',
 				],
 			},
 		},
 		options: [
 			{
-				displayName: 'Expires At',
-				name: 'expiresAt',
-				type: 'dateTime',
-				default: '',
-				description: 'ApiKey expiration date',
+				displayName: 'Logical Operator',
+				name: 'logicalOperator',
+				type: 'options',
+				default: 'AND',
+				description: 'Logical operator for the filter group',
+				options: [
+					{
+						name: 'And',
+						value: 'AND',
+					},
+					{
+						name: 'Or',
+						value: 'OR',
+					},
+					{
+						name: 'Not',
+						value: 'NOT',
+					},
+				],
 			},
 			{
-				displayName: 'Name',
-				name: 'name',
+				displayName: 'Parent View Filter Group ID',
+				name: 'parentViewFilterGroupId',
 				type: 'string',
 				default: '',
-				description: 'ApiKey name',
+				description: 'Parent View Filter Group',
 			},
 			{
-				displayName: 'Revoked At',
-				name: 'revokedAt',
-				type: 'dateTime',
+				displayName: 'Position In View Filter Group',
+				name: 'positionInViewFilterGroup',
+				type: 'number',
+				default: 0,
+				description: 'Position in the parent view filter group',
+			},
+			{
+				displayName: 'View ID',
+				name: 'viewId',
+				type: 'string',
 				default: '',
-				description: 'ApiKey revocation date',
+				description: 'View ID foreign key',
 			},
 		],
 	},
@@ -694,10 +743,10 @@ description: 'ApiKey revocation date',
 			displayOptions: {
 				show: {
 					resource: [
-						'apiKey',
+						'viewFilterGroup',
 					],
 					operation: [
-						'updateOneApiKey',
+						'updateOneViewFilterGroup',
 					],
 				},
 			},

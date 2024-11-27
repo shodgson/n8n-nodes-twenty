@@ -13,19 +13,19 @@ export async function twentyApiRequest(
 	endpoint: string,
 	body: IDataObject = {},
 	qs: IDataObject = {},
-	uri?: string,
+	path: string = "rest",
 ) {
 	const credentials = await this.getCredentials('twentyApi');
 
 	if (credentials === undefined) {
-		throw new NodeOperationError(this.getNode(), 'No credentials got returned!');
+		throw new NodeOperationError(this.getNode(), 'No credentials returned!');
 	}
 
 	const options: IRequestOptions = {
 		method,
 		body,
 		qs,
-		uri: `${credentials.domain}/rest${endpoint}`,
+		uri: `${credentials.domain}/${path}${endpoint}`,
 		json: true,
 	};
 
@@ -43,44 +43,4 @@ export async function twentyApiRequest(
 	} catch (error) {
 		throw new NodeApiError(this.getNode(), error);
 	}
-}
-
-export async function twentyApiRequestAllItems(
-	this: IExecuteFunctions,
-	method: IHttpRequestMethods,
-	endpoint: string,
-	body: IDataObject = {},
-	qs: IDataObject = {},
-) {
-	const returnData: IDataObject[] = [];
-	let responseData: any;
-
-	do {
-		responseData = await twentyApiRequest.call(this, method, endpoint, body, qs);
-		// USERTASK: Get next page
-		returnData.push(...responseData);
-	} while (
-		true // USERTASK: Add condition for total not yet reached
-	);
-
-	return returnData;
-}
-
-export async function handleListing(
-	this: IExecuteFunctions,
-	method: IHttpRequestMethods,
-	endpoint: string,
-	body: IDataObject = {},
-	qs: IDataObject = {},
-) {
-	const returnAll = this.getNodeParameter('returnAll', 0) as boolean;
-
-	if (returnAll) {
-		return await twentyApiRequestAllItems.call(this, method, endpoint, body, qs);
-	}
-
-	const responseData = await twentyApiRequestAllItems.call(this, method, endpoint, body, qs);
-	const limit = this.getNodeParameter('limit', 0) as number;
-
-	return responseData.slice(0, limit);
 }

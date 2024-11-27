@@ -92,7 +92,7 @@ export const messageParticipantFields: INodeProperties[] = [
 						},
 					],
 					default: '1',
-					description: 'Limits the depth objects returned',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
@@ -172,7 +172,7 @@ export const messageParticipantFields: INodeProperties[] = [
 						},
 					],
 					default: '1',
-					description: 'Limits the depth objects returned',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
@@ -223,13 +223,6 @@ export const messageParticipantFields: INodeProperties[] = [
 		},
 		options: [
 			{
-				displayName: 'Created At',
-				name: 'createdAt',
-				type: 'string',
-				default: '',
-				description: 'Creation date',
-			},
-			{
 				displayName: 'Display Name',
 				name: 'displayName',
 				type: 'string',
@@ -239,13 +232,6 @@ export const messageParticipantFields: INodeProperties[] = [
 			{
 				displayName: 'Handle',
 				name: 'handle',
-				type: 'string',
-				default: '',
-
-			},
-			{
-				displayName: 'ID',
-				name: 'id',
 				type: 'string',
 				default: '',
 
@@ -281,13 +267,6 @@ export const messageParticipantFields: INodeProperties[] = [
 						value: 'bcc',
 					},
 				],
-			},
-			{
-				displayName: 'Updated At',
-				name: 'updatedAt',
-				type: 'dateTime',
-				default: '',
-				description: 'Last time the record was changed',
 			},
 			{
 				displayName: 'Workspace Member ID',
@@ -382,7 +361,7 @@ export const messageParticipantFields: INodeProperties[] = [
 						},
 					],
 					default: '1',
-					description: 'Limits the depth objects returned',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 				{
 					displayName: 'Ending Before',
@@ -396,7 +375,7 @@ export const messageParticipantFields: INodeProperties[] = [
 					name: 'filter',
 					type: 'string',
 					default: '',
-					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2,...** Available comparators are **eq**, **neq**, **in**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
+					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
 				},
 				{
 					displayName: 'Limit',
@@ -481,7 +460,7 @@ export const messageParticipantFields: INodeProperties[] = [
 						},
 					],
 					default: '1',
-					description: 'Limits the depth objects returned',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
@@ -524,12 +503,6 @@ displayName: 'Data Fields',
 name: 'dataFields',
 values: [
 {
-displayName: 'Display Name',
-name: 'displayName',
-type: 'string',
-default: '',
-},
-{
 displayName: 'Role',
 name: 'role',
 type: 'string',
@@ -542,24 +515,10 @@ type: 'string',
 default: '',
 },
 {
-displayName: 'ID',
-name: 'id',
+displayName: 'Display Name',
+name: 'displayName',
 type: 'string',
 default: '',
-},
-{
-displayName: 'Created At',
-name: 'createdAt',
-type: 'string',
-default: '',
-description: 'Creation date',
-},
-{
-displayName: 'Updated At',
-name: 'updatedAt',
-type: 'dateTime',
-default: '',
-description: 'Last time the record was changed',
 },
 {
 displayName: 'Message ID',
@@ -584,12 +543,6 @@ description: 'Workspace member ID foreign key',
 },
 ]}],
 },
-			{
-				displayName: 'IDs',
-				name: 'ids',
-				type: 'string',
-				default: '',
-			},
 		],
 	},
 		{
@@ -656,7 +609,7 @@ description: 'Workspace member ID foreign key',
 						},
 					],
 					default: '1',
-					description: 'Limits the depth objects returned',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
@@ -735,28 +688,10 @@ description: 'Workspace member ID foreign key',
 						},
 					],
 					default: '1',
-					description: 'Limits the depth objects returned',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'messageParticipant',
-				],
-				operation: [
-					'updateOneMessageParticipant',
-				],
-			},
-		},
-	},
-	{
-		displayName: 'Message ID',
-		name: 'messageId',
-		description: 'Message ID foreign key',
-		type: 'string',
-		required: true,
-		default: '',
 		displayOptions: {
 			show: {
 				resource: [
@@ -786,13 +721,6 @@ description: 'Workspace member ID foreign key',
 		},
 		options: [
 			{
-				displayName: 'Created At',
-				name: 'createdAt',
-				type: 'string',
-				default: '',
-				description: 'Creation date',
-			},
-			{
 				displayName: 'Display Name',
 				name: 'displayName',
 				type: 'string',
@@ -807,11 +735,11 @@ description: 'Workspace member ID foreign key',
 
 			},
 			{
-				displayName: 'ID',
-				name: 'id',
+				displayName: 'Message ID',
+				name: 'messageId',
 				type: 'string',
 				default: '',
-
+				description: 'Message ID foreign key',
 			},
 			{
 				displayName: 'Person ID',
@@ -844,13 +772,6 @@ description: 'Workspace member ID foreign key',
 						value: 'bcc',
 					},
 				],
-			},
-			{
-				displayName: 'Updated At',
-				name: 'updatedAt',
-				type: 'dateTime',
-				default: '',
-				description: 'Last time the record was changed',
 			},
 			{
 				displayName: 'Workspace Member ID',
