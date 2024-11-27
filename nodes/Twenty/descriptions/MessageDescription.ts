@@ -195,7 +195,7 @@ export const messageFields: INodeProperties[] = [
 				name: 'messageThreadId',
 				type: 'string',
 				default: '',
-				description: 'Message Thread ID id foreign key',
+				description: 'Message Thread ID foreign key',
 			},
 			{
 				displayName: 'Received At',
@@ -453,7 +453,7 @@ export const messageFields: INodeProperties[] = [
 								name: 'messageThreadId',
 								type: 'string',
 								default: '',
-								description: 'Message Thread ID id foreign key',
+								description: 'Message Thread ID foreign key',
 							},
 						],
 					},
@@ -622,7 +622,7 @@ export const messageFields: INodeProperties[] = [
 				name: 'messageThreadId',
 				type: 'string',
 				default: '',
-				description: 'Message Thread ID id foreign key',
+				description: 'Message Thread ID key',
 			},
 			{
 				displayName: 'Received At',

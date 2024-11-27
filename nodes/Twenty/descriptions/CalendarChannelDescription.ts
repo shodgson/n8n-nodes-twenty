@@ -201,20 +201,20 @@ export const calendarChannelFields: INodeProperties[] = [
 				displayName: 'Contact Auto Creation Policy',
 				name: 'contactAutoCreationPolicy',
 				type: 'options',
-				default: 'AS_PARTICIPANT_AND_ORGANIZER',
+				default: 'AS_ORGANIZER',
 				description: 'Automatically create records for people you participated with in an event',
 				options: [
 					{
-						name: 'As Participant And Organizer',
-						value: 'AS_PARTICIPANT_AND_ORGANIZER',
+						name: 'As Organizer',
+						value: 'AS_ORGANIZER',
 					},
 					{
 						name: 'As Participant',
 						value: 'AS_PARTICIPANT',
 					},
 					{
-						name: 'As Organizer',
-						value: 'AS_ORGANIZER',
+						name: 'As Participant And Organizer',
+						value: 'AS_PARTICIPANT_AND_ORGANIZER',
 					},
 					{
 						name: 'None',
@@ -251,9 +251,25 @@ export const calendarChannelFields: INodeProperties[] = [
 				displayName: 'Sync Stage',
 				name: 'syncStage',
 				type: 'options',
-				default: 'FULL_CALENDAR_EVENT_LIST_FETCH_PENDING',
+				default: 'CALENDAR_EVENTS_IMPORT_ONGOING',
 
 				options: [
+					{
+						name: 'Calendar Event List Fetch Ongoing',
+						value: 'CALENDAR_EVENT_LIST_FETCH_ONGOING',
+					},
+					{
+						name: 'Calendar Events Import Ongoing',
+						value: 'CALENDAR_EVENTS_IMPORT_ONGOING',
+					},
+					{
+						name: 'Calendar Events Import Pending',
+						value: 'CALENDAR_EVENTS_IMPORT_PENDING',
+					},
+					{
+						name: 'Failed',
+						value: 'FAILED',
+					},
 					{
 						name: 'Full Calendar Event List Fetch Pending',
 						value: 'FULL_CALENDAR_EVENT_LIST_FETCH_PENDING',
@@ -261,22 +277,6 @@ export const calendarChannelFields: INodeProperties[] = [
 					{
 						name: 'Partial Calendar Event List Fetch Pending',
 						value: 'PARTIAL_CALENDAR_EVENT_LIST_FETCH_PENDING',
-					},
-					{
-						name: 'Calendar Event List Fetch Ongoing',
-						value: 'CALENDAR_EVENT_LIST_FETCH_ONGOING',
-					},
-					{
-						name: 'Calendar Events Import Pending',
-						value: 'CALENDAR_EVENTS_IMPORT_PENDING',
-					},
-					{
-						name: 'Calendar Events Import Ongoing',
-						value: 'CALENDAR_EVENTS_IMPORT_ONGOING',
-					},
-					{
-						name: 'Failed',
-						value: 'FAILED',
 					},
 				],
 			},
@@ -290,17 +290,9 @@ export const calendarChannelFields: INodeProperties[] = [
 				displayName: 'Sync Status',
 				name: 'syncStatus',
 				type: 'options',
-				default: 'ONGOING',
+				default: 'ACTIVE',
 
 				options: [
-					{
-						name: 'Ongoing',
-						value: 'ONGOING',
-					},
-					{
-						name: 'Not Synced',
-						value: 'NOT_SYNCED',
-					},
 					{
 						name: 'Active',
 						value: 'ACTIVE',
@@ -312,6 +304,14 @@ export const calendarChannelFields: INodeProperties[] = [
 					{
 						name: 'Failed Unknown',
 						value: 'FAILED_UNKNOWN',
+					},
+					{
+						name: 'Not Synced',
+						value: 'NOT_SYNCED',
+					},
+					{
+						name: 'Ongoing',
+						value: 'ONGOING',
 					},
 				],
 			},
@@ -794,20 +794,20 @@ export const calendarChannelFields: INodeProperties[] = [
 				displayName: 'Contact Auto Creation Policy',
 				name: 'contactAutoCreationPolicy',
 				type: 'options',
-				default: 'AS_PARTICIPANT_AND_ORGANIZER',
+				default: 'AS_ORGANIZER',
 				description: 'Automatically create records for people you participated with in an event',
 				options: [
 					{
-						name: 'As Participant And Organizer',
-						value: 'AS_PARTICIPANT_AND_ORGANIZER',
+						name: 'As Organizer',
+						value: 'AS_ORGANIZER',
 					},
 					{
 						name: 'As Participant',
 						value: 'AS_PARTICIPANT',
 					},
 					{
-						name: 'As Organizer',
-						value: 'AS_ORGANIZER',
+						name: 'As Participant And Organizer',
+						value: 'AS_PARTICIPANT_AND_ORGANIZER',
 					},
 					{
 						name: 'None',
@@ -844,9 +844,25 @@ export const calendarChannelFields: INodeProperties[] = [
 				displayName: 'Sync Stage',
 				name: 'syncStage',
 				type: 'options',
-				default: 'FULL_CALENDAR_EVENT_LIST_FETCH_PENDING',
+				default: 'CALENDAR_EVENTS_IMPORT_ONGOING',
 
 				options: [
+					{
+						name: 'Calendar Event List Fetch Ongoing',
+						value: 'CALENDAR_EVENT_LIST_FETCH_ONGOING',
+					},
+					{
+						name: 'Calendar Events Import Ongoing',
+						value: 'CALENDAR_EVENTS_IMPORT_ONGOING',
+					},
+					{
+						name: 'Calendar Events Import Pending',
+						value: 'CALENDAR_EVENTS_IMPORT_PENDING',
+					},
+					{
+						name: 'Failed',
+						value: 'FAILED',
+					},
 					{
 						name: 'Full Calendar Event List Fetch Pending',
 						value: 'FULL_CALENDAR_EVENT_LIST_FETCH_PENDING',
@@ -854,22 +870,6 @@ export const calendarChannelFields: INodeProperties[] = [
 					{
 						name: 'Partial Calendar Event List Fetch Pending',
 						value: 'PARTIAL_CALENDAR_EVENT_LIST_FETCH_PENDING',
-					},
-					{
-						name: 'Calendar Event List Fetch Ongoing',
-						value: 'CALENDAR_EVENT_LIST_FETCH_ONGOING',
-					},
-					{
-						name: 'Calendar Events Import Pending',
-						value: 'CALENDAR_EVENTS_IMPORT_PENDING',
-					},
-					{
-						name: 'Calendar Events Import Ongoing',
-						value: 'CALENDAR_EVENTS_IMPORT_ONGOING',
-					},
-					{
-						name: 'Failed',
-						value: 'FAILED',
 					},
 				],
 			},
@@ -883,17 +883,9 @@ export const calendarChannelFields: INodeProperties[] = [
 				displayName: 'Sync Status',
 				name: 'syncStatus',
 				type: 'options',
-				default: 'ONGOING',
+				default: 'ACTIVE',
 
 				options: [
-					{
-						name: 'Ongoing',
-						value: 'ONGOING',
-					},
-					{
-						name: 'Not Synced',
-						value: 'NOT_SYNCED',
-					},
 					{
 						name: 'Active',
 						value: 'ACTIVE',
@@ -905,6 +897,14 @@ export const calendarChannelFields: INodeProperties[] = [
 					{
 						name: 'Failed Unknown',
 						value: 'FAILED_UNKNOWN',
+					},
+					{
+						name: 'Not Synced',
+						value: 'NOT_SYNCED',
+					},
+					{
+						name: 'Ongoing',
+						value: 'ONGOING',
 					},
 				],
 			},

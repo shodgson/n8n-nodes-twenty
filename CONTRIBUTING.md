@@ -15,6 +15,12 @@ curl --request GET \
         --header "Accept: application/json" \
         --header "Authorization: Bearer $API_KEY" > src/input/openApi/twenty.json
 ```
+Modify api:
+```sh
+jq 'walk(if type == "object" and has("enum") then .enum |= sort else . end)' twenty.json > twenty.json
+```
+
+
 4. Generate docs
 ```sh
 npm run generate

@@ -209,7 +209,7 @@ export const viewGroupFields: INodeProperties[] = [
 				name: 'isVisible',
 				type: 'boolean',
 				default: false,
-				description: 'View Group visibility',
+				description: 'Whether Group is visible',
 			},
 			{
 				displayName: 'Position',
@@ -511,7 +511,7 @@ export const viewGroupFields: INodeProperties[] = [
 								name: 'isVisible',
 								type: 'boolean',
 								default: false,
-								description: 'View Group visibility',
+								description: 'Whether Group is visible',
 							},
 							{
 								displayName: 'Field Value',
@@ -640,7 +640,7 @@ export const viewGroupFields: INodeProperties[] = [
 				name: 'isVisible',
 				type: 'boolean',
 				default: false,
-				description: 'View Group visibility',
+				description: 'Whether Group is visible',
 			},
 			{
 				displayName: 'Position',

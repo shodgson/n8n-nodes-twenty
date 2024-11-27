@@ -209,7 +209,7 @@ export const viewFields: INodeProperties[] = [
 				name: 'isCompact',
 				type: 'boolean',
 				default: false,
-				description: 'Describes if the view is in compact mode',
+				description: 'Whether the view is in compact mode',
 			},
 			{
 				displayName: 'Kanban Field Metadata ID',
@@ -580,7 +580,7 @@ export const viewFields: INodeProperties[] = [
 								name: 'isCompact',
 								type: 'boolean',
 								default: false,
-								description: 'Describes if the view is in compact mode',
+								description: 'Whether the view is in compact mode',
 							},
 						],
 					},
@@ -681,7 +681,7 @@ export const viewFields: INodeProperties[] = [
 				name: 'isCompact',
 				type: 'boolean',
 				default: false,
-				description: 'Describes if the view is in compact mode',
+				description: 'Whether the view is in compact mode',
 			},
 			{
 				displayName: 'Kanban Field Metadata ID',

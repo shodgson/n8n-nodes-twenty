@@ -215,7 +215,7 @@ export const workspaceMemberFields: INodeProperties[] = [
 				displayName: 'Date Format',
 				name: 'dateFormat',
 				type: 'dateTime',
-				default: 'SYSTEM',
+				default: 'DAY_FIRST',
 				description: 'User’s preferred date format',
 			},
 			{
@@ -257,20 +257,20 @@ export const workspaceMemberFields: INodeProperties[] = [
 				displayName: 'Time Format',
 				name: 'timeFormat',
 				type: 'options',
-				default: 'SYSTEM',
+				default: 'HOUR_12',
 				description: 'User’s preferred time format',
 				options: [
 					{
-						name: 'System',
-						value: 'SYSTEM',
+						name: 'Hour 12',
+						value: 'HOUR_12',
 					},
 					{
 						name: 'Hour 24',
 						value: 'HOUR_24',
 					},
 					{
-						name: 'Hour 12',
-						value: 'HOUR_12',
+						name: 'System',
+						value: 'SYSTEM',
 					},
 				],
 			},
@@ -751,7 +751,7 @@ export const workspaceMemberFields: INodeProperties[] = [
 				displayName: 'Date Format',
 				name: 'dateFormat',
 				type: 'dateTime',
-				default: 'SYSTEM',
+				default: 'DAY_FIRST',
 				description: 'User’s preferred date format',
 			},
 			{
@@ -793,20 +793,20 @@ export const workspaceMemberFields: INodeProperties[] = [
 				displayName: 'Time Format',
 				name: 'timeFormat',
 				type: 'options',
-				default: 'SYSTEM',
+				default: 'HOUR_12',
 				description: 'User’s preferred time format',
 				options: [
 					{
-						name: 'System',
-						value: 'SYSTEM',
+						name: 'Hour 12',
+						value: 'HOUR_12',
 					},
 					{
 						name: 'Hour 24',
 						value: 'HOUR_24',
 					},
 					{
-						name: 'Hour 12',
-						value: 'HOUR_12',
+						name: 'System',
+						value: 'SYSTEM',
 					},
 				],
 			},

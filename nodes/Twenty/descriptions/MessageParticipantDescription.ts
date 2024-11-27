@@ -220,9 +220,17 @@ export const messageParticipantFields: INodeProperties[] = [
 				displayName: 'Role',
 				name: 'role',
 				type: 'options',
-				default: 'from',
+				default: 'bcc',
 
 				options: [
+					{
+						name: 'Bcc',
+						value: 'bcc',
+					},
+					{
+						name: 'Cc',
+						value: 'cc',
+					},
 					{
 						name: 'From',
 						value: 'from',
@@ -230,14 +238,6 @@ export const messageParticipantFields: INodeProperties[] = [
 					{
 						name: 'To',
 						value: 'to',
-					},
-					{
-						name: 'Cc',
-						value: 'cc',
-					},
-					{
-						name: 'Bcc',
-						value: 'bcc',
 					},
 				],
 			},
@@ -678,9 +678,17 @@ export const messageParticipantFields: INodeProperties[] = [
 				displayName: 'Role',
 				name: 'role',
 				type: 'options',
-				default: 'from',
+				default: 'bcc',
 
 				options: [
+					{
+						name: 'Bcc',
+						value: 'bcc',
+					},
+					{
+						name: 'Cc',
+						value: 'cc',
+					},
 					{
 						name: 'From',
 						value: 'from',
@@ -688,14 +696,6 @@ export const messageParticipantFields: INodeProperties[] = [
 					{
 						name: 'To',
 						value: 'to',
-					},
-					{
-						name: 'Cc',
-						value: 'cc',
-					},
-					{
-						name: 'Bcc',
-						value: 'bcc',
 					},
 				],
 			},

@@ -373,7 +373,7 @@ export const companyFields: INodeProperties[] = [
 				type: 'boolean',
 				default: false,
 				description:
-					'Ideal Customer Profile: Indicates whether the company is the most suitable and valuable customer for you',
+					'Whether Ideal Customer Profile: Indicates whether the company is the most suitable and valuable customer for you',
 			},
 			{
 				displayName: 'Linkedin Link',
@@ -887,7 +887,7 @@ export const companyFields: INodeProperties[] = [
 								type: 'boolean',
 								default: false,
 								description:
-									'Ideal Customer Profile: Indicates whether the company is the most suitable and valuable customer for you',
+									'Whether Ideal Customer Profile: Indicates whether the company is the most suitable and valuable customer for you',
 							},
 							{
 								displayName: 'Position',
@@ -1367,7 +1367,7 @@ export const companyFields: INodeProperties[] = [
 				type: 'boolean',
 				default: false,
 				description:
-					'Ideal Customer Profile: Indicates whether the company is the most suitable and valuable customer for you',
+					'Whether Ideal Customer Profile: Indicates whether the company is the most suitable and valuable customer for you',
 			},
 			{
 				displayName: 'Linkedin Link',

@@ -237,20 +237,20 @@ export const taskFields: INodeProperties[] = [
 				displayName: 'Status',
 				name: 'status',
 				type: 'options',
-				default: 'TODO',
+				default: 'DONE',
 				description: 'Task status',
 				options: [
 					{
-						name: 'Todo',
-						value: 'TODO',
+						name: 'Done',
+						value: 'DONE',
 					},
 					{
 						name: 'In Progress',
 						value: 'IN_PROGRESS',
 					},
 					{
-						name: 'Done',
-						value: 'DONE',
+						name: 'Todo',
+						value: 'TODO',
 					},
 				],
 			},
@@ -740,20 +740,20 @@ export const taskFields: INodeProperties[] = [
 				displayName: 'Status',
 				name: 'status',
 				type: 'options',
-				default: 'TODO',
+				default: 'DONE',
 				description: 'Task status',
 				options: [
 					{
-						name: 'Todo',
-						value: 'TODO',
+						name: 'Done',
+						value: 'DONE',
 					},
 					{
 						name: 'In Progress',
 						value: 'IN_PROGRESS',
 					},
 					{
-						name: 'Done',
-						value: 'DONE',
+						name: 'Todo',
+						value: 'TODO',
 					},
 				],
 			},

@@ -216,7 +216,7 @@ export const viewFieldFields: INodeProperties[] = [
 				name: 'isVisible',
 				type: 'boolean',
 				default: false,
-				description: 'View Field visibility',
+				description: 'Whether View is visible',
 			},
 			{
 				displayName: 'Position',
@@ -518,7 +518,7 @@ export const viewFieldFields: INodeProperties[] = [
 								name: 'isVisible',
 								type: 'boolean',
 								default: false,
-								description: 'View Field visibility',
+								description: 'Whether View is visible',
 							},
 							{
 								displayName: 'Size',
@@ -640,7 +640,7 @@ export const viewFieldFields: INodeProperties[] = [
 				name: 'isVisible',
 				type: 'boolean',
 				default: false,
-				description: 'View Field visibility',
+				description: 'Whether View is visible',
 			},
 			{
 				displayName: 'Position',

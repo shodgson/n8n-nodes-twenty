@@ -209,7 +209,7 @@ export const messageChannelMessageAssociationFields: INodeProperties[] = [
 				name: 'messageChannelId',
 				type: 'string',
 				default: '',
-				description: 'Message Channel ID id foreign key',
+				description: 'Message Channel ID foreign key',
 			},
 			{
 				displayName: 'Message External ID',
@@ -223,7 +223,7 @@ export const messageChannelMessageAssociationFields: INodeProperties[] = [
 				name: 'messageId',
 				type: 'string',
 				default: '',
-				description: 'Message ID id foreign key',
+				description: 'Message ID foreign key',
 			},
 			{
 				displayName: 'Message Thread External ID',
@@ -464,14 +464,14 @@ export const messageChannelMessageAssociationFields: INodeProperties[] = [
 								name: 'messageChannelId',
 								type: 'string',
 								default: '',
-								description: 'Message Channel ID id foreign key',
+								description: 'Message Channel ID foreign key',
 							},
 							{
 								displayName: 'Message ID',
 								name: 'messageId',
 								type: 'string',
 								default: '',
-								description: 'Message ID id foreign key',
+								description: 'Message ID foreign key',
 							},
 						],
 					},
@@ -650,7 +650,7 @@ export const messageChannelMessageAssociationFields: INodeProperties[] = [
 				name: 'messageChannelId',
 				type: 'string',
 				default: '',
-				description: 'Message Channel ID id foreign key',
+				description: 'Message Channel ID foreign key',
 			},
 			{
 				displayName: 'Message External ID',
@@ -664,7 +664,7 @@ export const messageChannelMessageAssociationFields: INodeProperties[] = [
 				name: 'messageId',
 				type: 'string',
 				default: '',
-				description: 'Message ID id foreign key',
+				description: 'Message ID foreign key',
 			},
 			{
 				displayName: 'Message Thread External ID',

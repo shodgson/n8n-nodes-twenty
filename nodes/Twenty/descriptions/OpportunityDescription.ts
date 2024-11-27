@@ -272,28 +272,28 @@ export const opportunityFields: INodeProperties[] = [
 				displayName: 'Stage',
 				name: 'stage',
 				type: 'options',
-				default: 'NEW',
+				default: 'CUSTOMER',
 				description: 'Opportunity stage',
 				options: [
 					{
-						name: 'New',
-						value: 'NEW',
-					},
-					{
-						name: 'Screening',
-						value: 'SCREENING',
+						name: 'Customer',
+						value: 'CUSTOMER',
 					},
 					{
 						name: 'Meeting',
 						value: 'MEETING',
 					},
 					{
+						name: 'New',
+						value: 'NEW',
+					},
+					{
 						name: 'Proposal',
 						value: 'PROPOSAL',
 					},
 					{
-						name: 'Customer',
-						value: 'CUSTOMER',
+						name: 'Screening',
+						value: 'SCREENING',
 					},
 				],
 			},
@@ -839,28 +839,28 @@ export const opportunityFields: INodeProperties[] = [
 				displayName: 'Stage',
 				name: 'stage',
 				type: 'options',
-				default: 'NEW',
+				default: 'CUSTOMER',
 				description: 'Opportunity stage',
 				options: [
 					{
-						name: 'New',
-						value: 'NEW',
-					},
-					{
-						name: 'Screening',
-						value: 'SCREENING',
+						name: 'Customer',
+						value: 'CUSTOMER',
 					},
 					{
 						name: 'Meeting',
 						value: 'MEETING',
 					},
 					{
+						name: 'New',
+						value: 'NEW',
+					},
+					{
 						name: 'Proposal',
 						value: 'PROPOSAL',
 					},
 					{
-						name: 'Customer',
-						value: 'CUSTOMER',
+						name: 'Screening',
+						value: 'SCREENING',
 					},
 				],
 			},

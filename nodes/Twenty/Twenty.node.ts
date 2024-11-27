@@ -103,10 +103,6 @@ export class Twenty implements INodeType {
 				noDataExpression: true,
 				options: [
 					{
-						name: 'General',
-						value: 'general',
-					},
-					{
 						name: 'Api Key',
 						value: 'apiKey',
 					},
@@ -149,6 +145,10 @@ export class Twenty implements INodeType {
 					{
 						name: 'Favorite',
 						value: 'favorite',
+					},
+					{
+						name: 'General',
+						value: 'general',
 					},
 					{
 						name: 'Message',

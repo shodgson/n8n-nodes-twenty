@@ -209,12 +209,12 @@ export const viewFilterGroupFields: INodeProperties[] = [
 						value: 'AND',
 					},
 					{
-						name: 'Or',
-						value: 'OR',
-					},
-					{
 						name: 'Not',
 						value: 'NOT',
+					},
+					{
+						name: 'Or',
+						value: 'OR',
 					},
 				],
 			},
@@ -633,12 +633,12 @@ export const viewFilterGroupFields: INodeProperties[] = [
 						value: 'AND',
 					},
 					{
-						name: 'Or',
-						value: 'OR',
-					},
-					{
 						name: 'Not',
 						value: 'NOT',
+					},
+					{
+						name: 'Or',
+						value: 'OR',
 					},
 				],
 			},

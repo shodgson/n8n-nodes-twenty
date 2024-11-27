@@ -173,7 +173,7 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 	{
 		displayName: 'Calendar Event ID',
 		name: 'calendarEventId',
-		description: 'Event ID id foreign key',
+		description: 'Event ID foreign key',
 		type: 'string',
 		required: true,
 		default: '',
@@ -226,24 +226,24 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 				displayName: 'Response Status',
 				name: 'responseStatus',
 				type: 'options',
-				default: 'NEEDS_ACTION',
+				default: 'ACCEPTED',
 
 				options: [
 					{
-						name: 'Needs Action',
-						value: 'NEEDS_ACTION',
+						name: 'Accepted',
+						value: 'ACCEPTED',
 					},
 					{
 						name: 'Declined',
 						value: 'DECLINED',
 					},
 					{
-						name: 'Tentative',
-						value: 'TENTATIVE',
+						name: 'Needs Action',
+						value: 'NEEDS_ACTION',
 					},
 					{
-						name: 'Accepted',
-						value: 'ACCEPTED',
+						name: 'Tentative',
+						value: 'TENTATIVE',
 					},
 				],
 			},
@@ -393,7 +393,7 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 								name: 'calendarEventId',
 								type: 'string',
 								default: '',
-								description: 'Event ID id foreign key',
+								description: 'Event ID foreign key',
 							},
 							{
 								displayName: 'Person ID',
@@ -665,7 +665,7 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 				name: 'calendarEventId',
 				type: 'string',
 				default: '',
-				description: 'Event ID id foreign key',
+				description: 'Event ID foreign key',
 			},
 			{
 				displayName: 'Display Name',
@@ -696,24 +696,24 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 				displayName: 'Response Status',
 				name: 'responseStatus',
 				type: 'options',
-				default: 'NEEDS_ACTION',
+				default: 'ACCEPTED',
 
 				options: [
 					{
-						name: 'Needs Action',
-						value: 'NEEDS_ACTION',
+						name: 'Accepted',
+						value: 'ACCEPTED',
 					},
 					{
 						name: 'Declined',
 						value: 'DECLINED',
 					},
 					{
-						name: 'Tentative',
-						value: 'TENTATIVE',
+						name: 'Needs Action',
+						value: 'NEEDS_ACTION',
 					},
 					{
-						name: 'Accepted',
-						value: 'ACCEPTED',
+						name: 'Tentative',
+						value: 'TENTATIVE',
 					},
 				],
 			},

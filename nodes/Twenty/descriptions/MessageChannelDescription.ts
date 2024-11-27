@@ -201,20 +201,20 @@ export const messageChannelFields: INodeProperties[] = [
 				displayName: 'Contact Auto Creation Policy',
 				name: 'contactAutoCreationPolicy',
 				type: 'options',
-				default: 'SENT_AND_RECEIVED',
+				default: 'NONE',
 				description: 'Automatically create People records when receiving or sending emails',
 				options: [
 					{
-						name: 'Sent And Received',
-						value: 'SENT_AND_RECEIVED',
+						name: 'None',
+						value: 'NONE',
 					},
 					{
 						name: 'Sent',
 						value: 'SENT',
 					},
 					{
-						name: 'None',
-						value: 'NONE',
+						name: 'Sent And Received',
+						value: 'SENT_AND_RECEIVED',
 					},
 				],
 			},
@@ -259,32 +259,32 @@ export const messageChannelFields: INodeProperties[] = [
 				displayName: 'Sync Stage',
 				name: 'syncStage',
 				type: 'options',
-				default: 'FULL_MESSAGE_LIST_FETCH_PENDING',
+				default: 'FAILED',
 
 				options: [
 					{
-						name: 'Full Message List Fetch Pending',
-						value: 'FULL_MESSAGE_LIST_FETCH_PENDING',
+						name: 'Failed',
+						value: 'FAILED',
 					},
 					{
-						name: 'Partial Message List Fetch Pending',
-						value: 'PARTIAL_MESSAGE_LIST_FETCH_PENDING',
+						name: 'Full Message List Fetch Pending',
+						value: 'FULL_MESSAGE_LIST_FETCH_PENDING',
 					},
 					{
 						name: 'Message List Fetch Ongoing',
 						value: 'MESSAGE_LIST_FETCH_ONGOING',
 					},
 					{
-						name: 'Messages Import Pending',
-						value: 'MESSAGES_IMPORT_PENDING',
-					},
-					{
 						name: 'Messages Import Ongoing',
 						value: 'MESSAGES_IMPORT_ONGOING',
 					},
 					{
-						name: 'Failed',
-						value: 'FAILED',
+						name: 'Messages Import Pending',
+						value: 'MESSAGES_IMPORT_PENDING',
+					},
+					{
+						name: 'Partial Message List Fetch Pending',
+						value: 'PARTIAL_MESSAGE_LIST_FETCH_PENDING',
 					},
 				],
 			},
@@ -298,17 +298,9 @@ export const messageChannelFields: INodeProperties[] = [
 				displayName: 'Sync Status',
 				name: 'syncStatus',
 				type: 'options',
-				default: 'ONGOING',
+				default: 'ACTIVE',
 
 				options: [
-					{
-						name: 'Ongoing',
-						value: 'ONGOING',
-					},
-					{
-						name: 'Not Synced',
-						value: 'NOT_SYNCED',
-					},
 					{
 						name: 'Active',
 						value: 'ACTIVE',
@@ -320,6 +312,14 @@ export const messageChannelFields: INodeProperties[] = [
 					{
 						name: 'Failed Unknown',
 						value: 'FAILED_UNKNOWN',
+					},
+					{
+						name: 'Not Synced',
+						value: 'NOT_SYNCED',
+					},
+					{
+						name: 'Ongoing',
+						value: 'ONGOING',
 					},
 				],
 			},
@@ -365,12 +365,12 @@ export const messageChannelFields: INodeProperties[] = [
 						value: 'METADATA',
 					},
 					{
-						name: 'Subject',
-						value: 'SUBJECT',
-					},
-					{
 						name: 'Share Everything',
 						value: 'SHARE_EVERYTHING',
+					},
+					{
+						name: 'Subject',
+						value: 'SUBJECT',
 					},
 				],
 			},
@@ -841,20 +841,20 @@ export const messageChannelFields: INodeProperties[] = [
 				displayName: 'Contact Auto Creation Policy',
 				name: 'contactAutoCreationPolicy',
 				type: 'options',
-				default: 'SENT_AND_RECEIVED',
+				default: 'NONE',
 				description: 'Automatically create People records when receiving or sending emails',
 				options: [
 					{
-						name: 'Sent And Received',
-						value: 'SENT_AND_RECEIVED',
+						name: 'None',
+						value: 'NONE',
 					},
 					{
 						name: 'Sent',
 						value: 'SENT',
 					},
 					{
-						name: 'None',
-						value: 'NONE',
+						name: 'Sent And Received',
+						value: 'SENT_AND_RECEIVED',
 					},
 				],
 			},
@@ -899,32 +899,32 @@ export const messageChannelFields: INodeProperties[] = [
 				displayName: 'Sync Stage',
 				name: 'syncStage',
 				type: 'options',
-				default: 'FULL_MESSAGE_LIST_FETCH_PENDING',
+				default: 'FAILED',
 
 				options: [
 					{
-						name: 'Full Message List Fetch Pending',
-						value: 'FULL_MESSAGE_LIST_FETCH_PENDING',
+						name: 'Failed',
+						value: 'FAILED',
 					},
 					{
-						name: 'Partial Message List Fetch Pending',
-						value: 'PARTIAL_MESSAGE_LIST_FETCH_PENDING',
+						name: 'Full Message List Fetch Pending',
+						value: 'FULL_MESSAGE_LIST_FETCH_PENDING',
 					},
 					{
 						name: 'Message List Fetch Ongoing',
 						value: 'MESSAGE_LIST_FETCH_ONGOING',
 					},
 					{
-						name: 'Messages Import Pending',
-						value: 'MESSAGES_IMPORT_PENDING',
-					},
-					{
 						name: 'Messages Import Ongoing',
 						value: 'MESSAGES_IMPORT_ONGOING',
 					},
 					{
-						name: 'Failed',
-						value: 'FAILED',
+						name: 'Messages Import Pending',
+						value: 'MESSAGES_IMPORT_PENDING',
+					},
+					{
+						name: 'Partial Message List Fetch Pending',
+						value: 'PARTIAL_MESSAGE_LIST_FETCH_PENDING',
 					},
 				],
 			},
@@ -938,17 +938,9 @@ export const messageChannelFields: INodeProperties[] = [
 				displayName: 'Sync Status',
 				name: 'syncStatus',
 				type: 'options',
-				default: 'ONGOING',
+				default: 'ACTIVE',
 
 				options: [
-					{
-						name: 'Ongoing',
-						value: 'ONGOING',
-					},
-					{
-						name: 'Not Synced',
-						value: 'NOT_SYNCED',
-					},
 					{
 						name: 'Active',
 						value: 'ACTIVE',
@@ -960,6 +952,14 @@ export const messageChannelFields: INodeProperties[] = [
 					{
 						name: 'Failed Unknown',
 						value: 'FAILED_UNKNOWN',
+					},
+					{
+						name: 'Not Synced',
+						value: 'NOT_SYNCED',
+					},
+					{
+						name: 'Ongoing',
+						value: 'ONGOING',
 					},
 				],
 			},
@@ -1005,12 +1005,12 @@ export const messageChannelFields: INodeProperties[] = [
 						value: 'METADATA',
 					},
 					{
-						name: 'Subject',
-						value: 'SUBJECT',
-					},
-					{
 						name: 'Share Everything',
 						value: 'SHARE_EVERYTHING',
+					},
+					{
+						name: 'Subject',
+						value: 'SUBJECT',
 					},
 				],
 			},
