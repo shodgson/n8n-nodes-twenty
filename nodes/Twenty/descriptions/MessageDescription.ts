@@ -1,6 +1,4 @@
-import type {
-	INodeProperties,
-} from 'n8n-workflow';
+import type { INodeProperties } from 'n8n-workflow';
 
 export const messageOperations: INodeProperties[] = [
 	{
@@ -10,9 +8,7 @@ export const messageOperations: INodeProperties[] = [
 		noDataExpression: true,
 		displayOptions: {
 			show: {
-				resource: [
-					'message',
-				],
+				resource: ['message'],
 			},
 		},
 		options: [
@@ -24,7 +20,8 @@ export const messageOperations: INodeProperties[] = [
 			{
 				name: 'Create One Message',
 				value: 'createOneMessage',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **messages**',
+				description:
+					'**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **messages**',
 				action: 'Create one message',
 			},
 			{
@@ -36,7 +33,8 @@ export const messageOperations: INodeProperties[] = [
 			{
 				name: 'Find Many Messages',
 				value: 'findManyMessages',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **messages**',
+				description:
+					'**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **messages**',
 				action: 'Find many messages',
 			},
 			{
@@ -73,37 +71,34 @@ export const messageFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
+					},
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'message',
-				],
-				operation: [
-					'createManyMessages',
-				],
+				resource: ['message'],
+				operation: ['createManyMessages'],
 			},
 		},
 	},
@@ -115,34 +110,25 @@ export const messageFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'message',
-				],
-				operation: [
-					'createManyMessages',
-				],
+				resource: ['message'],
+				operation: ['createManyMessages'],
 			},
 		},
-		options: [
-		],
+		options: [],
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'message',
-					],
-					operation: [
-						'createManyMessages',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['message'],
+				operation: ['createManyMessages'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	//        message: createOneMessage
 	// ----------------------------------------
@@ -153,37 +139,34 @@ export const messageFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
+					},
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'message',
-				],
-				operation: [
-					'createOneMessage',
-				],
+				resource: ['message'],
+				operation: ['createOneMessage'],
 			},
 		},
 	},
@@ -195,12 +178,8 @@ export const messageFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'message',
-				],
-				operation: [
-					'createOneMessage',
-				],
+				resource: ['message'],
+				operation: ['createOneMessage'],
 			},
 		},
 		options: [
@@ -230,34 +209,28 @@ export const messageFields: INodeProperties[] = [
 				name: 'subject',
 				type: 'string',
 				default: '',
-
 			},
 			{
 				displayName: 'Text',
 				name: 'text',
 				type: 'string',
 				default: '',
-
 			},
 		],
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'message',
-					],
-					operation: [
-						'createOneMessage',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['message'],
+				operation: ['createOneMessage'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	//        message: deleteOneMessage
 	// ----------------------------------------
@@ -270,32 +243,24 @@ export const messageFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: [
-					'message',
-				],
-				operation: [
-					'deleteOneMessage',
-				],
+				resource: ['message'],
+				operation: ['deleteOneMessage'],
 			},
 		},
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'message',
-					],
-					operation: [
-						'deleteOneMessage',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['message'],
+				operation: ['deleteOneMessage'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	//        message: findManyMessages
 	// ----------------------------------------
@@ -306,95 +271,92 @@ export const messageFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
-				{
-					displayName: 'Ending Before',
-					name: 'ending_before',
-					type: 'string',
-					default: '',
-					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
-				},
-				{
-					displayName: 'Filter',
-					name: 'filter',
-					type: 'string',
-					default: '',
-					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
-				},
-				{
-					displayName: 'Limit',
-					name: 'limit',
-					type: 'number',
-					typeOptions: {
-						minValue: 1,
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
 					},
-					default: 50,
-					description: 'Max number of results to return',
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
+			{
+				displayName: 'Ending Before',
+				name: 'ending_before',
+				type: 'string',
+				default: '',
+				description:
+					'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+			},
+			{
+				displayName: 'Filter',
+				name: 'filter',
+				type: 'string',
+				default: '',
+				description:
+					'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
+			},
+			{
+				displayName: 'Limit',
+				name: 'limit',
+				type: 'number',
+				typeOptions: {
+					minValue: 1,
 				},
-				{
-					displayName: 'Order By',
-					name: 'order_by',
-					type: 'string',
-					default: '',
-					description: 'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
-				},
-				{
-					displayName: 'Starting After',
-					name: 'starting_after',
-					type: 'string',
-					default: '',
-					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
-				},
+				default: 50,
+				description: 'Max number of results to return',
+			},
+			{
+				displayName: 'Order By',
+				name: 'order_by',
+				type: 'string',
+				default: '',
+				description:
+					'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
+			},
+			{
+				displayName: 'Starting After',
+				name: 'starting_after',
+				type: 'string',
+				default: '',
+				description:
+					'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'message',
-				],
-				operation: [
-					'findManyMessages',
-				],
+				resource: ['message'],
+				operation: ['findManyMessages'],
 			},
 		},
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'message',
-					],
-					operation: [
-						'findManyMessages',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['message'],
+				operation: ['findManyMessages'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	//      message: findMessageDuplicates
 	// ----------------------------------------
@@ -405,37 +367,34 @@ export const messageFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
+					},
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'message',
-				],
-				operation: [
-					'findMessageDuplicates',
-				],
+				resource: ['message'],
+				operation: ['findMessageDuplicates'],
 			},
 		},
 	},
@@ -447,79 +406,74 @@ export const messageFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'message',
-				],
-				operation: [
-					'findMessageDuplicates',
-				],
+				resource: ['message'],
+				operation: ['findMessageDuplicates'],
 			},
 		},
 		options: [
-				{
-displayName: 'Data',
-name: 'data',
-placeholder: 'Add Data Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Data Fields',
-name: 'dataFields',
-values: [
-{
-displayName: 'Header Message ID',
-name: 'headerMessageId',
-type: 'string',
-default: '',
-description: 'Message ID from the message header',
-},
-{
-displayName: 'Subject',
-name: 'subject',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Text',
-name: 'text',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Received At',
-name: 'receivedAt',
-type: 'dateTime',
-default: '',
-description: 'The date the message was received',
-},
-{
-displayName: 'Message Thread ID',
-name: 'messageThreadId',
-type: 'string',
-default: '',
-description: 'Message Thread ID id foreign key',
-},
-]}],
-},
+			{
+				displayName: 'Data',
+				name: 'data',
+				placeholder: 'Add Data Field',
+				type: 'fixedCollection',
+				default: {},
+				options: [
+					{
+						displayName: 'Data Fields',
+						name: 'dataFields',
+						values: [
+							{
+								displayName: 'Header Message ID',
+								name: 'headerMessageId',
+								type: 'string',
+								default: '',
+								description: 'Message ID from the message header',
+							},
+							{
+								displayName: 'Subject',
+								name: 'subject',
+								type: 'string',
+								default: '',
+							},
+							{
+								displayName: 'Text',
+								name: 'text',
+								type: 'string',
+								default: '',
+							},
+							{
+								displayName: 'Received At',
+								name: 'receivedAt',
+								type: 'dateTime',
+								default: '',
+								description: 'The date the message was received',
+							},
+							{
+								displayName: 'Message Thread ID',
+								name: 'messageThreadId',
+								type: 'string',
+								default: '',
+								description: 'Message Thread ID id foreign key',
+							},
+						],
+					},
+				],
+			},
 		],
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'message',
-					],
-					operation: [
-						'findMessageDuplicates',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['message'],
+				operation: ['findMessageDuplicates'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	//         message: findOneMessage
 	// ----------------------------------------
@@ -532,12 +486,8 @@ description: 'Message Thread ID id foreign key',
 		default: '',
 		displayOptions: {
 			show: {
-				resource: [
-					'message',
-				],
-				operation: [
-					'findOneMessage',
-				],
+				resource: ['message'],
+				operation: ['findOneMessage'],
 			},
 		},
 	},
@@ -548,57 +498,50 @@ description: 'Message Thread ID id foreign key',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
+					},
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'message',
-				],
-				operation: [
-					'findOneMessage',
-				],
+				resource: ['message'],
+				operation: ['findOneMessage'],
 			},
 		},
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'message',
-					],
-					operation: [
-						'findOneMessage',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['message'],
+				operation: ['findOneMessage'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	//        message: updateOneMessage
 	// ----------------------------------------
@@ -611,12 +554,8 @@ description: 'Message Thread ID id foreign key',
 		default: '',
 		displayOptions: {
 			show: {
-				resource: [
-					'message',
-				],
-				operation: [
-					'updateOneMessage',
-				],
+				resource: ['message'],
+				operation: ['updateOneMessage'],
 			},
 		},
 	},
@@ -627,37 +566,34 @@ description: 'Message Thread ID id foreign key',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
+					},
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'message',
-				],
-				operation: [
-					'updateOneMessage',
-				],
+				resource: ['message'],
+				operation: ['updateOneMessage'],
 			},
 		},
 	},
@@ -669,12 +605,8 @@ description: 'Message Thread ID id foreign key',
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'message',
-				],
-				operation: [
-					'updateOneMessage',
-				],
+				resource: ['message'],
+				operation: ['updateOneMessage'],
 			},
 		},
 		options: [
@@ -704,31 +636,25 @@ description: 'Message Thread ID id foreign key',
 				name: 'subject',
 				type: 'string',
 				default: '',
-
 			},
 			{
 				displayName: 'Text',
 				name: 'text',
 				type: 'string',
 				default: '',
-
 			},
 		],
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'message',
-					],
-					operation: [
-						'updateOneMessage',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['message'],
+				operation: ['updateOneMessage'],
 			},
 		},
+	},
 ];

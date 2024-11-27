@@ -1,6 +1,4 @@
-import type {
-	INodeProperties,
-} from 'n8n-workflow';
+import type { INodeProperties } from 'n8n-workflow';
 
 export const apiKeyOperations: INodeProperties[] = [
 	{
@@ -10,9 +8,7 @@ export const apiKeyOperations: INodeProperties[] = [
 		noDataExpression: true,
 		displayOptions: {
 			show: {
-				resource: [
-					'apiKey',
-				],
+				resource: ['apiKey'],
 			},
 		},
 		options: [
@@ -24,7 +20,8 @@ export const apiKeyOperations: INodeProperties[] = [
 			{
 				name: 'Create One Api Key',
 				value: 'createOneApiKey',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **apiKeys**',
+				description:
+					'**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **apiKeys**',
 				action: 'Create one api key',
 			},
 			{
@@ -42,7 +39,8 @@ export const apiKeyOperations: INodeProperties[] = [
 			{
 				name: 'Find Many Api Keys',
 				value: 'findManyApiKeys',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **apiKeys**',
+				description:
+					'**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **apiKeys**',
 				action: 'Find many api keys',
 			},
 			{
@@ -73,37 +71,34 @@ export const apiKeyFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
+					},
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'createManyApiKeys',
-				],
+				resource: ['apiKey'],
+				operation: ['createManyApiKeys'],
 			},
 		},
 	},
@@ -115,34 +110,25 @@ export const apiKeyFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'createManyApiKeys',
-				],
+				resource: ['apiKey'],
+				operation: ['createManyApiKeys'],
 			},
 		},
-		options: [
-		],
+		options: [],
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'apiKey',
-					],
-					operation: [
-						'createManyApiKeys',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['apiKey'],
+				operation: ['createManyApiKeys'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	//         apiKey: createOneApiKey
 	// ----------------------------------------
@@ -153,37 +139,34 @@ export const apiKeyFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
+					},
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'createOneApiKey',
-				],
+				resource: ['apiKey'],
+				operation: ['createOneApiKey'],
 			},
 		},
 	},
@@ -196,12 +179,8 @@ export const apiKeyFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'createOneApiKey',
-				],
+				resource: ['apiKey'],
+				operation: ['createOneApiKey'],
 			},
 		},
 	},
@@ -213,12 +192,8 @@ export const apiKeyFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'createOneApiKey',
-				],
+				resource: ['apiKey'],
+				operation: ['createOneApiKey'],
 			},
 		},
 		options: [
@@ -238,23 +213,19 @@ export const apiKeyFields: INodeProperties[] = [
 			},
 		],
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'apiKey',
-					],
-					operation: [
-						'createOneApiKey',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['apiKey'],
+				operation: ['createOneApiKey'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	//         apiKey: deleteOneApiKey
 	// ----------------------------------------
@@ -267,32 +238,24 @@ export const apiKeyFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'deleteOneApiKey',
-				],
+				resource: ['apiKey'],
+				operation: ['deleteOneApiKey'],
 			},
 		},
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'apiKey',
-					],
-					operation: [
-						'deleteOneApiKey',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['apiKey'],
+				operation: ['deleteOneApiKey'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	//       apiKey: findApiKeyDuplicates
 	// ----------------------------------------
@@ -303,37 +266,34 @@ export const apiKeyFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
+					},
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'findApiKeyDuplicates',
-				],
+				resource: ['apiKey'],
+				operation: ['findApiKeyDuplicates'],
 			},
 		},
 	},
@@ -345,67 +305,62 @@ export const apiKeyFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'findApiKeyDuplicates',
-				],
+				resource: ['apiKey'],
+				operation: ['findApiKeyDuplicates'],
 			},
 		},
 		options: [
-				{
-displayName: 'Data',
-name: 'data',
-placeholder: 'Add Data Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Data Fields',
-name: 'dataFields',
-values: [
-{
-displayName: 'Name',
-name: 'name',
-type: 'string',
-default: '',
-description: 'ApiKey name',
-},
-{
-displayName: 'Expires At',
-name: 'expiresAt',
-type: 'dateTime',
-default: '',
-description: 'ApiKey expiration date',
-},
-{
-displayName: 'Revoked At',
-name: 'revokedAt',
-type: 'dateTime',
-default: '',
-description: 'ApiKey revocation date',
-},
-]}],
-},
+			{
+				displayName: 'Data',
+				name: 'data',
+				placeholder: 'Add Data Field',
+				type: 'fixedCollection',
+				default: {},
+				options: [
+					{
+						displayName: 'Data Fields',
+						name: 'dataFields',
+						values: [
+							{
+								displayName: 'Name',
+								name: 'name',
+								type: 'string',
+								default: '',
+								description: 'ApiKey name',
+							},
+							{
+								displayName: 'Expires At',
+								name: 'expiresAt',
+								type: 'dateTime',
+								default: '',
+								description: 'ApiKey expiration date',
+							},
+							{
+								displayName: 'Revoked At',
+								name: 'revokedAt',
+								type: 'dateTime',
+								default: '',
+								description: 'ApiKey revocation date',
+							},
+						],
+					},
+				],
+			},
 		],
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'apiKey',
-					],
-					operation: [
-						'findApiKeyDuplicates',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['apiKey'],
+				operation: ['findApiKeyDuplicates'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	//         apiKey: findManyApiKeys
 	// ----------------------------------------
@@ -416,95 +371,92 @@ description: 'ApiKey revocation date',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
-				{
-					displayName: 'Ending Before',
-					name: 'ending_before',
-					type: 'string',
-					default: '',
-					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
-				},
-				{
-					displayName: 'Filter',
-					name: 'filter',
-					type: 'string',
-					default: '',
-					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
-				},
-				{
-					displayName: 'Limit',
-					name: 'limit',
-					type: 'number',
-					typeOptions: {
-						minValue: 1,
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
 					},
-					default: 50,
-					description: 'Max number of results to return',
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
+			{
+				displayName: 'Ending Before',
+				name: 'ending_before',
+				type: 'string',
+				default: '',
+				description:
+					'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+			},
+			{
+				displayName: 'Filter',
+				name: 'filter',
+				type: 'string',
+				default: '',
+				description:
+					'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
+			},
+			{
+				displayName: 'Limit',
+				name: 'limit',
+				type: 'number',
+				typeOptions: {
+					minValue: 1,
 				},
-				{
-					displayName: 'Order By',
-					name: 'order_by',
-					type: 'string',
-					default: '',
-					description: 'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
-				},
-				{
-					displayName: 'Starting After',
-					name: 'starting_after',
-					type: 'string',
-					default: '',
-					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
-				},
+				default: 50,
+				description: 'Max number of results to return',
+			},
+			{
+				displayName: 'Order By',
+				name: 'order_by',
+				type: 'string',
+				default: '',
+				description:
+					'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
+			},
+			{
+				displayName: 'Starting After',
+				name: 'starting_after',
+				type: 'string',
+				default: '',
+				description:
+					'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'findManyApiKeys',
-				],
+				resource: ['apiKey'],
+				operation: ['findManyApiKeys'],
 			},
 		},
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'apiKey',
-					],
-					operation: [
-						'findManyApiKeys',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['apiKey'],
+				operation: ['findManyApiKeys'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	//          apiKey: findOneApiKey
 	// ----------------------------------------
@@ -517,12 +469,8 @@ description: 'ApiKey revocation date',
 		default: '',
 		displayOptions: {
 			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'findOneApiKey',
-				],
+				resource: ['apiKey'],
+				operation: ['findOneApiKey'],
 			},
 		},
 	},
@@ -533,57 +481,50 @@ description: 'ApiKey revocation date',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
+					},
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'findOneApiKey',
-				],
+				resource: ['apiKey'],
+				operation: ['findOneApiKey'],
 			},
 		},
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'apiKey',
-					],
-					operation: [
-						'findOneApiKey',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['apiKey'],
+				operation: ['findOneApiKey'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	//         apiKey: updateOneApiKey
 	// ----------------------------------------
@@ -596,12 +537,8 @@ description: 'ApiKey revocation date',
 		default: '',
 		displayOptions: {
 			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'updateOneApiKey',
-				],
+				resource: ['apiKey'],
+				operation: ['updateOneApiKey'],
 			},
 		},
 	},
@@ -612,37 +549,34 @@ description: 'ApiKey revocation date',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
+					},
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'updateOneApiKey',
-				],
+				resource: ['apiKey'],
+				operation: ['updateOneApiKey'],
 			},
 		},
 	},
@@ -654,12 +588,8 @@ description: 'ApiKey revocation date',
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'apiKey',
-				],
-				operation: [
-					'updateOneApiKey',
-				],
+				resource: ['apiKey'],
+				operation: ['updateOneApiKey'],
 			},
 		},
 		options: [
@@ -686,20 +616,16 @@ description: 'ApiKey revocation date',
 			},
 		],
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'apiKey',
-					],
-					operation: [
-						'updateOneApiKey',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['apiKey'],
+				operation: ['updateOneApiKey'],
 			},
 		},
+	},
 ];

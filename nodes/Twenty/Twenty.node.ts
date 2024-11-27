@@ -6,9 +6,7 @@ import type {
 	INodeTypeDescription,
 } from 'n8n-workflow';
 
-import {
-	twentyApiRequest,
-} from './GenericFunctions';
+import { twentyApiRequest } from './GenericFunctions';
 
 import {
 	generalFields,
@@ -313,4492 +311,4142 @@ export class Twenty implements INodeType {
 
 		for (let i = 0; i < items.length; i++) {
 			try {
-
 				if (resource === 'general') {
-
 					// **********************************************************************
-				//                                general
-				// **********************************************************************
+					//                                general
+					// **********************************************************************
 
 					if (operation === 'getOpenApiSchema') {
-
 						// ----------------------------------------
-					//        general: getOpenApiSchema
-					// ----------------------------------------
+						//        general: getOpenApiSchema
+						// ----------------------------------------
 
-						responseData = await twentyApiRequest.call(this, 'GET', '/core', undefined, undefined, "open-api");
-
+						responseData = await twentyApiRequest.call(
+							this,
+							'GET',
+							'/core',
+							undefined,
+							undefined,
+							'open-api',
+						);
 					}
-
 				} else if (resource === 'apiKey') {
-
 					// **********************************************************************
-				//                                 apiKey
-				// **********************************************************************
+					//                                 apiKey
+					// **********************************************************************
 
 					if (operation === 'createManyApiKeys') {
-
 						// ----------------------------------------
-					//        apiKey: createManyApiKeys
-					// ----------------------------------------
+						//        apiKey: createManyApiKeys
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/apiKeys', body, qs);
-
-					} else if (operation === 'createOneApiKey') {
-
-						// ----------------------------------------
-					//         apiKey: createOneApiKey
-					// ----------------------------------------
-
-						const body = {
-						expiresAt: this.getNodeParameter('expiresAt', i),
-					} as IDataObject;
-
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/apiKeys', body, qs);
-
-					} else if (operation === 'deleteOneApiKey') {
-
-						// ----------------------------------------
-					//         apiKey: deleteOneApiKey
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/apiKeys/${id}`);
-
-					} else if (operation === 'findApiKeyDuplicates') {
-
-						// ----------------------------------------
-					//       apiKey: findApiKeyDuplicates
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/apiKeys/duplicates', body, qs);
-
-					} else if (operation === 'findManyApiKeys') {
-
-						// ----------------------------------------
-					//         apiKey: findManyApiKeys
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/apiKeys', {}, qs);
-
-					} else if (operation === 'findOneApiKey') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/batch/apiKeys', body, qs);
+					} else if (operation === 'createOneApiKey') {
 						// ----------------------------------------
-					//          apiKey: findOneApiKey
-					// ----------------------------------------
+						//         apiKey: createOneApiKey
+						// ----------------------------------------
+
+						const body = {
+							expiresAt: this.getNodeParameter('expiresAt', i),
+						} as IDataObject;
+
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/apiKeys', body, qs);
+					} else if (operation === 'deleteOneApiKey') {
+						// ----------------------------------------
+						//         apiKey: deleteOneApiKey
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'GET', `/apiKeys/${id}`, {}, qs);
-
-					} else if (operation === 'updateOneApiKey') {
-
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/apiKeys/${id}`);
+					} else if (operation === 'findApiKeyDuplicates') {
 						// ----------------------------------------
-					//         apiKey: updateOneApiKey
-					// ----------------------------------------
+						//       apiKey: findApiKeyDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'POST',
+							'/apiKeys/duplicates',
+							body,
+							qs,
+						);
+					} else if (operation === 'findManyApiKeys') {
+						// ----------------------------------------
+						//         apiKey: findManyApiKeys
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', '/apiKeys', {}, qs);
+					} else if (operation === 'findOneApiKey') {
+						// ----------------------------------------
+						//          apiKey: findOneApiKey
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/apiKeys/${id}`, {}, qs);
+					} else if (operation === 'updateOneApiKey') {
+						// ----------------------------------------
+						//         apiKey: updateOneApiKey
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'PATCH', `/apiKeys/${id}`, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/apiKeys/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'attachment') {
-
 					// **********************************************************************
-				//                               attachment
-				// **********************************************************************
+					//                               attachment
+					// **********************************************************************
 
 					if (operation === 'createManyAttachments') {
-
 						// ----------------------------------------
-					//    attachment: createManyAttachments
-					// ----------------------------------------
+						//    attachment: createManyAttachments
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/attachments', body, qs);
-
-					} else if (operation === 'createOneAttachment') {
-
-						// ----------------------------------------
-					//     attachment: createOneAttachment
-					// ----------------------------------------
-
-						const body = {
-						authorId: this.getNodeParameter('authorId', i),
-					} as IDataObject;
-
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/attachments', body, qs);
-
-					} else if (operation === 'deleteOneAttachment') {
-
-						// ----------------------------------------
-					//     attachment: deleteOneAttachment
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/attachments/${id}`);
-
-					} else if (operation === 'findAttachmentDuplicates') {
-
-						// ----------------------------------------
-					//   attachment: findAttachmentDuplicates
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/attachments/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'findManyAttachments') {
-
-						// ----------------------------------------
-					//     attachment: findManyAttachments
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/attachments', {}, qs);
-
-					} else if (operation === 'findOneAttachment') {
-
+						responseData = await twentyApiRequest.call(
+							this,
+							'POST',
+							'/batch/attachments',
+							body,
+							qs,
+						);
+					} else if (operation === 'createOneAttachment') {
 						// ----------------------------------------
-					//      attachment: findOneAttachment
-					// ----------------------------------------
+						//     attachment: createOneAttachment
+						// ----------------------------------------
+
+						const body = {
+							authorId: this.getNodeParameter('authorId', i),
+						} as IDataObject;
+
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/attachments', body, qs);
+					} else if (operation === 'deleteOneAttachment') {
+						// ----------------------------------------
+						//     attachment: deleteOneAttachment
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'GET', `/attachments/${id}`, {}, qs);
-
-					} else if (operation === 'updateOneAttachment') {
-
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/attachments/${id}`);
+					} else if (operation === 'findAttachmentDuplicates') {
 						// ----------------------------------------
-					//     attachment: updateOneAttachment
-					// ----------------------------------------
+						//   attachment: findAttachmentDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/attachments/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'findManyAttachments') {
+						// ----------------------------------------
+						//     attachment: findManyAttachments
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', '/attachments', {}, qs);
+					} else if (operation === 'findOneAttachment') {
+						// ----------------------------------------
+						//      attachment: findOneAttachment
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/attachments/${id}`, {}, qs);
+					} else if (operation === 'updateOneAttachment') {
+						// ----------------------------------------
+						//     attachment: updateOneAttachment
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'PATCH',
+							`/attachments/${id}`,
+							body,
+							qs,
+						);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/attachments/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'auditLog') {
-
 					// **********************************************************************
-				//                                auditLog
-				// **********************************************************************
+					//                                auditLog
+					// **********************************************************************
 
 					if (operation === 'createManyAuditLogs') {
-
 						// ----------------------------------------
-					//      auditLog: createManyAuditLogs
-					// ----------------------------------------
+						//      auditLog: createManyAuditLogs
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/auditLogs', body, qs);
-
-					} else if (operation === 'createOneAuditLog') {
-
-						// ----------------------------------------
-					//       auditLog: createOneAuditLog
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/auditLogs', body, qs);
-
-					} else if (operation === 'deleteOneAuditLog') {
-
-						// ----------------------------------------
-					//       auditLog: deleteOneAuditLog
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/auditLogs/${id}`);
-
-					} else if (operation === 'findAuditLogDuplicates') {
-
-						// ----------------------------------------
-					//     auditLog: findAuditLogDuplicates
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/auditLogs/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'findManyAuditLogs') {
-
-						// ----------------------------------------
-					//       auditLog: findManyAuditLogs
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/auditLogs', {}, qs);
-
-					} else if (operation === 'findOneAuditLog') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/batch/auditLogs', body, qs);
+					} else if (operation === 'createOneAuditLog') {
 						// ----------------------------------------
-					//        auditLog: findOneAuditLog
-					// ----------------------------------------
+						//       auditLog: createOneAuditLog
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/auditLogs', body, qs);
+					} else if (operation === 'deleteOneAuditLog') {
+						// ----------------------------------------
+						//       auditLog: deleteOneAuditLog
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'GET', `/auditLogs/${id}`, {}, qs);
-
-					} else if (operation === 'updateOneAuditLog') {
-
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/auditLogs/${id}`);
+					} else if (operation === 'findAuditLogDuplicates') {
 						// ----------------------------------------
-					//       auditLog: updateOneAuditLog
-					// ----------------------------------------
+						//     auditLog: findAuditLogDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/auditLogs/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'findManyAuditLogs') {
+						// ----------------------------------------
+						//       auditLog: findManyAuditLogs
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', '/auditLogs', {}, qs);
+					} else if (operation === 'findOneAuditLog') {
+						// ----------------------------------------
+						//        auditLog: findOneAuditLog
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/auditLogs/${id}`, {}, qs);
+					} else if (operation === 'updateOneAuditLog') {
+						// ----------------------------------------
+						//       auditLog: updateOneAuditLog
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'PATCH', `/auditLogs/${id}`, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/auditLogs/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'blocklist') {
-
 					// **********************************************************************
-				//                               blocklist
-				// **********************************************************************
+					//                               blocklist
+					// **********************************************************************
 
 					if (operation === 'createManyBlocklists') {
-
 						// ----------------------------------------
-					//     blocklist: createManyBlocklists
-					// ----------------------------------------
+						//     blocklist: createManyBlocklists
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/blocklists', body, qs);
-
-					} else if (operation === 'createOneBlocklist') {
-
-						// ----------------------------------------
-					//      blocklist: createOneBlocklist
-					// ----------------------------------------
-
-						const body = {
-						workspaceMemberId: this.getNodeParameter('workspaceMemberId', i),
-					} as IDataObject;
-
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/blocklists', body, qs);
-
-					} else if (operation === 'deleteOneBlocklist') {
-
-						// ----------------------------------------
-					//      blocklist: deleteOneBlocklist
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/blocklists/${id}`);
-
-					} else if (operation === 'findBlocklistDuplicates') {
-
-						// ----------------------------------------
-					//    blocklist: findBlocklistDuplicates
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/blocklists/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'findManyBlocklists') {
-
-						// ----------------------------------------
-					//      blocklist: findManyBlocklists
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/blocklists', {}, qs);
-
-					} else if (operation === 'findOneBlocklist') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/batch/blocklists', body, qs);
+					} else if (operation === 'createOneBlocklist') {
 						// ----------------------------------------
-					//       blocklist: findOneBlocklist
-					// ----------------------------------------
+						//      blocklist: createOneBlocklist
+						// ----------------------------------------
+
+						const body = {
+							workspaceMemberId: this.getNodeParameter('workspaceMemberId', i),
+						} as IDataObject;
+
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/blocklists', body, qs);
+					} else if (operation === 'deleteOneBlocklist') {
+						// ----------------------------------------
+						//      blocklist: deleteOneBlocklist
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'GET', `/blocklists/${id}`, {}, qs);
-
-					} else if (operation === 'updateOneBlocklist') {
-
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/blocklists/${id}`);
+					} else if (operation === 'findBlocklistDuplicates') {
 						// ----------------------------------------
-					//      blocklist: updateOneBlocklist
-					// ----------------------------------------
+						//    blocklist: findBlocklistDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/blocklists/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'findManyBlocklists') {
+						// ----------------------------------------
+						//      blocklist: findManyBlocklists
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', '/blocklists', {}, qs);
+					} else if (operation === 'findOneBlocklist') {
+						// ----------------------------------------
+						//       blocklist: findOneBlocklist
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/blocklists/${id}`, {}, qs);
+					} else if (operation === 'updateOneBlocklist') {
+						// ----------------------------------------
+						//      blocklist: updateOneBlocklist
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'PATCH',
+							`/blocklists/${id}`,
+							body,
+							qs,
+						);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/blocklists/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'calendarChannel') {
-
 					// **********************************************************************
-				//                            calendarChannel
-				// **********************************************************************
+					//                            calendarChannel
+					// **********************************************************************
 
 					if (operation === 'createManyCalendarChannels') {
-
 						// ----------------------------------------
-					// calendarChannel: createManyCalendarChannels
-					// ----------------------------------------
+						// calendarChannel: createManyCalendarChannels
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/batch/calendarChannels';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'createOneCalendarChannel') {
-
-						// ----------------------------------------
-					// calendarChannel: createOneCalendarChannel
-					// ----------------------------------------
-
-						const body = {
-						connectedAccountId: this.getNodeParameter('connectedAccountId', i),
-					} as IDataObject;
-
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/calendarChannels', body, qs);
-
-					} else if (operation === 'deleteOneCalendarChannel') {
-
-						// ----------------------------------------
-					// calendarChannel: deleteOneCalendarChannel
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					const endpoint = `/calendarChannels/${id}`;
-					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-
-					} else if (operation === 'findCalendarChannelDuplicates') {
-
-						// ----------------------------------------
-					// calendarChannel: findCalendarChannelDuplicates
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/calendarChannels/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'findManyCalendarChannels') {
-
-						// ----------------------------------------
-					// calendarChannel: findManyCalendarChannels
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/calendarChannels', {}, qs);
-
-					} else if (operation === 'findOneCalendarChannel') {
-
+						const endpoint = '/batch/calendarChannels';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'createOneCalendarChannel') {
 						// ----------------------------------------
-					// calendarChannel: findOneCalendarChannel
-					// ----------------------------------------
+						// calendarChannel: createOneCalendarChannel
+						// ----------------------------------------
+
+						const body = {
+							connectedAccountId: this.getNodeParameter('connectedAccountId', i),
+						} as IDataObject;
+
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/calendarChannels', body, qs);
+					} else if (operation === 'deleteOneCalendarChannel') {
+						// ----------------------------------------
+						// calendarChannel: deleteOneCalendarChannel
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/calendarChannels/${id}`;
-					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-
-					} else if (operation === 'updateOneCalendarChannel') {
-
+						const endpoint = `/calendarChannels/${id}`;
+						responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
+					} else if (operation === 'findCalendarChannelDuplicates') {
 						// ----------------------------------------
-					// calendarChannel: updateOneCalendarChannel
-					// ----------------------------------------
+						// calendarChannel: findCalendarChannelDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/calendarChannels/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'findManyCalendarChannels') {
+						// ----------------------------------------
+						// calendarChannel: findManyCalendarChannels
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', '/calendarChannels', {}, qs);
+					} else if (operation === 'findOneCalendarChannel') {
+						// ----------------------------------------
+						// calendarChannel: findOneCalendarChannel
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/calendarChannels/${id}`;
+						responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
+					} else if (operation === 'updateOneCalendarChannel') {
+						// ----------------------------------------
+						// calendarChannel: updateOneCalendarChannel
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/calendarChannels/${id}`;
+						responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/calendarChannels/${id}`;
-					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-
-					}
-
 				} else if (resource === 'calendarChannelEventAssociation') {
-
 					// **********************************************************************
-				//                    calendarChannelEventAssociation
-				// **********************************************************************
+					//                    calendarChannelEventAssociation
+					// **********************************************************************
 
 					if (operation === 'createManyCalendarChannelEventAssociations') {
-
 						// ----------------------------------------
-					// calendarChannelEventAssociation: createManyCalendarChannelEventAssociations
-					// ----------------------------------------
+						// calendarChannelEventAssociation: createManyCalendarChannelEventAssociations
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/batch/calendarChannelEventAssociations';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'createOneCalendarChannelEventAssociation') {
-
-						// ----------------------------------------
-					// calendarChannelEventAssociation: createOneCalendarChannelEventAssociation
-					// ----------------------------------------
-
-						const body = {
-						calendarChannelId: this.getNodeParameter('calendarChannelId', i),
-						calendarEventId: this.getNodeParameter('calendarEventId', i),
-					} as IDataObject;
-
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/calendarChannelEventAssociations';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'deleteOneCalendarChannelEventAssociation') {
-
-						// ----------------------------------------
-					// calendarChannelEventAssociation: deleteOneCalendarChannelEventAssociation
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					const endpoint = `/calendarChannelEventAssociations/${id}`;
-					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-
-					} else if (operation === 'findCalendarChannelEventAssociationDuplicates') {
-
-						// ----------------------------------------
-					// calendarChannelEventAssociation: findCalendarChannelEventAssociationDuplicates
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/calendarChannelEventAssociations/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'findManyCalendarChannelEventAssociations') {
-
-						// ----------------------------------------
-					// calendarChannelEventAssociation: findManyCalendarChannelEventAssociations
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					const endpoint = '/calendarChannelEventAssociations';
-					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-
-					} else if (operation === 'findOneCalendarChannelEventAssociation') {
-
+						const endpoint = '/batch/calendarChannelEventAssociations';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'createOneCalendarChannelEventAssociation') {
 						// ----------------------------------------
-					// calendarChannelEventAssociation: findOneCalendarChannelEventAssociation
-					// ----------------------------------------
+						// calendarChannelEventAssociation: createOneCalendarChannelEventAssociation
+						// ----------------------------------------
+
+						const body = {
+							calendarChannelId: this.getNodeParameter('calendarChannelId', i),
+							calendarEventId: this.getNodeParameter('calendarEventId', i),
+						} as IDataObject;
+
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/calendarChannelEventAssociations';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'deleteOneCalendarChannelEventAssociation') {
+						// ----------------------------------------
+						// calendarChannelEventAssociation: deleteOneCalendarChannelEventAssociation
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/calendarChannelEventAssociations/${id}`;
-					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-
-					} else if (operation === 'updateOneCalendarChannelEventAssociation') {
-
+						const endpoint = `/calendarChannelEventAssociations/${id}`;
+						responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
+					} else if (operation === 'findCalendarChannelEventAssociationDuplicates') {
 						// ----------------------------------------
-					// calendarChannelEventAssociation: updateOneCalendarChannelEventAssociation
-					// ----------------------------------------
+						// calendarChannelEventAssociation: findCalendarChannelEventAssociationDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/calendarChannelEventAssociations/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'findManyCalendarChannelEventAssociations') {
+						// ----------------------------------------
+						// calendarChannelEventAssociation: findManyCalendarChannelEventAssociations
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/calendarChannelEventAssociations';
+						responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
+					} else if (operation === 'findOneCalendarChannelEventAssociation') {
+						// ----------------------------------------
+						// calendarChannelEventAssociation: findOneCalendarChannelEventAssociation
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/calendarChannelEventAssociations/${id}`;
+						responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
+					} else if (operation === 'updateOneCalendarChannelEventAssociation') {
+						// ----------------------------------------
+						// calendarChannelEventAssociation: updateOneCalendarChannelEventAssociation
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/calendarChannelEventAssociations/${id}`;
+						responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/calendarChannelEventAssociations/${id}`;
-					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-
-					}
-
 				} else if (resource === 'calendarEvent') {
-
 					// **********************************************************************
-				//                             calendarEvent
-				// **********************************************************************
+					//                             calendarEvent
+					// **********************************************************************
 
 					if (operation === 'createManyCalendarEvents') {
-
 						// ----------------------------------------
-					// calendarEvent: createManyCalendarEvents
-					// ----------------------------------------
+						// calendarEvent: createManyCalendarEvents
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/batch/calendarEvents';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'createOneCalendarEvent') {
-
-						// ----------------------------------------
-					//  calendarEvent: createOneCalendarEvent
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/calendarEvents', body, qs);
-
-					} else if (operation === 'deleteOneCalendarEvent') {
-
-						// ----------------------------------------
-					//  calendarEvent: deleteOneCalendarEvent
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/calendarEvents/${id}`);
-
-					} else if (operation === 'findCalendarEventDuplicates') {
-
-						// ----------------------------------------
-					// calendarEvent: findCalendarEventDuplicates
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/calendarEvents/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'findManyCalendarEvents') {
-
-						// ----------------------------------------
-					//  calendarEvent: findManyCalendarEvents
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/calendarEvents', {}, qs);
-
-					} else if (operation === 'findOneCalendarEvent') {
-
+						const endpoint = '/batch/calendarEvents';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'createOneCalendarEvent') {
 						// ----------------------------------------
-					//   calendarEvent: findOneCalendarEvent
-					// ----------------------------------------
+						//  calendarEvent: createOneCalendarEvent
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/calendarEvents', body, qs);
+					} else if (operation === 'deleteOneCalendarEvent') {
+						// ----------------------------------------
+						//  calendarEvent: deleteOneCalendarEvent
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'GET', `/calendarEvents/${id}`, {}, qs);
-
-					} else if (operation === 'updateOneCalendarEvent') {
-
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/calendarEvents/${id}`);
+					} else if (operation === 'findCalendarEventDuplicates') {
 						// ----------------------------------------
-					//  calendarEvent: updateOneCalendarEvent
-					// ----------------------------------------
+						// calendarEvent: findCalendarEventDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/calendarEvents/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'findManyCalendarEvents') {
+						// ----------------------------------------
+						//  calendarEvent: findManyCalendarEvents
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', '/calendarEvents', {}, qs);
+					} else if (operation === 'findOneCalendarEvent') {
+						// ----------------------------------------
+						//   calendarEvent: findOneCalendarEvent
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'GET',
+							`/calendarEvents/${id}`,
+							{},
+							qs,
+						);
+					} else if (operation === 'updateOneCalendarEvent') {
+						// ----------------------------------------
+						//  calendarEvent: updateOneCalendarEvent
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'PATCH',
+							`/calendarEvents/${id}`,
+							body,
+							qs,
+						);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/calendarEvents/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'calendarEventParticipant') {
-
 					// **********************************************************************
-				//                        calendarEventParticipant
-				// **********************************************************************
+					//                        calendarEventParticipant
+					// **********************************************************************
 
 					if (operation === 'createManyCalendarEventParticipants') {
-
 						// ----------------------------------------
-					// calendarEventParticipant: createManyCalendarEventParticipants
-					// ----------------------------------------
+						// calendarEventParticipant: createManyCalendarEventParticipants
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/batch/calendarEventParticipants';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'createOneCalendarEventParticipant') {
-
-						// ----------------------------------------
-					// calendarEventParticipant: createOneCalendarEventParticipant
-					// ----------------------------------------
-
-						const body = {
-						calendarEventId: this.getNodeParameter('calendarEventId', i),
-					} as IDataObject;
-
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/calendarEventParticipants';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'deleteOneCalendarEventParticipant') {
-
-						// ----------------------------------------
-					// calendarEventParticipant: deleteOneCalendarEventParticipant
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					const endpoint = `/calendarEventParticipants/${id}`;
-					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-
-					} else if (operation === 'findCalendarEventParticipantDuplicates') {
-
-						// ----------------------------------------
-					// calendarEventParticipant: findCalendarEventParticipantDuplicates
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/calendarEventParticipants/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'findManyCalendarEventParticipants') {
-
-						// ----------------------------------------
-					// calendarEventParticipant: findManyCalendarEventParticipants
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					const endpoint = '/calendarEventParticipants';
-					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-
-					} else if (operation === 'findOneCalendarEventParticipant') {
-
+						const endpoint = '/batch/calendarEventParticipants';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'createOneCalendarEventParticipant') {
 						// ----------------------------------------
-					// calendarEventParticipant: findOneCalendarEventParticipant
-					// ----------------------------------------
+						// calendarEventParticipant: createOneCalendarEventParticipant
+						// ----------------------------------------
+
+						const body = {
+							calendarEventId: this.getNodeParameter('calendarEventId', i),
+						} as IDataObject;
+
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/calendarEventParticipants';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'deleteOneCalendarEventParticipant') {
+						// ----------------------------------------
+						// calendarEventParticipant: deleteOneCalendarEventParticipant
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/calendarEventParticipants/${id}`;
-					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-
-					} else if (operation === 'updateOneCalendarEventParticipant') {
-
+						const endpoint = `/calendarEventParticipants/${id}`;
+						responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
+					} else if (operation === 'findCalendarEventParticipantDuplicates') {
 						// ----------------------------------------
-					// calendarEventParticipant: updateOneCalendarEventParticipant
-					// ----------------------------------------
+						// calendarEventParticipant: findCalendarEventParticipantDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/calendarEventParticipants/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'findManyCalendarEventParticipants') {
+						// ----------------------------------------
+						// calendarEventParticipant: findManyCalendarEventParticipants
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/calendarEventParticipants';
+						responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
+					} else if (operation === 'findOneCalendarEventParticipant') {
+						// ----------------------------------------
+						// calendarEventParticipant: findOneCalendarEventParticipant
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/calendarEventParticipants/${id}`;
+						responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
+					} else if (operation === 'updateOneCalendarEventParticipant') {
+						// ----------------------------------------
+						// calendarEventParticipant: updateOneCalendarEventParticipant
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/calendarEventParticipants/${id}`;
+						responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/calendarEventParticipants/${id}`;
-					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-
-					}
-
 				} else if (resource === 'company') {
-
 					// **********************************************************************
-				//                                company
-				// **********************************************************************
+					//                                company
+					// **********************************************************************
 
 					if (operation === 'createManyCompanies') {
-
 						// ----------------------------------------
-					//       company: createManyCompanies
-					// ----------------------------------------
+						//       company: createManyCompanies
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/companies', body, qs);
-
-					} else if (operation === 'createOneCompany') {
-
-						// ----------------------------------------
-					//        company: createOneCompany
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/companies', body, qs);
-
-					} else if (operation === 'deleteOneCompany') {
-
-						// ----------------------------------------
-					//        company: deleteOneCompany
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/companies/${id}`);
-
-					} else if (operation === 'findCompanyDuplicates') {
-
-						// ----------------------------------------
-					//      company: findCompanyDuplicates
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/companies/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'findManyCompanies') {
-
-						// ----------------------------------------
-					//        company: findManyCompanies
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/companies', {}, qs);
-
-					} else if (operation === 'findOneCompany') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/batch/companies', body, qs);
+					} else if (operation === 'createOneCompany') {
 						// ----------------------------------------
-					//         company: findOneCompany
-					// ----------------------------------------
+						//        company: createOneCompany
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/companies', body, qs);
+					} else if (operation === 'deleteOneCompany') {
+						// ----------------------------------------
+						//        company: deleteOneCompany
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'GET', `/companies/${id}`, {}, qs);
-
-					} else if (operation === 'updateOneCompany') {
-
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/companies/${id}`);
+					} else if (operation === 'findCompanyDuplicates') {
 						// ----------------------------------------
-					//        company: updateOneCompany
-					// ----------------------------------------
+						//      company: findCompanyDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/companies/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'findManyCompanies') {
+						// ----------------------------------------
+						//        company: findManyCompanies
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', '/companies', {}, qs);
+					} else if (operation === 'findOneCompany') {
+						// ----------------------------------------
+						//         company: findOneCompany
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/companies/${id}`, {}, qs);
+					} else if (operation === 'updateOneCompany') {
+						// ----------------------------------------
+						//        company: updateOneCompany
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'PATCH', `/companies/${id}`, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/companies/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'connectedAccount') {
-
 					// **********************************************************************
-				//                            connectedAccount
-				// **********************************************************************
+					//                            connectedAccount
+					// **********************************************************************
 
 					if (operation === 'createManyConnectedAccounts') {
-
 						// ----------------------------------------
-					// connectedAccount: createManyConnectedAccounts
-					// ----------------------------------------
+						// connectedAccount: createManyConnectedAccounts
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/batch/connectedAccounts';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'createOneConnectedAccount') {
-
-						// ----------------------------------------
-					// connectedAccount: createOneConnectedAccount
-					// ----------------------------------------
-
-						const body = {
-						accountOwnerId: this.getNodeParameter('accountOwnerId', i),
-					} as IDataObject;
-
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/connectedAccounts', body, qs);
-
-					} else if (operation === 'deleteOneConnectedAccount') {
-
-						// ----------------------------------------
-					// connectedAccount: deleteOneConnectedAccount
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					const endpoint = `/connectedAccounts/${id}`;
-					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-
-					} else if (operation === 'findConnectedAccountDuplicates') {
-
-						// ----------------------------------------
-					// connectedAccount: findConnectedAccountDuplicates
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/connectedAccounts/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'findManyConnectedAccounts') {
-
-						// ----------------------------------------
-					// connectedAccount: findManyConnectedAccounts
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/connectedAccounts', {}, qs);
-
-					} else if (operation === 'findOneConnectedAccount') {
-
+						const endpoint = '/batch/connectedAccounts';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'createOneConnectedAccount') {
 						// ----------------------------------------
-					// connectedAccount: findOneConnectedAccount
-					// ----------------------------------------
+						// connectedAccount: createOneConnectedAccount
+						// ----------------------------------------
+
+						const body = {
+							accountOwnerId: this.getNodeParameter('accountOwnerId', i),
+						} as IDataObject;
+
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'POST',
+							'/connectedAccounts',
+							body,
+							qs,
+						);
+					} else if (operation === 'deleteOneConnectedAccount') {
+						// ----------------------------------------
+						// connectedAccount: deleteOneConnectedAccount
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/connectedAccounts/${id}`;
-					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-
-					} else if (operation === 'updateOneConnectedAccount') {
-
+						const endpoint = `/connectedAccounts/${id}`;
+						responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
+					} else if (operation === 'findConnectedAccountDuplicates') {
 						// ----------------------------------------
-					// connectedAccount: updateOneConnectedAccount
-					// ----------------------------------------
+						// connectedAccount: findConnectedAccountDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/connectedAccounts/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'findManyConnectedAccounts') {
+						// ----------------------------------------
+						// connectedAccount: findManyConnectedAccounts
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', '/connectedAccounts', {}, qs);
+					} else if (operation === 'findOneConnectedAccount') {
+						// ----------------------------------------
+						// connectedAccount: findOneConnectedAccount
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/connectedAccounts/${id}`;
+						responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
+					} else if (operation === 'updateOneConnectedAccount') {
+						// ----------------------------------------
+						// connectedAccount: updateOneConnectedAccount
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/connectedAccounts/${id}`;
+						responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/connectedAccounts/${id}`;
-					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-
-					}
-
 				} else if (resource === 'favorite') {
-
 					// **********************************************************************
-				//                                favorite
-				// **********************************************************************
+					//                                favorite
+					// **********************************************************************
 
 					if (operation === 'createManyFavorites') {
-
 						// ----------------------------------------
-					//      favorite: createManyFavorites
-					// ----------------------------------------
+						//      favorite: createManyFavorites
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/favorites', body, qs);
-
-					} else if (operation === 'createOneFavorite') {
-
-						// ----------------------------------------
-					//       favorite: createOneFavorite
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/favorites', body, qs);
-
-					} else if (operation === 'deleteOneFavorite') {
-
-						// ----------------------------------------
-					//       favorite: deleteOneFavorite
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/favorites/${id}`);
-
-					} else if (operation === 'findFavoriteDuplicates') {
-
-						// ----------------------------------------
-					//     favorite: findFavoriteDuplicates
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/favorites/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'findManyFavorites') {
-
-						// ----------------------------------------
-					//       favorite: findManyFavorites
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/favorites', {}, qs);
-
-					} else if (operation === 'findOneFavorite') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/batch/favorites', body, qs);
+					} else if (operation === 'createOneFavorite') {
 						// ----------------------------------------
-					//        favorite: findOneFavorite
-					// ----------------------------------------
+						//       favorite: createOneFavorite
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/favorites', body, qs);
+					} else if (operation === 'deleteOneFavorite') {
+						// ----------------------------------------
+						//       favorite: deleteOneFavorite
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'GET', `/favorites/${id}`, {}, qs);
-
-					} else if (operation === 'updateOneFavorite') {
-
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/favorites/${id}`);
+					} else if (operation === 'findFavoriteDuplicates') {
 						// ----------------------------------------
-					//       favorite: updateOneFavorite
-					// ----------------------------------------
+						//     favorite: findFavoriteDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/favorites/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'findManyFavorites') {
+						// ----------------------------------------
+						//       favorite: findManyFavorites
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', '/favorites', {}, qs);
+					} else if (operation === 'findOneFavorite') {
+						// ----------------------------------------
+						//        favorite: findOneFavorite
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/favorites/${id}`, {}, qs);
+					} else if (operation === 'updateOneFavorite') {
+						// ----------------------------------------
+						//       favorite: updateOneFavorite
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'PATCH', `/favorites/${id}`, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/favorites/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'message') {
-
 					// **********************************************************************
-				//                                message
-				// **********************************************************************
+					//                                message
+					// **********************************************************************
 
 					if (operation === 'createManyMessages') {
-
 						// ----------------------------------------
-					//       message: createManyMessages
-					// ----------------------------------------
+						//       message: createManyMessages
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/messages', body, qs);
-
-					} else if (operation === 'createOneMessage') {
-
-						// ----------------------------------------
-					//        message: createOneMessage
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/messages', body, qs);
-
-					} else if (operation === 'deleteOneMessage') {
-
-						// ----------------------------------------
-					//        message: deleteOneMessage
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/messages/${id}`);
-
-					} else if (operation === 'findManyMessages') {
-
-						// ----------------------------------------
-					//        message: findManyMessages
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/messages', {}, qs);
-
-					} else if (operation === 'findMessageDuplicates') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/batch/messages', body, qs);
+					} else if (operation === 'createOneMessage') {
 						// ----------------------------------------
-					//      message: findMessageDuplicates
-					// ----------------------------------------
+						//        message: createOneMessage
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'POST', '/messages/duplicates', body, qs);
-
-					} else if (operation === 'findOneMessage') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/messages', body, qs);
+					} else if (operation === 'deleteOneMessage') {
 						// ----------------------------------------
-					//         message: findOneMessage
-					// ----------------------------------------
+						//        message: deleteOneMessage
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'GET', `/messages/${id}`, {}, qs);
-
-					} else if (operation === 'updateOneMessage') {
-
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/messages/${id}`);
+					} else if (operation === 'findManyMessages') {
 						// ----------------------------------------
-					//        message: updateOneMessage
-					// ----------------------------------------
+						//        message: findManyMessages
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', '/messages', {}, qs);
+					} else if (operation === 'findMessageDuplicates') {
+						// ----------------------------------------
+						//      message: findMessageDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'POST',
+							'/messages/duplicates',
+							body,
+							qs,
+						);
+					} else if (operation === 'findOneMessage') {
+						// ----------------------------------------
+						//         message: findOneMessage
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/messages/${id}`, {}, qs);
+					} else if (operation === 'updateOneMessage') {
+						// ----------------------------------------
+						//        message: updateOneMessage
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'PATCH', `/messages/${id}`, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/messages/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'messageChannel') {
-
 					// **********************************************************************
-				//                             messageChannel
-				// **********************************************************************
+					//                             messageChannel
+					// **********************************************************************
 
 					if (operation === 'createManyMessageChannels') {
-
 						// ----------------------------------------
-					// messageChannel: createManyMessageChannels
-					// ----------------------------------------
+						// messageChannel: createManyMessageChannels
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/batch/messageChannels';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'createOneMessageChannel') {
-
-						// ----------------------------------------
-					// messageChannel: createOneMessageChannel
-					// ----------------------------------------
-
-						const body = {
-						connectedAccountId: this.getNodeParameter('connectedAccountId', i),
-					} as IDataObject;
-
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/messageChannels', body, qs);
-
-					} else if (operation === 'deleteOneMessageChannel') {
-
-						// ----------------------------------------
-					// messageChannel: deleteOneMessageChannel
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					const endpoint = `/messageChannels/${id}`;
-					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-
-					} else if (operation === 'findManyMessageChannels') {
-
-						// ----------------------------------------
-					// messageChannel: findManyMessageChannels
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/messageChannels', {}, qs);
-
-					} else if (operation === 'findMessageChannelDuplicates') {
-
+						const endpoint = '/batch/messageChannels';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'createOneMessageChannel') {
 						// ----------------------------------------
-					// messageChannel: findMessageChannelDuplicates
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/messageChannels/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'findOneMessageChannel') {
-
+						// messageChannel: createOneMessageChannel
 						// ----------------------------------------
-					//  messageChannel: findOneMessageChannel
-					// ----------------------------------------
+
+						const body = {
+							connectedAccountId: this.getNodeParameter('connectedAccountId', i),
+						} as IDataObject;
+
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/messageChannels', body, qs);
+					} else if (operation === 'deleteOneMessageChannel') {
+						// ----------------------------------------
+						// messageChannel: deleteOneMessageChannel
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/messageChannels/${id}`;
-					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-
-					} else if (operation === 'updateOneMessageChannel') {
-
+						const endpoint = `/messageChannels/${id}`;
+						responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
+					} else if (operation === 'findManyMessageChannels') {
 						// ----------------------------------------
-					// messageChannel: updateOneMessageChannel
-					// ----------------------------------------
+						// messageChannel: findManyMessageChannels
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', '/messageChannels', {}, qs);
+					} else if (operation === 'findMessageChannelDuplicates') {
+						// ----------------------------------------
+						// messageChannel: findMessageChannelDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/messageChannels/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'findOneMessageChannel') {
+						// ----------------------------------------
+						//  messageChannel: findOneMessageChannel
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/messageChannels/${id}`;
+						responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
+					} else if (operation === 'updateOneMessageChannel') {
+						// ----------------------------------------
+						// messageChannel: updateOneMessageChannel
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/messageChannels/${id}`;
+						responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/messageChannels/${id}`;
-					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-
-					}
-
 				} else if (resource === 'messageChannelMessageAssociation') {
-
 					// **********************************************************************
-				//                    messageChannelMessageAssociation
-				// **********************************************************************
+					//                    messageChannelMessageAssociation
+					// **********************************************************************
 
 					if (operation === 'createManyMessageChannelMessageAssociations') {
-
 						// ----------------------------------------
-					// messageChannelMessageAssociation: createManyMessageChannelMessageAssociations
-					// ----------------------------------------
+						// messageChannelMessageAssociation: createManyMessageChannelMessageAssociations
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/batch/messageChannelMessageAssociations';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'createOneMessageChannelMessageAssociation') {
-
-						// ----------------------------------------
-					// messageChannelMessageAssociation: createOneMessageChannelMessageAssociation
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/messageChannelMessageAssociations';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'deleteOneMessageChannelMessageAssociation') {
-
-						// ----------------------------------------
-					// messageChannelMessageAssociation: deleteOneMessageChannelMessageAssociation
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					const endpoint = `/messageChannelMessageAssociations/${id}`;
-					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-
-					} else if (operation === 'findManyMessageChannelMessageAssociations') {
-
-						// ----------------------------------------
-					// messageChannelMessageAssociation: findManyMessageChannelMessageAssociations
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					const endpoint = '/messageChannelMessageAssociations';
-					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-
-					} else if (operation === 'findMessageChannelMessageAssociationDuplicates') {
-
+						const endpoint = '/batch/messageChannelMessageAssociations';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'createOneMessageChannelMessageAssociation') {
 						// ----------------------------------------
-					// messageChannelMessageAssociation: findMessageChannelMessageAssociationDuplicates
-					// ----------------------------------------
+						// messageChannelMessageAssociation: createOneMessageChannelMessageAssociation
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					const endpoint = '/messageChannelMessageAssociations/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'findOneMessageChannelMessageAssociation') {
-
+						const endpoint = '/messageChannelMessageAssociations';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'deleteOneMessageChannelMessageAssociation') {
 						// ----------------------------------------
-					// messageChannelMessageAssociation: findOneMessageChannelMessageAssociation
-					// ----------------------------------------
+						// messageChannelMessageAssociation: deleteOneMessageChannelMessageAssociation
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/messageChannelMessageAssociations/${id}`;
-					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-
-					} else if (operation === 'updateOneMessageChannelMessageAssociation') {
-
+						const endpoint = `/messageChannelMessageAssociations/${id}`;
+						responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
+					} else if (operation === 'findManyMessageChannelMessageAssociations') {
 						// ----------------------------------------
-					// messageChannelMessageAssociation: updateOneMessageChannelMessageAssociation
-					// ----------------------------------------
+						// messageChannelMessageAssociation: findManyMessageChannelMessageAssociations
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/messageChannelMessageAssociations';
+						responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
+					} else if (operation === 'findMessageChannelMessageAssociationDuplicates') {
+						// ----------------------------------------
+						// messageChannelMessageAssociation: findMessageChannelMessageAssociationDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/messageChannelMessageAssociations/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'findOneMessageChannelMessageAssociation') {
+						// ----------------------------------------
+						// messageChannelMessageAssociation: findOneMessageChannelMessageAssociation
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/messageChannelMessageAssociations/${id}`;
+						responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
+					} else if (operation === 'updateOneMessageChannelMessageAssociation') {
+						// ----------------------------------------
+						// messageChannelMessageAssociation: updateOneMessageChannelMessageAssociation
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/messageChannelMessageAssociations/${id}`;
+						responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/messageChannelMessageAssociations/${id}`;
-					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-
-					}
-
 				} else if (resource === 'messageParticipant') {
-
 					// **********************************************************************
-				//                           messageParticipant
-				// **********************************************************************
+					//                           messageParticipant
+					// **********************************************************************
 
 					if (operation === 'createManyMessageParticipants') {
-
 						// ----------------------------------------
-					// messageParticipant: createManyMessageParticipants
-					// ----------------------------------------
+						// messageParticipant: createManyMessageParticipants
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/batch/messageParticipants';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'createOneMessageParticipant') {
-
-						// ----------------------------------------
-					// messageParticipant: createOneMessageParticipant
-					// ----------------------------------------
-
-						const body = {
-						messageId: this.getNodeParameter('messageId', i),
-					} as IDataObject;
-
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/messageParticipants', body, qs);
-
-					} else if (operation === 'deleteOneMessageParticipant') {
-
-						// ----------------------------------------
-					// messageParticipant: deleteOneMessageParticipant
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					const endpoint = `/messageParticipants/${id}`;
-					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-
-					} else if (operation === 'findManyMessageParticipants') {
-
-						// ----------------------------------------
-					// messageParticipant: findManyMessageParticipants
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/messageParticipants', {}, qs);
-
-					} else if (operation === 'findMessageParticipantDuplicates') {
-
+						const endpoint = '/batch/messageParticipants';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'createOneMessageParticipant') {
 						// ----------------------------------------
-					// messageParticipant: findMessageParticipantDuplicates
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/messageParticipants/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'findOneMessageParticipant') {
-
+						// messageParticipant: createOneMessageParticipant
 						// ----------------------------------------
-					// messageParticipant: findOneMessageParticipant
-					// ----------------------------------------
+
+						const body = {
+							messageId: this.getNodeParameter('messageId', i),
+						} as IDataObject;
+
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'POST',
+							'/messageParticipants',
+							body,
+							qs,
+						);
+					} else if (operation === 'deleteOneMessageParticipant') {
+						// ----------------------------------------
+						// messageParticipant: deleteOneMessageParticipant
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/messageParticipants/${id}`;
-					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-
-					} else if (operation === 'updateOneMessageParticipant') {
-
+						const endpoint = `/messageParticipants/${id}`;
+						responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
+					} else if (operation === 'findManyMessageParticipants') {
 						// ----------------------------------------
-					// messageParticipant: updateOneMessageParticipant
-					// ----------------------------------------
+						// messageParticipant: findManyMessageParticipants
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', '/messageParticipants', {}, qs);
+					} else if (operation === 'findMessageParticipantDuplicates') {
+						// ----------------------------------------
+						// messageParticipant: findMessageParticipantDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/messageParticipants/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'findOneMessageParticipant') {
+						// ----------------------------------------
+						// messageParticipant: findOneMessageParticipant
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/messageParticipants/${id}`;
+						responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
+					} else if (operation === 'updateOneMessageParticipant') {
+						// ----------------------------------------
+						// messageParticipant: updateOneMessageParticipant
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/messageParticipants/${id}`;
+						responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/messageParticipants/${id}`;
-					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-
-					}
-
 				} else if (resource === 'messageThread') {
-
 					// **********************************************************************
-				//                             messageThread
-				// **********************************************************************
+					//                             messageThread
+					// **********************************************************************
 
 					if (operation === 'createManyMessageThreads') {
-
 						// ----------------------------------------
-					// messageThread: createManyMessageThreads
-					// ----------------------------------------
+						// messageThread: createManyMessageThreads
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/batch/messageThreads';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'createOneMessageThread') {
-
-						// ----------------------------------------
-					//  messageThread: createOneMessageThread
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/messageThreads', body, qs);
-
-					} else if (operation === 'deleteOneMessageThread') {
-
-						// ----------------------------------------
-					//  messageThread: deleteOneMessageThread
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/messageThreads/${id}`);
-
-					} else if (operation === 'findManyMessageThreads') {
-
-						// ----------------------------------------
-					//  messageThread: findManyMessageThreads
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/messageThreads', {}, qs);
-
-					} else if (operation === 'findMessageThreadDuplicates') {
-
+						const endpoint = '/batch/messageThreads';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'createOneMessageThread') {
 						// ----------------------------------------
-					// messageThread: findMessageThreadDuplicates
-					// ----------------------------------------
+						//  messageThread: createOneMessageThread
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					const endpoint = '/messageThreads/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'findOneMessageThread') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/messageThreads', body, qs);
+					} else if (operation === 'deleteOneMessageThread') {
 						// ----------------------------------------
-					//   messageThread: findOneMessageThread
-					// ----------------------------------------
+						//  messageThread: deleteOneMessageThread
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'GET', `/messageThreads/${id}`, {}, qs);
-
-					} else if (operation === 'updateOneMessageThread') {
-
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/messageThreads/${id}`);
+					} else if (operation === 'findManyMessageThreads') {
 						// ----------------------------------------
-					//  messageThread: updateOneMessageThread
-					// ----------------------------------------
+						//  messageThread: findManyMessageThreads
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', '/messageThreads', {}, qs);
+					} else if (operation === 'findMessageThreadDuplicates') {
+						// ----------------------------------------
+						// messageThread: findMessageThreadDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/messageThreads/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'findOneMessageThread') {
+						// ----------------------------------------
+						//   messageThread: findOneMessageThread
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'GET',
+							`/messageThreads/${id}`,
+							{},
+							qs,
+						);
+					} else if (operation === 'updateOneMessageThread') {
+						// ----------------------------------------
+						//  messageThread: updateOneMessageThread
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'PATCH',
+							`/messageThreads/${id}`,
+							body,
+							qs,
+						);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/messageThreads/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'note') {
-
 					// **********************************************************************
-				//                                  note
-				// **********************************************************************
+					//                                  note
+					// **********************************************************************
 
 					if (operation === 'createManyNotes') {
-
 						// ----------------------------------------
-					//          note: createManyNotes
-					// ----------------------------------------
+						//          note: createManyNotes
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/notes', body, qs);
-
-					} else if (operation === 'createOneNote') {
-
-						// ----------------------------------------
-					//           note: createOneNote
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/notes', body, qs);
-
-					} else if (operation === 'deleteOneNote') {
-
-						// ----------------------------------------
-					//           note: deleteOneNote
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/notes/${id}`);
-
-					} else if (operation === 'findManyNotes') {
-
-						// ----------------------------------------
-					//           note: findManyNotes
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/notes', {}, qs);
-
-					} else if (operation === 'findNoteDuplicates') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/batch/notes', body, qs);
+					} else if (operation === 'createOneNote') {
 						// ----------------------------------------
-					//         note: findNoteDuplicates
-					// ----------------------------------------
+						//           note: createOneNote
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'POST', '/notes/duplicates', body, qs);
-
-					} else if (operation === 'findOneNote') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/notes', body, qs);
+					} else if (operation === 'deleteOneNote') {
 						// ----------------------------------------
-					//            note: findOneNote
-					// ----------------------------------------
+						//           note: deleteOneNote
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'GET', `/notes/${id}`, {}, qs);
-
-					} else if (operation === 'updateOneNote') {
-
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/notes/${id}`);
+					} else if (operation === 'findManyNotes') {
 						// ----------------------------------------
-					//           note: updateOneNote
-					// ----------------------------------------
+						//           note: findManyNotes
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', '/notes', {}, qs);
+					} else if (operation === 'findNoteDuplicates') {
+						// ----------------------------------------
+						//         note: findNoteDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/notes/duplicates', body, qs);
+					} else if (operation === 'findOneNote') {
+						// ----------------------------------------
+						//            note: findOneNote
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/notes/${id}`, {}, qs);
+					} else if (operation === 'updateOneNote') {
+						// ----------------------------------------
+						//           note: updateOneNote
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'PATCH', `/notes/${id}`, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/notes/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'noteTarget') {
-
 					// **********************************************************************
-				//                               noteTarget
-				// **********************************************************************
+					//                               noteTarget
+					// **********************************************************************
 
 					if (operation === 'createManyNoteTargets') {
-
 						// ----------------------------------------
-					//    noteTarget: createManyNoteTargets
-					// ----------------------------------------
+						//    noteTarget: createManyNoteTargets
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/noteTargets', body, qs);
-
-					} else if (operation === 'createOneNoteTarget') {
-
-						// ----------------------------------------
-					//     noteTarget: createOneNoteTarget
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/noteTargets', body, qs);
-
-					} else if (operation === 'deleteOneNoteTarget') {
-
-						// ----------------------------------------
-					//     noteTarget: deleteOneNoteTarget
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/noteTargets/${id}`);
-
-					} else if (operation === 'findManyNoteTargets') {
-
-						// ----------------------------------------
-					//     noteTarget: findManyNoteTargets
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/noteTargets', {}, qs);
-
-					} else if (operation === 'findNoteTargetDuplicates') {
-
+						responseData = await twentyApiRequest.call(
+							this,
+							'POST',
+							'/batch/noteTargets',
+							body,
+							qs,
+						);
+					} else if (operation === 'createOneNoteTarget') {
 						// ----------------------------------------
-					//   noteTarget: findNoteTargetDuplicates
-					// ----------------------------------------
+						//     noteTarget: createOneNoteTarget
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					const endpoint = '/noteTargets/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'findOneNoteTarget') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/noteTargets', body, qs);
+					} else if (operation === 'deleteOneNoteTarget') {
 						// ----------------------------------------
-					//      noteTarget: findOneNoteTarget
-					// ----------------------------------------
+						//     noteTarget: deleteOneNoteTarget
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'GET', `/noteTargets/${id}`, {}, qs);
-
-					} else if (operation === 'updateOneNoteTarget') {
-
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/noteTargets/${id}`);
+					} else if (operation === 'findManyNoteTargets') {
 						// ----------------------------------------
-					//     noteTarget: updateOneNoteTarget
-					// ----------------------------------------
+						//     noteTarget: findManyNoteTargets
+						// ----------------------------------------
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', '/noteTargets', {}, qs);
+					} else if (operation === 'findNoteTargetDuplicates') {
+						// ----------------------------------------
+						//   noteTarget: findNoteTargetDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = '/noteTargets/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'findOneNoteTarget') {
+						// ----------------------------------------
+						//      noteTarget: findOneNoteTarget
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/noteTargets/${id}`, {}, qs);
+					} else if (operation === 'updateOneNoteTarget') {
+						// ----------------------------------------
+						//     noteTarget: updateOneNoteTarget
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'PATCH',
+							`/noteTargets/${id}`,
+							body,
+							qs,
+						);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/noteTargets/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'opportunity') {
-
 					// **********************************************************************
-				//                              opportunity
-				// **********************************************************************
+					//                              opportunity
+					// **********************************************************************
 
 					if (operation === 'createManyOpportunities') {
-
 						// ----------------------------------------
-					//   opportunity: createManyOpportunities
-					// ----------------------------------------
+						//   opportunity: createManyOpportunities
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/opportunities', body, qs);
-
-					} else if (operation === 'createOneOpportunity') {
-
-						// ----------------------------------------
-					//    opportunity: createOneOpportunity
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/opportunities', body, qs);
-
-					} else if (operation === 'deleteOneOpportunity') {
-
-						// ----------------------------------------
-					//    opportunity: deleteOneOpportunity
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/opportunities/${id}`);
-
-					} else if (operation === 'findManyOpportunities') {
-
-						// ----------------------------------------
-					//    opportunity: findManyOpportunities
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/opportunities', {}, qs);
-
-					} else if (operation === 'findOneOpportunity') {
-
+						responseData = await twentyApiRequest.call(
+							this,
+							'POST',
+							'/batch/opportunities',
+							body,
+							qs,
+						);
+					} else if (operation === 'createOneOpportunity') {
 						// ----------------------------------------
-					//     opportunity: findOneOpportunity
-					// ----------------------------------------
+						//    opportunity: createOneOpportunity
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/opportunities', body, qs);
+					} else if (operation === 'deleteOneOpportunity') {
+						// ----------------------------------------
+						//    opportunity: deleteOneOpportunity
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/opportunities/${id}`);
+					} else if (operation === 'findManyOpportunities') {
+						// ----------------------------------------
+						//    opportunity: findManyOpportunities
+						// ----------------------------------------
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					responseData = await twentyApiRequest.call(this, 'GET', `/opportunities/${id}`, {}, qs);
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
+						responseData = await twentyApiRequest.call(this, 'GET', '/opportunities', {}, qs);
+					} else if (operation === 'findOneOpportunity') {
+						// ----------------------------------------
+						//     opportunity: findOneOpportunity
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/opportunities/${id}`, {}, qs);
 					} else if (operation === 'findOpportunityDuplicates') {
-
 						// ----------------------------------------
-					//  opportunity: findOpportunityDuplicates
-					// ----------------------------------------
+						//  opportunity: findOpportunityDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					const endpoint = '/opportunities/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
+						const endpoint = '/opportunities/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
 					} else if (operation === 'updateOneOpportunity') {
-
 						// ----------------------------------------
-					//    opportunity: updateOneOpportunity
-					// ----------------------------------------
+						//    opportunity: updateOneOpportunity
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'PATCH',
+							`/opportunities/${id}`,
+							body,
+							qs,
+						);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/opportunities/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'person') {
-
 					// **********************************************************************
-				//                                 person
-				// **********************************************************************
+					//                                 person
+					// **********************************************************************
 
 					if (operation === 'createManyPeople') {
-
 						// ----------------------------------------
-					//         person: createManyPeople
-					// ----------------------------------------
+						//         person: createManyPeople
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/people', body, qs);
-
-					} else if (operation === 'createOnePerson') {
-
-						// ----------------------------------------
-					//         person: createOnePerson
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/people', body, qs);
-
-					} else if (operation === 'deleteOnePerson') {
-
-						// ----------------------------------------
-					//         person: deleteOnePerson
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/people/${id}`);
-
-					} else if (operation === 'findManyPeople') {
-
-						// ----------------------------------------
-					//          person: findManyPeople
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/people', {}, qs);
-
-					} else if (operation === 'findOnePerson') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/batch/people', body, qs);
+					} else if (operation === 'createOnePerson') {
 						// ----------------------------------------
-					//          person: findOnePerson
-					// ----------------------------------------
+						//         person: createOnePerson
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/people', body, qs);
+					} else if (operation === 'deleteOnePerson') {
+						// ----------------------------------------
+						//         person: deleteOnePerson
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/people/${id}`);
+					} else if (operation === 'findManyPeople') {
+						// ----------------------------------------
+						//          person: findManyPeople
+						// ----------------------------------------
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					responseData = await twentyApiRequest.call(this, 'GET', `/people/${id}`, {}, qs);
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
+						responseData = await twentyApiRequest.call(this, 'GET', '/people', {}, qs);
+					} else if (operation === 'findOnePerson') {
+						// ----------------------------------------
+						//          person: findOnePerson
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/people/${id}`, {}, qs);
 					} else if (operation === 'findPersonDuplicates') {
-
 						// ----------------------------------------
-					//       person: findPersonDuplicates
-					// ----------------------------------------
+						//       person: findPersonDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'POST', '/people/duplicates', body, qs);
-
+						responseData = await twentyApiRequest.call(
+							this,
+							'POST',
+							'/people/duplicates',
+							body,
+							qs,
+						);
 					} else if (operation === 'updateOnePerson') {
-
 						// ----------------------------------------
-					//         person: updateOnePerson
-					// ----------------------------------------
+						//         person: updateOnePerson
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'PATCH', `/people/${id}`, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/people/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'task') {
-
 					// **********************************************************************
-				//                                  task
-				// **********************************************************************
+					//                                  task
+					// **********************************************************************
 
 					if (operation === 'createManyTasks') {
-
 						// ----------------------------------------
-					//          task: createManyTasks
-					// ----------------------------------------
+						//          task: createManyTasks
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/tasks', body, qs);
-
-					} else if (operation === 'createOneTask') {
-
-						// ----------------------------------------
-					//           task: createOneTask
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/tasks', body, qs);
-
-					} else if (operation === 'deleteOneTask') {
-
-						// ----------------------------------------
-					//           task: deleteOneTask
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/tasks/${id}`);
-
-					} else if (operation === 'findManyTasks') {
-
-						// ----------------------------------------
-					//           task: findManyTasks
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/tasks', {}, qs);
-
-					} else if (operation === 'findOneTask') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/batch/tasks', body, qs);
+					} else if (operation === 'createOneTask') {
 						// ----------------------------------------
-					//            task: findOneTask
-					// ----------------------------------------
+						//           task: createOneTask
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/tasks', body, qs);
+					} else if (operation === 'deleteOneTask') {
+						// ----------------------------------------
+						//           task: deleteOneTask
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/tasks/${id}`);
+					} else if (operation === 'findManyTasks') {
+						// ----------------------------------------
+						//           task: findManyTasks
+						// ----------------------------------------
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					responseData = await twentyApiRequest.call(this, 'GET', `/tasks/${id}`, {}, qs);
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
+						responseData = await twentyApiRequest.call(this, 'GET', '/tasks', {}, qs);
+					} else if (operation === 'findOneTask') {
+						// ----------------------------------------
+						//            task: findOneTask
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/tasks/${id}`, {}, qs);
 					} else if (operation === 'findTaskDuplicates') {
-
 						// ----------------------------------------
-					//         task: findTaskDuplicates
-					// ----------------------------------------
+						//         task: findTaskDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'POST', '/tasks/duplicates', body, qs);
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/tasks/duplicates', body, qs);
 					} else if (operation === 'updateOneTask') {
-
 						// ----------------------------------------
-					//           task: updateOneTask
-					// ----------------------------------------
+						//           task: updateOneTask
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'PATCH', `/tasks/${id}`, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/tasks/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'taskTarget') {
-
 					// **********************************************************************
-				//                               taskTarget
-				// **********************************************************************
+					//                               taskTarget
+					// **********************************************************************
 
 					if (operation === 'createManyTaskTargets') {
-
 						// ----------------------------------------
-					//    taskTarget: createManyTaskTargets
-					// ----------------------------------------
+						//    taskTarget: createManyTaskTargets
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/taskTargets', body, qs);
-
-					} else if (operation === 'createOneTaskTarget') {
-
-						// ----------------------------------------
-					//     taskTarget: createOneTaskTarget
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/taskTargets', body, qs);
-
-					} else if (operation === 'deleteOneTaskTarget') {
-
-						// ----------------------------------------
-					//     taskTarget: deleteOneTaskTarget
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/taskTargets/${id}`);
-
-					} else if (operation === 'findManyTaskTargets') {
-
-						// ----------------------------------------
-					//     taskTarget: findManyTaskTargets
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/taskTargets', {}, qs);
-
-					} else if (operation === 'findOneTaskTarget') {
-
+						responseData = await twentyApiRequest.call(
+							this,
+							'POST',
+							'/batch/taskTargets',
+							body,
+							qs,
+						);
+					} else if (operation === 'createOneTaskTarget') {
 						// ----------------------------------------
-					//      taskTarget: findOneTaskTarget
-					// ----------------------------------------
+						//     taskTarget: createOneTaskTarget
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/taskTargets', body, qs);
+					} else if (operation === 'deleteOneTaskTarget') {
+						// ----------------------------------------
+						//     taskTarget: deleteOneTaskTarget
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/taskTargets/${id}`);
+					} else if (operation === 'findManyTaskTargets') {
+						// ----------------------------------------
+						//     taskTarget: findManyTaskTargets
+						// ----------------------------------------
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					responseData = await twentyApiRequest.call(this, 'GET', `/taskTargets/${id}`, {}, qs);
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
+						responseData = await twentyApiRequest.call(this, 'GET', '/taskTargets', {}, qs);
+					} else if (operation === 'findOneTaskTarget') {
+						// ----------------------------------------
+						//      taskTarget: findOneTaskTarget
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/taskTargets/${id}`, {}, qs);
 					} else if (operation === 'findTaskTargetDuplicates') {
-
 						// ----------------------------------------
-					//   taskTarget: findTaskTargetDuplicates
-					// ----------------------------------------
+						//   taskTarget: findTaskTargetDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					const endpoint = '/taskTargets/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
+						const endpoint = '/taskTargets/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
 					} else if (operation === 'updateOneTaskTarget') {
-
 						// ----------------------------------------
-					//     taskTarget: updateOneTaskTarget
-					// ----------------------------------------
+						//     taskTarget: updateOneTaskTarget
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'PATCH',
+							`/taskTargets/${id}`,
+							body,
+							qs,
+						);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/taskTargets/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'timelineActivity') {
-
 					// **********************************************************************
-				//                            timelineActivity
-				// **********************************************************************
+					//                            timelineActivity
+					// **********************************************************************
 
 					if (operation === 'createManyTimelineActivities') {
-
 						// ----------------------------------------
-					// timelineActivity: createManyTimelineActivities
-					// ----------------------------------------
+						// timelineActivity: createManyTimelineActivities
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/batch/timelineActivities';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'createOneTimelineActivity') {
-
-						// ----------------------------------------
-					// timelineActivity: createOneTimelineActivity
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/timelineActivities', body, qs);
-
-					} else if (operation === 'deleteOneTimelineActivity') {
-
-						// ----------------------------------------
-					// timelineActivity: deleteOneTimelineActivity
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					const endpoint = `/timelineActivities/${id}`;
-					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-
-					} else if (operation === 'findManyTimelineActivities') {
-
-						// ----------------------------------------
-					// timelineActivity: findManyTimelineActivities
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/timelineActivities', {}, qs);
-
-					} else if (operation === 'findOneTimelineActivity') {
-
+						const endpoint = '/batch/timelineActivities';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'createOneTimelineActivity') {
 						// ----------------------------------------
-					// timelineActivity: findOneTimelineActivity
-					// ----------------------------------------
+						// timelineActivity: createOneTimelineActivity
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'POST',
+							'/timelineActivities',
+							body,
+							qs,
+						);
+					} else if (operation === 'deleteOneTimelineActivity') {
+						// ----------------------------------------
+						// timelineActivity: deleteOneTimelineActivity
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const endpoint = `/timelineActivities/${id}`;
+						responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
+					} else if (operation === 'findManyTimelineActivities') {
+						// ----------------------------------------
+						// timelineActivity: findManyTimelineActivities
+						// ----------------------------------------
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					const endpoint = `/timelineActivities/${id}`;
-					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
+						responseData = await twentyApiRequest.call(this, 'GET', '/timelineActivities', {}, qs);
+					} else if (operation === 'findOneTimelineActivity') {
+						// ----------------------------------------
+						// timelineActivity: findOneTimelineActivity
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/timelineActivities/${id}`;
+						responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
 					} else if (operation === 'findTimelineActivityDuplicates') {
-
 						// ----------------------------------------
-					// timelineActivity: findTimelineActivityDuplicates
-					// ----------------------------------------
+						// timelineActivity: findTimelineActivityDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					const endpoint = '/timelineActivities/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
+						const endpoint = '/timelineActivities/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
 					} else if (operation === 'updateOneTimelineActivity') {
-
 						// ----------------------------------------
-					// timelineActivity: updateOneTimelineActivity
-					// ----------------------------------------
+						// timelineActivity: updateOneTimelineActivity
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/timelineActivities/${id}`;
+						responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/timelineActivities/${id}`;
-					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-
-					}
-
 				} else if (resource === 'view') {
-
 					// **********************************************************************
-				//                                  view
-				// **********************************************************************
+					//                                  view
+					// **********************************************************************
 
 					if (operation === 'createManyViews') {
-
 						// ----------------------------------------
-					//          view: createManyViews
-					// ----------------------------------------
+						//          view: createManyViews
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/views', body, qs);
-
-					} else if (operation === 'createOneView') {
-
-						// ----------------------------------------
-					//           view: createOneView
-					// ----------------------------------------
-
-						const body = {
-						objectMetadataId: this.getNodeParameter('objectMetadataId', i),
-					} as IDataObject;
-
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/views', body, qs);
-
-					} else if (operation === 'deleteOneView') {
-
-						// ----------------------------------------
-					//           view: deleteOneView
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/views/${id}`);
-
-					} else if (operation === 'findManyViews') {
-
-						// ----------------------------------------
-					//           view: findManyViews
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/views', {}, qs);
-
-					} else if (operation === 'findOneView') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/batch/views', body, qs);
+					} else if (operation === 'createOneView') {
 						// ----------------------------------------
-					//            view: findOneView
-					// ----------------------------------------
+						//           view: createOneView
+						// ----------------------------------------
+
+						const body = {
+							objectMetadataId: this.getNodeParameter('objectMetadataId', i),
+						} as IDataObject;
+
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/views', body, qs);
+					} else if (operation === 'deleteOneView') {
+						// ----------------------------------------
+						//           view: deleteOneView
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/views/${id}`);
+					} else if (operation === 'findManyViews') {
+						// ----------------------------------------
+						//           view: findManyViews
+						// ----------------------------------------
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					responseData = await twentyApiRequest.call(this, 'GET', `/views/${id}`, {}, qs);
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
+						responseData = await twentyApiRequest.call(this, 'GET', '/views', {}, qs);
+					} else if (operation === 'findOneView') {
+						// ----------------------------------------
+						//            view: findOneView
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/views/${id}`, {}, qs);
 					} else if (operation === 'findViewDuplicates') {
-
 						// ----------------------------------------
-					//         view: findViewDuplicates
-					// ----------------------------------------
+						//         view: findViewDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'POST', '/views/duplicates', body, qs);
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/views/duplicates', body, qs);
 					} else if (operation === 'updateOneView') {
-
 						// ----------------------------------------
-					//           view: updateOneView
-					// ----------------------------------------
+						//           view: updateOneView
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'PATCH', `/views/${id}`, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/views/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'viewField') {
-
 					// **********************************************************************
-				//                               viewField
-				// **********************************************************************
+					//                               viewField
+					// **********************************************************************
 
 					if (operation === 'createManyViewFields') {
-
 						// ----------------------------------------
-					//     viewField: createManyViewFields
-					// ----------------------------------------
+						//     viewField: createManyViewFields
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/viewFields', body, qs);
-
-					} else if (operation === 'createOneViewField') {
-
-						// ----------------------------------------
-					//      viewField: createOneViewField
-					// ----------------------------------------
-
-						const body = {
-						fieldMetadataId: this.getNodeParameter('fieldMetadataId', i),
-						viewId: this.getNodeParameter('viewId', i),
-					} as IDataObject;
-
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/viewFields', body, qs);
-
-					} else if (operation === 'deleteOneViewField') {
-
-						// ----------------------------------------
-					//      viewField: deleteOneViewField
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/viewFields/${id}`);
-
-					} else if (operation === 'findManyViewFields') {
-
-						// ----------------------------------------
-					//      viewField: findManyViewFields
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/viewFields', {}, qs);
-
-					} else if (operation === 'findOneViewField') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/batch/viewFields', body, qs);
+					} else if (operation === 'createOneViewField') {
 						// ----------------------------------------
-					//       viewField: findOneViewField
-					// ----------------------------------------
+						//      viewField: createOneViewField
+						// ----------------------------------------
+
+						const body = {
+							fieldMetadataId: this.getNodeParameter('fieldMetadataId', i),
+							viewId: this.getNodeParameter('viewId', i),
+						} as IDataObject;
+
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/viewFields', body, qs);
+					} else if (operation === 'deleteOneViewField') {
+						// ----------------------------------------
+						//      viewField: deleteOneViewField
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/viewFields/${id}`);
+					} else if (operation === 'findManyViewFields') {
+						// ----------------------------------------
+						//      viewField: findManyViewFields
+						// ----------------------------------------
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					responseData = await twentyApiRequest.call(this, 'GET', `/viewFields/${id}`, {}, qs);
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
+						responseData = await twentyApiRequest.call(this, 'GET', '/viewFields', {}, qs);
+					} else if (operation === 'findOneViewField') {
+						// ----------------------------------------
+						//       viewField: findOneViewField
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/viewFields/${id}`, {}, qs);
 					} else if (operation === 'findViewFieldDuplicates') {
-
 						// ----------------------------------------
-					//    viewField: findViewFieldDuplicates
-					// ----------------------------------------
+						//    viewField: findViewFieldDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					const endpoint = '/viewFields/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
+						const endpoint = '/viewFields/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
 					} else if (operation === 'updateOneViewField') {
-
 						// ----------------------------------------
-					//      viewField: updateOneViewField
-					// ----------------------------------------
+						//      viewField: updateOneViewField
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'PATCH',
+							`/viewFields/${id}`,
+							body,
+							qs,
+						);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/viewFields/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'viewFilter') {
-
 					// **********************************************************************
-				//                               viewFilter
-				// **********************************************************************
+					//                               viewFilter
+					// **********************************************************************
 
 					if (operation === 'createManyViewFilters') {
-
 						// ----------------------------------------
-					//    viewFilter: createManyViewFilters
-					// ----------------------------------------
+						//    viewFilter: createManyViewFilters
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/viewFilters', body, qs);
-
-					} else if (operation === 'createOneViewFilter') {
-
-						// ----------------------------------------
-					//     viewFilter: createOneViewFilter
-					// ----------------------------------------
-
-						const body = {
-						fieldMetadataId: this.getNodeParameter('fieldMetadataId', i),
-					} as IDataObject;
-
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/viewFilters', body, qs);
-
-					} else if (operation === 'deleteOneViewFilter') {
-
-						// ----------------------------------------
-					//     viewFilter: deleteOneViewFilter
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/viewFilters/${id}`);
-
-					} else if (operation === 'findManyViewFilters') {
-
-						// ----------------------------------------
-					//     viewFilter: findManyViewFilters
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/viewFilters', {}, qs);
-
-					} else if (operation === 'findOneViewFilter') {
-
+						responseData = await twentyApiRequest.call(
+							this,
+							'POST',
+							'/batch/viewFilters',
+							body,
+							qs,
+						);
+					} else if (operation === 'createOneViewFilter') {
 						// ----------------------------------------
-					//      viewFilter: findOneViewFilter
-					// ----------------------------------------
+						//     viewFilter: createOneViewFilter
+						// ----------------------------------------
+
+						const body = {
+							fieldMetadataId: this.getNodeParameter('fieldMetadataId', i),
+						} as IDataObject;
+
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/viewFilters', body, qs);
+					} else if (operation === 'deleteOneViewFilter') {
+						// ----------------------------------------
+						//     viewFilter: deleteOneViewFilter
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/viewFilters/${id}`);
+					} else if (operation === 'findManyViewFilters') {
+						// ----------------------------------------
+						//     viewFilter: findManyViewFilters
+						// ----------------------------------------
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					responseData = await twentyApiRequest.call(this, 'GET', `/viewFilters/${id}`, {}, qs);
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
+						responseData = await twentyApiRequest.call(this, 'GET', '/viewFilters', {}, qs);
+					} else if (operation === 'findOneViewFilter') {
+						// ----------------------------------------
+						//      viewFilter: findOneViewFilter
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/viewFilters/${id}`, {}, qs);
 					} else if (operation === 'findViewFilterDuplicates') {
-
 						// ----------------------------------------
-					//   viewFilter: findViewFilterDuplicates
-					// ----------------------------------------
+						//   viewFilter: findViewFilterDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					const endpoint = '/viewFilters/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
+						const endpoint = '/viewFilters/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
 					} else if (operation === 'updateOneViewFilter') {
-
 						// ----------------------------------------
-					//     viewFilter: updateOneViewFilter
-					// ----------------------------------------
+						//     viewFilter: updateOneViewFilter
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'PATCH',
+							`/viewFilters/${id}`,
+							body,
+							qs,
+						);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/viewFilters/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'viewFilterGroup') {
-
 					// **********************************************************************
-				//                            viewFilterGroup
-				// **********************************************************************
+					//                            viewFilterGroup
+					// **********************************************************************
 
 					if (operation === 'createManyViewFilterGroups') {
-
 						// ----------------------------------------
-					// viewFilterGroup: createManyViewFilterGroups
-					// ----------------------------------------
+						// viewFilterGroup: createManyViewFilterGroups
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/batch/viewFilterGroups';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'createOneViewFilterGroup') {
-
-						// ----------------------------------------
-					// viewFilterGroup: createOneViewFilterGroup
-					// ----------------------------------------
-
-						const body = {
-						viewId: this.getNodeParameter('viewId', i),
-					} as IDataObject;
-
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/viewFilterGroups', body, qs);
-
-					} else if (operation === 'deleteOneViewFilterGroup') {
-
-						// ----------------------------------------
-					// viewFilterGroup: deleteOneViewFilterGroup
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					const endpoint = `/viewFilterGroups/${id}`;
-					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-
-					} else if (operation === 'findManyViewFilterGroups') {
-
-						// ----------------------------------------
-					// viewFilterGroup: findManyViewFilterGroups
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/viewFilterGroups', {}, qs);
-
-					} else if (operation === 'findOneViewFilterGroup') {
-
+						const endpoint = '/batch/viewFilterGroups';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'createOneViewFilterGroup') {
 						// ----------------------------------------
-					// viewFilterGroup: findOneViewFilterGroup
-					// ----------------------------------------
+						// viewFilterGroup: createOneViewFilterGroup
+						// ----------------------------------------
+
+						const body = {
+							viewId: this.getNodeParameter('viewId', i),
+						} as IDataObject;
+
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/viewFilterGroups', body, qs);
+					} else if (operation === 'deleteOneViewFilterGroup') {
+						// ----------------------------------------
+						// viewFilterGroup: deleteOneViewFilterGroup
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const endpoint = `/viewFilterGroups/${id}`;
+						responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
+					} else if (operation === 'findManyViewFilterGroups') {
+						// ----------------------------------------
+						// viewFilterGroup: findManyViewFilterGroups
+						// ----------------------------------------
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					const endpoint = `/viewFilterGroups/${id}`;
-					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
+						responseData = await twentyApiRequest.call(this, 'GET', '/viewFilterGroups', {}, qs);
+					} else if (operation === 'findOneViewFilterGroup') {
+						// ----------------------------------------
+						// viewFilterGroup: findOneViewFilterGroup
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/viewFilterGroups/${id}`;
+						responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
 					} else if (operation === 'findViewFilterGroupDuplicates') {
-
 						// ----------------------------------------
-					// viewFilterGroup: findViewFilterGroupDuplicates
-					// ----------------------------------------
+						// viewFilterGroup: findViewFilterGroupDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					const endpoint = '/viewFilterGroups/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
+						const endpoint = '/viewFilterGroups/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
 					} else if (operation === 'updateOneViewFilterGroup') {
-
 						// ----------------------------------------
-					// viewFilterGroup: updateOneViewFilterGroup
-					// ----------------------------------------
+						// viewFilterGroup: updateOneViewFilterGroup
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/viewFilterGroups/${id}`;
+						responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/viewFilterGroups/${id}`;
-					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-
-					}
-
 				} else if (resource === 'viewGroup') {
-
 					// **********************************************************************
-				//                               viewGroup
-				// **********************************************************************
+					//                               viewGroup
+					// **********************************************************************
 
 					if (operation === 'createManyViewGroups') {
-
 						// ----------------------------------------
-					//     viewGroup: createManyViewGroups
-					// ----------------------------------------
+						//     viewGroup: createManyViewGroups
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/viewGroups', body, qs);
-
-					} else if (operation === 'createOneViewGroup') {
-
-						// ----------------------------------------
-					//      viewGroup: createOneViewGroup
-					// ----------------------------------------
-
-						const body = {
-						fieldMetadataId: this.getNodeParameter('fieldMetadataId', i),
-					} as IDataObject;
-
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/viewGroups', body, qs);
-
-					} else if (operation === 'deleteOneViewGroup') {
-
-						// ----------------------------------------
-					//      viewGroup: deleteOneViewGroup
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/viewGroups/${id}`);
-
-					} else if (operation === 'findManyViewGroups') {
-
-						// ----------------------------------------
-					//      viewGroup: findManyViewGroups
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/viewGroups', {}, qs);
-
-					} else if (operation === 'findOneViewGroup') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/batch/viewGroups', body, qs);
+					} else if (operation === 'createOneViewGroup') {
 						// ----------------------------------------
-					//       viewGroup: findOneViewGroup
-					// ----------------------------------------
+						//      viewGroup: createOneViewGroup
+						// ----------------------------------------
+
+						const body = {
+							fieldMetadataId: this.getNodeParameter('fieldMetadataId', i),
+						} as IDataObject;
+
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/viewGroups', body, qs);
+					} else if (operation === 'deleteOneViewGroup') {
+						// ----------------------------------------
+						//      viewGroup: deleteOneViewGroup
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/viewGroups/${id}`);
+					} else if (operation === 'findManyViewGroups') {
+						// ----------------------------------------
+						//      viewGroup: findManyViewGroups
+						// ----------------------------------------
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					responseData = await twentyApiRequest.call(this, 'GET', `/viewGroups/${id}`, {}, qs);
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
+						responseData = await twentyApiRequest.call(this, 'GET', '/viewGroups', {}, qs);
+					} else if (operation === 'findOneViewGroup') {
+						// ----------------------------------------
+						//       viewGroup: findOneViewGroup
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/viewGroups/${id}`, {}, qs);
 					} else if (operation === 'findViewGroupDuplicates') {
-
 						// ----------------------------------------
-					//    viewGroup: findViewGroupDuplicates
-					// ----------------------------------------
+						//    viewGroup: findViewGroupDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					const endpoint = '/viewGroups/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
+						const endpoint = '/viewGroups/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
 					} else if (operation === 'updateOneViewGroup') {
-
 						// ----------------------------------------
-					//      viewGroup: updateOneViewGroup
-					// ----------------------------------------
+						//      viewGroup: updateOneViewGroup
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(
+							this,
+							'PATCH',
+							`/viewGroups/${id}`,
+							body,
+							qs,
+						);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/viewGroups/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'viewSort') {
-
 					// **********************************************************************
-				//                                viewSort
-				// **********************************************************************
+					//                                viewSort
+					// **********************************************************************
 
 					if (operation === 'createManyViewSorts') {
-
 						// ----------------------------------------
-					//      viewSort: createManyViewSorts
-					// ----------------------------------------
+						//      viewSort: createManyViewSorts
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/viewSorts', body, qs);
-
-					} else if (operation === 'createOneViewSort') {
-
-						// ----------------------------------------
-					//       viewSort: createOneViewSort
-					// ----------------------------------------
-
-						const body = {
-						fieldMetadataId: this.getNodeParameter('fieldMetadataId', i),
-					} as IDataObject;
-
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/viewSorts', body, qs);
-
-					} else if (operation === 'deleteOneViewSort') {
-
-						// ----------------------------------------
-					//       viewSort: deleteOneViewSort
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/viewSorts/${id}`);
-
-					} else if (operation === 'findManyViewSorts') {
-
-						// ----------------------------------------
-					//       viewSort: findManyViewSorts
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/viewSorts', {}, qs);
-
-					} else if (operation === 'findOneViewSort') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/batch/viewSorts', body, qs);
+					} else if (operation === 'createOneViewSort') {
 						// ----------------------------------------
-					//        viewSort: findOneViewSort
-					// ----------------------------------------
+						//       viewSort: createOneViewSort
+						// ----------------------------------------
+
+						const body = {
+							fieldMetadataId: this.getNodeParameter('fieldMetadataId', i),
+						} as IDataObject;
+
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/viewSorts', body, qs);
+					} else if (operation === 'deleteOneViewSort') {
+						// ----------------------------------------
+						//       viewSort: deleteOneViewSort
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/viewSorts/${id}`);
+					} else if (operation === 'findManyViewSorts') {
+						// ----------------------------------------
+						//       viewSort: findManyViewSorts
+						// ----------------------------------------
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					responseData = await twentyApiRequest.call(this, 'GET', `/viewSorts/${id}`, {}, qs);
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
+						responseData = await twentyApiRequest.call(this, 'GET', '/viewSorts', {}, qs);
+					} else if (operation === 'findOneViewSort') {
+						// ----------------------------------------
+						//        viewSort: findOneViewSort
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/viewSorts/${id}`, {}, qs);
 					} else if (operation === 'findViewSortDuplicates') {
-
 						// ----------------------------------------
-					//     viewSort: findViewSortDuplicates
-					// ----------------------------------------
+						//     viewSort: findViewSortDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					const endpoint = '/viewSorts/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
+						const endpoint = '/viewSorts/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
 					} else if (operation === 'updateOneViewSort') {
-
 						// ----------------------------------------
-					//       viewSort: updateOneViewSort
-					// ----------------------------------------
+						//       viewSort: updateOneViewSort
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'PATCH', `/viewSorts/${id}`, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/viewSorts/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'webhook') {
-
 					// **********************************************************************
-				//                                webhook
-				// **********************************************************************
+					//                                webhook
+					// **********************************************************************
 
 					if (operation === 'createManyWebhooks') {
-
 						// ----------------------------------------
-					//       webhook: createManyWebhooks
-					// ----------------------------------------
+						//       webhook: createManyWebhooks
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/webhooks', body, qs);
-
-					} else if (operation === 'createOneWebhook') {
-
-						// ----------------------------------------
-					//        webhook: createOneWebhook
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/webhooks', body, qs);
-
-					} else if (operation === 'deleteOneWebhook') {
-
-						// ----------------------------------------
-					//        webhook: deleteOneWebhook
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/webhooks/${id}`);
-
-					} else if (operation === 'findManyWebhooks') {
-
-						// ----------------------------------------
-					//        webhook: findManyWebhooks
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/webhooks', {}, qs);
-
-					} else if (operation === 'findOneWebhook') {
-
+						responseData = await twentyApiRequest.call(this, 'POST', '/batch/webhooks', body, qs);
+					} else if (operation === 'createOneWebhook') {
 						// ----------------------------------------
-					//         webhook: findOneWebhook
-					// ----------------------------------------
+						//        webhook: createOneWebhook
+						// ----------------------------------------
+
+						const body = {} as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/webhooks', body, qs);
+					} else if (operation === 'deleteOneWebhook') {
+						// ----------------------------------------
+						//        webhook: deleteOneWebhook
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						responseData = await twentyApiRequest.call(this, 'DELETE', `/webhooks/${id}`);
+					} else if (operation === 'findManyWebhooks') {
+						// ----------------------------------------
+						//        webhook: findManyWebhooks
+						// ----------------------------------------
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					responseData = await twentyApiRequest.call(this, 'GET', `/webhooks/${id}`, {}, qs);
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
+						responseData = await twentyApiRequest.call(this, 'GET', '/webhooks', {}, qs);
+					} else if (operation === 'findOneWebhook') {
+						// ----------------------------------------
+						//         webhook: findOneWebhook
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'GET', `/webhooks/${id}`, {}, qs);
 					} else if (operation === 'findWebhookDuplicates') {
-
 						// ----------------------------------------
-					//      webhook: findWebhookDuplicates
-					// ----------------------------------------
+						//      webhook: findWebhookDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'POST', '/webhooks/duplicates', body, qs);
-
+						responseData = await twentyApiRequest.call(
+							this,
+							'POST',
+							'/webhooks/duplicates',
+							body,
+							qs,
+						);
 					} else if (operation === 'updateOneWebhook') {
-
 						// ----------------------------------------
-					//        webhook: updateOneWebhook
-					// ----------------------------------------
+						//        webhook: updateOneWebhook
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'PATCH', `/webhooks/${id}`, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/webhooks/${id}`, body, qs);
-
-					}
-
 				} else if (resource === 'workspaceMember') {
-
 					// **********************************************************************
-				//                            workspaceMember
-				// **********************************************************************
+					//                            workspaceMember
+					// **********************************************************************
 
 					if (operation === 'createManyWorkspaceMembers') {
-
 						// ----------------------------------------
-					// workspaceMember: createManyWorkspaceMembers
-					// ----------------------------------------
+						// workspaceMember: createManyWorkspaceMembers
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/batch/workspaceMembers';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
-					} else if (operation === 'createOneWorkspaceMember') {
-
-						// ----------------------------------------
-					// workspaceMember: createOneWorkspaceMember
-					// ----------------------------------------
-
-						const body = {
-						userId: this.getNodeParameter('userId', i),
-					} as IDataObject;
-
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/workspaceMembers', body, qs);
-
-					} else if (operation === 'deleteOneWorkspaceMember') {
-
-						// ----------------------------------------
-					// workspaceMember: deleteOneWorkspaceMember
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					const endpoint = `/workspaceMembers/${id}`;
-					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-
-					} else if (operation === 'findManyWorkspaceMembers') {
-
-						// ----------------------------------------
-					// workspaceMember: findManyWorkspaceMembers
-					// ----------------------------------------
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
 						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					responseData = await twentyApiRequest.call(this, 'GET', '/workspaceMembers', {}, qs);
-
-					} else if (operation === 'findOneWorkspaceMember') {
-
+						const endpoint = '/batch/workspaceMembers';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+					} else if (operation === 'createOneWorkspaceMember') {
 						// ----------------------------------------
-					// workspaceMember: findOneWorkspaceMember
-					// ----------------------------------------
+						// workspaceMember: createOneWorkspaceMember
+						// ----------------------------------------
+
+						const body = {
+							userId: this.getNodeParameter('userId', i),
+						} as IDataObject;
+
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						responseData = await twentyApiRequest.call(this, 'POST', '/workspaceMembers', body, qs);
+					} else if (operation === 'deleteOneWorkspaceMember') {
+						// ----------------------------------------
+						// workspaceMember: deleteOneWorkspaceMember
+						// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const endpoint = `/workspaceMembers/${id}`;
+						responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
+					} else if (operation === 'findManyWorkspaceMembers') {
+						// ----------------------------------------
+						// workspaceMember: findManyWorkspaceMembers
+						// ----------------------------------------
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					const endpoint = `/workspaceMembers/${id}`;
-					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
+						responseData = await twentyApiRequest.call(this, 'GET', '/workspaceMembers', {}, qs);
+					} else if (operation === 'findOneWorkspaceMember') {
+						// ----------------------------------------
+						// workspaceMember: findOneWorkspaceMember
+						// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/workspaceMembers/${id}`;
+						responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
 					} else if (operation === 'findWorkspaceMemberDuplicates') {
-
 						// ----------------------------------------
-					// workspaceMember: findWorkspaceMemberDuplicates
-					// ----------------------------------------
+						// workspaceMember: findWorkspaceMemberDuplicates
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+						const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
+						if (Object.keys(additionalFields).length) {
+							Object.assign(body, additionalFields);
+						}
 
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
 
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
 
-					const endpoint = '/workspaceMembers/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-
+						const endpoint = '/workspaceMembers/duplicates';
+						responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
 					} else if (operation === 'updateOneWorkspaceMember') {
-
 						// ----------------------------------------
-					// workspaceMember: updateOneWorkspaceMember
-					// ----------------------------------------
+						// workspaceMember: updateOneWorkspaceMember
+						// ----------------------------------------
 
 						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+						const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
 
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
+						if (Object.keys(updateFields).length) {
+							Object.assign(body, updateFields);
+						}
+
+						const id = this.getNodeParameter('id', i);
+
+						const qs = {} as IDataObject;
+						const query = this.getNodeParameter('query', i) as IDataObject;
+
+						if (Object.keys(query).length) {
+							Object.assign(qs, query);
+						}
+
+						const endpoint = `/workspaceMembers/${id}`;
+						responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
 					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = `/workspaceMembers/${id}`;
-					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-
-					}
-
-			}
+				}
 				const executionData = this.helpers.constructExecutionMetaData(
 					this.helpers.returnJsonArray(responseData as IDataObject),
 					{ itemData: { item: i } },
 				);
 				returnData.push(...executionData);
-			} catch(error) {
+			} catch (error) {
 				if (this.continueOnFail()) {
 					const executionErrorData = this.helpers.constructExecutionMetaData(
 						this.helpers.returnJsonArray({ error: error.message }),

@@ -13,7 +13,7 @@ export async function twentyApiRequest(
 	endpoint: string,
 	body: IDataObject = {},
 	qs: IDataObject = {},
-	path: string = "rest",
+	path: string = 'rest',
 ) {
 	const credentials = await this.getCredentials('twentyApi');
 
@@ -28,7 +28,6 @@ export async function twentyApiRequest(
 		uri: `${credentials.domain}/${path}${endpoint}`,
 		json: true,
 	};
-
 
 	if (!Object.keys(body).length) {
 		delete options.body;

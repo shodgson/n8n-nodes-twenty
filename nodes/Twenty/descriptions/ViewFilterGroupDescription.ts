@@ -1,6 +1,4 @@
-import type {
-	INodeProperties,
-} from 'n8n-workflow';
+import type { INodeProperties } from 'n8n-workflow';
 
 export const viewFilterGroupOperations: INodeProperties[] = [
 	{
@@ -10,9 +8,7 @@ export const viewFilterGroupOperations: INodeProperties[] = [
 		noDataExpression: true,
 		displayOptions: {
 			show: {
-				resource: [
-					'viewFilterGroup',
-				],
+				resource: ['viewFilterGroup'],
 			},
 		},
 		options: [
@@ -24,7 +20,8 @@ export const viewFilterGroupOperations: INodeProperties[] = [
 			{
 				name: 'Create One View Filter Group',
 				value: 'createOneViewFilterGroup',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewFilterGroups**',
+				description:
+					'**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewFilterGroups**',
 				action: 'Create one view filter group',
 			},
 			{
@@ -36,7 +33,8 @@ export const viewFilterGroupOperations: INodeProperties[] = [
 			{
 				name: 'Find Many View Filter Groups',
 				value: 'findManyViewFilterGroups',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewFilterGroups**',
+				description:
+					'**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewFilterGroups**',
 				action: 'Find many view filter groups',
 			},
 			{
@@ -73,37 +71,34 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
+					},
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'createManyViewFilterGroups',
-				],
+				resource: ['viewFilterGroup'],
+				operation: ['createManyViewFilterGroups'],
 			},
 		},
 	},
@@ -115,34 +110,25 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'createManyViewFilterGroups',
-				],
+				resource: ['viewFilterGroup'],
+				operation: ['createManyViewFilterGroups'],
 			},
 		},
-		options: [
-		],
+		options: [],
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'viewFilterGroup',
-					],
-					operation: [
-						'createManyViewFilterGroups',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['viewFilterGroup'],
+				operation: ['createManyViewFilterGroups'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	// viewFilterGroup: createOneViewFilterGroup
 	// ----------------------------------------
@@ -153,37 +139,34 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
+					},
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'createOneViewFilterGroup',
-				],
+				resource: ['viewFilterGroup'],
+				operation: ['createOneViewFilterGroup'],
 			},
 		},
 	},
@@ -196,12 +179,8 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'createOneViewFilterGroup',
-				],
+				resource: ['viewFilterGroup'],
+				operation: ['createOneViewFilterGroup'],
 			},
 		},
 	},
@@ -213,12 +192,8 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'createOneViewFilterGroup',
-				],
+				resource: ['viewFilterGroup'],
+				operation: ['createOneViewFilterGroup'],
 			},
 		},
 		options: [
@@ -259,23 +234,19 @@ export const viewFilterGroupFields: INodeProperties[] = [
 			},
 		],
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'viewFilterGroup',
-					],
-					operation: [
-						'createOneViewFilterGroup',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['viewFilterGroup'],
+				operation: ['createOneViewFilterGroup'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	// viewFilterGroup: deleteOneViewFilterGroup
 	// ----------------------------------------
@@ -288,32 +259,24 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'deleteOneViewFilterGroup',
-				],
+				resource: ['viewFilterGroup'],
+				operation: ['deleteOneViewFilterGroup'],
 			},
 		},
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'viewFilterGroup',
-					],
-					operation: [
-						'deleteOneViewFilterGroup',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['viewFilterGroup'],
+				operation: ['deleteOneViewFilterGroup'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	// viewFilterGroup: findManyViewFilterGroups
 	// ----------------------------------------
@@ -324,95 +287,92 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
-				{
-					displayName: 'Ending Before',
-					name: 'ending_before',
-					type: 'string',
-					default: '',
-					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
-				},
-				{
-					displayName: 'Filter',
-					name: 'filter',
-					type: 'string',
-					default: '',
-					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
-				},
-				{
-					displayName: 'Limit',
-					name: 'limit',
-					type: 'number',
-					typeOptions: {
-						minValue: 1,
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
 					},
-					default: 50,
-					description: 'Max number of results to return',
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
+			{
+				displayName: 'Ending Before',
+				name: 'ending_before',
+				type: 'string',
+				default: '',
+				description:
+					'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+			},
+			{
+				displayName: 'Filter',
+				name: 'filter',
+				type: 'string',
+				default: '',
+				description:
+					'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
+			},
+			{
+				displayName: 'Limit',
+				name: 'limit',
+				type: 'number',
+				typeOptions: {
+					minValue: 1,
 				},
-				{
-					displayName: 'Order By',
-					name: 'order_by',
-					type: 'string',
-					default: '',
-					description: 'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
-				},
-				{
-					displayName: 'Starting After',
-					name: 'starting_after',
-					type: 'string',
-					default: '',
-					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
-				},
+				default: 50,
+				description: 'Max number of results to return',
+			},
+			{
+				displayName: 'Order By',
+				name: 'order_by',
+				type: 'string',
+				default: '',
+				description:
+					'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
+			},
+			{
+				displayName: 'Starting After',
+				name: 'starting_after',
+				type: 'string',
+				default: '',
+				description:
+					'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'findManyViewFilterGroups',
-				],
+				resource: ['viewFilterGroup'],
+				operation: ['findManyViewFilterGroups'],
 			},
 		},
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'viewFilterGroup',
-					],
-					operation: [
-						'findManyViewFilterGroups',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['viewFilterGroup'],
+				operation: ['findManyViewFilterGroups'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	// viewFilterGroup: findOneViewFilterGroup
 	// ----------------------------------------
@@ -425,12 +385,8 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'findOneViewFilterGroup',
-				],
+				resource: ['viewFilterGroup'],
+				operation: ['findOneViewFilterGroup'],
 			},
 		},
 	},
@@ -441,57 +397,50 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
+					},
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'findOneViewFilterGroup',
-				],
+				resource: ['viewFilterGroup'],
+				operation: ['findOneViewFilterGroup'],
 			},
 		},
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'viewFilterGroup',
-					],
-					operation: [
-						'findOneViewFilterGroup',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['viewFilterGroup'],
+				operation: ['findOneViewFilterGroup'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	// viewFilterGroup: findViewFilterGroupDuplicates
 	// ----------------------------------------
@@ -502,37 +451,34 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
+					},
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'findViewFilterGroupDuplicates',
-				],
+				resource: ['viewFilterGroup'],
+				operation: ['findViewFilterGroupDuplicates'],
 			},
 		},
 	},
@@ -544,74 +490,69 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'findViewFilterGroupDuplicates',
-				],
+				resource: ['viewFilterGroup'],
+				operation: ['findViewFilterGroupDuplicates'],
 			},
 		},
 		options: [
-				{
-displayName: 'Data',
-name: 'data',
-placeholder: 'Add Data Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Data Fields',
-name: 'dataFields',
-values: [
-{
-displayName: 'Parent View Filter Group ID',
-name: 'parentViewFilterGroupId',
-type: 'string',
-default: '',
-description: 'Parent View Filter Group',
-},
-{
-displayName: 'Logical Operator',
-name: 'logicalOperator',
-type: 'string',
-default: '',
-description: 'Logical operator for the filter group',
-},
-{
-displayName: 'Position In View Filter Group',
-name: 'positionInViewFilterGroup',
-type: 'number',
-default: 0,
-description: 'Position in the parent view filter group',
-},
-{
-displayName: 'View ID',
-name: 'viewId',
-type: 'string',
-default: '',
-description: 'View ID foreign key',
-},
-]}],
-},
+			{
+				displayName: 'Data',
+				name: 'data',
+				placeholder: 'Add Data Field',
+				type: 'fixedCollection',
+				default: {},
+				options: [
+					{
+						displayName: 'Data Fields',
+						name: 'dataFields',
+						values: [
+							{
+								displayName: 'Parent View Filter Group ID',
+								name: 'parentViewFilterGroupId',
+								type: 'string',
+								default: '',
+								description: 'Parent View Filter Group',
+							},
+							{
+								displayName: 'Logical Operator',
+								name: 'logicalOperator',
+								type: 'string',
+								default: '',
+								description: 'Logical operator for the filter group',
+							},
+							{
+								displayName: 'Position In View Filter Group',
+								name: 'positionInViewFilterGroup',
+								type: 'number',
+								default: 0,
+								description: 'Position in the parent view filter group',
+							},
+							{
+								displayName: 'View ID',
+								name: 'viewId',
+								type: 'string',
+								default: '',
+								description: 'View ID foreign key',
+							},
+						],
+					},
+				],
+			},
 		],
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'viewFilterGroup',
-					],
-					operation: [
-						'findViewFilterGroupDuplicates',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['viewFilterGroup'],
+				operation: ['findViewFilterGroupDuplicates'],
 			},
 		},
-	
+	},
+
 	// ----------------------------------------
 	// viewFilterGroup: updateOneViewFilterGroup
 	// ----------------------------------------
@@ -624,12 +565,8 @@ description: 'View ID foreign key',
 		default: '',
 		displayOptions: {
 			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'updateOneViewFilterGroup',
-				],
+				resource: ['viewFilterGroup'],
+				operation: ['updateOneViewFilterGroup'],
 			},
 		},
 	},
@@ -640,37 +577,34 @@ description: 'View ID foreign key',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
+			{
+				displayName: 'Depth',
+				name: 'depth',
+				type: 'options',
+				options: [
+					{
+						name: '0',
+						value: '0',
+					},
+					{
+						name: '1',
+						value: '1',
+					},
+					{
+						name: '2',
+						value: '2',
+					},
+				],
+				default: '1',
+				description:
+					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+			},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'updateOneViewFilterGroup',
-				],
+				resource: ['viewFilterGroup'],
+				operation: ['updateOneViewFilterGroup'],
 			},
 		},
 	},
@@ -682,12 +616,8 @@ description: 'View ID foreign key',
 		default: {},
 		displayOptions: {
 			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'updateOneViewFilterGroup',
-				],
+				resource: ['viewFilterGroup'],
+				operation: ['updateOneViewFilterGroup'],
 			},
 		},
 		options: [
@@ -735,20 +665,16 @@ description: 'View ID foreign key',
 			},
 		],
 	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'viewFilterGroup',
-					],
-					operation: [
-						'updateOneViewFilterGroup',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['viewFilterGroup'],
+				operation: ['updateOneViewFilterGroup'],
 			},
 		},
+	},
 ];

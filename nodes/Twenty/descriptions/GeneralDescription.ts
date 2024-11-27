@@ -1,6 +1,4 @@
-import type {
-	INodeProperties,
-} from 'n8n-workflow';
+import type { INodeProperties } from 'n8n-workflow';
 
 export const generalOperations: INodeProperties[] = [
 	{
@@ -10,9 +8,7 @@ export const generalOperations: INodeProperties[] = [
 		noDataExpression: true,
 		displayOptions: {
 			show: {
-				resource: [
-					'general',
-				],
+				resource: ['general'],
 			},
 		},
 		options: [
@@ -27,20 +23,16 @@ export const generalOperations: INodeProperties[] = [
 ];
 
 export const generalFields: INodeProperties[] = [
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'general',
-					],
-					operation: [
-						'getOpenApiSchema',
-					],
-				},
+	{
+		displayName: 'Scope',
+		name: 'scope',
+		type: 'hidden',
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['general'],
+				operation: ['getOpenApiSchema'],
 			},
 		},
+	},
 ];
