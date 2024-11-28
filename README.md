@@ -8,11 +8,11 @@ This is an n8n community node. It lets you use **Twenty CRM** in your n8n workfl
 
 [Installation](#installation)  
 [Operations](#operations)  
-[Credentials](#credentials)  <!-- delete if no auth needed -->  
+[Credentials](#credentials)  
 [Compatibility](#compatibility)  
 [Resources](#resources)  
 [Credit](#credit)
-[Version history](#version-history)  delete if not using this section  
+[Version history](#version-history)  
 
 ## Installation
 
