@@ -12,7 +12,7 @@ This is an n8n community node. It lets you use **Twenty CRM** in your n8n workfl
 [Compatibility](#compatibility)  
 [Resources](#resources)  
 [Credit](#credit)
-<!-- [Version history](#version-history)  delete if not using this section   -->
+[Version history](#version-history)  delete if not using this section  
 
 ## Installation
 
@@ -21,8 +21,6 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 ## Operations
 
 	- General
-	- Activity
-	- ActivityTarget
 	- ApiKey
 	- Attachment
 	- AuditLog
@@ -31,7 +29,6 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 	- CalendarChannelEventAssociation
 	- CalendarEvent
 	- CalendarEventParticipant
-	- Comment
 	- Company
 	- ConnectedAccount
 	- Favorite
@@ -50,6 +47,8 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 	- View
 	- ViewField
 	- ViewFilter
+	- ViewFilterGroup
+	- ViewGroup
 	- ViewSort
 	- Webhook
 	- WorkspaceMember
@@ -62,16 +61,20 @@ Copy the API key. Click 'Add Credential' in n8n and search for 'Twenty API'. Pro
 
 ## Compatibility
 
-Compatible and tested with Twenty v0.24.1 and n8n v1.9.3.
+Compatible and tested with Twenty v0.33.4 and n8n v1.9.3.
 
 ## Resources
 
 * [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
 * [Twenty developer documentation](https://twenty.com/developers/)
 
-<!-- ## Version history -->
+## Version history
 
-<!-- #### v0.0.1 -->
+#### v0.0.3
+Compatible with Twenty's updated API in v0.33.4
+
+#### v0.0.1
+Initial release
 
 ## Credit
 
