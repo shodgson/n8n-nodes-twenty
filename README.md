@@ -11,7 +11,7 @@ This is an n8n community node. It lets you use **Twenty CRM** in your n8n workfl
 [Credentials](#credentials)  
 [Compatibility](#compatibility)  
 [Resources](#resources)  
-[Credit](#credit)
+[Credit](#credit)  
 [Version history](#version-history)  
 
 ## Installation
