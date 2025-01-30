@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-twenty",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "n8n node to call Twenty CRM's API",
   "keywords": [
     "n8n-community-node-package"

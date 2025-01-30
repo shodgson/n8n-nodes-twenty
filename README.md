@@ -32,6 +32,7 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 	- Company
 	- ConnectedAccount
 	- Favorite
+	- FavoriteFolder
 	- Message
 	- MessageChannel
 	- MessageChannelMessageAssociation
@@ -51,6 +52,10 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 	- ViewGroup
 	- ViewSort
 	- Webhook
+	- Workflow
+	- WorkflowEventListener
+	- WorkflowRun
+	- WorkflowVersion
 	- WorkspaceMember
 
 ## Credentials
@@ -61,7 +66,7 @@ Copy the API key. Click 'Add Credential' in n8n and search for 'Twenty API'. Pro
 
 ## Compatibility
 
-Compatible and tested with Twenty v0.33.4 and n8n v1.9.3.
+Compatible and tested with Twenty v0.40.7 and n8n v1.9.3.
 
 ## Resources
 
@@ -69,6 +74,9 @@ Compatible and tested with Twenty v0.33.4 and n8n v1.9.3.
 * [Twenty developer documentation](https://twenty.com/developers/)
 
 ## Version history
+
+#### v0.0.4
+Compatible with Twenty's updated API in v0.40.7
 
 #### v0.0.3
 Compatible with Twenty's updated API in v0.33.4

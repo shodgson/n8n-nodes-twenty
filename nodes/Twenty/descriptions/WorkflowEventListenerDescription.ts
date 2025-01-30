@@ -2,7 +2,7 @@ import type {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export const viewFilterGroupOperations: INodeProperties[] = [
+export const workflowEventListenerOperations: INodeProperties[] = [
 	{
 		displayName: 'Operation',
 		name: 'operation',
@@ -11,60 +11,60 @@ export const viewFilterGroupOperations: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflowEventListener',
 				],
 			},
 		},
 		options: [
 			{
-				name: 'Create Many View Filter Groups',
-				value: 'createManyViewFilterGroups',
-				action: 'Create many view filter groups',
+				name: 'Create Many Workflow Event Listeners',
+				value: 'createManyWorkflowEventListeners',
+				action: 'Create many workflow event listeners',
 			},
 			{
-				name: 'Create One View Filter Group',
-				value: 'createOneViewFilterGroup',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewFilterGroups**',
-				action: 'Create one view filter group',
+				name: 'Create One Workflow Event Listener',
+				value: 'createOneWorkflowEventListener',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **workflowEventListeners**',
+				action: 'Create one workflow event listener',
 			},
 			{
-				name: 'Delete One View Filter Group',
-				value: 'deleteOneViewFilterGroup',
-				description: '**depth** can be provided to request your **viewFilterGroup**',
-				action: 'Delete one view filter group',
+				name: 'Delete One Workflow Event Listener',
+				value: 'deleteOneWorkflowEventListener',
+				description: '**depth** can be provided to request your **workflowEventListener**',
+				action: 'Delete one workflow event listener',
 			},
 			{
-				name: 'Find Many View Filter Groups',
-				value: 'findManyViewFilterGroups',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewFilterGroups**',
-				action: 'Find many view filter groups',
+				name: 'Find Many Workflow Event Listeners',
+				value: 'findManyWorkflowEventListeners',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **workflowEventListeners**',
+				action: 'Find many workflow event listeners',
 			},
 			{
-				name: 'Find One View Filter Group',
-				value: 'findOneViewFilterGroup',
-				description: '**depth** can be provided to request your **viewFilterGroup**',
-				action: 'Find one view filter group',
+				name: 'Find One Workflow Event Listener',
+				value: 'findOneWorkflowEventListener',
+				description: '**depth** can be provided to request your **workflowEventListener**',
+				action: 'Find one workflow event listener',
 			},
 			{
-				name: 'Find View Filter Group Duplicates',
-				value: 'findViewFilterGroupDuplicates',
-				description: '**depth** can be provided to request your **viewFilterGroup**',
-				action: 'Find view filter group duplicates',
+				name: 'Find Workflow Event Listener Duplicates',
+				value: 'findWorkflowEventListenerDuplicates',
+				description: '**depth** can be provided to request your **workflowEventListener**',
+				action: 'Find workflow event listener duplicates',
 			},
 			{
-				name: 'Update One View Filter Group',
-				value: 'updateOneViewFilterGroup',
-				description: '**depth** can be provided to request your **viewFilterGroup**',
-				action: 'Update one view filter group',
+				name: 'Update One Workflow Event Listener',
+				value: 'updateOneWorkflowEventListener',
+				description: '**depth** can be provided to request your **workflowEventListener**',
+				action: 'Update one workflow event listener',
 			},
 		],
-		default: 'createManyViewFilterGroups',
+		default: 'createManyWorkflowEventListeners',
 	},
 ];
 
-export const viewFilterGroupFields: INodeProperties[] = [
+export const workflowEventListenerFields: INodeProperties[] = [
 	// ----------------------------------------
-	// viewFilterGroup: createManyViewFilterGroups
+	// workflowEventListener: createManyWorkflowEventListeners
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -99,10 +99,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflowEventListener',
 				],
 				operation: [
-					'createManyViewFilterGroups',
+					'createManyWorkflowEventListeners',
 				],
 			},
 		},
@@ -116,10 +116,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflowEventListener',
 				],
 				operation: [
-					'createManyViewFilterGroups',
+					'createManyWorkflowEventListeners',
 				],
 			},
 		},
@@ -134,17 +134,17 @@ export const viewFilterGroupFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'workflowEventListener',
 					],
 					operation: [
-						'createManyViewFilterGroups',
+						'createManyWorkflowEventListeners',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: createOneViewFilterGroup
+	// workflowEventListener: createOneWorkflowEventListener
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -179,28 +179,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflowEventListener',
 				],
 				operation: [
-					'createOneViewFilterGroup',
-				],
-			},
-		},
-	},
-	{
-		displayName: 'View ID',
-		name: 'viewId',
-		description: 'View ID foreign key',
-		type: 'string',
-		required: true,
-		default: '',
-		displayOptions: {
-			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'createOneViewFilterGroup',
+					'createOneWorkflowEventListener',
 				],
 			},
 		},
@@ -214,48 +196,27 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflowEventListener',
 				],
 				operation: [
-					'createOneViewFilterGroup',
+					'createOneWorkflowEventListener',
 				],
 			},
 		},
 		options: [
 			{
-				displayName: 'Logical Operator',
-				name: 'logicalOperator',
-				type: 'options',
-				default: 'AND',
-				description: 'Logical operator for the filter group',
-				options: [
-					{
-						name: 'And',
-						value: 'AND',
-					},
-					{
-						name: 'Not',
-						value: 'NOT',
-					},
-					{
-						name: 'Or',
-						value: 'OR',
-					},
-				],
-			},
-			{
-				displayName: 'Parent View Filter Group ID',
-				name: 'parentViewFilterGroupId',
+				displayName: 'Event Name',
+				name: 'eventName',
 				type: 'string',
 				default: '',
-				description: 'Parent View Filter Group',
+				description: 'The workflow event listener name',
 			},
 			{
-				displayName: 'Position In View Filter Group',
-				name: 'positionInViewFilterGroup',
-				type: 'number',
-				default: 0,
-				description: 'Position in the parent view filter group',
+				displayName: 'Workflow ID',
+				name: 'workflowId',
+				type: 'string',
+				default: '',
+				description: 'WorkflowEventListener workflow ID foreign key',
 			},
 		],
 	},
@@ -267,17 +228,17 @@ export const viewFilterGroupFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'workflowEventListener',
 					],
 					operation: [
-						'createOneViewFilterGroup',
+						'createOneWorkflowEventListener',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: deleteOneViewFilterGroup
+	// workflowEventListener: deleteOneWorkflowEventListener
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -289,10 +250,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflowEventListener',
 				],
 				operation: [
-					'deleteOneViewFilterGroup',
+					'deleteOneWorkflowEventListener',
 				],
 			},
 		},
@@ -305,17 +266,17 @@ export const viewFilterGroupFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'workflowEventListener',
 					],
 					operation: [
-						'deleteOneViewFilterGroup',
+						'deleteOneWorkflowEventListener',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: findManyViewFilterGroups
+	// workflowEventListener: findManyWorkflowEventListeners
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -388,10 +349,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflowEventListener',
 				],
 				operation: [
-					'findManyViewFilterGroups',
+					'findManyWorkflowEventListeners',
 				],
 			},
 		},
@@ -404,17 +365,17 @@ export const viewFilterGroupFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'workflowEventListener',
 					],
 					operation: [
-						'findManyViewFilterGroups',
+						'findManyWorkflowEventListeners',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: findOneViewFilterGroup
+	// workflowEventListener: findOneWorkflowEventListener
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -426,10 +387,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflowEventListener',
 				],
 				operation: [
-					'findOneViewFilterGroup',
+					'findOneWorkflowEventListener',
 				],
 			},
 		},
@@ -467,10 +428,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflowEventListener',
 				],
 				operation: [
-					'findOneViewFilterGroup',
+					'findOneWorkflowEventListener',
 				],
 			},
 		},
@@ -483,17 +444,17 @@ export const viewFilterGroupFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'workflowEventListener',
 					],
 					operation: [
-						'findOneViewFilterGroup',
+						'findOneWorkflowEventListener',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: findViewFilterGroupDuplicates
+	// workflowEventListener: findWorkflowEventListenerDuplicates
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -528,10 +489,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflowEventListener',
 				],
 				operation: [
-					'findViewFilterGroupDuplicates',
+					'findWorkflowEventListenerDuplicates',
 				],
 			},
 		},
@@ -545,10 +506,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflowEventListener',
 				],
 				operation: [
-					'findViewFilterGroupDuplicates',
+					'findWorkflowEventListenerDuplicates',
 				],
 			},
 		},
@@ -564,46 +525,18 @@ displayName: 'Data Fields',
 name: 'dataFields',
 values: [
 {
-displayName: 'Parent View Filter Group ID',
-name: 'parentViewFilterGroupId',
+displayName: 'Event Name',
+name: 'eventName',
 type: 'string',
 default: '',
-description: 'Parent View Filter Group',
+description: 'The workflow event listener name',
 },
 {
-displayName: 'Logical Operator',
-name: 'logicalOperator',
-type: 'options',
-options: [
-{
-name: 'And',
-value: 'AND',
-},
-{
-name: 'Not',
-value: 'NOT',
-},
-{
-name: 'Or',
-value: 'OR',
-},
-],
-default: 'AND',
-description: 'Logical operator for the filter group',
-},
-{
-displayName: 'Position In View Filter Group',
-name: 'positionInViewFilterGroup',
-type: 'number',
-default: 0,
-description: 'Position in the parent view filter group',
-},
-{
-displayName: 'View ID',
-name: 'viewId',
+displayName: 'Workflow ID',
+name: 'workflowId',
 type: 'string',
 default: '',
-description: 'View ID foreign key',
+description: 'WorkflowEventListener workflow ID foreign key',
 },
 ]}],
 },
@@ -617,17 +550,17 @@ description: 'View ID foreign key',
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'workflowEventListener',
 					],
 					operation: [
-						'findViewFilterGroupDuplicates',
+						'findWorkflowEventListenerDuplicates',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: updateOneViewFilterGroup
+	// workflowEventListener: updateOneWorkflowEventListener
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -639,10 +572,10 @@ description: 'View ID foreign key',
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflowEventListener',
 				],
 				operation: [
-					'updateOneViewFilterGroup',
+					'updateOneWorkflowEventListener',
 				],
 			},
 		},
@@ -680,10 +613,10 @@ description: 'View ID foreign key',
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflowEventListener',
 				],
 				operation: [
-					'updateOneViewFilterGroup',
+					'updateOneWorkflowEventListener',
 				],
 			},
 		},
@@ -697,55 +630,27 @@ description: 'View ID foreign key',
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflowEventListener',
 				],
 				operation: [
-					'updateOneViewFilterGroup',
+					'updateOneWorkflowEventListener',
 				],
 			},
 		},
 		options: [
 			{
-				displayName: 'Logical Operator',
-				name: 'logicalOperator',
-				type: 'options',
-				default: 'AND',
-				description: 'Logical operator for the filter group',
-				options: [
-					{
-						name: 'And',
-						value: 'AND',
-					},
-					{
-						name: 'Not',
-						value: 'NOT',
-					},
-					{
-						name: 'Or',
-						value: 'OR',
-					},
-				],
-			},
-			{
-				displayName: 'Parent View Filter Group ID',
-				name: 'parentViewFilterGroupId',
+				displayName: 'Event Name',
+				name: 'eventName',
 				type: 'string',
 				default: '',
-				description: 'Parent View Filter Group',
+				description: 'The workflow event listener name',
 			},
 			{
-				displayName: 'Position In View Filter Group',
-				name: 'positionInViewFilterGroup',
-				type: 'number',
-				default: 0,
-				description: 'Position in the parent view filter group',
-			},
-			{
-				displayName: 'View ID',
-				name: 'viewId',
+				displayName: 'Workflow ID',
+				name: 'workflowId',
 				type: 'string',
 				default: '',
-				description: 'View ID foreign key',
+				description: 'WorkflowEventListener workflow ID foreign key',
 			},
 		],
 	},
@@ -757,10 +662,10 @@ description: 'View ID foreign key',
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'workflowEventListener',
 					],
 					operation: [
-						'updateOneViewFilterGroup',
+						'updateOneWorkflowEventListener',
 					],
 				},
 			},

@@ -13,7 +13,7 @@ export async function twentyApiRequest(
 	endpoint: string,
 	body: IDataObject = {},
 	qs: IDataObject = {},
-	path: string = 'rest',
+	path: string = '/rest',
 ) {
 	const credentials = await this.getCredentials('twentyApi');
 
@@ -25,7 +25,7 @@ export async function twentyApiRequest(
 		method,
 		body,
 		qs,
-		uri: `${credentials.domain}/${path}${endpoint}`,
+		uri: `${credentials.domain}${path}${endpoint}`,
 		json: true,
 	};
 

@@ -1,4 +1,6 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type {
+	INodeProperties,
+} from 'n8n-workflow';
 
 export const timelineActivityOperations: INodeProperties[] = [
 	{
@@ -8,7 +10,9 @@ export const timelineActivityOperations: INodeProperties[] = [
 		noDataExpression: true,
 		displayOptions: {
 			show: {
-				resource: ['timelineActivity'],
+				resource: [
+					'timelineActivity',
+				],
 			},
 		},
 		options: [
@@ -20,8 +24,7 @@ export const timelineActivityOperations: INodeProperties[] = [
 			{
 				name: 'Create One Timeline Activity',
 				value: 'createOneTimelineActivity',
-				description:
-					'**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **timelineActivities**',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **timelineActivities**',
 				action: 'Create one timeline activity',
 			},
 			{
@@ -33,8 +36,7 @@ export const timelineActivityOperations: INodeProperties[] = [
 			{
 				name: 'Find Many Timeline Activities',
 				value: 'findManyTimelineActivities',
-				description:
-					'**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **timelineActivities**',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **timelineActivities**',
 				action: 'Find many timeline activities',
 			},
 			{
@@ -71,34 +73,37 @@ export const timelineActivityFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['timelineActivity'],
-				operation: ['createManyTimelineActivities'],
+				resource: [
+					'timelineActivity',
+				],
+				operation: [
+					'createManyTimelineActivities',
+				],
 			},
 		},
 	},
@@ -110,25 +115,34 @@ export const timelineActivityFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['timelineActivity'],
-				operation: ['createManyTimelineActivities'],
+				resource: [
+					'timelineActivity',
+				],
+				operation: [
+					'createManyTimelineActivities',
+				],
 			},
 		},
-		options: [],
+		options: [
+		],
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['timelineActivity'],
-				operation: ['createManyTimelineActivities'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'timelineActivity',
+					],
+					operation: [
+						'createManyTimelineActivities',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// timelineActivity: createOneTimelineActivity
 	// ----------------------------------------
@@ -139,34 +153,37 @@ export const timelineActivityFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['timelineActivity'],
-				operation: ['createOneTimelineActivity'],
+				resource: [
+					'timelineActivity',
+				],
+				operation: [
+					'createOneTimelineActivity',
+				],
 			},
 		},
 	},
@@ -178,8 +195,12 @@ export const timelineActivityFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['timelineActivity'],
-				operation: ['createOneTimelineActivity'],
+				resource: [
+					'timelineActivity',
+				],
+				operation: [
+					'createOneTimelineActivity',
+				],
 			},
 		},
 		options: [
@@ -216,6 +237,7 @@ export const timelineActivityFields: INodeProperties[] = [
 				name: 'linkedRecordId',
 				type: 'string',
 				default: '',
+
 			},
 			{
 				displayName: 'Name',
@@ -260,6 +282,27 @@ export const timelineActivityFields: INodeProperties[] = [
 				description: 'Event task ID foreign key',
 			},
 			{
+				displayName: 'Workflow ID',
+				name: 'workflowId',
+				type: 'string',
+				default: '',
+				description: 'Event workflow ID foreign key',
+			},
+			{
+				displayName: 'Workflow Run ID',
+				name: 'workflowRunId',
+				type: 'string',
+				default: '',
+				description: 'Event workflow run ID foreign key',
+			},
+			{
+				displayName: 'Workflow Version ID',
+				name: 'workflowVersionId',
+				type: 'string',
+				default: '',
+				description: 'Event workflow version ID foreign key',
+			},
+			{
 				displayName: 'Workspace Member ID',
 				name: 'workspaceMemberId',
 				type: 'string',
@@ -268,19 +311,23 @@ export const timelineActivityFields: INodeProperties[] = [
 			},
 		],
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['timelineActivity'],
-				operation: ['createOneTimelineActivity'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'timelineActivity',
+					],
+					operation: [
+						'createOneTimelineActivity',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// timelineActivity: deleteOneTimelineActivity
 	// ----------------------------------------
@@ -293,24 +340,32 @@ export const timelineActivityFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['timelineActivity'],
-				operation: ['deleteOneTimelineActivity'],
+				resource: [
+					'timelineActivity',
+				],
+				operation: [
+					'deleteOneTimelineActivity',
+				],
 			},
 		},
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['timelineActivity'],
-				operation: ['deleteOneTimelineActivity'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'timelineActivity',
+					],
+					operation: [
+						'deleteOneTimelineActivity',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// timelineActivity: findManyTimelineActivities
 	// ----------------------------------------
@@ -321,92 +376,95 @@ export const timelineActivityFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
-			{
-				displayName: 'Ending Before',
-				name: 'ending_before',
-				type: 'string',
-				default: '',
-				description:
-					'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
-			},
-			{
-				displayName: 'Filter',
-				name: 'filter',
-				type: 'string',
-				default: '',
-				description:
-					'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
-			},
-			{
-				displayName: 'Limit',
-				name: 'limit',
-				type: 'number',
-				typeOptions: {
-					minValue: 1,
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
-				default: 50,
-				description: 'Max number of results to return',
-			},
-			{
-				displayName: 'Order By',
-				name: 'order_by',
-				type: 'string',
-				default: '',
-				description:
-					'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
-			},
-			{
-				displayName: 'Starting After',
-				name: 'starting_after',
-				type: 'string',
-				default: '',
-				description:
-					'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
-			},
+				{
+					displayName: 'Ending Before',
+					name: 'ending_before',
+					type: 'string',
+					default: '',
+					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+				},
+				{
+					displayName: 'Filter',
+					name: 'filter',
+					type: 'string',
+					default: '',
+					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **containsAny**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
+				},
+				{
+					displayName: 'Limit',
+					name: 'limit',
+					type: 'number',
+					typeOptions: {
+						minValue: 1,
+					},
+					default: 50,
+					description: 'Max number of results to return',
+				},
+				{
+					displayName: 'Order By',
+					name: 'order_by',
+					type: 'string',
+					default: '',
+					description: 'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
+				},
+				{
+					displayName: 'Starting After',
+					name: 'starting_after',
+					type: 'string',
+					default: '',
+					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['timelineActivity'],
-				operation: ['findManyTimelineActivities'],
+				resource: [
+					'timelineActivity',
+				],
+				operation: [
+					'findManyTimelineActivities',
+				],
 			},
 		},
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['timelineActivity'],
-				operation: ['findManyTimelineActivities'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'timelineActivity',
+					],
+					operation: [
+						'findManyTimelineActivities',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// timelineActivity: findOneTimelineActivity
 	// ----------------------------------------
@@ -419,8 +477,12 @@ export const timelineActivityFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['timelineActivity'],
-				operation: ['findOneTimelineActivity'],
+				resource: [
+					'timelineActivity',
+				],
+				operation: [
+					'findOneTimelineActivity',
+				],
 			},
 		},
 	},
@@ -431,50 +493,57 @@ export const timelineActivityFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['timelineActivity'],
-				operation: ['findOneTimelineActivity'],
+				resource: [
+					'timelineActivity',
+				],
+				operation: [
+					'findOneTimelineActivity',
+				],
 			},
 		},
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['timelineActivity'],
-				operation: ['findOneTimelineActivity'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'timelineActivity',
+					],
+					operation: [
+						'findOneTimelineActivity',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// timelineActivity: findTimelineActivityDuplicates
 	// ----------------------------------------
@@ -485,34 +554,37 @@ export const timelineActivityFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['timelineActivity'],
-				operation: ['findTimelineActivityDuplicates'],
+				resource: [
+					'timelineActivity',
+				],
+				operation: [
+					'findTimelineActivityDuplicates',
+				],
 			},
 		},
 	},
@@ -524,124 +596,150 @@ export const timelineActivityFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['timelineActivity'],
-				operation: ['findTimelineActivityDuplicates'],
+				resource: [
+					'timelineActivity',
+				],
+				operation: [
+					'findTimelineActivityDuplicates',
+				],
 			},
 		},
 		options: [
-			{
-				displayName: 'Data',
-				name: 'data',
-				placeholder: 'Add Data Field',
-				type: 'fixedCollection',
-				default: {},
-				options: [
-					{
-						displayName: 'Data Fields',
-						name: 'dataFields',
-						values: [
-							{
-								displayName: 'Happens At',
-								name: 'happensAt',
-								type: 'dateTime',
-								default: '',
-								description: 'Creation date',
-							},
-							{
-								displayName: 'Name',
-								name: 'name',
-								type: 'string',
-								default: '',
-								description: 'Event name',
-							},
-							{
-								displayName: 'Properties',
-								name: 'properties',
-								type: 'json',
-								default: '',
-								description: 'JSON value for event details',
-							},
-							{
-								displayName: 'Linked Record Cached Name',
-								name: 'linkedRecordCachedName',
-								type: 'string',
-								default: '',
-								description: 'Cached record name',
-							},
-							{
-								displayName: 'Linked Record ID',
-								name: 'linkedRecordId',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Linked Object Metadata ID',
-								name: 'linkedObjectMetadataId',
-								type: 'string',
-								default: '',
-								description: 'Inked Object Metadata ID',
-							},
-							{
-								displayName: 'Workspace Member ID',
-								name: 'workspaceMemberId',
-								type: 'string',
-								default: '',
-								description: 'Event workspace member ID foreign key',
-							},
-							{
-								displayName: 'Person ID',
-								name: 'personId',
-								type: 'string',
-								default: '',
-								description: 'Event person ID foreign key',
-							},
-							{
-								displayName: 'Company ID',
-								name: 'companyId',
-								type: 'string',
-								default: '',
-								description: 'Event company ID foreign key',
-							},
-							{
-								displayName: 'Opportunity ID',
-								name: 'opportunityId',
-								type: 'string',
-								default: '',
-								description: 'Event opportunity ID foreign key',
-							},
-							{
-								displayName: 'Note ID',
-								name: 'noteId',
-								type: 'string',
-								default: '',
-								description: 'Event note ID foreign key',
-							},
-							{
-								displayName: 'Task ID',
-								name: 'taskId',
-								type: 'string',
-								default: '',
-								description: 'Event task ID foreign key',
-							},
-						],
-					},
-				],
-			},
+				{
+displayName: 'Data',
+name: 'data',
+placeholder: 'Add Data Field',
+type: 'fixedCollection',
+default: {},
+options: [{
+displayName: 'Data Fields',
+name: 'dataFields',
+values: [
+{
+displayName: 'Happens At',
+name: 'happensAt',
+type: 'dateTime',
+default: '',
+description: 'Creation date',
+},
+{
+displayName: 'Name',
+name: 'name',
+type: 'string',
+default: '',
+description: 'Event name',
+},
+{
+displayName: 'Properties',
+name: 'properties',
+type: 'json',
+default: '',
+description: 'JSON value for event details',
+},
+{
+displayName: 'Linked Record Cached Name',
+name: 'linkedRecordCachedName',
+type: 'string',
+default: '',
+description: 'Cached record name',
+},
+{
+displayName: 'Linked Record ID',
+name: 'linkedRecordId',
+type: 'string',
+default: '',
+},
+{
+displayName: 'Linked Object Metadata ID',
+name: 'linkedObjectMetadataId',
+type: 'string',
+default: '',
+description: 'Inked Object Metadata ID',
+},
+{
+displayName: 'Workspace Member ID',
+name: 'workspaceMemberId',
+type: 'string',
+default: '',
+description: 'Event workspace member ID foreign key',
+},
+{
+displayName: 'Person ID',
+name: 'personId',
+type: 'string',
+default: '',
+description: 'Event person ID foreign key',
+},
+{
+displayName: 'Company ID',
+name: 'companyId',
+type: 'string',
+default: '',
+description: 'Event company ID foreign key',
+},
+{
+displayName: 'Opportunity ID',
+name: 'opportunityId',
+type: 'string',
+default: '',
+description: 'Event opportunity ID foreign key',
+},
+{
+displayName: 'Note ID',
+name: 'noteId',
+type: 'string',
+default: '',
+description: 'Event note ID foreign key',
+},
+{
+displayName: 'Task ID',
+name: 'taskId',
+type: 'string',
+default: '',
+description: 'Event task ID foreign key',
+},
+{
+displayName: 'Workflow ID',
+name: 'workflowId',
+type: 'string',
+default: '',
+description: 'Event workflow ID foreign key',
+},
+{
+displayName: 'Workflow Version ID',
+name: 'workflowVersionId',
+type: 'string',
+default: '',
+description: 'Event workflow version ID foreign key',
+},
+{
+displayName: 'Workflow Run ID',
+name: 'workflowRunId',
+type: 'string',
+default: '',
+description: 'Event workflow run ID foreign key',
+},
+]}],
+},
 		],
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['timelineActivity'],
-				operation: ['findTimelineActivityDuplicates'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'timelineActivity',
+					],
+					operation: [
+						'findTimelineActivityDuplicates',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// timelineActivity: updateOneTimelineActivity
 	// ----------------------------------------
@@ -654,8 +752,12 @@ export const timelineActivityFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['timelineActivity'],
-				operation: ['updateOneTimelineActivity'],
+				resource: [
+					'timelineActivity',
+				],
+				operation: [
+					'updateOneTimelineActivity',
+				],
 			},
 		},
 	},
@@ -666,34 +768,37 @@ export const timelineActivityFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['timelineActivity'],
-				operation: ['updateOneTimelineActivity'],
+				resource: [
+					'timelineActivity',
+				],
+				operation: [
+					'updateOneTimelineActivity',
+				],
 			},
 		},
 	},
@@ -705,8 +810,12 @@ export const timelineActivityFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['timelineActivity'],
-				operation: ['updateOneTimelineActivity'],
+				resource: [
+					'timelineActivity',
+				],
+				operation: [
+					'updateOneTimelineActivity',
+				],
 			},
 		},
 		options: [
@@ -743,6 +852,7 @@ export const timelineActivityFields: INodeProperties[] = [
 				name: 'linkedRecordId',
 				type: 'string',
 				default: '',
+
 			},
 			{
 				displayName: 'Name',
@@ -787,6 +897,27 @@ export const timelineActivityFields: INodeProperties[] = [
 				description: 'Event task ID foreign key',
 			},
 			{
+				displayName: 'Workflow ID',
+				name: 'workflowId',
+				type: 'string',
+				default: '',
+				description: 'Event workflow ID foreign key',
+			},
+			{
+				displayName: 'Workflow Run ID',
+				name: 'workflowRunId',
+				type: 'string',
+				default: '',
+				description: 'Event workflow run ID foreign key',
+			},
+			{
+				displayName: 'Workflow Version ID',
+				name: 'workflowVersionId',
+				type: 'string',
+				default: '',
+				description: 'Event workflow version ID foreign key',
+			},
+			{
 				displayName: 'Workspace Member ID',
 				name: 'workspaceMemberId',
 				type: 'string',
@@ -795,16 +926,20 @@ export const timelineActivityFields: INodeProperties[] = [
 			},
 		],
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['timelineActivity'],
-				operation: ['updateOneTimelineActivity'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'timelineActivity',
+					],
+					operation: [
+						'updateOneTimelineActivity',
+					],
+				},
 			},
 		},
-	},
 ];

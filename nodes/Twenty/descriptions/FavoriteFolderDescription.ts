@@ -2,7 +2,7 @@ import type {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export const viewFilterGroupOperations: INodeProperties[] = [
+export const favoriteFolderOperations: INodeProperties[] = [
 	{
 		displayName: 'Operation',
 		name: 'operation',
@@ -11,60 +11,60 @@ export const viewFilterGroupOperations: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'favoriteFolder',
 				],
 			},
 		},
 		options: [
 			{
-				name: 'Create Many View Filter Groups',
-				value: 'createManyViewFilterGroups',
-				action: 'Create many view filter groups',
+				name: 'Create Many Favorite Folders',
+				value: 'createManyFavoriteFolders',
+				action: 'Create many favorite folders',
 			},
 			{
-				name: 'Create One View Filter Group',
-				value: 'createOneViewFilterGroup',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewFilterGroups**',
-				action: 'Create one view filter group',
+				name: 'Create One Favorite Folder',
+				value: 'createOneFavoriteFolder',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **favoriteFolders**',
+				action: 'Create one favorite folder',
 			},
 			{
-				name: 'Delete One View Filter Group',
-				value: 'deleteOneViewFilterGroup',
-				description: '**depth** can be provided to request your **viewFilterGroup**',
-				action: 'Delete one view filter group',
+				name: 'Delete One Favorite Folder',
+				value: 'deleteOneFavoriteFolder',
+				description: '**depth** can be provided to request your **favoriteFolder**',
+				action: 'Delete one favorite folder',
 			},
 			{
-				name: 'Find Many View Filter Groups',
-				value: 'findManyViewFilterGroups',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewFilterGroups**',
-				action: 'Find many view filter groups',
+				name: 'Find Favorite Folder Duplicates',
+				value: 'findFavoriteFolderDuplicates',
+				description: '**depth** can be provided to request your **favoriteFolder**',
+				action: 'Find favorite folder duplicates',
 			},
 			{
-				name: 'Find One View Filter Group',
-				value: 'findOneViewFilterGroup',
-				description: '**depth** can be provided to request your **viewFilterGroup**',
-				action: 'Find one view filter group',
+				name: 'Find Many Favorite Folders',
+				value: 'findManyFavoriteFolders',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **favoriteFolders**',
+				action: 'Find many favorite folders',
 			},
 			{
-				name: 'Find View Filter Group Duplicates',
-				value: 'findViewFilterGroupDuplicates',
-				description: '**depth** can be provided to request your **viewFilterGroup**',
-				action: 'Find view filter group duplicates',
+				name: 'Find One Favorite Folder',
+				value: 'findOneFavoriteFolder',
+				description: '**depth** can be provided to request your **favoriteFolder**',
+				action: 'Find one favorite folder',
 			},
 			{
-				name: 'Update One View Filter Group',
-				value: 'updateOneViewFilterGroup',
-				description: '**depth** can be provided to request your **viewFilterGroup**',
-				action: 'Update one view filter group',
+				name: 'Update One Favorite Folder',
+				value: 'updateOneFavoriteFolder',
+				description: '**depth** can be provided to request your **favoriteFolder**',
+				action: 'Update one favorite folder',
 			},
 		],
-		default: 'createManyViewFilterGroups',
+		default: 'createManyFavoriteFolders',
 	},
 ];
 
-export const viewFilterGroupFields: INodeProperties[] = [
+export const favoriteFolderFields: INodeProperties[] = [
 	// ----------------------------------------
-	// viewFilterGroup: createManyViewFilterGroups
+	// favoriteFolder: createManyFavoriteFolders
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -99,10 +99,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'favoriteFolder',
 				],
 				operation: [
-					'createManyViewFilterGroups',
+					'createManyFavoriteFolders',
 				],
 			},
 		},
@@ -116,10 +116,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'favoriteFolder',
 				],
 				operation: [
-					'createManyViewFilterGroups',
+					'createManyFavoriteFolders',
 				],
 			},
 		},
@@ -134,17 +134,17 @@ export const viewFilterGroupFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'favoriteFolder',
 					],
 					operation: [
-						'createManyViewFilterGroups',
+						'createManyFavoriteFolders',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: createOneViewFilterGroup
+	// favoriteFolder: createOneFavoriteFolder
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -179,28 +179,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'favoriteFolder',
 				],
 				operation: [
-					'createOneViewFilterGroup',
-				],
-			},
-		},
-	},
-	{
-		displayName: 'View ID',
-		name: 'viewId',
-		description: 'View ID foreign key',
-		type: 'string',
-		required: true,
-		default: '',
-		displayOptions: {
-			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'createOneViewFilterGroup',
+					'createOneFavoriteFolder',
 				],
 			},
 		},
@@ -214,48 +196,27 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'favoriteFolder',
 				],
 				operation: [
-					'createOneViewFilterGroup',
+					'createOneFavoriteFolder',
 				],
 			},
 		},
 		options: [
 			{
-				displayName: 'Logical Operator',
-				name: 'logicalOperator',
-				type: 'options',
-				default: 'AND',
-				description: 'Logical operator for the filter group',
-				options: [
-					{
-						name: 'And',
-						value: 'AND',
-					},
-					{
-						name: 'Not',
-						value: 'NOT',
-					},
-					{
-						name: 'Or',
-						value: 'OR',
-					},
-				],
-			},
-			{
-				displayName: 'Parent View Filter Group ID',
-				name: 'parentViewFilterGroupId',
+				displayName: 'Name',
+				name: 'name',
 				type: 'string',
 				default: '',
-				description: 'Parent View Filter Group',
+				description: 'Name of the favorite folder',
 			},
 			{
-				displayName: 'Position In View Filter Group',
-				name: 'positionInViewFilterGroup',
+				displayName: 'Position',
+				name: 'position',
 				type: 'number',
 				default: 0,
-				description: 'Position in the parent view filter group',
+				description: 'Favorite folder position',
 			},
 		],
 	},
@@ -267,17 +228,17 @@ export const viewFilterGroupFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'favoriteFolder',
 					],
 					operation: [
-						'createOneViewFilterGroup',
+						'createOneFavoriteFolder',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: deleteOneViewFilterGroup
+	// favoriteFolder: deleteOneFavoriteFolder
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -289,10 +250,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'favoriteFolder',
 				],
 				operation: [
-					'deleteOneViewFilterGroup',
+					'deleteOneFavoriteFolder',
 				],
 			},
 		},
@@ -305,17 +266,123 @@ export const viewFilterGroupFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'favoriteFolder',
 					],
 					operation: [
-						'deleteOneViewFilterGroup',
+						'deleteOneFavoriteFolder',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: findManyViewFilterGroups
+	// favoriteFolder: findFavoriteFolderDuplicates
+	// ----------------------------------------
+	{
+		displayName: 'Query',
+		name: 'query',
+
+		type: 'collection',
+		placeholder: 'Add Query',
+		options: [
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
+		],
+		default: {},
+		displayOptions: {
+			show: {
+				resource: [
+					'favoriteFolder',
+				],
+				operation: [
+					'findFavoriteFolderDuplicates',
+				],
+			},
+		},
+	},
+	{
+		displayName: 'Additional Fields',
+		name: 'additionalFields',
+		type: 'collection',
+		placeholder: 'Add Field',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: [
+					'favoriteFolder',
+				],
+				operation: [
+					'findFavoriteFolderDuplicates',
+				],
+			},
+		},
+		options: [
+				{
+displayName: 'Data',
+name: 'data',
+placeholder: 'Add Data Field',
+type: 'fixedCollection',
+default: {},
+options: [{
+displayName: 'Data Fields',
+name: 'dataFields',
+values: [
+{
+displayName: 'Position',
+name: 'position',
+type: 'number',
+default: 0,
+description: 'Favorite folder position',
+},
+{
+displayName: 'Name',
+name: 'name',
+type: 'string',
+default: '',
+description: 'Name of the favorite folder',
+},
+]}],
+},
+		],
+	},
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'favoriteFolder',
+					],
+					operation: [
+						'findFavoriteFolderDuplicates',
+					],
+				},
+			},
+		},
+	
+	// ----------------------------------------
+	// favoriteFolder: findManyFavoriteFolders
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -388,10 +455,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'favoriteFolder',
 				],
 				operation: [
-					'findManyViewFilterGroups',
+					'findManyFavoriteFolders',
 				],
 			},
 		},
@@ -404,17 +471,17 @@ export const viewFilterGroupFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'favoriteFolder',
 					],
 					operation: [
-						'findManyViewFilterGroups',
+						'findManyFavoriteFolders',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: findOneViewFilterGroup
+	//  favoriteFolder: findOneFavoriteFolder
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -426,10 +493,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'favoriteFolder',
 				],
 				operation: [
-					'findOneViewFilterGroup',
+					'findOneFavoriteFolder',
 				],
 			},
 		},
@@ -467,10 +534,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'favoriteFolder',
 				],
 				operation: [
-					'findOneViewFilterGroup',
+					'findOneFavoriteFolder',
 				],
 			},
 		},
@@ -483,151 +550,17 @@ export const viewFilterGroupFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'favoriteFolder',
 					],
 					operation: [
-						'findOneViewFilterGroup',
+						'findOneFavoriteFolder',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: findViewFilterGroupDuplicates
-	// ----------------------------------------
-	{
-		displayName: 'Query',
-		name: 'query',
-
-		type: 'collection',
-		placeholder: 'Add Query',
-		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
-		],
-		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'findViewFilterGroupDuplicates',
-				],
-			},
-		},
-	},
-	{
-		displayName: 'Additional Fields',
-		name: 'additionalFields',
-		type: 'collection',
-		placeholder: 'Add Field',
-		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'findViewFilterGroupDuplicates',
-				],
-			},
-		},
-		options: [
-				{
-displayName: 'Data',
-name: 'data',
-placeholder: 'Add Data Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Data Fields',
-name: 'dataFields',
-values: [
-{
-displayName: 'Parent View Filter Group ID',
-name: 'parentViewFilterGroupId',
-type: 'string',
-default: '',
-description: 'Parent View Filter Group',
-},
-{
-displayName: 'Logical Operator',
-name: 'logicalOperator',
-type: 'options',
-options: [
-{
-name: 'And',
-value: 'AND',
-},
-{
-name: 'Not',
-value: 'NOT',
-},
-{
-name: 'Or',
-value: 'OR',
-},
-],
-default: 'AND',
-description: 'Logical operator for the filter group',
-},
-{
-displayName: 'Position In View Filter Group',
-name: 'positionInViewFilterGroup',
-type: 'number',
-default: 0,
-description: 'Position in the parent view filter group',
-},
-{
-displayName: 'View ID',
-name: 'viewId',
-type: 'string',
-default: '',
-description: 'View ID foreign key',
-},
-]}],
-},
-		],
-	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'viewFilterGroup',
-					],
-					operation: [
-						'findViewFilterGroupDuplicates',
-					],
-				},
-			},
-		},
-	
-	// ----------------------------------------
-	// viewFilterGroup: updateOneViewFilterGroup
+	// favoriteFolder: updateOneFavoriteFolder
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -639,10 +572,10 @@ description: 'View ID foreign key',
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'favoriteFolder',
 				],
 				operation: [
-					'updateOneViewFilterGroup',
+					'updateOneFavoriteFolder',
 				],
 			},
 		},
@@ -680,10 +613,10 @@ description: 'View ID foreign key',
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'favoriteFolder',
 				],
 				operation: [
-					'updateOneViewFilterGroup',
+					'updateOneFavoriteFolder',
 				],
 			},
 		},
@@ -697,55 +630,27 @@ description: 'View ID foreign key',
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'favoriteFolder',
 				],
 				operation: [
-					'updateOneViewFilterGroup',
+					'updateOneFavoriteFolder',
 				],
 			},
 		},
 		options: [
 			{
-				displayName: 'Logical Operator',
-				name: 'logicalOperator',
-				type: 'options',
-				default: 'AND',
-				description: 'Logical operator for the filter group',
-				options: [
-					{
-						name: 'And',
-						value: 'AND',
-					},
-					{
-						name: 'Not',
-						value: 'NOT',
-					},
-					{
-						name: 'Or',
-						value: 'OR',
-					},
-				],
-			},
-			{
-				displayName: 'Parent View Filter Group ID',
-				name: 'parentViewFilterGroupId',
+				displayName: 'Name',
+				name: 'name',
 				type: 'string',
 				default: '',
-				description: 'Parent View Filter Group',
+				description: 'Name of the favorite folder',
 			},
 			{
-				displayName: 'Position In View Filter Group',
-				name: 'positionInViewFilterGroup',
+				displayName: 'Position',
+				name: 'position',
 				type: 'number',
 				default: 0,
-				description: 'Position in the parent view filter group',
-			},
-			{
-				displayName: 'View ID',
-				name: 'viewId',
-				type: 'string',
-				default: '',
-				description: 'View ID foreign key',
+				description: 'Favorite folder position',
 			},
 		],
 	},
@@ -757,10 +662,10 @@ description: 'View ID foreign key',
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'favoriteFolder',
 					],
 					operation: [
-						'updateOneViewFilterGroup',
+						'updateOneFavoriteFolder',
 					],
 				},
 			},

@@ -1,4 +1,6 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type {
+	INodeProperties,
+} from 'n8n-workflow';
 
 export const calendarEventParticipantOperations: INodeProperties[] = [
 	{
@@ -8,7 +10,9 @@ export const calendarEventParticipantOperations: INodeProperties[] = [
 		noDataExpression: true,
 		displayOptions: {
 			show: {
-				resource: ['calendarEventParticipant'],
+				resource: [
+					'calendarEventParticipant',
+				],
 			},
 		},
 		options: [
@@ -20,8 +24,7 @@ export const calendarEventParticipantOperations: INodeProperties[] = [
 			{
 				name: 'Create One Calendar Event Participant',
 				value: 'createOneCalendarEventParticipant',
-				description:
-					'**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **calendarEventParticipants**',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **calendarEventParticipants**',
 				action: 'Create one calendar event participant',
 			},
 			{
@@ -39,8 +42,7 @@ export const calendarEventParticipantOperations: INodeProperties[] = [
 			{
 				name: 'Find Many Calendar Event Participants',
 				value: 'findManyCalendarEventParticipants',
-				description:
-					'**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **calendarEventParticipants**',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **calendarEventParticipants**',
 				action: 'Find many calendar event participants',
 			},
 			{
@@ -71,34 +73,37 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['createManyCalendarEventParticipants'],
+				resource: [
+					'calendarEventParticipant',
+				],
+				operation: [
+					'createManyCalendarEventParticipants',
+				],
 			},
 		},
 	},
@@ -110,25 +115,34 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['createManyCalendarEventParticipants'],
+				resource: [
+					'calendarEventParticipant',
+				],
+				operation: [
+					'createManyCalendarEventParticipants',
+				],
 			},
 		},
-		options: [],
+		options: [
+		],
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['createManyCalendarEventParticipants'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'calendarEventParticipant',
+					],
+					operation: [
+						'createManyCalendarEventParticipants',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// calendarEventParticipant: createOneCalendarEventParticipant
 	// ----------------------------------------
@@ -139,34 +153,37 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['createOneCalendarEventParticipant'],
+				resource: [
+					'calendarEventParticipant',
+				],
+				operation: [
+					'createOneCalendarEventParticipant',
+				],
 			},
 		},
 	},
@@ -179,8 +196,12 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['createOneCalendarEventParticipant'],
+				resource: [
+					'calendarEventParticipant',
+				],
+				operation: [
+					'createOneCalendarEventParticipant',
+				],
 			},
 		},
 	},
@@ -192,8 +213,12 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['createOneCalendarEventParticipant'],
+				resource: [
+					'calendarEventParticipant',
+				],
+				operation: [
+					'createOneCalendarEventParticipant',
+				],
 			},
 		},
 		options: [
@@ -202,18 +227,21 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 				name: 'displayName',
 				type: 'string',
 				default: '',
+
 			},
 			{
 				displayName: 'Handle',
 				name: 'handle',
 				type: 'string',
 				default: '',
+
 			},
 			{
 				displayName: 'Is Organizer',
 				name: 'isOrganizer',
 				type: 'boolean',
 				default: false,
+
 			},
 			{
 				displayName: 'Person ID',
@@ -256,19 +284,23 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 			},
 		],
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['createOneCalendarEventParticipant'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'calendarEventParticipant',
+					],
+					operation: [
+						'createOneCalendarEventParticipant',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// calendarEventParticipant: deleteOneCalendarEventParticipant
 	// ----------------------------------------
@@ -281,24 +313,32 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['deleteOneCalendarEventParticipant'],
+				resource: [
+					'calendarEventParticipant',
+				],
+				operation: [
+					'deleteOneCalendarEventParticipant',
+				],
 			},
 		},
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['deleteOneCalendarEventParticipant'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'calendarEventParticipant',
+					],
+					operation: [
+						'deleteOneCalendarEventParticipant',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// calendarEventParticipant: findCalendarEventParticipantDuplicates
 	// ----------------------------------------
@@ -309,34 +349,37 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['findCalendarEventParticipantDuplicates'],
+				resource: [
+					'calendarEventParticipant',
+				],
+				operation: [
+					'findCalendarEventParticipantDuplicates',
+				],
 			},
 		},
 	},
@@ -348,86 +391,109 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['findCalendarEventParticipantDuplicates'],
+				resource: [
+					'calendarEventParticipant',
+				],
+				operation: [
+					'findCalendarEventParticipantDuplicates',
+				],
 			},
 		},
 		options: [
-			{
-				displayName: 'Data',
-				name: 'data',
-				placeholder: 'Add Data Field',
-				type: 'fixedCollection',
-				default: {},
-				options: [
-					{
-						displayName: 'Data Fields',
-						name: 'dataFields',
-						values: [
-							{
-								displayName: 'Handle',
-								name: 'handle',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Display Name',
-								name: 'displayName',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Is Organizer',
-								name: 'isOrganizer',
-								type: 'boolean',
-								default: false,
-							},
-							{
-								displayName: 'Response Status',
-								name: 'responseStatus',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Calendar Event ID',
-								name: 'calendarEventId',
-								type: 'string',
-								default: '',
-								description: 'Event ID foreign key',
-							},
-							{
-								displayName: 'Person ID',
-								name: 'personId',
-								type: 'string',
-								default: '',
-								description: 'Person ID foreign key',
-							},
-							{
-								displayName: 'Workspace Member ID',
-								name: 'workspaceMemberId',
-								type: 'string',
-								default: '',
-								description: 'Workspace Member ID foreign key',
-							},
-						],
-					},
-				],
-			},
+				{
+displayName: 'Data',
+name: 'data',
+placeholder: 'Add Data Field',
+type: 'fixedCollection',
+default: {},
+options: [{
+displayName: 'Data Fields',
+name: 'dataFields',
+values: [
+{
+displayName: 'Handle',
+name: 'handle',
+type: 'string',
+default: '',
+},
+{
+displayName: 'Display Name',
+name: 'displayName',
+type: 'string',
+default: '',
+},
+{
+displayName: 'Is Organizer',
+name: 'isOrganizer',
+type: 'boolean',
+default: false,
+},
+{
+displayName: 'Response Status',
+name: 'responseStatus',
+type: 'options',
+options: [
+{
+name: 'Accepted',
+value: 'ACCEPTED',
+},
+{
+name: 'Declined',
+value: 'DECLINED',
+},
+{
+name: 'Needs Action',
+value: 'NEEDS_ACTION',
+},
+{
+name: 'Tentative',
+value: 'TENTATIVE',
+},
+],
+default: 'ACCEPTED',
+},
+{
+displayName: 'Calendar Event ID',
+name: 'calendarEventId',
+type: 'string',
+default: '',
+description: 'Event ID foreign key',
+},
+{
+displayName: 'Person ID',
+name: 'personId',
+type: 'string',
+default: '',
+description: 'Person ID foreign key',
+},
+{
+displayName: 'Workspace Member ID',
+name: 'workspaceMemberId',
+type: 'string',
+default: '',
+description: 'Workspace Member ID foreign key',
+},
+]}],
+},
 		],
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['findCalendarEventParticipantDuplicates'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'calendarEventParticipant',
+					],
+					operation: [
+						'findCalendarEventParticipantDuplicates',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// calendarEventParticipant: findManyCalendarEventParticipants
 	// ----------------------------------------
@@ -438,92 +504,95 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
-			{
-				displayName: 'Ending Before',
-				name: 'ending_before',
-				type: 'string',
-				default: '',
-				description:
-					'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
-			},
-			{
-				displayName: 'Filter',
-				name: 'filter',
-				type: 'string',
-				default: '',
-				description:
-					'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
-			},
-			{
-				displayName: 'Limit',
-				name: 'limit',
-				type: 'number',
-				typeOptions: {
-					minValue: 1,
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
-				default: 50,
-				description: 'Max number of results to return',
-			},
-			{
-				displayName: 'Order By',
-				name: 'order_by',
-				type: 'string',
-				default: '',
-				description:
-					'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
-			},
-			{
-				displayName: 'Starting After',
-				name: 'starting_after',
-				type: 'string',
-				default: '',
-				description:
-					'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
-			},
+				{
+					displayName: 'Ending Before',
+					name: 'ending_before',
+					type: 'string',
+					default: '',
+					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+				},
+				{
+					displayName: 'Filter',
+					name: 'filter',
+					type: 'string',
+					default: '',
+					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **containsAny**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
+				},
+				{
+					displayName: 'Limit',
+					name: 'limit',
+					type: 'number',
+					typeOptions: {
+						minValue: 1,
+					},
+					default: 50,
+					description: 'Max number of results to return',
+				},
+				{
+					displayName: 'Order By',
+					name: 'order_by',
+					type: 'string',
+					default: '',
+					description: 'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
+				},
+				{
+					displayName: 'Starting After',
+					name: 'starting_after',
+					type: 'string',
+					default: '',
+					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['findManyCalendarEventParticipants'],
+				resource: [
+					'calendarEventParticipant',
+				],
+				operation: [
+					'findManyCalendarEventParticipants',
+				],
 			},
 		},
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['findManyCalendarEventParticipants'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'calendarEventParticipant',
+					],
+					operation: [
+						'findManyCalendarEventParticipants',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// calendarEventParticipant: findOneCalendarEventParticipant
 	// ----------------------------------------
@@ -536,8 +605,12 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['findOneCalendarEventParticipant'],
+				resource: [
+					'calendarEventParticipant',
+				],
+				operation: [
+					'findOneCalendarEventParticipant',
+				],
 			},
 		},
 	},
@@ -548,50 +621,57 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['findOneCalendarEventParticipant'],
+				resource: [
+					'calendarEventParticipant',
+				],
+				operation: [
+					'findOneCalendarEventParticipant',
+				],
 			},
 		},
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['findOneCalendarEventParticipant'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'calendarEventParticipant',
+					],
+					operation: [
+						'findOneCalendarEventParticipant',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// calendarEventParticipant: updateOneCalendarEventParticipant
 	// ----------------------------------------
@@ -604,8 +684,12 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['updateOneCalendarEventParticipant'],
+				resource: [
+					'calendarEventParticipant',
+				],
+				operation: [
+					'updateOneCalendarEventParticipant',
+				],
 			},
 		},
 	},
@@ -616,34 +700,37 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['updateOneCalendarEventParticipant'],
+				resource: [
+					'calendarEventParticipant',
+				],
+				operation: [
+					'updateOneCalendarEventParticipant',
+				],
 			},
 		},
 	},
@@ -655,8 +742,12 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['updateOneCalendarEventParticipant'],
+				resource: [
+					'calendarEventParticipant',
+				],
+				operation: [
+					'updateOneCalendarEventParticipant',
+				],
 			},
 		},
 		options: [
@@ -672,18 +763,21 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 				name: 'displayName',
 				type: 'string',
 				default: '',
+
 			},
 			{
 				displayName: 'Handle',
 				name: 'handle',
 				type: 'string',
 				default: '',
+
 			},
 			{
 				displayName: 'Is Organizer',
 				name: 'isOrganizer',
 				type: 'boolean',
 				default: false,
+
 			},
 			{
 				displayName: 'Person ID',
@@ -726,16 +820,20 @@ export const calendarEventParticipantFields: INodeProperties[] = [
 			},
 		],
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['calendarEventParticipant'],
-				operation: ['updateOneCalendarEventParticipant'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'calendarEventParticipant',
+					],
+					operation: [
+						'updateOneCalendarEventParticipant',
+					],
+				},
 			},
 		},
-	},
 ];

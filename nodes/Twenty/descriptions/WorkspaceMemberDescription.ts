@@ -1,4 +1,6 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type {
+	INodeProperties,
+} from 'n8n-workflow';
 
 export const workspaceMemberOperations: INodeProperties[] = [
 	{
@@ -8,7 +10,9 @@ export const workspaceMemberOperations: INodeProperties[] = [
 		noDataExpression: true,
 		displayOptions: {
 			show: {
-				resource: ['workspaceMember'],
+				resource: [
+					'workspaceMember',
+				],
 			},
 		},
 		options: [
@@ -20,8 +24,7 @@ export const workspaceMemberOperations: INodeProperties[] = [
 			{
 				name: 'Create One Workspace Member',
 				value: 'createOneWorkspaceMember',
-				description:
-					'**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **workspaceMembers**',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **workspaceMembers**',
 				action: 'Create one workspace member',
 			},
 			{
@@ -33,8 +36,7 @@ export const workspaceMemberOperations: INodeProperties[] = [
 			{
 				name: 'Find Many Workspace Members',
 				value: 'findManyWorkspaceMembers',
-				description:
-					'**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **workspaceMembers**',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **workspaceMembers**',
 				action: 'Find many workspace members',
 			},
 			{
@@ -71,34 +73,37 @@ export const workspaceMemberFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['workspaceMember'],
-				operation: ['createManyWorkspaceMembers'],
+				resource: [
+					'workspaceMember',
+				],
+				operation: [
+					'createManyWorkspaceMembers',
+				],
 			},
 		},
 	},
@@ -110,25 +115,34 @@ export const workspaceMemberFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['workspaceMember'],
-				operation: ['createManyWorkspaceMembers'],
+				resource: [
+					'workspaceMember',
+				],
+				operation: [
+					'createManyWorkspaceMembers',
+				],
 			},
 		},
-		options: [],
+		options: [
+		],
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['workspaceMember'],
-				operation: ['createManyWorkspaceMembers'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'workspaceMember',
+					],
+					operation: [
+						'createManyWorkspaceMembers',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// workspaceMember: createOneWorkspaceMember
 	// ----------------------------------------
@@ -139,34 +153,37 @@ export const workspaceMemberFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['workspaceMember'],
-				operation: ['createOneWorkspaceMember'],
+				resource: [
+					'workspaceMember',
+				],
+				operation: [
+					'createOneWorkspaceMember',
+				],
 			},
 		},
 	},
@@ -179,8 +196,12 @@ export const workspaceMemberFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['workspaceMember'],
-				operation: ['createOneWorkspaceMember'],
+				resource: [
+					'workspaceMember',
+				],
+				operation: [
+					'createOneWorkspaceMember',
+				],
 			},
 		},
 	},
@@ -192,8 +213,12 @@ export const workspaceMemberFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['workspaceMember'],
-				operation: ['createOneWorkspaceMember'],
+				resource: [
+					'workspaceMember',
+				],
+				operation: [
+					'createOneWorkspaceMember',
+				],
 			},
 		},
 		options: [
@@ -225,34 +250,31 @@ export const workspaceMemberFields: INodeProperties[] = [
 				default: '',
 				description: 'Preferred language',
 			},
-			{
-				displayName: 'Name',
-				name: 'name',
-				placeholder: 'Add Name Field',
-				type: 'fixedCollection',
-				default: {},
-				description: 'Workspace member name',
-				options: [
-					{
-						displayName: 'Name Fields',
-						name: 'nameFields',
-						values: [
-							{
-								displayName: 'First Name',
-								name: 'firstName',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Last Name',
-								name: 'lastName',
-								type: 'string',
-								default: '',
-							},
-						],
-					},
-				],
-			},
+				{
+displayName: 'Name',
+name: 'name',
+placeholder: 'Add Name Field',
+type: 'fixedCollection',
+default: {},
+description: 'Workspace member name',
+options: [{
+displayName: 'Name Fields',
+name: 'nameFields',
+values: [
+{
+displayName: 'First Name',
+name: 'firstName',
+type: 'string',
+default: '',
+},
+{
+displayName: 'Last Name',
+name: 'lastName',
+type: 'string',
+default: '',
+},
+]}],
+},
 			{
 				displayName: 'Time Format',
 				name: 'timeFormat',
@@ -290,19 +312,23 @@ export const workspaceMemberFields: INodeProperties[] = [
 			},
 		],
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['workspaceMember'],
-				operation: ['createOneWorkspaceMember'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'workspaceMember',
+					],
+					operation: [
+						'createOneWorkspaceMember',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// workspaceMember: deleteOneWorkspaceMember
 	// ----------------------------------------
@@ -315,24 +341,32 @@ export const workspaceMemberFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['workspaceMember'],
-				operation: ['deleteOneWorkspaceMember'],
+				resource: [
+					'workspaceMember',
+				],
+				operation: [
+					'deleteOneWorkspaceMember',
+				],
 			},
 		},
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['workspaceMember'],
-				operation: ['deleteOneWorkspaceMember'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'workspaceMember',
+					],
+					operation: [
+						'deleteOneWorkspaceMember',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// workspaceMember: findManyWorkspaceMembers
 	// ----------------------------------------
@@ -343,92 +377,95 @@ export const workspaceMemberFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
-			{
-				displayName: 'Ending Before',
-				name: 'ending_before',
-				type: 'string',
-				default: '',
-				description:
-					'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
-			},
-			{
-				displayName: 'Filter',
-				name: 'filter',
-				type: 'string',
-				default: '',
-				description:
-					'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
-			},
-			{
-				displayName: 'Limit',
-				name: 'limit',
-				type: 'number',
-				typeOptions: {
-					minValue: 1,
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
-				default: 50,
-				description: 'Max number of results to return',
-			},
-			{
-				displayName: 'Order By',
-				name: 'order_by',
-				type: 'string',
-				default: '',
-				description:
-					'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
-			},
-			{
-				displayName: 'Starting After',
-				name: 'starting_after',
-				type: 'string',
-				default: '',
-				description:
-					'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
-			},
+				{
+					displayName: 'Ending Before',
+					name: 'ending_before',
+					type: 'string',
+					default: '',
+					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+				},
+				{
+					displayName: 'Filter',
+					name: 'filter',
+					type: 'string',
+					default: '',
+					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **containsAny**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
+				},
+				{
+					displayName: 'Limit',
+					name: 'limit',
+					type: 'number',
+					typeOptions: {
+						minValue: 1,
+					},
+					default: 50,
+					description: 'Max number of results to return',
+				},
+				{
+					displayName: 'Order By',
+					name: 'order_by',
+					type: 'string',
+					default: '',
+					description: 'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
+				},
+				{
+					displayName: 'Starting After',
+					name: 'starting_after',
+					type: 'string',
+					default: '',
+					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['workspaceMember'],
-				operation: ['findManyWorkspaceMembers'],
+				resource: [
+					'workspaceMember',
+				],
+				operation: [
+					'findManyWorkspaceMembers',
+				],
 			},
 		},
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['workspaceMember'],
-				operation: ['findManyWorkspaceMembers'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'workspaceMember',
+					],
+					operation: [
+						'findManyWorkspaceMembers',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// workspaceMember: findOneWorkspaceMember
 	// ----------------------------------------
@@ -441,8 +478,12 @@ export const workspaceMemberFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['workspaceMember'],
-				operation: ['findOneWorkspaceMember'],
+				resource: [
+					'workspaceMember',
+				],
+				operation: [
+					'findOneWorkspaceMember',
+				],
 			},
 		},
 	},
@@ -453,50 +494,57 @@ export const workspaceMemberFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['workspaceMember'],
-				operation: ['findOneWorkspaceMember'],
+				resource: [
+					'workspaceMember',
+				],
+				operation: [
+					'findOneWorkspaceMember',
+				],
 			},
 		},
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['workspaceMember'],
-				operation: ['findOneWorkspaceMember'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'workspaceMember',
+					],
+					operation: [
+						'findOneWorkspaceMember',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// workspaceMember: findWorkspaceMemberDuplicates
 	// ----------------------------------------
@@ -507,34 +555,37 @@ export const workspaceMemberFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['workspaceMember'],
-				operation: ['findWorkspaceMemberDuplicates'],
+				resource: [
+					'workspaceMember',
+				],
+				operation: [
+					'findWorkspaceMemberDuplicates',
+				],
 			},
 		},
 	},
@@ -546,125 +597,159 @@ export const workspaceMemberFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['workspaceMember'],
-				operation: ['findWorkspaceMemberDuplicates'],
+				resource: [
+					'workspaceMember',
+				],
+				operation: [
+					'findWorkspaceMemberDuplicates',
+				],
 			},
 		},
 		options: [
-			{
-				displayName: 'Data',
-				name: 'data',
-				placeholder: 'Add Data Field',
-				type: 'fixedCollection',
-				default: {},
-				options: [
-					{
-						displayName: 'Data Fields',
-						name: 'dataFields',
-						values: [
-							{
-								displayName: 'Name',
-								name: 'name',
-								placeholder: 'Add Name Field',
-								type: 'fixedCollection',
-								default: {},
-								description: 'Workspace member name',
-								options: [
-									{
-										displayName: 'Name Fields',
-										name: 'nameFields',
-										values: [
-											{
-												displayName: 'First Name',
-												name: 'firstName',
-												type: 'string',
-												default: '',
-											},
-											{
-												displayName: 'Last Name',
-												name: 'lastName',
-												type: 'string',
-												default: '',
-											},
-										],
-									},
-								],
-							},
-							{
-								displayName: 'Color Scheme',
-								name: 'colorScheme',
-								type: 'color',
-								default: '',
-								description: 'Preferred color scheme',
-							},
-							{
-								displayName: 'Locale',
-								name: 'locale',
-								type: 'string',
-								default: '',
-								description: 'Preferred language',
-							},
-							{
-								displayName: 'Avatar Url',
-								name: 'avatarUrl',
-								type: 'string',
-								default: '',
-								description: 'Workspace member avatar',
-							},
-							{
-								displayName: 'User Email',
-								name: 'userEmail',
-								type: 'string',
-								default: '',
-								description: 'Related user email address',
-							},
-							{
-								displayName: 'User ID',
-								name: 'userId',
-								type: 'string',
-								default: '',
-								description: 'Associated User ID',
-							},
-							{
-								displayName: 'Time Zone',
-								name: 'timeZone',
-								type: 'string',
-								default: '',
-								description: 'User time zone',
-							},
-							{
-								displayName: 'Date Format',
-								name: 'dateFormat',
-								type: 'dateTime',
-								default: '',
-								description: 'User’s preferred date format',
-							},
-							{
-								displayName: 'Time Format',
-								name: 'timeFormat',
-								type: 'string',
-								default: '',
-								description: 'User’s preferred time format',
-							},
-						],
-					},
-				],
-			},
+				{
+displayName: 'Data',
+name: 'data',
+placeholder: 'Add Data Field',
+type: 'fixedCollection',
+default: {},
+options: [{
+displayName: 'Data Fields',
+name: 'dataFields',
+values: [
+{
+displayName: 'Name',
+name: 'name',
+placeholder: 'Add Name Field',
+type: 'fixedCollection',
+default: {},
+description: 'Workspace member name',
+options: [{
+displayName: 'Name Fields',
+name: 'nameFields',
+values: [
+{
+displayName: 'First Name',
+name: 'firstName',
+type: 'string',
+default: '',
+},
+{
+displayName: 'Last Name',
+name: 'lastName',
+type: 'string',
+default: '',
+},
+]}],
+},
+{
+displayName: 'Color Scheme',
+name: 'colorScheme',
+type: 'color',
+default: '',
+description: 'Preferred color scheme',
+},
+{
+displayName: 'Locale',
+name: 'locale',
+type: 'string',
+default: '',
+description: 'Preferred language',
+},
+{
+displayName: 'Avatar Url',
+name: 'avatarUrl',
+type: 'string',
+default: '',
+description: 'Workspace member avatar',
+},
+{
+displayName: 'User Email',
+name: 'userEmail',
+type: 'string',
+default: '',
+description: 'Related user email address',
+},
+{
+displayName: 'User ID',
+name: 'userId',
+type: 'string',
+default: '',
+description: 'Associated User ID',
+},
+{
+displayName: 'Time Zone',
+name: 'timeZone',
+type: 'string',
+default: '',
+description: 'User time zone',
+},
+{
+displayName: 'Date Format',
+name: 'dateFormat',
+type: 'dateTime',
+options: [
+{
+name: 'Day First',
+value: 'DAY_FIRST',
+},
+{
+name: 'Month First',
+value: 'MONTH_FIRST',
+},
+{
+name: 'System',
+value: 'SYSTEM',
+},
+{
+name: 'Year First',
+value: 'YEAR_FIRST',
+},
+],
+default: 'DAY_FIRST',
+description: 'User’s preferred date format',
+},
+{
+displayName: 'Time Format',
+name: 'timeFormat',
+type: 'options',
+options: [
+{
+name: 'Hour 12',
+value: 'HOUR_12',
+},
+{
+name: 'Hour 24',
+value: 'HOUR_24',
+},
+{
+name: 'System',
+value: 'SYSTEM',
+},
+],
+default: 'HOUR_12',
+description: 'User’s preferred time format',
+},
+]}],
+},
 		],
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['workspaceMember'],
-				operation: ['findWorkspaceMemberDuplicates'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'workspaceMember',
+					],
+					operation: [
+						'findWorkspaceMemberDuplicates',
+					],
+				},
 			},
 		},
-	},
-
+	
 	// ----------------------------------------
 	// workspaceMember: updateOneWorkspaceMember
 	// ----------------------------------------
@@ -677,8 +762,12 @@ export const workspaceMemberFields: INodeProperties[] = [
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['workspaceMember'],
-				operation: ['updateOneWorkspaceMember'],
+				resource: [
+					'workspaceMember',
+				],
+				operation: [
+					'updateOneWorkspaceMember',
+				],
 			},
 		},
 	},
@@ -689,34 +778,37 @@ export const workspaceMemberFields: INodeProperties[] = [
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
-			{
-				displayName: 'Depth',
-				name: 'depth',
-				type: 'options',
-				options: [
-					{
-						name: '0',
-						value: '0',
-					},
-					{
-						name: '1',
-						value: '1',
-					},
-					{
-						name: '2',
-						value: '2',
-					},
-				],
-				default: '1',
-				description:
-					'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-			},
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: 'options',
+					options: [
+						{
+							name: '0',
+							value: '0',
+						},
+						{
+							name: '1',
+							value: '1',
+						},
+						{
+							name: '2',
+							value: '2',
+						},
+					],
+					default: '1',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['workspaceMember'],
-				operation: ['updateOneWorkspaceMember'],
+				resource: [
+					'workspaceMember',
+				],
+				operation: [
+					'updateOneWorkspaceMember',
+				],
 			},
 		},
 	},
@@ -728,8 +820,12 @@ export const workspaceMemberFields: INodeProperties[] = [
 		default: {},
 		displayOptions: {
 			show: {
-				resource: ['workspaceMember'],
-				operation: ['updateOneWorkspaceMember'],
+				resource: [
+					'workspaceMember',
+				],
+				operation: [
+					'updateOneWorkspaceMember',
+				],
 			},
 		},
 		options: [
@@ -761,34 +857,31 @@ export const workspaceMemberFields: INodeProperties[] = [
 				default: '',
 				description: 'Preferred language',
 			},
-			{
-				displayName: 'Name',
-				name: 'name',
-				placeholder: 'Add Name Field',
-				type: 'fixedCollection',
-				default: {},
-				description: 'Workspace member name',
-				options: [
-					{
-						displayName: 'Name Fields',
-						name: 'nameFields',
-						values: [
-							{
-								displayName: 'First Name',
-								name: 'firstName',
-								type: 'string',
-								default: '',
-							},
-							{
-								displayName: 'Last Name',
-								name: 'lastName',
-								type: 'string',
-								default: '',
-							},
-						],
-					},
-				],
-			},
+				{
+displayName: 'Name',
+name: 'name',
+placeholder: 'Add Name Field',
+type: 'fixedCollection',
+default: {},
+description: 'Workspace member name',
+options: [{
+displayName: 'Name Fields',
+name: 'nameFields',
+values: [
+{
+displayName: 'First Name',
+name: 'firstName',
+type: 'string',
+default: '',
+},
+{
+displayName: 'Last Name',
+name: 'lastName',
+type: 'string',
+default: '',
+},
+]}],
+},
 			{
 				displayName: 'Time Format',
 				name: 'timeFormat',
@@ -833,16 +926,20 @@ export const workspaceMemberFields: INodeProperties[] = [
 			},
 		],
 	},
-	{
-		displayName: 'Scope',
-		name: 'scope',
-		type: 'hidden',
-		default: '',
-		displayOptions: {
-			show: {
-				resource: ['workspaceMember'],
-				operation: ['updateOneWorkspaceMember'],
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'workspaceMember',
+					],
+					operation: [
+						'updateOneWorkspaceMember',
+					],
+				},
 			},
 		},
-	},
 ];

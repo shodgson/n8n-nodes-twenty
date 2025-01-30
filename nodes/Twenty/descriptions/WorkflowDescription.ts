@@ -2,7 +2,7 @@ import type {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export const viewFilterGroupOperations: INodeProperties[] = [
+export const workflowOperations: INodeProperties[] = [
 	{
 		displayName: 'Operation',
 		name: 'operation',
@@ -11,60 +11,60 @@ export const viewFilterGroupOperations: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflow',
 				],
 			},
 		},
 		options: [
 			{
-				name: 'Create Many View Filter Groups',
-				value: 'createManyViewFilterGroups',
-				action: 'Create many view filter groups',
+				name: 'Create Many Workflows',
+				value: 'createManyWorkflows',
+				action: 'Create many workflows',
 			},
 			{
-				name: 'Create One View Filter Group',
-				value: 'createOneViewFilterGroup',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewFilterGroups**',
-				action: 'Create one view filter group',
+				name: 'Create One Workflow',
+				value: 'createOneWorkflow',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **workflows**',
+				action: 'Create one workflow',
 			},
 			{
-				name: 'Delete One View Filter Group',
-				value: 'deleteOneViewFilterGroup',
-				description: '**depth** can be provided to request your **viewFilterGroup**',
-				action: 'Delete one view filter group',
+				name: 'Delete One Workflow',
+				value: 'deleteOneWorkflow',
+				description: '**depth** can be provided to request your **workflow**',
+				action: 'Delete one workflow',
 			},
 			{
-				name: 'Find Many View Filter Groups',
-				value: 'findManyViewFilterGroups',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewFilterGroups**',
-				action: 'Find many view filter groups',
+				name: 'Find Many Workflows',
+				value: 'findManyWorkflows',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **workflows**',
+				action: 'Find many workflows',
 			},
 			{
-				name: 'Find One View Filter Group',
-				value: 'findOneViewFilterGroup',
-				description: '**depth** can be provided to request your **viewFilterGroup**',
-				action: 'Find one view filter group',
+				name: 'Find One Workflow',
+				value: 'findOneWorkflow',
+				description: '**depth** can be provided to request your **workflow**',
+				action: 'Find one workflow',
 			},
 			{
-				name: 'Find View Filter Group Duplicates',
-				value: 'findViewFilterGroupDuplicates',
-				description: '**depth** can be provided to request your **viewFilterGroup**',
-				action: 'Find view filter group duplicates',
+				name: 'Find Workflow Duplicates',
+				value: 'findWorkflowDuplicates',
+				description: '**depth** can be provided to request your **workflow**',
+				action: 'Find workflow duplicates',
 			},
 			{
-				name: 'Update One View Filter Group',
-				value: 'updateOneViewFilterGroup',
-				description: '**depth** can be provided to request your **viewFilterGroup**',
-				action: 'Update one view filter group',
+				name: 'Update One Workflow',
+				value: 'updateOneWorkflow',
+				description: '**depth** can be provided to request your **workflow**',
+				action: 'Update one workflow',
 			},
 		],
-		default: 'createManyViewFilterGroups',
+		default: 'createManyWorkflows',
 	},
 ];
 
-export const viewFilterGroupFields: INodeProperties[] = [
+export const workflowFields: INodeProperties[] = [
 	// ----------------------------------------
-	// viewFilterGroup: createManyViewFilterGroups
+	//      workflow: createManyWorkflows
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -99,10 +99,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflow',
 				],
 				operation: [
-					'createManyViewFilterGroups',
+					'createManyWorkflows',
 				],
 			},
 		},
@@ -116,10 +116,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflow',
 				],
 				operation: [
-					'createManyViewFilterGroups',
+					'createManyWorkflows',
 				],
 			},
 		},
@@ -134,17 +134,17 @@ export const viewFilterGroupFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'workflow',
 					],
 					operation: [
-						'createManyViewFilterGroups',
+						'createManyWorkflows',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: createOneViewFilterGroup
+	//       workflow: createOneWorkflow
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -179,28 +179,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflow',
 				],
 				operation: [
-					'createOneViewFilterGroup',
-				],
-			},
-		},
-	},
-	{
-		displayName: 'View ID',
-		name: 'viewId',
-		description: 'View ID foreign key',
-		type: 'string',
-		required: true,
-		default: '',
-		displayOptions: {
-			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'createOneViewFilterGroup',
+					'createOneWorkflow',
 				],
 			},
 		},
@@ -214,48 +196,60 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflow',
 				],
 				operation: [
-					'createOneViewFilterGroup',
+					'createOneWorkflow',
 				],
 			},
 		},
 		options: [
+				{
+displayName: 'Created By',
+name: 'createdBy',
+placeholder: 'Add Created By Field',
+type: 'fixedCollection',
+default: {},
+description: 'The creator of the record',
+options: [{
+displayName: 'Created By Fields',
+name: 'createdByFields',
+values: [
+{
+displayName: 'Source',
+name: 'source',
+type: 'string',
+default: '',
+},
+]}],
+},
 			{
-				displayName: 'Logical Operator',
-				name: 'logicalOperator',
-				type: 'options',
-				default: 'AND',
-				description: 'Logical operator for the filter group',
-				options: [
-					{
-						name: 'And',
-						value: 'AND',
-					},
-					{
-						name: 'Not',
-						value: 'NOT',
-					},
-					{
-						name: 'Or',
-						value: 'OR',
-					},
-				],
-			},
-			{
-				displayName: 'Parent View Filter Group ID',
-				name: 'parentViewFilterGroupId',
+				displayName: 'Last Published Version ID',
+				name: 'lastPublishedVersionId',
 				type: 'string',
 				default: '',
-				description: 'Parent View Filter Group',
+				description: 'The workflow last published version ID',
 			},
 			{
-				displayName: 'Position In View Filter Group',
-				name: 'positionInViewFilterGroup',
+				displayName: 'Name',
+				name: 'name',
+				type: 'string',
+				default: '',
+				description: 'The workflow name',
+			},
+			{
+				displayName: 'Position',
+				name: 'position',
 				type: 'number',
 				default: 0,
-				description: 'Position in the parent view filter group',
+				description: 'Workflow record position',
+			},
+			{
+				displayName: 'Statuses',
+				name: 'statuses',
+				type: 'string',
+				default: '',
+				description: 'The current statuses of the workflow versions',
 			},
 		],
 	},
@@ -267,17 +261,17 @@ export const viewFilterGroupFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'workflow',
 					],
 					operation: [
-						'createOneViewFilterGroup',
+						'createOneWorkflow',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: deleteOneViewFilterGroup
+	//       workflow: deleteOneWorkflow
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -289,10 +283,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflow',
 				],
 				operation: [
-					'deleteOneViewFilterGroup',
+					'deleteOneWorkflow',
 				],
 			},
 		},
@@ -305,17 +299,17 @@ export const viewFilterGroupFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'workflow',
 					],
 					operation: [
-						'deleteOneViewFilterGroup',
+						'deleteOneWorkflow',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: findManyViewFilterGroups
+	//       workflow: findManyWorkflows
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -388,10 +382,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflow',
 				],
 				operation: [
-					'findManyViewFilterGroups',
+					'findManyWorkflows',
 				],
 			},
 		},
@@ -404,17 +398,17 @@ export const viewFilterGroupFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'workflow',
 					],
 					operation: [
-						'findManyViewFilterGroups',
+						'findManyWorkflows',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: findOneViewFilterGroup
+	//        workflow: findOneWorkflow
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -426,10 +420,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflow',
 				],
 				operation: [
-					'findOneViewFilterGroup',
+					'findOneWorkflow',
 				],
 			},
 		},
@@ -467,10 +461,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflow',
 				],
 				operation: [
-					'findOneViewFilterGroup',
+					'findOneWorkflow',
 				],
 			},
 		},
@@ -483,17 +477,17 @@ export const viewFilterGroupFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'workflow',
 					],
 					operation: [
-						'findOneViewFilterGroup',
+						'findOneWorkflow',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: findViewFilterGroupDuplicates
+	//     workflow: findWorkflowDuplicates
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -528,10 +522,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflow',
 				],
 				operation: [
-					'findViewFilterGroupDuplicates',
+					'findWorkflowDuplicates',
 				],
 			},
 		},
@@ -545,10 +539,10 @@ export const viewFilterGroupFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflow',
 				],
 				operation: [
-					'findViewFilterGroupDuplicates',
+					'findWorkflowDuplicates',
 				],
 			},
 		},
@@ -564,46 +558,54 @@ displayName: 'Data Fields',
 name: 'dataFields',
 values: [
 {
-displayName: 'Parent View Filter Group ID',
-name: 'parentViewFilterGroupId',
+displayName: 'Name',
+name: 'name',
 type: 'string',
 default: '',
-description: 'Parent View Filter Group',
+description: 'The workflow name',
 },
 {
-displayName: 'Logical Operator',
-name: 'logicalOperator',
-type: 'options',
-options: [
-{
-name: 'And',
-value: 'AND',
+displayName: 'Last Published Version ID',
+name: 'lastPublishedVersionId',
+type: 'string',
+default: '',
+description: 'The workflow last published version ID',
 },
 {
-name: 'Not',
-value: 'NOT',
+displayName: 'Statuses',
+name: 'statuses',
+type: 'string',
+typeOptions: {
+multipleValues: true,
+},
+default: [],
+description: 'The current statuses of the workflow versions',
 },
 {
-name: 'Or',
-value: 'OR',
-},
-],
-default: 'AND',
-description: 'Logical operator for the filter group',
-},
-{
-displayName: 'Position In View Filter Group',
-name: 'positionInViewFilterGroup',
+displayName: 'Position',
+name: 'position',
 type: 'number',
 default: 0,
-description: 'Position in the parent view filter group',
+description: 'Workflow record position',
 },
 {
-displayName: 'View ID',
-name: 'viewId',
+displayName: 'Created By',
+name: 'createdBy',
+placeholder: 'Add Created By Field',
+type: 'fixedCollection',
+default: {},
+description: 'The creator of the record',
+options: [{
+displayName: 'Created By Fields',
+name: 'createdByFields',
+values: [
+{
+displayName: 'Source',
+name: 'source',
 type: 'string',
 default: '',
-description: 'View ID foreign key',
+},
+]}],
 },
 ]}],
 },
@@ -617,17 +619,17 @@ description: 'View ID foreign key',
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'workflow',
 					],
 					operation: [
-						'findViewFilterGroupDuplicates',
+						'findWorkflowDuplicates',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	// viewFilterGroup: updateOneViewFilterGroup
+	//       workflow: updateOneWorkflow
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -639,10 +641,10 @@ description: 'View ID foreign key',
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflow',
 				],
 				operation: [
-					'updateOneViewFilterGroup',
+					'updateOneWorkflow',
 				],
 			},
 		},
@@ -680,10 +682,10 @@ description: 'View ID foreign key',
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflow',
 				],
 				operation: [
-					'updateOneViewFilterGroup',
+					'updateOneWorkflow',
 				],
 			},
 		},
@@ -697,55 +699,60 @@ description: 'View ID foreign key',
 		displayOptions: {
 			show: {
 				resource: [
-					'viewFilterGroup',
+					'workflow',
 				],
 				operation: [
-					'updateOneViewFilterGroup',
+					'updateOneWorkflow',
 				],
 			},
 		},
 		options: [
+				{
+displayName: 'Created By',
+name: 'createdBy',
+placeholder: 'Add Created By Field',
+type: 'fixedCollection',
+default: {},
+description: 'The creator of the record',
+options: [{
+displayName: 'Created By Fields',
+name: 'createdByFields',
+values: [
+{
+displayName: 'Source',
+name: 'source',
+type: 'string',
+default: '',
+},
+]}],
+},
 			{
-				displayName: 'Logical Operator',
-				name: 'logicalOperator',
-				type: 'options',
-				default: 'AND',
-				description: 'Logical operator for the filter group',
-				options: [
-					{
-						name: 'And',
-						value: 'AND',
-					},
-					{
-						name: 'Not',
-						value: 'NOT',
-					},
-					{
-						name: 'Or',
-						value: 'OR',
-					},
-				],
-			},
-			{
-				displayName: 'Parent View Filter Group ID',
-				name: 'parentViewFilterGroupId',
+				displayName: 'Last Published Version ID',
+				name: 'lastPublishedVersionId',
 				type: 'string',
 				default: '',
-				description: 'Parent View Filter Group',
+				description: 'The workflow last published version ID',
 			},
 			{
-				displayName: 'Position In View Filter Group',
-				name: 'positionInViewFilterGroup',
+				displayName: 'Name',
+				name: 'name',
+				type: 'string',
+				default: '',
+				description: 'The workflow name',
+			},
+			{
+				displayName: 'Position',
+				name: 'position',
 				type: 'number',
 				default: 0,
-				description: 'Position in the parent view filter group',
+				description: 'Workflow record position',
 			},
 			{
-				displayName: 'View ID',
-				name: 'viewId',
+				displayName: 'Statuses',
+				name: 'statuses',
 				type: 'string',
 				default: '',
-				description: 'View ID foreign key',
+				description: 'The current statuses of the workflow versions',
 			},
 		],
 	},
@@ -757,10 +764,10 @@ description: 'View ID foreign key',
 			displayOptions: {
 				show: {
 					resource: [
-						'viewFilterGroup',
+						'workflow',
 					],
 					operation: [
-						'updateOneViewFilterGroup',
+						'updateOneWorkflow',
 					],
 				},
 			},
