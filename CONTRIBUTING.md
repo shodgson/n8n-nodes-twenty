@@ -9,12 +9,17 @@ npm i
 
 2. Get an API key from Twenty
 3. Use the API key to download the OpenApi spec
+
+
 ```sh
 curl --request GET \
         --url $TWENTY_URL/open-api/core \
         --header "Accept: application/json" \
         --header "Authorization: Bearer $API_KEY" > src/input/openApi/twenty.json
 ```
+
+E.g. `set TWENTY_URL https://api-demo.twenty.com`
+
 Modify api:
 ```sh
 jq 'walk(if type == "object" and has("enum") then .enum |= sort else . end)' twenty.json > twenty.json
