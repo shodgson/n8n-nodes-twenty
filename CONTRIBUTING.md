@@ -8,6 +8,9 @@ npm i
 ```
 
 2. Get an API key from Twenty
+```sh
+set API_KEY <API_key_from_Twenty_settings>
+```
 3. Use the API key to download the OpenApi spec
 
 
@@ -22,7 +25,8 @@ E.g. `set TWENTY_URL https://api-demo.twenty.com`
 
 Modify api:
 ```sh
-jq 'walk(if type == "object" and has("enum") then .enum |= sort else . end)' twenty.json > twenty.json
+# Use Prettier to clean up twenty.json, and then...
+jq 'walk(if type == "object" and has("enum") then .enum |= sort else . end)' src/input/openApi/twenty.json > src/input/openApi/twenty.json
 ```
 
 
