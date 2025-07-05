@@ -19,43 +19,43 @@ export const noteOperations: INodeProperties[] = [
 			{
 				name: 'Create Many Notes',
 				value: 'createManyNotes',
-				action: 'Create many notes',
+				action: 'Create Many notes',
 			},
 			{
 				name: 'Create One Note',
 				value: 'createOneNote',
 				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **notes**',
-				action: 'Create one note',
+				action: 'Create One note',
 			},
 			{
 				name: 'Delete One Note',
 				value: 'deleteOneNote',
 				description: '**depth** can be provided to request your **note**',
-				action: 'Delete one note',
+				action: 'Delete One note',
 			},
 			{
 				name: 'Find Many Notes',
 				value: 'findManyNotes',
 				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **notes**',
-				action: 'Find many notes',
+				action: 'Find Many notes',
 			},
 			{
 				name: 'Find Note Duplicates',
 				value: 'findNoteDuplicates',
 				description: '**depth** can be provided to request your **note**',
-				action: 'Find note duplicates',
+				action: 'Find note Duplicates',
 			},
 			{
 				name: 'Find One Note',
 				value: 'findOneNote',
 				description: '**depth** can be provided to request your **note**',
-				action: 'Find one note',
+				action: 'Find One note',
 			},
 			{
 				name: 'Update One Note',
 				value: 'updateOneNote',
 				description: '**depth** can be provided to request your **note**',
-				action: 'Update one note',
+				action: 'Update One note',
 			},
 		],
 		default: 'createManyNotes',
@@ -69,29 +69,15 @@ export const noteFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -149,29 +135,15 @@ export const noteFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -211,6 +183,31 @@ export const noteFields: INodeProperties[] = [
 				default: '',
 				description: 'Note body',
 			},
+				{
+displayName: 'Body V2',
+name: 'bodyV2',
+placeholder: 'Add Body V2 Field',
+type: 'fixedCollection',
+default: {},
+description: 'Note body',
+options: [{
+displayName: 'Body V2 Fields',
+name: 'bodyV2Fields',
+values: [
+{
+displayName: 'Blocknote',
+name: 'blocknote',
+type: 'string',
+default: '',
+},
+{
+displayName: 'Markdown',
+name: 'markdown',
+type: 'string',
+default: '',
+},
+]}],
+},
 				{
 displayName: 'Created By',
 name: 'createdBy',
@@ -269,8 +266,8 @@ default: '',
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -307,68 +304,51 @@ default: '',
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 				{
 					displayName: 'Ending Before',
 					name: 'ending_before',
-					type: 'string',
+					type: '',
 					default: '',
-					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
 				},
 				{
 					displayName: 'Filter',
 					name: 'filter',
-					type: 'string',
+					type: '',
 					default: '',
 					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **containsAny**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
 				},
 				{
 					displayName: 'Limit',
 					name: 'limit',
-					type: 'number',
-					typeOptions: {
-						minValue: 1,
-					},
-					default: 50,
-					description: 'Max number of results to return',
+					type: '',
+					default: '',
+					description: 'Limits the number of objects returned.',
 				},
 				{
 					displayName: 'Order By',
 					name: 'order_by',
-					type: 'string',
+					type: '',
 					default: '',
 					description: 'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
 				},
 				{
 					displayName: 'Starting After',
 					name: 'starting_after',
-					type: 'string',
+					type: '',
 					default: '',
-					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
 				},
 		],
 		default: {},
@@ -406,29 +386,15 @@ default: '',
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -472,47 +438,73 @@ displayName: 'Data Fields',
 name: 'dataFields',
 values: [
 {
-displayName: 'Position',
-name: 'position',
-type: 'number',
-default: 0,
-description: 'Note record position',
-},
-{
-displayName: 'Title',
-name: 'title',
-type: 'string',
+displayName: '0',
+name: '0',
+type: 'undefined',
 default: '',
-description: 'Note title',
 },
 {
-displayName: 'Body',
-name: 'body',
-type: 'string',
+displayName: '1',
+name: '1',
+type: 'undefined',
 default: '',
-description: 'Note body',
 },
 {
-displayName: 'Created By',
-name: 'createdBy',
-placeholder: 'Add Created By Field',
-type: 'fixedCollection',
-default: {},
-description: 'The creator of the record',
-options: [{
-displayName: 'Created By Fields',
-name: 'createdByFields',
-values: [
+displayName: '2',
+name: '2',
+type: 'undefined',
+default: '',
+},
 {
-displayName: 'Source',
-name: 'source',
-type: 'string',
+displayName: '3',
+name: '3',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '4',
+name: '4',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '5',
+name: '5',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '6',
+name: '6',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '7',
+name: '7',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '8',
+name: '8',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '9',
+name: '9',
+type: 'undefined',
 default: '',
 },
 ]}],
 },
-]}],
-},
+			{
+				displayName: 'IDs',
+				name: 'ids',
+				type: 'string',
+				default: [],
+			},
 		],
 	},
 		{
@@ -538,8 +530,8 @@ default: '',
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -556,29 +548,15 @@ default: '',
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -617,8 +595,8 @@ default: '',
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -635,29 +613,15 @@ default: '',
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -697,6 +661,31 @@ default: '',
 				default: '',
 				description: 'Note body',
 			},
+				{
+displayName: 'Body V2',
+name: 'bodyV2',
+placeholder: 'Add Body V2 Field',
+type: 'fixedCollection',
+default: {},
+description: 'Note body',
+options: [{
+displayName: 'Body V2 Fields',
+name: 'bodyV2Fields',
+values: [
+{
+displayName: 'Blocknote',
+name: 'blocknote',
+type: 'string',
+default: '',
+},
+{
+displayName: 'Markdown',
+name: 'markdown',
+type: 'string',
+default: '',
+},
+]}],
+},
 				{
 displayName: 'Created By',
 name: 'createdBy',

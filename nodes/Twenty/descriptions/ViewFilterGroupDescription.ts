@@ -19,43 +19,43 @@ export const viewFilterGroupOperations: INodeProperties[] = [
 			{
 				name: 'Create Many View Filter Groups',
 				value: 'createManyViewFilterGroups',
-				action: 'Create many view filter groups',
+				action: 'Create Many viewFilterGroups',
 			},
 			{
 				name: 'Create One View Filter Group',
 				value: 'createOneViewFilterGroup',
 				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewFilterGroups**',
-				action: 'Create one view filter group',
+				action: 'Create One viewFilterGroup',
 			},
 			{
 				name: 'Delete One View Filter Group',
 				value: 'deleteOneViewFilterGroup',
 				description: '**depth** can be provided to request your **viewFilterGroup**',
-				action: 'Delete one view filter group',
+				action: 'Delete One viewFilterGroup',
 			},
 			{
 				name: 'Find Many View Filter Groups',
 				value: 'findManyViewFilterGroups',
 				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewFilterGroups**',
-				action: 'Find many view filter groups',
+				action: 'Find Many viewFilterGroups',
 			},
 			{
 				name: 'Find One View Filter Group',
 				value: 'findOneViewFilterGroup',
 				description: '**depth** can be provided to request your **viewFilterGroup**',
-				action: 'Find one view filter group',
+				action: 'Find One viewFilterGroup',
 			},
 			{
 				name: 'Find View Filter Group Duplicates',
 				value: 'findViewFilterGroupDuplicates',
 				description: '**depth** can be provided to request your **viewFilterGroup**',
-				action: 'Find view filter group duplicates',
+				action: 'Find viewFilterGroup Duplicates',
 			},
 			{
 				name: 'Update One View Filter Group',
 				value: 'updateOneViewFilterGroup',
 				description: '**depth** can be provided to request your **viewFilterGroup**',
-				action: 'Update one view filter group',
+				action: 'Update One viewFilterGroup',
 			},
 		],
 		default: 'createManyViewFilterGroups',
@@ -69,29 +69,15 @@ export const viewFilterGroupFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -149,51 +135,19 @@ export const viewFilterGroupFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'viewFilterGroup',
-				],
-				operation: [
-					'createOneViewFilterGroup',
-				],
-			},
-		},
-	},
-	{
-		displayName: 'View ID',
-		name: 'viewId',
-		description: 'View ID foreign key',
-		type: 'string',
-		required: true,
-		default: '',
 		displayOptions: {
 			show: {
 				resource: [
@@ -226,7 +180,7 @@ export const viewFilterGroupFields: INodeProperties[] = [
 				displayName: 'Logical Operator',
 				name: 'logicalOperator',
 				type: 'options',
-				default: 'AND',
+				default: '',
 				description: 'Logical operator for the filter group',
 				options: [
 					{
@@ -257,6 +211,12 @@ export const viewFilterGroupFields: INodeProperties[] = [
 				default: 0,
 				description: 'Position in the parent view filter group',
 			},
+			{
+				displayName: 'View ID',
+				name: 'viewId',
+				type: 'string',
+				default: '',
+			},
 		],
 	},
 		{
@@ -282,8 +242,8 @@ export const viewFilterGroupFields: INodeProperties[] = [
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -320,68 +280,51 @@ export const viewFilterGroupFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 				{
 					displayName: 'Ending Before',
 					name: 'ending_before',
-					type: 'string',
+					type: '',
 					default: '',
-					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
 				},
 				{
 					displayName: 'Filter',
 					name: 'filter',
-					type: 'string',
+					type: '',
 					default: '',
 					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **containsAny**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
 				},
 				{
 					displayName: 'Limit',
 					name: 'limit',
-					type: 'number',
-					typeOptions: {
-						minValue: 1,
-					},
-					default: 50,
-					description: 'Max number of results to return',
+					type: '',
+					default: '',
+					description: 'Limits the number of objects returned.',
 				},
 				{
 					displayName: 'Order By',
 					name: 'order_by',
-					type: 'string',
+					type: '',
 					default: '',
 					description: 'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
 				},
 				{
 					displayName: 'Starting After',
 					name: 'starting_after',
-					type: 'string',
+					type: '',
 					default: '',
-					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
 				},
 		],
 		default: {},
@@ -419,8 +362,8 @@ export const viewFilterGroupFields: INodeProperties[] = [
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -437,29 +380,15 @@ export const viewFilterGroupFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -498,29 +427,15 @@ export const viewFilterGroupFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -564,49 +479,73 @@ displayName: 'Data Fields',
 name: 'dataFields',
 values: [
 {
-displayName: 'Parent View Filter Group ID',
-name: 'parentViewFilterGroupId',
-type: 'string',
+displayName: '0',
+name: '0',
+type: 'undefined',
 default: '',
-description: 'Parent View Filter Group',
 },
 {
-displayName: 'Logical Operator',
-name: 'logicalOperator',
-type: 'options',
-options: [
-{
-name: 'And',
-value: 'AND',
-},
-{
-name: 'Not',
-value: 'NOT',
-},
-{
-name: 'Or',
-value: 'OR',
-},
-],
-default: 'AND',
-description: 'Logical operator for the filter group',
-},
-{
-displayName: 'Position In View Filter Group',
-name: 'positionInViewFilterGroup',
-type: 'number',
-default: 0,
-description: 'Position in the parent view filter group',
-},
-{
-displayName: 'View ID',
-name: 'viewId',
-type: 'string',
+displayName: '1',
+name: '1',
+type: 'undefined',
 default: '',
-description: 'View ID foreign key',
+},
+{
+displayName: '2',
+name: '2',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '3',
+name: '3',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '4',
+name: '4',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '5',
+name: '5',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '6',
+name: '6',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '7',
+name: '7',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '8',
+name: '8',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '9',
+name: '9',
+type: 'undefined',
+default: '',
 },
 ]}],
 },
+			{
+				displayName: 'IDs',
+				name: 'ids',
+				type: 'string',
+				default: [],
+			},
 		],
 	},
 		{
@@ -632,8 +571,8 @@ description: 'View ID foreign key',
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -650,29 +589,15 @@ description: 'View ID foreign key',
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -709,7 +634,7 @@ description: 'View ID foreign key',
 				displayName: 'Logical Operator',
 				name: 'logicalOperator',
 				type: 'options',
-				default: 'AND',
+				default: '',
 				description: 'Logical operator for the filter group',
 				options: [
 					{
@@ -745,7 +670,6 @@ description: 'View ID foreign key',
 				name: 'viewId',
 				type: 'string',
 				default: '',
-				description: 'View ID foreign key',
 			},
 		],
 	},

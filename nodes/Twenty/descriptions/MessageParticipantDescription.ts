@@ -19,43 +19,43 @@ export const messageParticipantOperations: INodeProperties[] = [
 			{
 				name: 'Create Many Message Participants',
 				value: 'createManyMessageParticipants',
-				action: 'Create many message participants',
+				action: 'Create Many messageParticipants',
 			},
 			{
 				name: 'Create One Message Participant',
 				value: 'createOneMessageParticipant',
 				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **messageParticipants**',
-				action: 'Create one message participant',
+				action: 'Create One messageParticipant',
 			},
 			{
 				name: 'Delete One Message Participant',
 				value: 'deleteOneMessageParticipant',
 				description: '**depth** can be provided to request your **messageParticipant**',
-				action: 'Delete one message participant',
+				action: 'Delete One messageParticipant',
 			},
 			{
 				name: 'Find Many Message Participants',
 				value: 'findManyMessageParticipants',
 				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **messageParticipants**',
-				action: 'Find many message participants',
+				action: 'Find Many messageParticipants',
 			},
 			{
 				name: 'Find Message Participant Duplicates',
 				value: 'findMessageParticipantDuplicates',
 				description: '**depth** can be provided to request your **messageParticipant**',
-				action: 'Find message participant duplicates',
+				action: 'Find messageParticipant Duplicates',
 			},
 			{
 				name: 'Find One Message Participant',
 				value: 'findOneMessageParticipant',
 				description: '**depth** can be provided to request your **messageParticipant**',
-				action: 'Find one message participant',
+				action: 'Find One messageParticipant',
 			},
 			{
 				name: 'Update One Message Participant',
 				value: 'updateOneMessageParticipant',
 				description: '**depth** can be provided to request your **messageParticipant**',
-				action: 'Update one message participant',
+				action: 'Update One messageParticipant',
 			},
 		],
 		default: 'createManyMessageParticipants',
@@ -69,29 +69,15 @@ export const messageParticipantFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -149,51 +135,19 @@ export const messageParticipantFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'messageParticipant',
-				],
-				operation: [
-					'createOneMessageParticipant',
-				],
-			},
-		},
-	},
-	{
-		displayName: 'Message ID',
-		name: 'messageId',
-		description: 'Message ID foreign key',
-		type: 'string',
-		required: true,
-		default: '',
 		displayOptions: {
 			show: {
 				resource: [
@@ -227,28 +181,33 @@ export const messageParticipantFields: INodeProperties[] = [
 				name: 'displayName',
 				type: 'string',
 				default: '',
-
+				description: 'Display Name',
 			},
 			{
 				displayName: 'Handle',
 				name: 'handle',
 				type: 'string',
 				default: '',
-
+				description: 'Handle',
+			},
+			{
+				displayName: 'Message ID',
+				name: 'messageId',
+				type: 'string',
+				default: '',
 			},
 			{
 				displayName: 'Person ID',
 				name: 'personId',
 				type: 'string',
 				default: '',
-				description: 'Person ID foreign key',
 			},
 			{
 				displayName: 'Role',
 				name: 'role',
 				type: 'options',
-				default: 'bcc',
-
+				default: '',
+				description: 'Role',
 				options: [
 					{
 						name: 'Bcc',
@@ -273,7 +232,6 @@ export const messageParticipantFields: INodeProperties[] = [
 				name: 'workspaceMemberId',
 				type: 'string',
 				default: '',
-				description: 'Workspace member ID foreign key',
 			},
 		],
 	},
@@ -300,8 +258,8 @@ export const messageParticipantFields: INodeProperties[] = [
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -338,68 +296,51 @@ export const messageParticipantFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 				{
 					displayName: 'Ending Before',
 					name: 'ending_before',
-					type: 'string',
+					type: '',
 					default: '',
-					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
 				},
 				{
 					displayName: 'Filter',
 					name: 'filter',
-					type: 'string',
+					type: '',
 					default: '',
 					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **containsAny**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
 				},
 				{
 					displayName: 'Limit',
 					name: 'limit',
-					type: 'number',
-					typeOptions: {
-						minValue: 1,
-					},
-					default: 50,
-					description: 'Max number of results to return',
+					type: '',
+					default: '',
+					description: 'Limits the number of objects returned.',
 				},
 				{
 					displayName: 'Order By',
 					name: 'order_by',
-					type: 'string',
+					type: '',
 					default: '',
 					description: 'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
 				},
 				{
 					displayName: 'Starting After',
 					name: 'starting_after',
-					type: 'string',
+					type: '',
 					default: '',
-					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
 				},
 		],
 		default: {},
@@ -437,29 +378,15 @@ export const messageParticipantFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -503,64 +430,73 @@ displayName: 'Data Fields',
 name: 'dataFields',
 values: [
 {
-displayName: 'Role',
-name: 'role',
-type: 'options',
-options: [
-{
-name: 'Bcc',
-value: 'bcc',
-},
-{
-name: 'Cc',
-value: 'cc',
-},
-{
-name: 'From',
-value: 'from',
-},
-{
-name: 'To',
-value: 'to',
-},
-],
-default: 'bcc',
-},
-{
-displayName: 'Handle',
-name: 'handle',
-type: 'string',
+displayName: '0',
+name: '0',
+type: 'undefined',
 default: '',
 },
 {
-displayName: 'Display Name',
-name: 'displayName',
-type: 'string',
+displayName: '1',
+name: '1',
+type: 'undefined',
 default: '',
 },
 {
-displayName: 'Message ID',
-name: 'messageId',
-type: 'string',
+displayName: '2',
+name: '2',
+type: 'undefined',
 default: '',
-description: 'Message ID foreign key',
 },
 {
-displayName: 'Person ID',
-name: 'personId',
-type: 'string',
+displayName: '3',
+name: '3',
+type: 'undefined',
 default: '',
-description: 'Person ID foreign key',
 },
 {
-displayName: 'Workspace Member ID',
-name: 'workspaceMemberId',
-type: 'string',
+displayName: '4',
+name: '4',
+type: 'undefined',
 default: '',
-description: 'Workspace member ID foreign key',
+},
+{
+displayName: '5',
+name: '5',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '6',
+name: '6',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '7',
+name: '7',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '8',
+name: '8',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '9',
+name: '9',
+type: 'undefined',
+default: '',
 },
 ]}],
 },
+			{
+				displayName: 'IDs',
+				name: 'ids',
+				type: 'string',
+				default: [],
+			},
 		],
 	},
 		{
@@ -586,8 +522,8 @@ description: 'Workspace member ID foreign key',
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -604,29 +540,15 @@ description: 'Workspace member ID foreign key',
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -665,8 +587,8 @@ description: 'Workspace member ID foreign key',
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -683,29 +605,15 @@ description: 'Workspace member ID foreign key',
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -743,35 +651,33 @@ description: 'Workspace member ID foreign key',
 				name: 'displayName',
 				type: 'string',
 				default: '',
-
+				description: 'Display Name',
 			},
 			{
 				displayName: 'Handle',
 				name: 'handle',
 				type: 'string',
 				default: '',
-
+				description: 'Handle',
 			},
 			{
 				displayName: 'Message ID',
 				name: 'messageId',
 				type: 'string',
 				default: '',
-				description: 'Message ID foreign key',
 			},
 			{
 				displayName: 'Person ID',
 				name: 'personId',
 				type: 'string',
 				default: '',
-				description: 'Person ID foreign key',
 			},
 			{
 				displayName: 'Role',
 				name: 'role',
 				type: 'options',
-				default: 'bcc',
-
+				default: '',
+				description: 'Role',
 				options: [
 					{
 						name: 'Bcc',
@@ -796,7 +702,6 @@ description: 'Workspace member ID foreign key',
 				name: 'workspaceMemberId',
 				type: 'string',
 				default: '',
-				description: 'Workspace member ID foreign key',
 			},
 		],
 	},

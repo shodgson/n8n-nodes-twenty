@@ -15,8 +15,6 @@ import {
 	apiKeyOperations,
 	attachmentFields,
 	attachmentOperations,
-	auditLogFields,
-	auditLogOperations,
 	blocklistFields,
 	blocklistOperations,
 	calendarChannelFields,
@@ -41,6 +39,8 @@ import {
 	messageChannelOperations,
 	messageChannelMessageAssociationFields,
 	messageChannelMessageAssociationOperations,
+	messageFolderFields,
+	messageFolderOperations,
 	messageParticipantFields,
 	messageParticipantOperations,
 	messageThreadFields,
@@ -75,8 +75,8 @@ import {
 	webhookOperations,
 	workflowFields,
 	workflowOperations,
-	workflowEventListenerFields,
-	workflowEventListenerOperations,
+	workflowAutomatedTriggerFields,
+	workflowAutomatedTriggerOperations,
 	workflowRunFields,
 	workflowRunOperations,
 	workflowVersionFields,
@@ -105,13 +105,17 @@ export class Twenty implements INodeType {
 				required: true,
 			},
 		],
+
 		properties: [
 			{
 				displayName: 'Resource',
 				name: 'resource',
 				type: 'options',
-				noDataExpression: true,
 				options: [
+					{
+						name: 'General',
+						value: 'general',
+					},
 					{
 						name: 'Api Key',
 						value: 'apiKey',
@@ -119,10 +123,6 @@ export class Twenty implements INodeType {
 					{
 						name: 'Attachment',
 						value: 'attachment',
-					},
-					{
-						name: 'Audit Log',
-						value: 'auditLog',
 					},
 					{
 						name: 'Blocklist',
@@ -157,8 +157,8 @@ export class Twenty implements INodeType {
 						value: 'favorite',
 					},
 					{
-						name: 'General',
-						value: 'general',
+						name: 'Favorite Folder',
+						value: 'favoriteFolder',
 					},
 					{
 						name: 'Message',
@@ -171,6 +171,10 @@ export class Twenty implements INodeType {
 					{
 						name: 'Message Channel Message Association',
 						value: 'messageChannelMessageAssociation',
+					},
+					{
+						name: 'Message Folder',
+						value: 'messageFolder',
 					},
 					{
 						name: 'Message Participant',
@@ -237,20 +241,34 @@ export class Twenty implements INodeType {
 						value: 'webhook',
 					},
 					{
+						name: 'Workflow',
+						value: 'workflow',
+					},
+					{
+						name: 'Workflow Automated Trigger',
+						value: 'workflowAutomatedTrigger',
+					},
+					{
+						name: 'Workflow Run',
+						value: 'workflowRun',
+					},
+					{
+						name: 'Workflow Version',
+						value: 'workflowVersion',
+					},
+					{
 						name: 'Workspace Member',
 						value: 'workspaceMember',
 					},
 				],
 				default: 'general',
 			},
-						...generalOperations,
+			...generalOperations,
 			...generalFields,
 			...apiKeyOperations,
 			...apiKeyFields,
 			...attachmentOperations,
 			...attachmentFields,
-			...auditLogOperations,
-			...auditLogFields,
 			...blocklistOperations,
 			...blocklistFields,
 			...calendarChannelOperations,
@@ -275,6 +293,8 @@ export class Twenty implements INodeType {
 			...messageChannelFields,
 			...messageChannelMessageAssociationOperations,
 			...messageChannelMessageAssociationFields,
+			...messageFolderOperations,
+			...messageFolderFields,
 			...messageParticipantOperations,
 			...messageParticipantFields,
 			...messageThreadOperations,
@@ -309,8 +329,8 @@ export class Twenty implements INodeType {
 			...webhookFields,
 			...workflowOperations,
 			...workflowFields,
-			...workflowEventListenerOperations,
-			...workflowEventListenerFields,
+			...workflowAutomatedTriggerOperations,
+			...workflowAutomatedTriggerFields,
 			...workflowRunOperations,
 			...workflowRunFields,
 			...workflowVersionOperations,
@@ -319,7 +339,6 @@ export class Twenty implements INodeType {
 			...workspaceMemberFields,
 		],
 	};
-
 
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
 		const items = this.getInputData();
@@ -345,8 +364,8 @@ export class Twenty implements INodeType {
 					//        general: getOpenApiSchema
 					// ----------------------------------------
 
-						responseData = await twentyApiRequest.call(this, 'GET', '/open-api/core', undefined, undefined, "");
-					
+						responseData = await twentyApiRequest.call(this, 'GET', '/open-api/core');
+
 					}
 
 				} else if (resource === 'apiKey') {
@@ -376,7 +395,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/apiKeys', body, qs);
-					
+
 					} else if (operation === 'createOneApiKey') {
 
 						// ----------------------------------------
@@ -401,7 +420,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/apiKeys', body, qs);
-					
+
 					} else if (operation === 'deleteOneApiKey') {
 
 						// ----------------------------------------
@@ -411,7 +430,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/apiKeys/${id}`);
-					
+
 					} else if (operation === 'findApiKeyDuplicates') {
 
 						// ----------------------------------------
@@ -433,7 +452,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/apiKeys/duplicates', body, qs);
-					
+
 					} else if (operation === 'findManyApiKeys') {
 
 						// ----------------------------------------
@@ -448,7 +467,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/apiKeys', {}, qs);
-					
+
 					} else if (operation === 'findOneApiKey') {
 
 						// ----------------------------------------
@@ -465,7 +484,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/apiKeys/${id}`, {}, qs);
-					
+
 					} else if (operation === 'updateOneApiKey') {
 
 						// ----------------------------------------
@@ -489,7 +508,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/apiKeys/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'attachment') {
@@ -519,17 +538,14 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/attachments', body, qs);
-					
+
 					} else if (operation === 'createOneAttachment') {
 
 						// ----------------------------------------
 					//     attachment: createOneAttachment
 					// ----------------------------------------
 
-						const body = {
-						authorId: this.getNodeParameter('authorId', i),
-					} as IDataObject;
-
+						const body = {} as IDataObject;
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
@@ -544,7 +560,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/attachments', body, qs);
-					
+
 					} else if (operation === 'deleteOneAttachment') {
 
 						// ----------------------------------------
@@ -554,7 +570,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/attachments/${id}`);
-					
+
 					} else if (operation === 'findAttachmentDuplicates') {
 
 						// ----------------------------------------
@@ -577,7 +593,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/attachments/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'findManyAttachments') {
 
 						// ----------------------------------------
@@ -592,7 +608,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/attachments', {}, qs);
-					
+
 					} else if (operation === 'findOneAttachment') {
 
 						// ----------------------------------------
@@ -609,7 +625,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/attachments/${id}`, {}, qs);
-					
+
 					} else if (operation === 'updateOneAttachment') {
 
 						// ----------------------------------------
@@ -633,148 +649,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/attachments/${id}`, body, qs);
-					
-					}
 
-				} else if (resource === 'auditLog') {
-
-					// **********************************************************************
-				//                                auditLog
-				// **********************************************************************
-
-					if (operation === 'createManyAuditLogs') {
-
-						// ----------------------------------------
-					//      auditLog: createManyAuditLogs
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/batch/auditLogs', body, qs);
-					
-					} else if (operation === 'createOneAuditLog') {
-
-						// ----------------------------------------
-					//       auditLog: createOneAuditLog
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'POST', '/auditLogs', body, qs);
-					
-					} else if (operation === 'deleteOneAuditLog') {
-
-						// ----------------------------------------
-					//       auditLog: deleteOneAuditLog
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					responseData = await twentyApiRequest.call(this, 'DELETE', `/auditLogs/${id}`);
-					
-					} else if (operation === 'findAuditLogDuplicates') {
-
-						// ----------------------------------------
-					//     auditLog: findAuditLogDuplicates
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
-
-					if (Object.keys(additionalFields).length) {
-						Object.assign(body, additionalFields);
-					}
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					const endpoint = '/auditLogs/duplicates';
-					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
-					} else if (operation === 'findManyAuditLogs') {
-
-						// ----------------------------------------
-					//       auditLog: findManyAuditLogs
-					// ----------------------------------------
-
-						const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'GET', '/auditLogs', {}, qs);
-					
-					} else if (operation === 'findOneAuditLog') {
-
-						// ----------------------------------------
-					//        auditLog: findOneAuditLog
-					// ----------------------------------------
-
-						const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'GET', `/auditLogs/${id}`, {}, qs);
-					
-					} else if (operation === 'updateOneAuditLog') {
-
-						// ----------------------------------------
-					//       auditLog: updateOneAuditLog
-					// ----------------------------------------
-
-						const body = {} as IDataObject;
-					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
-
-					if (Object.keys(updateFields).length) {
-						Object.assign(body, updateFields);
-					}
-
-					const id = this.getNodeParameter('id', i);
-
-					const qs = {} as IDataObject;
-					const query = this.getNodeParameter('query', i) as IDataObject;
-
-					if (Object.keys(query).length) {
-						Object.assign(qs, query);
-					}
-
-					responseData = await twentyApiRequest.call(this, 'PATCH', `/auditLogs/${id}`, body, qs);
-					
 					}
 
 				} else if (resource === 'blocklist') {
@@ -804,17 +679,14 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/blocklists', body, qs);
-					
+
 					} else if (operation === 'createOneBlocklist') {
 
 						// ----------------------------------------
 					//      blocklist: createOneBlocklist
 					// ----------------------------------------
 
-						const body = {
-						workspaceMemberId: this.getNodeParameter('workspaceMemberId', i),
-					} as IDataObject;
-
+						const body = {} as IDataObject;
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
@@ -829,7 +701,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/blocklists', body, qs);
-					
+
 					} else if (operation === 'deleteOneBlocklist') {
 
 						// ----------------------------------------
@@ -839,7 +711,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/blocklists/${id}`);
-					
+
 					} else if (operation === 'findBlocklistDuplicates') {
 
 						// ----------------------------------------
@@ -862,7 +734,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/blocklists/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'findManyBlocklists') {
 
 						// ----------------------------------------
@@ -877,7 +749,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/blocklists', {}, qs);
-					
+
 					} else if (operation === 'findOneBlocklist') {
 
 						// ----------------------------------------
@@ -894,7 +766,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/blocklists/${id}`, {}, qs);
-					
+
 					} else if (operation === 'updateOneBlocklist') {
 
 						// ----------------------------------------
@@ -918,7 +790,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/blocklists/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'calendarChannel') {
@@ -949,17 +821,14 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/batch/calendarChannels';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'createOneCalendarChannel') {
 
 						// ----------------------------------------
 					// calendarChannel: createOneCalendarChannel
 					// ----------------------------------------
 
-						const body = {
-						connectedAccountId: this.getNodeParameter('connectedAccountId', i),
-					} as IDataObject;
-
+						const body = {} as IDataObject;
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
@@ -974,7 +843,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/calendarChannels', body, qs);
-					
+
 					} else if (operation === 'deleteOneCalendarChannel') {
 
 						// ----------------------------------------
@@ -985,7 +854,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/calendarChannels/${id}`;
 					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-					
+
 					} else if (operation === 'findCalendarChannelDuplicates') {
 
 						// ----------------------------------------
@@ -1008,7 +877,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/calendarChannels/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'findManyCalendarChannels') {
 
 						// ----------------------------------------
@@ -1023,7 +892,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/calendarChannels', {}, qs);
-					
+
 					} else if (operation === 'findOneCalendarChannel') {
 
 						// ----------------------------------------
@@ -1041,7 +910,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/calendarChannels/${id}`;
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
+
 					} else if (operation === 'updateOneCalendarChannel') {
 
 						// ----------------------------------------
@@ -1066,7 +935,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/calendarChannels/${id}`;
 					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-					
+
 					}
 
 				} else if (resource === 'calendarChannelEventAssociation') {
@@ -1097,18 +966,14 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/batch/calendarChannelEventAssociations';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'createOneCalendarChannelEventAssociation') {
 
 						// ----------------------------------------
 					// calendarChannelEventAssociation: createOneCalendarChannelEventAssociation
 					// ----------------------------------------
 
-						const body = {
-						calendarChannelId: this.getNodeParameter('calendarChannelId', i),
-						calendarEventId: this.getNodeParameter('calendarEventId', i),
-					} as IDataObject;
-
+						const body = {} as IDataObject;
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
@@ -1124,7 +989,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/calendarChannelEventAssociations';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'deleteOneCalendarChannelEventAssociation') {
 
 						// ----------------------------------------
@@ -1135,7 +1000,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/calendarChannelEventAssociations/${id}`;
 					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-					
+
 					} else if (operation === 'findCalendarChannelEventAssociationDuplicates') {
 
 						// ----------------------------------------
@@ -1158,7 +1023,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/calendarChannelEventAssociations/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'findManyCalendarChannelEventAssociations') {
 
 						// ----------------------------------------
@@ -1174,7 +1039,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/calendarChannelEventAssociations';
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
+
 					} else if (operation === 'findOneCalendarChannelEventAssociation') {
 
 						// ----------------------------------------
@@ -1192,7 +1057,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/calendarChannelEventAssociations/${id}`;
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
+
 					} else if (operation === 'updateOneCalendarChannelEventAssociation') {
 
 						// ----------------------------------------
@@ -1217,7 +1082,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/calendarChannelEventAssociations/${id}`;
 					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-					
+
 					}
 
 				} else if (resource === 'calendarEvent') {
@@ -1248,7 +1113,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/batch/calendarEvents';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'createOneCalendarEvent') {
 
 						// ----------------------------------------
@@ -1270,7 +1135,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/calendarEvents', body, qs);
-					
+
 					} else if (operation === 'deleteOneCalendarEvent') {
 
 						// ----------------------------------------
@@ -1280,7 +1145,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/calendarEvents/${id}`);
-					
+
 					} else if (operation === 'findCalendarEventDuplicates') {
 
 						// ----------------------------------------
@@ -1303,7 +1168,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/calendarEvents/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'findManyCalendarEvents') {
 
 						// ----------------------------------------
@@ -1318,7 +1183,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/calendarEvents', {}, qs);
-					
+
 					} else if (operation === 'findOneCalendarEvent') {
 
 						// ----------------------------------------
@@ -1335,7 +1200,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/calendarEvents/${id}`, {}, qs);
-					
+
 					} else if (operation === 'updateOneCalendarEvent') {
 
 						// ----------------------------------------
@@ -1359,7 +1224,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/calendarEvents/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'calendarEventParticipant') {
@@ -1390,17 +1255,14 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/batch/calendarEventParticipants';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'createOneCalendarEventParticipant') {
 
 						// ----------------------------------------
 					// calendarEventParticipant: createOneCalendarEventParticipant
 					// ----------------------------------------
 
-						const body = {
-						calendarEventId: this.getNodeParameter('calendarEventId', i),
-					} as IDataObject;
-
+						const body = {} as IDataObject;
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
@@ -1416,7 +1278,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/calendarEventParticipants';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'deleteOneCalendarEventParticipant') {
 
 						// ----------------------------------------
@@ -1427,7 +1289,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/calendarEventParticipants/${id}`;
 					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-					
+
 					} else if (operation === 'findCalendarEventParticipantDuplicates') {
 
 						// ----------------------------------------
@@ -1450,7 +1312,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/calendarEventParticipants/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'findManyCalendarEventParticipants') {
 
 						// ----------------------------------------
@@ -1466,7 +1328,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/calendarEventParticipants';
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
+
 					} else if (operation === 'findOneCalendarEventParticipant') {
 
 						// ----------------------------------------
@@ -1484,7 +1346,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/calendarEventParticipants/${id}`;
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
+
 					} else if (operation === 'updateOneCalendarEventParticipant') {
 
 						// ----------------------------------------
@@ -1509,7 +1371,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/calendarEventParticipants/${id}`;
 					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-					
+
 					}
 
 				} else if (resource === 'company') {
@@ -1539,7 +1401,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/companies', body, qs);
-					
+
 					} else if (operation === 'createOneCompany') {
 
 						// ----------------------------------------
@@ -1561,7 +1423,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/companies', body, qs);
-					
+
 					} else if (operation === 'deleteOneCompany') {
 
 						// ----------------------------------------
@@ -1571,7 +1433,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/companies/${id}`);
-					
+
 					} else if (operation === 'findCompanyDuplicates') {
 
 						// ----------------------------------------
@@ -1594,7 +1456,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/companies/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'findManyCompanies') {
 
 						// ----------------------------------------
@@ -1609,7 +1471,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/companies', {}, qs);
-					
+
 					} else if (operation === 'findOneCompany') {
 
 						// ----------------------------------------
@@ -1626,7 +1488,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/companies/${id}`, {}, qs);
-					
+
 					} else if (operation === 'updateOneCompany') {
 
 						// ----------------------------------------
@@ -1650,7 +1512,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/companies/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'connectedAccount') {
@@ -1681,17 +1543,14 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/batch/connectedAccounts';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'createOneConnectedAccount') {
 
 						// ----------------------------------------
 					// connectedAccount: createOneConnectedAccount
 					// ----------------------------------------
 
-						const body = {
-						accountOwnerId: this.getNodeParameter('accountOwnerId', i),
-					} as IDataObject;
-
+						const body = {} as IDataObject;
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
@@ -1706,7 +1565,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/connectedAccounts', body, qs);
-					
+
 					} else if (operation === 'deleteOneConnectedAccount') {
 
 						// ----------------------------------------
@@ -1717,7 +1576,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/connectedAccounts/${id}`;
 					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-					
+
 					} else if (operation === 'findConnectedAccountDuplicates') {
 
 						// ----------------------------------------
@@ -1740,7 +1599,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/connectedAccounts/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'findManyConnectedAccounts') {
 
 						// ----------------------------------------
@@ -1755,7 +1614,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/connectedAccounts', {}, qs);
-					
+
 					} else if (operation === 'findOneConnectedAccount') {
 
 						// ----------------------------------------
@@ -1773,7 +1632,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/connectedAccounts/${id}`;
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
+
 					} else if (operation === 'updateOneConnectedAccount') {
 
 						// ----------------------------------------
@@ -1798,7 +1657,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/connectedAccounts/${id}`;
 					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-					
+
 					}
 
 				} else if (resource === 'favorite') {
@@ -1828,7 +1687,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/favorites', body, qs);
-					
+
 					} else if (operation === 'createOneFavorite') {
 
 						// ----------------------------------------
@@ -1850,7 +1709,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/favorites', body, qs);
-					
+
 					} else if (operation === 'deleteOneFavorite') {
 
 						// ----------------------------------------
@@ -1860,7 +1719,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/favorites/${id}`);
-					
+
 					} else if (operation === 'findFavoriteDuplicates') {
 
 						// ----------------------------------------
@@ -1883,7 +1742,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/favorites/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'findManyFavorites') {
 
 						// ----------------------------------------
@@ -1898,7 +1757,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/favorites', {}, qs);
-					
+
 					} else if (operation === 'findOneFavorite') {
 
 						// ----------------------------------------
@@ -1915,7 +1774,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/favorites/${id}`, {}, qs);
-					
+
 					} else if (operation === 'updateOneFavorite') {
 
 						// ----------------------------------------
@@ -1939,7 +1798,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/favorites/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'favoriteFolder') {
@@ -1970,7 +1829,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/batch/favoriteFolders';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'createOneFavoriteFolder') {
 
 						// ----------------------------------------
@@ -1992,7 +1851,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/favoriteFolders', body, qs);
-					
+
 					} else if (operation === 'deleteOneFavoriteFolder') {
 
 						// ----------------------------------------
@@ -2003,7 +1862,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/favoriteFolders/${id}`;
 					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-					
+
 					} else if (operation === 'findFavoriteFolderDuplicates') {
 
 						// ----------------------------------------
@@ -2026,7 +1885,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/favoriteFolders/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'findManyFavoriteFolders') {
 
 						// ----------------------------------------
@@ -2041,7 +1900,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/favoriteFolders', {}, qs);
-					
+
 					} else if (operation === 'findOneFavoriteFolder') {
 
 						// ----------------------------------------
@@ -2059,7 +1918,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/favoriteFolders/${id}`;
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
+
 					} else if (operation === 'updateOneFavoriteFolder') {
 
 						// ----------------------------------------
@@ -2084,7 +1943,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/favoriteFolders/${id}`;
 					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-					
+
 					}
 
 				} else if (resource === 'message') {
@@ -2114,7 +1973,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/messages', body, qs);
-					
+
 					} else if (operation === 'createOneMessage') {
 
 						// ----------------------------------------
@@ -2136,7 +1995,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/messages', body, qs);
-					
+
 					} else if (operation === 'deleteOneMessage') {
 
 						// ----------------------------------------
@@ -2146,7 +2005,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/messages/${id}`);
-					
+
 					} else if (operation === 'findManyMessages') {
 
 						// ----------------------------------------
@@ -2161,7 +2020,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/messages', {}, qs);
-					
+
 					} else if (operation === 'findMessageDuplicates') {
 
 						// ----------------------------------------
@@ -2183,7 +2042,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/messages/duplicates', body, qs);
-					
+
 					} else if (operation === 'findOneMessage') {
 
 						// ----------------------------------------
@@ -2200,7 +2059,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/messages/${id}`, {}, qs);
-					
+
 					} else if (operation === 'updateOneMessage') {
 
 						// ----------------------------------------
@@ -2224,7 +2083,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/messages/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'messageChannel') {
@@ -2255,17 +2114,14 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/batch/messageChannels';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'createOneMessageChannel') {
 
 						// ----------------------------------------
 					// messageChannel: createOneMessageChannel
 					// ----------------------------------------
 
-						const body = {
-						connectedAccountId: this.getNodeParameter('connectedAccountId', i),
-					} as IDataObject;
-
+						const body = {} as IDataObject;
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
@@ -2280,7 +2136,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/messageChannels', body, qs);
-					
+
 					} else if (operation === 'deleteOneMessageChannel') {
 
 						// ----------------------------------------
@@ -2291,7 +2147,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/messageChannels/${id}`;
 					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-					
+
 					} else if (operation === 'findManyMessageChannels') {
 
 						// ----------------------------------------
@@ -2306,7 +2162,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/messageChannels', {}, qs);
-					
+
 					} else if (operation === 'findMessageChannelDuplicates') {
 
 						// ----------------------------------------
@@ -2329,7 +2185,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/messageChannels/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'findOneMessageChannel') {
 
 						// ----------------------------------------
@@ -2347,7 +2203,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/messageChannels/${id}`;
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
+
 					} else if (operation === 'updateOneMessageChannel') {
 
 						// ----------------------------------------
@@ -2372,7 +2228,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/messageChannels/${id}`;
 					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-					
+
 					}
 
 				} else if (resource === 'messageChannelMessageAssociation') {
@@ -2403,7 +2259,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/batch/messageChannelMessageAssociations';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'createOneMessageChannelMessageAssociation') {
 
 						// ----------------------------------------
@@ -2426,7 +2282,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/messageChannelMessageAssociations';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'deleteOneMessageChannelMessageAssociation') {
 
 						// ----------------------------------------
@@ -2437,7 +2293,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/messageChannelMessageAssociations/${id}`;
 					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-					
+
 					} else if (operation === 'findManyMessageChannelMessageAssociations') {
 
 						// ----------------------------------------
@@ -2453,7 +2309,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/messageChannelMessageAssociations';
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
+
 					} else if (operation === 'findMessageChannelMessageAssociationDuplicates') {
 
 						// ----------------------------------------
@@ -2476,7 +2332,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/messageChannelMessageAssociations/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'findOneMessageChannelMessageAssociation') {
 
 						// ----------------------------------------
@@ -2494,7 +2350,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/messageChannelMessageAssociations/${id}`;
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
+
 					} else if (operation === 'updateOneMessageChannelMessageAssociation') {
 
 						// ----------------------------------------
@@ -2519,7 +2375,149 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/messageChannelMessageAssociations/${id}`;
 					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-					
+
+					}
+
+				} else if (resource === 'messageFolder') {
+
+					// **********************************************************************
+				//                             messageFolder
+				// **********************************************************************
+
+					if (operation === 'createManyMessageFolders') {
+
+						// ----------------------------------------
+					// messageFolder: createManyMessageFolders
+					// ----------------------------------------
+
+						const body = {} as IDataObject;
+					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+					if (Object.keys(additionalFields).length) {
+						Object.assign(body, additionalFields);
+					}
+
+					const qs = {} as IDataObject;
+					const query = this.getNodeParameter('query', i) as IDataObject;
+
+					if (Object.keys(query).length) {
+						Object.assign(qs, query);
+					}
+
+					const endpoint = '/batch/messageFolders';
+					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+
+					} else if (operation === 'createOneMessageFolder') {
+
+						// ----------------------------------------
+					//  messageFolder: createOneMessageFolder
+					// ----------------------------------------
+
+						const body = {} as IDataObject;
+					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+					if (Object.keys(additionalFields).length) {
+						Object.assign(body, additionalFields);
+					}
+
+					const qs = {} as IDataObject;
+					const query = this.getNodeParameter('query', i) as IDataObject;
+
+					if (Object.keys(query).length) {
+						Object.assign(qs, query);
+					}
+
+					responseData = await twentyApiRequest.call(this, 'POST', '/messageFolders', body, qs);
+
+					} else if (operation === 'deleteOneMessageFolder') {
+
+						// ----------------------------------------
+					//  messageFolder: deleteOneMessageFolder
+					// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+					responseData = await twentyApiRequest.call(this, 'DELETE', `/messageFolders/${id}`);
+
+					} else if (operation === 'findManyMessageFolders') {
+
+						// ----------------------------------------
+					//  messageFolder: findManyMessageFolders
+					// ----------------------------------------
+
+						const qs = {} as IDataObject;
+					const query = this.getNodeParameter('query', i) as IDataObject;
+
+					if (Object.keys(query).length) {
+						Object.assign(qs, query);
+					}
+
+					responseData = await twentyApiRequest.call(this, 'GET', '/messageFolders', {}, qs);
+
+					} else if (operation === 'findMessageFolderDuplicates') {
+
+						// ----------------------------------------
+					// messageFolder: findMessageFolderDuplicates
+					// ----------------------------------------
+
+						const body = {} as IDataObject;
+					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
+
+					if (Object.keys(additionalFields).length) {
+						Object.assign(body, additionalFields);
+					}
+
+					const qs = {} as IDataObject;
+					const query = this.getNodeParameter('query', i) as IDataObject;
+
+					if (Object.keys(query).length) {
+						Object.assign(qs, query);
+					}
+
+					const endpoint = '/messageFolders/duplicates';
+					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
+
+					} else if (operation === 'findOneMessageFolder') {
+
+						// ----------------------------------------
+					//   messageFolder: findOneMessageFolder
+					// ----------------------------------------
+
+						const id = this.getNodeParameter('id', i);
+
+					const qs = {} as IDataObject;
+					const query = this.getNodeParameter('query', i) as IDataObject;
+
+					if (Object.keys(query).length) {
+						Object.assign(qs, query);
+					}
+
+					responseData = await twentyApiRequest.call(this, 'GET', `/messageFolders/${id}`, {}, qs);
+
+					} else if (operation === 'updateOneMessageFolder') {
+
+						// ----------------------------------------
+					//  messageFolder: updateOneMessageFolder
+					// ----------------------------------------
+
+						const body = {} as IDataObject;
+					const updateFields = this.getNodeParameter('updateFields', i) as IDataObject;
+
+					if (Object.keys(updateFields).length) {
+						Object.assign(body, updateFields);
+					}
+
+					const id = this.getNodeParameter('id', i);
+
+					const qs = {} as IDataObject;
+					const query = this.getNodeParameter('query', i) as IDataObject;
+
+					if (Object.keys(query).length) {
+						Object.assign(qs, query);
+					}
+
+					responseData = await twentyApiRequest.call(this, 'PATCH', `/messageFolders/${id}`, body, qs);
+
 					}
 
 				} else if (resource === 'messageParticipant') {
@@ -2550,17 +2548,14 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/batch/messageParticipants';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'createOneMessageParticipant') {
 
 						// ----------------------------------------
 					// messageParticipant: createOneMessageParticipant
 					// ----------------------------------------
 
-						const body = {
-						messageId: this.getNodeParameter('messageId', i),
-					} as IDataObject;
-
+						const body = {} as IDataObject;
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
@@ -2575,7 +2570,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/messageParticipants', body, qs);
-					
+
 					} else if (operation === 'deleteOneMessageParticipant') {
 
 						// ----------------------------------------
@@ -2586,7 +2581,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/messageParticipants/${id}`;
 					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-					
+
 					} else if (operation === 'findManyMessageParticipants') {
 
 						// ----------------------------------------
@@ -2601,7 +2596,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/messageParticipants', {}, qs);
-					
+
 					} else if (operation === 'findMessageParticipantDuplicates') {
 
 						// ----------------------------------------
@@ -2624,7 +2619,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/messageParticipants/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'findOneMessageParticipant') {
 
 						// ----------------------------------------
@@ -2642,7 +2637,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/messageParticipants/${id}`;
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
+
 					} else if (operation === 'updateOneMessageParticipant') {
 
 						// ----------------------------------------
@@ -2667,7 +2662,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/messageParticipants/${id}`;
 					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-					
+
 					}
 
 				} else if (resource === 'messageThread') {
@@ -2698,7 +2693,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/batch/messageThreads';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'createOneMessageThread') {
 
 						// ----------------------------------------
@@ -2720,7 +2715,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/messageThreads', body, qs);
-					
+
 					} else if (operation === 'deleteOneMessageThread') {
 
 						// ----------------------------------------
@@ -2730,7 +2725,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/messageThreads/${id}`);
-					
+
 					} else if (operation === 'findManyMessageThreads') {
 
 						// ----------------------------------------
@@ -2745,7 +2740,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/messageThreads', {}, qs);
-					
+
 					} else if (operation === 'findMessageThreadDuplicates') {
 
 						// ----------------------------------------
@@ -2768,7 +2763,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/messageThreads/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'findOneMessageThread') {
 
 						// ----------------------------------------
@@ -2785,7 +2780,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/messageThreads/${id}`, {}, qs);
-					
+
 					} else if (operation === 'updateOneMessageThread') {
 
 						// ----------------------------------------
@@ -2809,7 +2804,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/messageThreads/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'note') {
@@ -2839,7 +2834,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/notes', body, qs);
-					
+
 					} else if (operation === 'createOneNote') {
 
 						// ----------------------------------------
@@ -2861,7 +2856,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/notes', body, qs);
-					
+
 					} else if (operation === 'deleteOneNote') {
 
 						// ----------------------------------------
@@ -2871,7 +2866,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/notes/${id}`);
-					
+
 					} else if (operation === 'findManyNotes') {
 
 						// ----------------------------------------
@@ -2886,7 +2881,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/notes', {}, qs);
-					
+
 					} else if (operation === 'findNoteDuplicates') {
 
 						// ----------------------------------------
@@ -2908,7 +2903,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/notes/duplicates', body, qs);
-					
+
 					} else if (operation === 'findOneNote') {
 
 						// ----------------------------------------
@@ -2925,7 +2920,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/notes/${id}`, {}, qs);
-					
+
 					} else if (operation === 'updateOneNote') {
 
 						// ----------------------------------------
@@ -2949,7 +2944,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/notes/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'noteTarget') {
@@ -2979,7 +2974,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/noteTargets', body, qs);
-					
+
 					} else if (operation === 'createOneNoteTarget') {
 
 						// ----------------------------------------
@@ -3001,7 +2996,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/noteTargets', body, qs);
-					
+
 					} else if (operation === 'deleteOneNoteTarget') {
 
 						// ----------------------------------------
@@ -3011,7 +3006,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/noteTargets/${id}`);
-					
+
 					} else if (operation === 'findManyNoteTargets') {
 
 						// ----------------------------------------
@@ -3026,7 +3021,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/noteTargets', {}, qs);
-					
+
 					} else if (operation === 'findNoteTargetDuplicates') {
 
 						// ----------------------------------------
@@ -3049,7 +3044,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/noteTargets/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'findOneNoteTarget') {
 
 						// ----------------------------------------
@@ -3066,7 +3061,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/noteTargets/${id}`, {}, qs);
-					
+
 					} else if (operation === 'updateOneNoteTarget') {
 
 						// ----------------------------------------
@@ -3090,7 +3085,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/noteTargets/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'opportunity') {
@@ -3120,7 +3115,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/opportunities', body, qs);
-					
+
 					} else if (operation === 'createOneOpportunity') {
 
 						// ----------------------------------------
@@ -3142,7 +3137,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/opportunities', body, qs);
-					
+
 					} else if (operation === 'deleteOneOpportunity') {
 
 						// ----------------------------------------
@@ -3152,7 +3147,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/opportunities/${id}`);
-					
+
 					} else if (operation === 'findManyOpportunities') {
 
 						// ----------------------------------------
@@ -3167,7 +3162,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/opportunities', {}, qs);
-					
+
 					} else if (operation === 'findOneOpportunity') {
 
 						// ----------------------------------------
@@ -3184,7 +3179,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/opportunities/${id}`, {}, qs);
-					
+
 					} else if (operation === 'findOpportunityDuplicates') {
 
 						// ----------------------------------------
@@ -3207,7 +3202,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/opportunities/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'updateOneOpportunity') {
 
 						// ----------------------------------------
@@ -3231,7 +3226,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/opportunities/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'person') {
@@ -3261,7 +3256,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/people', body, qs);
-					
+
 					} else if (operation === 'createOnePerson') {
 
 						// ----------------------------------------
@@ -3283,7 +3278,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/people', body, qs);
-					
+
 					} else if (operation === 'deleteOnePerson') {
 
 						// ----------------------------------------
@@ -3293,7 +3288,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/people/${id}`);
-					
+
 					} else if (operation === 'findManyPeople') {
 
 						// ----------------------------------------
@@ -3308,7 +3303,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/people', {}, qs);
-					
+
 					} else if (operation === 'findOnePerson') {
 
 						// ----------------------------------------
@@ -3325,7 +3320,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/people/${id}`, {}, qs);
-					
+
 					} else if (operation === 'findPersonDuplicates') {
 
 						// ----------------------------------------
@@ -3347,7 +3342,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/people/duplicates', body, qs);
-					
+
 					} else if (operation === 'updateOnePerson') {
 
 						// ----------------------------------------
@@ -3371,7 +3366,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/people/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'task') {
@@ -3401,7 +3396,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/tasks', body, qs);
-					
+
 					} else if (operation === 'createOneTask') {
 
 						// ----------------------------------------
@@ -3423,7 +3418,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/tasks', body, qs);
-					
+
 					} else if (operation === 'deleteOneTask') {
 
 						// ----------------------------------------
@@ -3433,7 +3428,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/tasks/${id}`);
-					
+
 					} else if (operation === 'findManyTasks') {
 
 						// ----------------------------------------
@@ -3448,7 +3443,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/tasks', {}, qs);
-					
+
 					} else if (operation === 'findOneTask') {
 
 						// ----------------------------------------
@@ -3465,7 +3460,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/tasks/${id}`, {}, qs);
-					
+
 					} else if (operation === 'findTaskDuplicates') {
 
 						// ----------------------------------------
@@ -3487,7 +3482,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/tasks/duplicates', body, qs);
-					
+
 					} else if (operation === 'updateOneTask') {
 
 						// ----------------------------------------
@@ -3511,7 +3506,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/tasks/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'taskTarget') {
@@ -3541,7 +3536,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/taskTargets', body, qs);
-					
+
 					} else if (operation === 'createOneTaskTarget') {
 
 						// ----------------------------------------
@@ -3563,7 +3558,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/taskTargets', body, qs);
-					
+
 					} else if (operation === 'deleteOneTaskTarget') {
 
 						// ----------------------------------------
@@ -3573,7 +3568,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/taskTargets/${id}`);
-					
+
 					} else if (operation === 'findManyTaskTargets') {
 
 						// ----------------------------------------
@@ -3588,7 +3583,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/taskTargets', {}, qs);
-					
+
 					} else if (operation === 'findOneTaskTarget') {
 
 						// ----------------------------------------
@@ -3605,7 +3600,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/taskTargets/${id}`, {}, qs);
-					
+
 					} else if (operation === 'findTaskTargetDuplicates') {
 
 						// ----------------------------------------
@@ -3628,7 +3623,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/taskTargets/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'updateOneTaskTarget') {
 
 						// ----------------------------------------
@@ -3652,7 +3647,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/taskTargets/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'timelineActivity') {
@@ -3683,7 +3678,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/batch/timelineActivities';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'createOneTimelineActivity') {
 
 						// ----------------------------------------
@@ -3705,7 +3700,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/timelineActivities', body, qs);
-					
+
 					} else if (operation === 'deleteOneTimelineActivity') {
 
 						// ----------------------------------------
@@ -3716,7 +3711,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/timelineActivities/${id}`;
 					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-					
+
 					} else if (operation === 'findManyTimelineActivities') {
 
 						// ----------------------------------------
@@ -3731,7 +3726,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/timelineActivities', {}, qs);
-					
+
 					} else if (operation === 'findOneTimelineActivity') {
 
 						// ----------------------------------------
@@ -3749,7 +3744,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/timelineActivities/${id}`;
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
+
 					} else if (operation === 'findTimelineActivityDuplicates') {
 
 						// ----------------------------------------
@@ -3772,7 +3767,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/timelineActivities/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'updateOneTimelineActivity') {
 
 						// ----------------------------------------
@@ -3797,7 +3792,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/timelineActivities/${id}`;
 					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-					
+
 					}
 
 				} else if (resource === 'view') {
@@ -3827,7 +3822,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/views', body, qs);
-					
+
 					} else if (operation === 'createOneView') {
 
 						// ----------------------------------------
@@ -3852,7 +3847,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/views', body, qs);
-					
+
 					} else if (operation === 'deleteOneView') {
 
 						// ----------------------------------------
@@ -3862,7 +3857,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/views/${id}`);
-					
+
 					} else if (operation === 'findManyViews') {
 
 						// ----------------------------------------
@@ -3877,7 +3872,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/views', {}, qs);
-					
+
 					} else if (operation === 'findOneView') {
 
 						// ----------------------------------------
@@ -3894,7 +3889,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/views/${id}`, {}, qs);
-					
+
 					} else if (operation === 'findViewDuplicates') {
 
 						// ----------------------------------------
@@ -3916,7 +3911,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/views/duplicates', body, qs);
-					
+
 					} else if (operation === 'updateOneView') {
 
 						// ----------------------------------------
@@ -3940,7 +3935,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/views/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'viewField') {
@@ -3970,7 +3965,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/viewFields', body, qs);
-					
+
 					} else if (operation === 'createOneViewField') {
 
 						// ----------------------------------------
@@ -3979,7 +3974,6 @@ export class Twenty implements INodeType {
 
 						const body = {
 						fieldMetadataId: this.getNodeParameter('fieldMetadataId', i),
-						viewId: this.getNodeParameter('viewId', i),
 					} as IDataObject;
 
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
@@ -3996,7 +3990,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/viewFields', body, qs);
-					
+
 					} else if (operation === 'deleteOneViewField') {
 
 						// ----------------------------------------
@@ -4006,7 +4000,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/viewFields/${id}`);
-					
+
 					} else if (operation === 'findManyViewFields') {
 
 						// ----------------------------------------
@@ -4021,7 +4015,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/viewFields', {}, qs);
-					
+
 					} else if (operation === 'findOneViewField') {
 
 						// ----------------------------------------
@@ -4038,7 +4032,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/viewFields/${id}`, {}, qs);
-					
+
 					} else if (operation === 'findViewFieldDuplicates') {
 
 						// ----------------------------------------
@@ -4061,7 +4055,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/viewFields/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'updateOneViewField') {
 
 						// ----------------------------------------
@@ -4085,7 +4079,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/viewFields/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'viewFilter') {
@@ -4115,7 +4109,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/viewFilters', body, qs);
-					
+
 					} else if (operation === 'createOneViewFilter') {
 
 						// ----------------------------------------
@@ -4140,7 +4134,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/viewFilters', body, qs);
-					
+
 					} else if (operation === 'deleteOneViewFilter') {
 
 						// ----------------------------------------
@@ -4150,7 +4144,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/viewFilters/${id}`);
-					
+
 					} else if (operation === 'findManyViewFilters') {
 
 						// ----------------------------------------
@@ -4165,7 +4159,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/viewFilters', {}, qs);
-					
+
 					} else if (operation === 'findOneViewFilter') {
 
 						// ----------------------------------------
@@ -4182,7 +4176,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/viewFilters/${id}`, {}, qs);
-					
+
 					} else if (operation === 'findViewFilterDuplicates') {
 
 						// ----------------------------------------
@@ -4205,7 +4199,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/viewFilters/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'updateOneViewFilter') {
 
 						// ----------------------------------------
@@ -4229,7 +4223,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/viewFilters/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'viewFilterGroup') {
@@ -4260,17 +4254,14 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/batch/viewFilterGroups';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'createOneViewFilterGroup') {
 
 						// ----------------------------------------
 					// viewFilterGroup: createOneViewFilterGroup
 					// ----------------------------------------
 
-						const body = {
-						viewId: this.getNodeParameter('viewId', i),
-					} as IDataObject;
-
+						const body = {} as IDataObject;
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
@@ -4285,7 +4276,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/viewFilterGroups', body, qs);
-					
+
 					} else if (operation === 'deleteOneViewFilterGroup') {
 
 						// ----------------------------------------
@@ -4296,7 +4287,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/viewFilterGroups/${id}`;
 					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-					
+
 					} else if (operation === 'findManyViewFilterGroups') {
 
 						// ----------------------------------------
@@ -4311,7 +4302,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/viewFilterGroups', {}, qs);
-					
+
 					} else if (operation === 'findOneViewFilterGroup') {
 
 						// ----------------------------------------
@@ -4329,7 +4320,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/viewFilterGroups/${id}`;
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
+
 					} else if (operation === 'findViewFilterGroupDuplicates') {
 
 						// ----------------------------------------
@@ -4352,7 +4343,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/viewFilterGroups/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'updateOneViewFilterGroup') {
 
 						// ----------------------------------------
@@ -4377,7 +4368,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/viewFilterGroups/${id}`;
 					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-					
+
 					}
 
 				} else if (resource === 'viewGroup') {
@@ -4407,7 +4398,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/viewGroups', body, qs);
-					
+
 					} else if (operation === 'createOneViewGroup') {
 
 						// ----------------------------------------
@@ -4432,7 +4423,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/viewGroups', body, qs);
-					
+
 					} else if (operation === 'deleteOneViewGroup') {
 
 						// ----------------------------------------
@@ -4442,7 +4433,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/viewGroups/${id}`);
-					
+
 					} else if (operation === 'findManyViewGroups') {
 
 						// ----------------------------------------
@@ -4457,7 +4448,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/viewGroups', {}, qs);
-					
+
 					} else if (operation === 'findOneViewGroup') {
 
 						// ----------------------------------------
@@ -4474,7 +4465,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/viewGroups/${id}`, {}, qs);
-					
+
 					} else if (operation === 'findViewGroupDuplicates') {
 
 						// ----------------------------------------
@@ -4497,7 +4488,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/viewGroups/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'updateOneViewGroup') {
 
 						// ----------------------------------------
@@ -4521,7 +4512,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/viewGroups/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'viewSort') {
@@ -4551,7 +4542,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/viewSorts', body, qs);
-					
+
 					} else if (operation === 'createOneViewSort') {
 
 						// ----------------------------------------
@@ -4576,7 +4567,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/viewSorts', body, qs);
-					
+
 					} else if (operation === 'deleteOneViewSort') {
 
 						// ----------------------------------------
@@ -4586,7 +4577,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/viewSorts/${id}`);
-					
+
 					} else if (operation === 'findManyViewSorts') {
 
 						// ----------------------------------------
@@ -4601,7 +4592,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/viewSorts', {}, qs);
-					
+
 					} else if (operation === 'findOneViewSort') {
 
 						// ----------------------------------------
@@ -4618,7 +4609,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/viewSorts/${id}`, {}, qs);
-					
+
 					} else if (operation === 'findViewSortDuplicates') {
 
 						// ----------------------------------------
@@ -4641,7 +4632,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/viewSorts/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'updateOneViewSort') {
 
 						// ----------------------------------------
@@ -4665,7 +4656,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/viewSorts/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'webhook') {
@@ -4695,7 +4686,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/webhooks', body, qs);
-					
+
 					} else if (operation === 'createOneWebhook') {
 
 						// ----------------------------------------
@@ -4717,7 +4708,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/webhooks', body, qs);
-					
+
 					} else if (operation === 'deleteOneWebhook') {
 
 						// ----------------------------------------
@@ -4727,7 +4718,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/webhooks/${id}`);
-					
+
 					} else if (operation === 'findManyWebhooks') {
 
 						// ----------------------------------------
@@ -4742,7 +4733,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/webhooks', {}, qs);
-					
+
 					} else if (operation === 'findOneWebhook') {
 
 						// ----------------------------------------
@@ -4759,7 +4750,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/webhooks/${id}`, {}, qs);
-					
+
 					} else if (operation === 'findWebhookDuplicates') {
 
 						// ----------------------------------------
@@ -4781,7 +4772,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/webhooks/duplicates', body, qs);
-					
+
 					} else if (operation === 'updateOneWebhook') {
 
 						// ----------------------------------------
@@ -4805,7 +4796,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/webhooks/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'workflow') {
@@ -4835,7 +4826,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/workflows', body, qs);
-					
+
 					} else if (operation === 'createOneWorkflow') {
 
 						// ----------------------------------------
@@ -4857,7 +4848,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/workflows', body, qs);
-					
+
 					} else if (operation === 'deleteOneWorkflow') {
 
 						// ----------------------------------------
@@ -4867,7 +4858,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/workflows/${id}`);
-					
+
 					} else if (operation === 'findManyWorkflows') {
 
 						// ----------------------------------------
@@ -4882,7 +4873,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/workflows', {}, qs);
-					
+
 					} else if (operation === 'findOneWorkflow') {
 
 						// ----------------------------------------
@@ -4899,7 +4890,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/workflows/${id}`, {}, qs);
-					
+
 					} else if (operation === 'findWorkflowDuplicates') {
 
 						// ----------------------------------------
@@ -4922,7 +4913,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/workflows/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'updateOneWorkflow') {
 
 						// ----------------------------------------
@@ -4946,19 +4937,19 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/workflows/${id}`, body, qs);
-					
+
 					}
 
-				} else if (resource === 'workflowEventListener') {
+				} else if (resource === 'workflowAutomatedTrigger') {
 
 					// **********************************************************************
-				//                         workflowEventListener
+				//                        workflowAutomatedTrigger
 				// **********************************************************************
 
-					if (operation === 'createManyWorkflowEventListeners') {
+					if (operation === 'createManyWorkflowAutomatedTriggers') {
 
 						// ----------------------------------------
-					// workflowEventListener: createManyWorkflowEventListeners
+					// workflowAutomatedTrigger: createManyWorkflowAutomatedTriggers
 					// ----------------------------------------
 
 						const body = {} as IDataObject;
@@ -4975,16 +4966,20 @@ export class Twenty implements INodeType {
 						Object.assign(qs, query);
 					}
 
-					const endpoint = '/batch/workflowEventListeners';
+					const endpoint = '/batch/workflowAutomatedTriggers';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
-					} else if (operation === 'createOneWorkflowEventListener') {
+
+					} else if (operation === 'createOneWorkflowAutomatedTrigger') {
 
 						// ----------------------------------------
-					// workflowEventListener: createOneWorkflowEventListener
+					// workflowAutomatedTrigger: createOneWorkflowAutomatedTrigger
 					// ----------------------------------------
 
-						const body = {} as IDataObject;
+						const body = {
+						settings: this.getNodeParameter('settings', i),
+						type: this.getNodeParameter('type', i),
+					} as IDataObject;
+
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
@@ -4998,24 +4993,24 @@ export class Twenty implements INodeType {
 						Object.assign(qs, query);
 					}
 
-					const endpoint = '/workflowEventListeners';
+					const endpoint = '/workflowAutomatedTriggers';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
-					} else if (operation === 'deleteOneWorkflowEventListener') {
+
+					} else if (operation === 'deleteOneWorkflowAutomatedTrigger') {
 
 						// ----------------------------------------
-					// workflowEventListener: deleteOneWorkflowEventListener
+					// workflowAutomatedTrigger: deleteOneWorkflowAutomatedTrigger
 					// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
 
-					const endpoint = `/workflowEventListeners/${id}`;
+					const endpoint = `/workflowAutomatedTriggers/${id}`;
 					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-					
-					} else if (operation === 'findManyWorkflowEventListeners') {
+
+					} else if (operation === 'findManyWorkflowAutomatedTriggers') {
 
 						// ----------------------------------------
-					// workflowEventListener: findManyWorkflowEventListeners
+					// workflowAutomatedTrigger: findManyWorkflowAutomatedTriggers
 					// ----------------------------------------
 
 						const qs = {} as IDataObject;
@@ -5025,13 +5020,13 @@ export class Twenty implements INodeType {
 						Object.assign(qs, query);
 					}
 
-					const endpoint = '/workflowEventListeners';
+					const endpoint = '/workflowAutomatedTriggers';
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
-					} else if (operation === 'findOneWorkflowEventListener') {
+
+					} else if (operation === 'findOneWorkflowAutomatedTrigger') {
 
 						// ----------------------------------------
-					// workflowEventListener: findOneWorkflowEventListener
+					// workflowAutomatedTrigger: findOneWorkflowAutomatedTrigger
 					// ----------------------------------------
 
 						const id = this.getNodeParameter('id', i);
@@ -5043,13 +5038,13 @@ export class Twenty implements INodeType {
 						Object.assign(qs, query);
 					}
 
-					const endpoint = `/workflowEventListeners/${id}`;
+					const endpoint = `/workflowAutomatedTriggers/${id}`;
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
-					} else if (operation === 'findWorkflowEventListenerDuplicates') {
+
+					} else if (operation === 'findWorkflowAutomatedTriggerDuplicates') {
 
 						// ----------------------------------------
-					// workflowEventListener: findWorkflowEventListenerDuplicates
+					// workflowAutomatedTrigger: findWorkflowAutomatedTriggerDuplicates
 					// ----------------------------------------
 
 						const body = {} as IDataObject;
@@ -5066,13 +5061,13 @@ export class Twenty implements INodeType {
 						Object.assign(qs, query);
 					}
 
-					const endpoint = '/workflowEventListeners/duplicates';
+					const endpoint = '/workflowAutomatedTriggers/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
-					} else if (operation === 'updateOneWorkflowEventListener') {
+
+					} else if (operation === 'updateOneWorkflowAutomatedTrigger') {
 
 						// ----------------------------------------
-					// workflowEventListener: updateOneWorkflowEventListener
+					// workflowAutomatedTrigger: updateOneWorkflowAutomatedTrigger
 					// ----------------------------------------
 
 						const body = {} as IDataObject;
@@ -5091,9 +5086,9 @@ export class Twenty implements INodeType {
 						Object.assign(qs, query);
 					}
 
-					const endpoint = `/workflowEventListeners/${id}`;
+					const endpoint = `/workflowAutomatedTriggers/${id}`;
 					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-					
+
 					}
 
 				} else if (resource === 'workflowRun') {
@@ -5123,18 +5118,14 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/batch/workflowRuns', body, qs);
-					
+
 					} else if (operation === 'createOneWorkflowRun') {
 
 						// ----------------------------------------
 					//    workflowRun: createOneWorkflowRun
 					// ----------------------------------------
 
-						const body = {
-						workflowId: this.getNodeParameter('workflowId', i),
-						workflowVersionId: this.getNodeParameter('workflowVersionId', i),
-					} as IDataObject;
-
+						const body = {} as IDataObject;
 					const additionalFields = this.getNodeParameter('additionalFields', i) as IDataObject;
 
 					if (Object.keys(additionalFields).length) {
@@ -5149,7 +5140,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/workflowRuns', body, qs);
-					
+
 					} else if (operation === 'deleteOneWorkflowRun') {
 
 						// ----------------------------------------
@@ -5159,7 +5150,7 @@ export class Twenty implements INodeType {
 						const id = this.getNodeParameter('id', i);
 
 					responseData = await twentyApiRequest.call(this, 'DELETE', `/workflowRuns/${id}`);
-					
+
 					} else if (operation === 'findManyWorkflowRuns') {
 
 						// ----------------------------------------
@@ -5174,7 +5165,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/workflowRuns', {}, qs);
-					
+
 					} else if (operation === 'findOneWorkflowRun') {
 
 						// ----------------------------------------
@@ -5191,7 +5182,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', `/workflowRuns/${id}`, {}, qs);
-					
+
 					} else if (operation === 'findWorkflowRunDuplicates') {
 
 						// ----------------------------------------
@@ -5214,7 +5205,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/workflowRuns/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'updateOneWorkflowRun') {
 
 						// ----------------------------------------
@@ -5238,7 +5229,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'PATCH', `/workflowRuns/${id}`, body, qs);
-					
+
 					}
 
 				} else if (resource === 'workflowVersion') {
@@ -5269,7 +5260,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/batch/workflowVersions';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'createOneWorkflowVersion') {
 
 						// ----------------------------------------
@@ -5291,7 +5282,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/workflowVersions', body, qs);
-					
+
 					} else if (operation === 'deleteOneWorkflowVersion') {
 
 						// ----------------------------------------
@@ -5302,7 +5293,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/workflowVersions/${id}`;
 					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-					
+
 					} else if (operation === 'findManyWorkflowVersions') {
 
 						// ----------------------------------------
@@ -5317,7 +5308,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/workflowVersions', {}, qs);
-					
+
 					} else if (operation === 'findOneWorkflowVersion') {
 
 						// ----------------------------------------
@@ -5335,7 +5326,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/workflowVersions/${id}`;
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
+
 					} else if (operation === 'findWorkflowVersionDuplicates') {
 
 						// ----------------------------------------
@@ -5358,7 +5349,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/workflowVersions/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'updateOneWorkflowVersion') {
 
 						// ----------------------------------------
@@ -5383,7 +5374,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/workflowVersions/${id}`;
 					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-					
+
 					}
 
 				} else if (resource === 'workspaceMember') {
@@ -5414,7 +5405,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/batch/workspaceMembers';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'createOneWorkspaceMember') {
 
 						// ----------------------------------------
@@ -5439,7 +5430,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'POST', '/workspaceMembers', body, qs);
-					
+
 					} else if (operation === 'deleteOneWorkspaceMember') {
 
 						// ----------------------------------------
@@ -5450,7 +5441,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/workspaceMembers/${id}`;
 					responseData = await twentyApiRequest.call(this, 'DELETE', endpoint);
-					
+
 					} else if (operation === 'findManyWorkspaceMembers') {
 
 						// ----------------------------------------
@@ -5465,7 +5456,7 @@ export class Twenty implements INodeType {
 					}
 
 					responseData = await twentyApiRequest.call(this, 'GET', '/workspaceMembers', {}, qs);
-					
+
 					} else if (operation === 'findOneWorkspaceMember') {
 
 						// ----------------------------------------
@@ -5483,7 +5474,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/workspaceMembers/${id}`;
 					responseData = await twentyApiRequest.call(this, 'GET', endpoint, {}, qs);
-					
+
 					} else if (operation === 'findWorkspaceMemberDuplicates') {
 
 						// ----------------------------------------
@@ -5506,7 +5497,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = '/workspaceMembers/duplicates';
 					responseData = await twentyApiRequest.call(this, 'POST', endpoint, body, qs);
-					
+
 					} else if (operation === 'updateOneWorkspaceMember') {
 
 						// ----------------------------------------
@@ -5531,7 +5522,7 @@ export class Twenty implements INodeType {
 
 					const endpoint = `/workspaceMembers/${id}`;
 					responseData = await twentyApiRequest.call(this, 'PATCH', endpoint, body, qs);
-					
+
 					}
 
 			}
@@ -5555,4 +5546,4 @@ export class Twenty implements INodeType {
 
 		return this.prepareOutputData(returnData);
 	}
-} 
+}

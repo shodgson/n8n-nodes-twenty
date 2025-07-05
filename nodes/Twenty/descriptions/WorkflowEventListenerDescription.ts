@@ -19,43 +19,43 @@ export const workflowEventListenerOperations: INodeProperties[] = [
 			{
 				name: 'Create Many Workflow Event Listeners',
 				value: 'createManyWorkflowEventListeners',
-				action: 'Create many workflow event listeners',
+				action: 'Create Many workflowEventListeners',
 			},
 			{
 				name: 'Create One Workflow Event Listener',
 				value: 'createOneWorkflowEventListener',
 				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **workflowEventListeners**',
-				action: 'Create one workflow event listener',
+				action: 'Create One workflowEventListener',
 			},
 			{
 				name: 'Delete One Workflow Event Listener',
 				value: 'deleteOneWorkflowEventListener',
 				description: '**depth** can be provided to request your **workflowEventListener**',
-				action: 'Delete one workflow event listener',
+				action: 'Delete One workflowEventListener',
 			},
 			{
 				name: 'Find Many Workflow Event Listeners',
 				value: 'findManyWorkflowEventListeners',
 				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **workflowEventListeners**',
-				action: 'Find many workflow event listeners',
+				action: 'Find Many workflowEventListeners',
 			},
 			{
 				name: 'Find One Workflow Event Listener',
 				value: 'findOneWorkflowEventListener',
 				description: '**depth** can be provided to request your **workflowEventListener**',
-				action: 'Find one workflow event listener',
+				action: 'Find One workflowEventListener',
 			},
 			{
 				name: 'Find Workflow Event Listener Duplicates',
 				value: 'findWorkflowEventListenerDuplicates',
 				description: '**depth** can be provided to request your **workflowEventListener**',
-				action: 'Find workflow event listener duplicates',
+				action: 'Find workflowEventListener Duplicates',
 			},
 			{
 				name: 'Update One Workflow Event Listener',
 				value: 'updateOneWorkflowEventListener',
 				description: '**depth** can be provided to request your **workflowEventListener**',
-				action: 'Update one workflow event listener',
+				action: 'Update One workflowEventListener',
 			},
 		],
 		default: 'createManyWorkflowEventListeners',
@@ -69,7 +69,7 @@ export const workflowEventListenerFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
@@ -149,7 +149,7 @@ export const workflowEventListenerFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
@@ -216,7 +216,7 @@ export const workflowEventListenerFields: INodeProperties[] = [
 				name: 'workflowId',
 				type: 'string',
 				default: '',
-				description: 'WorkflowEventListener workflow ID foreign key',
+				description: 'WorkflowEventListener workflow id foreign key',
 			},
 		],
 	},
@@ -243,7 +243,7 @@ export const workflowEventListenerFields: INodeProperties[] = [
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
+		description: 'Object id.',
 		type: 'string',
 		required: true,
 		default: '',
@@ -281,7 +281,7 @@ export const workflowEventListenerFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
@@ -311,7 +311,7 @@ export const workflowEventListenerFields: INodeProperties[] = [
 					name: 'ending_before',
 					type: 'string',
 					default: '',
-					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
 				},
 				{
 					displayName: 'Filter',
@@ -324,11 +324,8 @@ export const workflowEventListenerFields: INodeProperties[] = [
 					displayName: 'Limit',
 					name: 'limit',
 					type: 'number',
-					typeOptions: {
-						minValue: 1,
-					},
-					default: 50,
-					description: 'Max number of results to return',
+					default: 0,
+					description: 'Limits the number of objects returned.',
 				},
 				{
 					displayName: 'Order By',
@@ -342,7 +339,7 @@ export const workflowEventListenerFields: INodeProperties[] = [
 					name: 'starting_after',
 					type: 'string',
 					default: '',
-					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
 				},
 		],
 		default: {},
@@ -380,7 +377,7 @@ export const workflowEventListenerFields: INodeProperties[] = [
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
+		description: 'Object id.',
 		type: 'string',
 		required: true,
 		default: '',
@@ -398,7 +395,7 @@ export const workflowEventListenerFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
@@ -459,7 +456,7 @@ export const workflowEventListenerFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
@@ -536,7 +533,7 @@ displayName: 'Workflow ID',
 name: 'workflowId',
 type: 'string',
 default: '',
-description: 'WorkflowEventListener workflow ID foreign key',
+description: 'WorkflowEventListener workflow id foreign key',
 },
 ]}],
 },
@@ -565,7 +562,7 @@ description: 'WorkflowEventListener workflow ID foreign key',
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
+		description: 'Object id.',
 		type: 'string',
 		required: true,
 		default: '',
@@ -583,7 +580,7 @@ description: 'WorkflowEventListener workflow ID foreign key',
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
@@ -650,7 +647,7 @@ description: 'WorkflowEventListener workflow ID foreign key',
 				name: 'workflowId',
 				type: 'string',
 				default: '',
-				description: 'WorkflowEventListener workflow ID foreign key',
+				description: 'WorkflowEventListener workflow id foreign key',
 			},
 		],
 	},

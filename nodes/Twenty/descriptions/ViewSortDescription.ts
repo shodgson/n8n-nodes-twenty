@@ -19,43 +19,43 @@ export const viewSortOperations: INodeProperties[] = [
 			{
 				name: 'Create Many View Sorts',
 				value: 'createManyViewSorts',
-				action: 'Create many view sorts',
+				action: 'Create Many viewSorts',
 			},
 			{
 				name: 'Create One View Sort',
 				value: 'createOneViewSort',
 				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewSorts**',
-				action: 'Create one view sort',
+				action: 'Create One viewSort',
 			},
 			{
 				name: 'Delete One View Sort',
 				value: 'deleteOneViewSort',
 				description: '**depth** can be provided to request your **viewSort**',
-				action: 'Delete one view sort',
+				action: 'Delete One viewSort',
 			},
 			{
 				name: 'Find Many View Sorts',
 				value: 'findManyViewSorts',
 				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **viewSorts**',
-				action: 'Find many view sorts',
+				action: 'Find Many viewSorts',
 			},
 			{
 				name: 'Find One View Sort',
 				value: 'findOneViewSort',
 				description: '**depth** can be provided to request your **viewSort**',
-				action: 'Find one view sort',
+				action: 'Find One viewSort',
 			},
 			{
 				name: 'Find View Sort Duplicates',
 				value: 'findViewSortDuplicates',
 				description: '**depth** can be provided to request your **viewSort**',
-				action: 'Find view sort duplicates',
+				action: 'Find viewSort Duplicates',
 			},
 			{
 				name: 'Update One View Sort',
 				value: 'updateOneViewSort',
 				description: '**depth** can be provided to request your **viewSort**',
-				action: 'Update one view sort',
+				action: 'Update One viewSort',
 			},
 		],
 		default: 'createManyViewSorts',
@@ -69,29 +69,15 @@ export const viewSortFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -149,29 +135,15 @@ export const viewSortFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -234,7 +206,6 @@ export const viewSortFields: INodeProperties[] = [
 				name: 'viewId',
 				type: 'string',
 				default: '',
-				description: 'View Sort related view ID foreign key',
 			},
 		],
 	},
@@ -261,8 +232,8 @@ export const viewSortFields: INodeProperties[] = [
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -299,68 +270,51 @@ export const viewSortFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 				{
 					displayName: 'Ending Before',
 					name: 'ending_before',
-					type: 'string',
+					type: '',
 					default: '',
-					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
 				},
 				{
 					displayName: 'Filter',
 					name: 'filter',
-					type: 'string',
+					type: '',
 					default: '',
 					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **containsAny**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
 				},
 				{
 					displayName: 'Limit',
 					name: 'limit',
-					type: 'number',
-					typeOptions: {
-						minValue: 1,
-					},
-					default: 50,
-					description: 'Max number of results to return',
+					type: '',
+					default: '',
+					description: 'Limits the number of objects returned.',
 				},
 				{
 					displayName: 'Order By',
 					name: 'order_by',
-					type: 'string',
+					type: '',
 					default: '',
 					description: 'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
 				},
 				{
 					displayName: 'Starting After',
 					name: 'starting_after',
-					type: 'string',
+					type: '',
 					default: '',
-					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
 				},
 		],
 		default: {},
@@ -398,8 +352,8 @@ export const viewSortFields: INodeProperties[] = [
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -416,29 +370,15 @@ export const viewSortFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -477,29 +417,15 @@ export const viewSortFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -543,28 +469,73 @@ displayName: 'Data Fields',
 name: 'dataFields',
 values: [
 {
-displayName: 'Field Metadata ID',
-name: 'fieldMetadataId',
-type: 'string',
+displayName: '0',
+name: '0',
+type: 'undefined',
 default: '',
-description: 'View Sort target field',
 },
 {
-displayName: 'Direction',
-name: 'direction',
-type: 'string',
+displayName: '1',
+name: '1',
+type: 'undefined',
 default: '',
-description: 'View Sort direction',
 },
 {
-displayName: 'View ID',
-name: 'viewId',
-type: 'string',
+displayName: '2',
+name: '2',
+type: 'undefined',
 default: '',
-description: 'View Sort related view ID foreign key',
+},
+{
+displayName: '3',
+name: '3',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '4',
+name: '4',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '5',
+name: '5',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '6',
+name: '6',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '7',
+name: '7',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '8',
+name: '8',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '9',
+name: '9',
+type: 'undefined',
+default: '',
 },
 ]}],
 },
+			{
+				displayName: 'IDs',
+				name: 'ids',
+				type: 'string',
+				default: [],
+			},
 		],
 	},
 		{
@@ -590,8 +561,8 @@ description: 'View Sort related view ID foreign key',
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -608,29 +579,15 @@ description: 'View Sort related view ID foreign key',
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -682,7 +639,6 @@ description: 'View Sort related view ID foreign key',
 				name: 'viewId',
 				type: 'string',
 				default: '',
-				description: 'View Sort related view ID foreign key',
 			},
 		],
 	},

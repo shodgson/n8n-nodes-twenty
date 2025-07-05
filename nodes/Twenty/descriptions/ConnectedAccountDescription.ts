@@ -19,43 +19,43 @@ export const connectedAccountOperations: INodeProperties[] = [
 			{
 				name: 'Create Many Connected Accounts',
 				value: 'createManyConnectedAccounts',
-				action: 'Create many connected accounts',
+				action: 'Create Many connectedAccounts',
 			},
 			{
 				name: 'Create One Connected Account',
 				value: 'createOneConnectedAccount',
 				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **connectedAccounts**',
-				action: 'Create one connected account',
+				action: 'Create One connectedAccount',
 			},
 			{
 				name: 'Delete One Connected Account',
 				value: 'deleteOneConnectedAccount',
 				description: '**depth** can be provided to request your **connectedAccount**',
-				action: 'Delete one connected account',
+				action: 'Delete One connectedAccount',
 			},
 			{
 				name: 'Find Connected Account Duplicates',
 				value: 'findConnectedAccountDuplicates',
 				description: '**depth** can be provided to request your **connectedAccount**',
-				action: 'Find connected account duplicates',
+				action: 'Find connectedAccount Duplicates',
 			},
 			{
 				name: 'Find Many Connected Accounts',
 				value: 'findManyConnectedAccounts',
 				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **connectedAccounts**',
-				action: 'Find many connected accounts',
+				action: 'Find Many connectedAccounts',
 			},
 			{
 				name: 'Find One Connected Account',
 				value: 'findOneConnectedAccount',
 				description: '**depth** can be provided to request your **connectedAccount**',
-				action: 'Find one connected account',
+				action: 'Find One connectedAccount',
 			},
 			{
 				name: 'Update One Connected Account',
 				value: 'updateOneConnectedAccount',
 				description: '**depth** can be provided to request your **connectedAccount**',
-				action: 'Update one connected account',
+				action: 'Update One connectedAccount',
 			},
 		],
 		default: 'createManyConnectedAccounts',
@@ -69,29 +69,15 @@ export const connectedAccountFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -149,51 +135,19 @@ export const connectedAccountFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'connectedAccount',
-				],
-				operation: [
-					'createOneConnectedAccount',
-				],
-			},
-		},
-	},
-	{
-		displayName: 'Account Owner ID',
-		name: 'accountOwnerId',
-		description: 'Account Owner ID foreign key',
-		type: 'string',
-		required: true,
-		default: '',
 		displayOptions: {
 			show: {
 				resource: [
@@ -226,16 +180,21 @@ export const connectedAccountFields: INodeProperties[] = [
 				displayName: 'Access Token',
 				name: 'accessToken',
 				type: 'string',
-				typeOptions: { password: true },
 				default: '',
 				description: 'Messaging provider access token',
+			},
+			{
+				displayName: 'Account Owner ID',
+				name: 'accountOwnerId',
+				type: 'string',
+				default: '',
 			},
 			{
 				displayName: 'Auth Failed At',
 				name: 'authFailedAt',
 				type: 'dateTime',
 				default: '',
-
+				description: 'Auth failed at',
 			},
 			{
 				displayName: 'Handle',
@@ -249,14 +208,14 @@ export const connectedAccountFields: INodeProperties[] = [
 				name: 'handleAliases',
 				type: 'string',
 				default: '',
-
+				description: 'Handle Aliases',
 			},
 			{
 				displayName: 'Last Sync History ID',
 				name: 'lastSyncHistoryId',
 				type: 'string',
 				default: '',
-
+				description: 'Last sync history ID',
 			},
 			{
 				displayName: 'Provider',
@@ -269,7 +228,6 @@ export const connectedAccountFields: INodeProperties[] = [
 				displayName: 'Refresh Token',
 				name: 'refreshToken',
 				type: 'string',
-				typeOptions: { password: true },
 				default: '',
 				description: 'Messaging provider refresh token',
 			},
@@ -277,8 +235,8 @@ export const connectedAccountFields: INodeProperties[] = [
 				displayName: 'Scopes',
 				name: 'scopes',
 				type: 'string',
-				default: '',
-
+				default: [],
+				description: 'Scopes',
 			},
 		],
 	},
@@ -305,8 +263,8 @@ export const connectedAccountFields: INodeProperties[] = [
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -343,29 +301,15 @@ export const connectedAccountFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -409,71 +353,73 @@ displayName: 'Data Fields',
 name: 'dataFields',
 values: [
 {
-displayName: 'Handle',
-name: 'handle',
-type: 'string',
-default: '',
-description: 'The account handle (email, username, phone number, etc.)',
-},
-{
-displayName: 'Provider',
-name: 'provider',
-type: 'string',
-default: '',
-description: 'The account provider',
-},
-{
-displayName: 'Access Token',
-name: 'accessToken',
-type: 'string',
-typeOptions: { password: true },
-default: '',
-description: 'Messaging provider access token',
-},
-{
-displayName: 'Refresh Token',
-name: 'refreshToken',
-type: 'string',
-typeOptions: { password: true },
-default: '',
-description: 'Messaging provider refresh token',
-},
-{
-displayName: 'Last Sync History ID',
-name: 'lastSyncHistoryId',
-type: 'string',
+displayName: '0',
+name: '0',
+type: 'undefined',
 default: '',
 },
 {
-displayName: 'Auth Failed At',
-name: 'authFailedAt',
-type: 'dateTime',
+displayName: '1',
+name: '1',
+type: 'undefined',
 default: '',
 },
 {
-displayName: 'Handle Aliases',
-name: 'handleAliases',
-type: 'string',
+displayName: '2',
+name: '2',
+type: 'undefined',
 default: '',
 },
 {
-displayName: 'Scopes',
-name: 'scopes',
-type: 'string',
-typeOptions: {
-multipleValues: true,
-},
-default: [],
+displayName: '3',
+name: '3',
+type: 'undefined',
+default: '',
 },
 {
-displayName: 'Account Owner ID',
-name: 'accountOwnerId',
-type: 'string',
+displayName: '4',
+name: '4',
+type: 'undefined',
 default: '',
-description: 'Account Owner ID foreign key',
+},
+{
+displayName: '5',
+name: '5',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '6',
+name: '6',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '7',
+name: '7',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '8',
+name: '8',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '9',
+name: '9',
+type: 'undefined',
+default: '',
 },
 ]}],
 },
+			{
+				displayName: 'IDs',
+				name: 'ids',
+				type: 'string',
+				default: [],
+			},
 		],
 	},
 		{
@@ -499,68 +445,51 @@ description: 'Account Owner ID foreign key',
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 				{
 					displayName: 'Ending Before',
 					name: 'ending_before',
-					type: 'string',
+					type: '',
 					default: '',
-					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
 				},
 				{
 					displayName: 'Filter',
 					name: 'filter',
-					type: 'string',
+					type: '',
 					default: '',
 					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **containsAny**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
 				},
 				{
 					displayName: 'Limit',
 					name: 'limit',
-					type: 'number',
-					typeOptions: {
-						minValue: 1,
-					},
-					default: 50,
-					description: 'Max number of results to return',
+					type: '',
+					default: '',
+					description: 'Limits the number of objects returned.',
 				},
 				{
 					displayName: 'Order By',
 					name: 'order_by',
-					type: 'string',
+					type: '',
 					default: '',
 					description: 'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
 				},
 				{
 					displayName: 'Starting After',
 					name: 'starting_after',
-					type: 'string',
+					type: '',
 					default: '',
-					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
 				},
 		],
 		default: {},
@@ -598,8 +527,8 @@ description: 'Account Owner ID foreign key',
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -616,29 +545,15 @@ description: 'Account Owner ID foreign key',
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -677,8 +592,8 @@ description: 'Account Owner ID foreign key',
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -695,29 +610,15 @@ description: 'Account Owner ID foreign key',
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -754,7 +655,6 @@ description: 'Account Owner ID foreign key',
 				displayName: 'Access Token',
 				name: 'accessToken',
 				type: 'string',
-				typeOptions: { password: true },
 				default: '',
 				description: 'Messaging provider access token',
 			},
@@ -763,14 +663,13 @@ description: 'Account Owner ID foreign key',
 				name: 'accountOwnerId',
 				type: 'string',
 				default: '',
-				description: 'Account Owner ID foreign key',
 			},
 			{
 				displayName: 'Auth Failed At',
 				name: 'authFailedAt',
 				type: 'dateTime',
 				default: '',
-
+				description: 'Auth failed at',
 			},
 			{
 				displayName: 'Handle',
@@ -784,14 +683,14 @@ description: 'Account Owner ID foreign key',
 				name: 'handleAliases',
 				type: 'string',
 				default: '',
-
+				description: 'Handle Aliases',
 			},
 			{
 				displayName: 'Last Sync History ID',
 				name: 'lastSyncHistoryId',
 				type: 'string',
 				default: '',
-
+				description: 'Last sync history ID',
 			},
 			{
 				displayName: 'Provider',
@@ -804,7 +703,6 @@ description: 'Account Owner ID foreign key',
 				displayName: 'Refresh Token',
 				name: 'refreshToken',
 				type: 'string',
-				typeOptions: { password: true },
 				default: '',
 				description: 'Messaging provider refresh token',
 			},
@@ -812,8 +710,8 @@ description: 'Account Owner ID foreign key',
 				displayName: 'Scopes',
 				name: 'scopes',
 				type: 'string',
-				default: '',
-
+				default: [],
+				description: 'Scopes',
 			},
 		],
 	},

@@ -2,7 +2,7 @@ import type {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export const personOperations: INodeProperties[] = [
+export const workflowAutomatedTriggerOperations: INodeProperties[] = [
 	{
 		displayName: 'Operation',
 		name: 'operation',
@@ -11,126 +11,60 @@ export const personOperations: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'person',
+					'workflowAutomatedTrigger',
 				],
 			},
 		},
 		options: [
 			{
-				name: 'Create Many People',
-				value: 'createManyPeople',
-				action: 'Create Many people',
+				name: 'Create Many Workflow Automated Triggers',
+				value: 'createManyWorkflowAutomatedTriggers',
+				action: 'Create Many workflowAutomatedTriggers',
 			},
 			{
-				name: 'Create One Person',
-				value: 'createOnePerson',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **people**',
-				action: 'Create One person',
+				name: 'Create One Workflow Automated Trigger',
+				value: 'createOneWorkflowAutomatedTrigger',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **workflowAutomatedTriggers**',
+				action: 'Create One workflowAutomatedTrigger',
 			},
 			{
-				name: 'Delete One Person',
-				value: 'deleteOnePerson',
-				description: '**depth** can be provided to request your **person**',
-				action: 'Delete One person',
+				name: 'Delete One Workflow Automated Trigger',
+				value: 'deleteOneWorkflowAutomatedTrigger',
+				description: '**depth** can be provided to request your **workflowAutomatedTrigger**',
+				action: 'Delete One workflowAutomatedTrigger',
 			},
 			{
-				name: 'Find Many People',
-				value: 'findManyPeople',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **people**',
-				action: 'Find Many people',
+				name: 'Find Many Workflow Automated Triggers',
+				value: 'findManyWorkflowAutomatedTriggers',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **workflowAutomatedTriggers**',
+				action: 'Find Many workflowAutomatedTriggers',
 			},
 			{
-				name: 'Find One Person',
-				value: 'findOnePerson',
-				description: '**depth** can be provided to request your **person**',
-				action: 'Find One person',
+				name: 'Find One Workflow Automated Trigger',
+				value: 'findOneWorkflowAutomatedTrigger',
+				description: '**depth** can be provided to request your **workflowAutomatedTrigger**',
+				action: 'Find One workflowAutomatedTrigger',
 			},
 			{
-				name: 'Find Person Duplicates',
-				value: 'findPersonDuplicates',
-				description: '**depth** can be provided to request your **person**',
-				action: 'Find person Duplicates',
+				name: 'Find Workflow Automated Trigger Duplicates',
+				value: 'findWorkflowAutomatedTriggerDuplicates',
+				description: '**depth** can be provided to request your **workflowAutomatedTrigger**',
+				action: 'Find workflowAutomatedTrigger Duplicates',
 			},
 			{
-				name: 'Update One Person',
-				value: 'updateOnePerson',
-				description: '**depth** can be provided to request your **person**',
-				action: 'Update One person',
+				name: 'Update One Workflow Automated Trigger',
+				value: 'updateOneWorkflowAutomatedTrigger',
+				description: '**depth** can be provided to request your **workflowAutomatedTrigger**',
+				action: 'Update One workflowAutomatedTrigger',
 			},
 		],
-		default: 'createManyPeople',
+		default: 'createManyWorkflowAutomatedTriggers',
 	},
 ];
 
-export const personFields: INodeProperties[] = [
+export const workflowAutomatedTriggerFields: INodeProperties[] = [
 	// ----------------------------------------
-	//         person: createManyPeople
-	// ----------------------------------------
-	{
-		displayName: 'Query',
-		name: 'query',
-		description: '',
-		type: 'collection',
-		placeholder: 'Add Query',
-		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: '',
-					default: '',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
-		],
-		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'person',
-				],
-				operation: [
-					'createManyPeople',
-				],
-			},
-		},
-	},
-	{
-		displayName: 'Additional Fields',
-		name: 'additionalFields',
-		type: 'collection',
-		placeholder: 'Add Field',
-		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'person',
-				],
-				operation: [
-					'createManyPeople',
-				],
-			},
-		},
-		options: [
-		],
-	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'person',
-					],
-					operation: [
-						'createManyPeople',
-					],
-				},
-			},
-		},
-	
-	// ----------------------------------------
-	//         person: createOnePerson
+	// workflowAutomatedTrigger: createManyWorkflowAutomatedTriggers
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -151,10 +85,10 @@ export const personFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'person',
+					'workflowAutomatedTrigger',
 				],
 				operation: [
-					'createOnePerson',
+					'createManyWorkflowAutomatedTriggers',
 				],
 			},
 		},
@@ -168,258 +102,14 @@ export const personFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'person',
+					'workflowAutomatedTrigger',
 				],
 				operation: [
-					'createOnePerson',
+					'createManyWorkflowAutomatedTriggers',
 				],
 			},
 		},
 		options: [
-			{
-				displayName: 'Avatar Url',
-				name: 'avatarUrl',
-				type: 'string',
-				default: '',
-				description: 'Contact’s avatar',
-			},
-			{
-				displayName: 'City',
-				name: 'city',
-				type: 'string',
-				default: '',
-				description: 'Contact’s city',
-			},
-			{
-				displayName: 'Company ID',
-				name: 'companyId',
-				type: 'string',
-				default: '',
-			},
-				{
-displayName: 'Created By',
-name: 'createdBy',
-placeholder: 'Add Created By Field',
-type: 'fixedCollection',
-default: {},
-description: 'The creator of the record',
-options: [{
-displayName: 'Created By Fields',
-name: 'createdByFields',
-values: [
-{
-displayName: 'Source',
-name: 'source',
-type: 'string',
-default: '',
-},
-]}],
-},
-				{
-displayName: 'Emails',
-name: 'emails',
-placeholder: 'Add Emails Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s Emails',
-options: [{
-displayName: 'Emails Fields',
-name: 'emailsFields',
-values: [
-{
-displayName: 'Primary Email',
-name: 'primaryEmail',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Additional Emails',
-name: 'additionalEmails',
-type: 'string',
-typeOptions: {
-multipleValues: true,
-},
-default: [],
-},
-]}],
-},
-			{
-				displayName: 'Job Title',
-				name: 'jobTitle',
-				type: 'string',
-				default: '',
-				description: 'Contact’s job title',
-			},
-				{
-displayName: 'Linkedin Link',
-name: 'linkedinLink',
-placeholder: 'Add Linkedin Link Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s Linkedin account',
-options: [{
-displayName: 'Linkedin Link Fields',
-name: 'linkedinLinkFields',
-values: [
-{
-displayName: 'Primary Link Label',
-name: 'primaryLinkLabel',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Link Url',
-name: 'primaryLinkUrl',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Secondary Links',
-name: 'secondaryLinks',
-placeholder: 'Add Secondary Links Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Secondary Links Fields',
-name: 'secondaryLinksFields',
-values: [
-{
-displayName: 'Url',
-name: 'url',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Label',
-name: 'label',
-type: 'string',
-default: '',
-},
-]}],
-},
-]}],
-},
-				{
-displayName: 'Name',
-name: 'name',
-placeholder: 'Add Name Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s name',
-options: [{
-displayName: 'Name Fields',
-name: 'nameFields',
-values: [
-{
-displayName: 'First Name',
-name: 'firstName',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Last Name',
-name: 'lastName',
-type: 'string',
-default: '',
-},
-]}],
-},
-				{
-displayName: 'Phones',
-name: 'phones',
-placeholder: 'Add Phones Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s phone numbers',
-options: [{
-displayName: 'Phones Fields',
-name: 'phonesFields',
-values: [
-{
-displayName: 'Additional Phones',
-name: 'additionalPhones',
-type: 'string',
-typeOptions: {
-multipleValues: true,
-},
-default: [],
-},
-{
-displayName: 'Primary Phone Country Code',
-name: 'primaryPhoneCountryCode',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Phone Calling Code',
-name: 'primaryPhoneCallingCode',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Phone Number',
-name: 'primaryPhoneNumber',
-type: 'string',
-default: '',
-},
-]}],
-},
-			{
-				displayName: 'Position',
-				name: 'position',
-				type: 'number',
-				default: 0,
-				description: 'Person record Position',
-			},
-				{
-displayName: 'X Link',
-name: 'xLink',
-placeholder: 'Add X Link Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s X/Twitter account',
-options: [{
-displayName: 'X Link Fields',
-name: 'xLinkFields',
-values: [
-{
-displayName: 'Primary Link Label',
-name: 'primaryLinkLabel',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Link Url',
-name: 'primaryLinkUrl',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Secondary Links',
-name: 'secondaryLinks',
-placeholder: 'Add Secondary Links Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Secondary Links Fields',
-name: 'secondaryLinksFields',
-values: [
-{
-displayName: 'Url',
-name: 'url',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Label',
-name: 'label',
-type: 'string',
-default: '',
-},
-]}],
-},
-]}],
-},
 		],
 	},
 		{
@@ -430,17 +120,135 @@ default: '',
 			displayOptions: {
 				show: {
 					resource: [
-						'person',
+						'workflowAutomatedTrigger',
 					],
 					operation: [
-						'createOnePerson',
+						'createManyWorkflowAutomatedTriggers',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//         person: deleteOnePerson
+	// workflowAutomatedTrigger: createOneWorkflowAutomatedTrigger
+	// ----------------------------------------
+	{
+		displayName: 'Query',
+		name: 'query',
+		description: '',
+		type: 'collection',
+		placeholder: 'Add Query',
+		options: [
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: '',
+					default: '',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
+		],
+		default: {},
+		displayOptions: {
+			show: {
+				resource: [
+					'workflowAutomatedTrigger',
+				],
+				operation: [
+					'createOneWorkflowAutomatedTrigger',
+				],
+			},
+		},
+	},
+	{
+		displayName: 'Settings',
+		name: 'settings',
+		description: 'The workflow automated trigger settings',
+		type: 'json',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: [
+					'workflowAutomatedTrigger',
+				],
+				operation: [
+					'createOneWorkflowAutomatedTrigger',
+				],
+			},
+		},
+	},
+	{
+		displayName: 'Type',
+		name: 'type',
+		description: 'The workflow automated trigger type',
+		type: 'options',
+		required: true,
+		default: 'CRON',
+		options: [
+			{
+				name: 'Cron',
+				value: 'CRON',
+			},
+			{
+				name: 'Database Event',
+				value: 'DATABASE_EVENT',
+			},
+		],
+		displayOptions: {
+			show: {
+				resource: [
+					'workflowAutomatedTrigger',
+				],
+				operation: [
+					'createOneWorkflowAutomatedTrigger',
+				],
+			},
+		},
+	},
+	{
+		displayName: 'Additional Fields',
+		name: 'additionalFields',
+		type: 'collection',
+		placeholder: 'Add Field',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: [
+					'workflowAutomatedTrigger',
+				],
+				operation: [
+					'createOneWorkflowAutomatedTrigger',
+				],
+			},
+		},
+		options: [
+			{
+				displayName: 'Workflow ID',
+				name: 'workflowId',
+				type: 'string',
+				default: '',
+			},
+		],
+	},
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'workflowAutomatedTrigger',
+					],
+					operation: [
+						'createOneWorkflowAutomatedTrigger',
+					],
+				},
+			},
+		},
+	
+	// ----------------------------------------
+	// workflowAutomatedTrigger: deleteOneWorkflowAutomatedTrigger
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -452,10 +260,10 @@ default: '',
 		displayOptions: {
 			show: {
 				resource: [
-					'person',
+					'workflowAutomatedTrigger',
 				],
 				operation: [
-					'deleteOnePerson',
+					'deleteOneWorkflowAutomatedTrigger',
 				],
 			},
 		},
@@ -468,17 +276,17 @@ default: '',
 			displayOptions: {
 				show: {
 					resource: [
-						'person',
+						'workflowAutomatedTrigger',
 					],
 					operation: [
-						'deleteOnePerson',
+						'deleteOneWorkflowAutomatedTrigger',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//          person: findManyPeople
+	// workflowAutomatedTrigger: findManyWorkflowAutomatedTriggers
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -534,10 +342,10 @@ default: '',
 		displayOptions: {
 			show: {
 				resource: [
-					'person',
+					'workflowAutomatedTrigger',
 				],
 				operation: [
-					'findManyPeople',
+					'findManyWorkflowAutomatedTriggers',
 				],
 			},
 		},
@@ -550,17 +358,17 @@ default: '',
 			displayOptions: {
 				show: {
 					resource: [
-						'person',
+						'workflowAutomatedTrigger',
 					],
 					operation: [
-						'findManyPeople',
+						'findManyWorkflowAutomatedTriggers',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//          person: findOnePerson
+	// workflowAutomatedTrigger: findOneWorkflowAutomatedTrigger
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -572,10 +380,10 @@ default: '',
 		displayOptions: {
 			show: {
 				resource: [
-					'person',
+					'workflowAutomatedTrigger',
 				],
 				operation: [
-					'findOnePerson',
+					'findOneWorkflowAutomatedTrigger',
 				],
 			},
 		},
@@ -599,10 +407,10 @@ default: '',
 		displayOptions: {
 			show: {
 				resource: [
-					'person',
+					'workflowAutomatedTrigger',
 				],
 				operation: [
-					'findOnePerson',
+					'findOneWorkflowAutomatedTrigger',
 				],
 			},
 		},
@@ -615,17 +423,17 @@ default: '',
 			displayOptions: {
 				show: {
 					resource: [
-						'person',
+						'workflowAutomatedTrigger',
 					],
 					operation: [
-						'findOnePerson',
+						'findOneWorkflowAutomatedTrigger',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//       person: findPersonDuplicates
+	// workflowAutomatedTrigger: findWorkflowAutomatedTriggerDuplicates
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -646,10 +454,10 @@ default: '',
 		displayOptions: {
 			show: {
 				resource: [
-					'person',
+					'workflowAutomatedTrigger',
 				],
 				operation: [
-					'findPersonDuplicates',
+					'findWorkflowAutomatedTriggerDuplicates',
 				],
 			},
 		},
@@ -663,10 +471,10 @@ default: '',
 		displayOptions: {
 			show: {
 				resource: [
-					'person',
+					'workflowAutomatedTrigger',
 				],
 				operation: [
-					'findPersonDuplicates',
+					'findWorkflowAutomatedTriggerDuplicates',
 				],
 			},
 		},
@@ -759,17 +567,17 @@ default: '',
 			displayOptions: {
 				show: {
 					resource: [
-						'person',
+						'workflowAutomatedTrigger',
 					],
 					operation: [
-						'findPersonDuplicates',
+						'findWorkflowAutomatedTriggerDuplicates',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//         person: updateOnePerson
+	// workflowAutomatedTrigger: updateOneWorkflowAutomatedTrigger
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -781,10 +589,10 @@ default: '',
 		displayOptions: {
 			show: {
 				resource: [
-					'person',
+					'workflowAutomatedTrigger',
 				],
 				operation: [
-					'updateOnePerson',
+					'updateOneWorkflowAutomatedTrigger',
 				],
 			},
 		},
@@ -808,10 +616,10 @@ default: '',
 		displayOptions: {
 			show: {
 				resource: [
-					'person',
+					'workflowAutomatedTrigger',
 				],
 				operation: [
-					'updateOnePerson',
+					'updateOneWorkflowAutomatedTrigger',
 				],
 			},
 		},
@@ -825,258 +633,44 @@ default: '',
 		displayOptions: {
 			show: {
 				resource: [
-					'person',
+					'workflowAutomatedTrigger',
 				],
 				operation: [
-					'updateOnePerson',
+					'updateOneWorkflowAutomatedTrigger',
 				],
 			},
 		},
 		options: [
 			{
-				displayName: 'Avatar Url',
-				name: 'avatarUrl',
-				type: 'string',
+				displayName: 'Settings',
+				name: 'settings',
+				type: 'json',
 				default: '',
-				description: 'Contact’s avatar',
+				description: 'The workflow automated trigger settings',
 			},
 			{
-				displayName: 'City',
-				name: 'city',
-				type: 'string',
+				displayName: 'Type',
+				name: 'type',
+				type: 'options',
 				default: '',
-				description: 'Contact’s city',
+				description: 'The workflow automated trigger type',
+				options: [
+					{
+						name: 'Cron',
+						value: 'CRON',
+					},
+					{
+						name: 'Database Event',
+						value: 'DATABASE_EVENT',
+					},
+				],
 			},
 			{
-				displayName: 'Company ID',
-				name: 'companyId',
+				displayName: 'Workflow ID',
+				name: 'workflowId',
 				type: 'string',
 				default: '',
 			},
-				{
-displayName: 'Created By',
-name: 'createdBy',
-placeholder: 'Add Created By Field',
-type: 'fixedCollection',
-default: {},
-description: 'The creator of the record',
-options: [{
-displayName: 'Created By Fields',
-name: 'createdByFields',
-values: [
-{
-displayName: 'Source',
-name: 'source',
-type: 'string',
-default: '',
-},
-]}],
-},
-				{
-displayName: 'Emails',
-name: 'emails',
-placeholder: 'Add Emails Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s Emails',
-options: [{
-displayName: 'Emails Fields',
-name: 'emailsFields',
-values: [
-{
-displayName: 'Primary Email',
-name: 'primaryEmail',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Additional Emails',
-name: 'additionalEmails',
-type: 'string',
-typeOptions: {
-multipleValues: true,
-},
-default: [],
-},
-]}],
-},
-			{
-				displayName: 'Job Title',
-				name: 'jobTitle',
-				type: 'string',
-				default: '',
-				description: 'Contact’s job title',
-			},
-				{
-displayName: 'Linkedin Link',
-name: 'linkedinLink',
-placeholder: 'Add Linkedin Link Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s Linkedin account',
-options: [{
-displayName: 'Linkedin Link Fields',
-name: 'linkedinLinkFields',
-values: [
-{
-displayName: 'Primary Link Label',
-name: 'primaryLinkLabel',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Link Url',
-name: 'primaryLinkUrl',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Secondary Links',
-name: 'secondaryLinks',
-placeholder: 'Add Secondary Links Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Secondary Links Fields',
-name: 'secondaryLinksFields',
-values: [
-{
-displayName: 'Url',
-name: 'url',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Label',
-name: 'label',
-type: 'string',
-default: '',
-},
-]}],
-},
-]}],
-},
-				{
-displayName: 'Name',
-name: 'name',
-placeholder: 'Add Name Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s name',
-options: [{
-displayName: 'Name Fields',
-name: 'nameFields',
-values: [
-{
-displayName: 'First Name',
-name: 'firstName',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Last Name',
-name: 'lastName',
-type: 'string',
-default: '',
-},
-]}],
-},
-				{
-displayName: 'Phones',
-name: 'phones',
-placeholder: 'Add Phones Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s phone numbers',
-options: [{
-displayName: 'Phones Fields',
-name: 'phonesFields',
-values: [
-{
-displayName: 'Additional Phones',
-name: 'additionalPhones',
-type: 'string',
-typeOptions: {
-multipleValues: true,
-},
-default: [],
-},
-{
-displayName: 'Primary Phone Country Code',
-name: 'primaryPhoneCountryCode',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Phone Calling Code',
-name: 'primaryPhoneCallingCode',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Phone Number',
-name: 'primaryPhoneNumber',
-type: 'string',
-default: '',
-},
-]}],
-},
-			{
-				displayName: 'Position',
-				name: 'position',
-				type: 'number',
-				default: 0,
-				description: 'Person record Position',
-			},
-				{
-displayName: 'X Link',
-name: 'xLink',
-placeholder: 'Add X Link Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s X/Twitter account',
-options: [{
-displayName: 'X Link Fields',
-name: 'xLinkFields',
-values: [
-{
-displayName: 'Primary Link Label',
-name: 'primaryLinkLabel',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Link Url',
-name: 'primaryLinkUrl',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Secondary Links',
-name: 'secondaryLinks',
-placeholder: 'Add Secondary Links Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Secondary Links Fields',
-name: 'secondaryLinksFields',
-values: [
-{
-displayName: 'Url',
-name: 'url',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Label',
-name: 'label',
-type: 'string',
-default: '',
-},
-]}],
-},
-]}],
-},
 		],
 	},
 		{
@@ -1087,10 +681,10 @@ default: '',
 			displayOptions: {
 				show: {
 					resource: [
-						'person',
+						'workflowAutomatedTrigger',
 					],
 					operation: [
-						'updateOnePerson',
+						'updateOneWorkflowAutomatedTrigger',
 					],
 				},
 			},

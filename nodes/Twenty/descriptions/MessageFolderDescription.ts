@@ -2,7 +2,7 @@ import type {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export const favoriteOperations: INodeProperties[] = [
+export const messageFolderOperations: INodeProperties[] = [
 	{
 		displayName: 'Operation',
 		name: 'operation',
@@ -11,126 +11,60 @@ export const favoriteOperations: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'favorite',
+					'messageFolder',
 				],
 			},
 		},
 		options: [
 			{
-				name: 'Create Many Favorites',
-				value: 'createManyFavorites',
-				action: 'Create Many favorites',
+				name: 'Create Many Message Folders',
+				value: 'createManyMessageFolders',
+				action: 'Create Many messageFolders',
 			},
 			{
-				name: 'Create One Favorite',
-				value: 'createOneFavorite',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **favorites**',
-				action: 'Create One favorite',
+				name: 'Create One Message Folder',
+				value: 'createOneMessageFolder',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **messageFolders**',
+				action: 'Create One messageFolder',
 			},
 			{
-				name: 'Delete One Favorite',
-				value: 'deleteOneFavorite',
-				description: '**depth** can be provided to request your **favorite**',
-				action: 'Delete One favorite',
+				name: 'Delete One Message Folder',
+				value: 'deleteOneMessageFolder',
+				description: '**depth** can be provided to request your **messageFolder**',
+				action: 'Delete One messageFolder',
 			},
 			{
-				name: 'Find Favorite Duplicates',
-				value: 'findFavoriteDuplicates',
-				description: '**depth** can be provided to request your **favorite**',
-				action: 'Find favorite Duplicates',
+				name: 'Find Many Message Folders',
+				value: 'findManyMessageFolders',
+				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **messageFolders**',
+				action: 'Find Many messageFolders',
 			},
 			{
-				name: 'Find Many Favorites',
-				value: 'findManyFavorites',
-				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **favorites**',
-				action: 'Find Many favorites',
+				name: 'Find Message Folder Duplicates',
+				value: 'findMessageFolderDuplicates',
+				description: '**depth** can be provided to request your **messageFolder**',
+				action: 'Find messageFolder Duplicates',
 			},
 			{
-				name: 'Find One Favorite',
-				value: 'findOneFavorite',
-				description: '**depth** can be provided to request your **favorite**',
-				action: 'Find One favorite',
+				name: 'Find One Message Folder',
+				value: 'findOneMessageFolder',
+				description: '**depth** can be provided to request your **messageFolder**',
+				action: 'Find One messageFolder',
 			},
 			{
-				name: 'Update One Favorite',
-				value: 'updateOneFavorite',
-				description: '**depth** can be provided to request your **favorite**',
-				action: 'Update One favorite',
+				name: 'Update One Message Folder',
+				value: 'updateOneMessageFolder',
+				description: '**depth** can be provided to request your **messageFolder**',
+				action: 'Update One messageFolder',
 			},
 		],
-		default: 'createManyFavorites',
+		default: 'createManyMessageFolders',
 	},
 ];
 
-export const favoriteFields: INodeProperties[] = [
+export const messageFolderFields: INodeProperties[] = [
 	// ----------------------------------------
-	//      favorite: createManyFavorites
-	// ----------------------------------------
-	{
-		displayName: 'Query',
-		name: 'query',
-		description: '',
-		type: 'collection',
-		placeholder: 'Add Query',
-		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: '',
-					default: '',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
-		],
-		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'favorite',
-				],
-				operation: [
-					'createManyFavorites',
-				],
-			},
-		},
-	},
-	{
-		displayName: 'Additional Fields',
-		name: 'additionalFields',
-		type: 'collection',
-		placeholder: 'Add Field',
-		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'favorite',
-				],
-				operation: [
-					'createManyFavorites',
-				],
-			},
-		},
-		options: [
-		],
-	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'favorite',
-					],
-					operation: [
-						'createManyFavorites',
-					],
-				},
-			},
-		},
-	
-	// ----------------------------------------
-	//       favorite: createOneFavorite
+	// messageFolder: createManyMessageFolders
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -151,10 +85,10 @@ export const favoriteFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'favorite',
+					'messageFolder',
 				],
 				operation: [
-					'createOneFavorite',
+					'createManyMessageFolders',
 				],
 			},
 		},
@@ -168,86 +102,99 @@ export const favoriteFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'favorite',
+					'messageFolder',
 				],
 				operation: [
-					'createOneFavorite',
+					'createManyMessageFolders',
+				],
+			},
+		},
+		options: [
+		],
+	},
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'messageFolder',
+					],
+					operation: [
+						'createManyMessageFolders',
+					],
+				},
+			},
+		},
+	
+	// ----------------------------------------
+	//  messageFolder: createOneMessageFolder
+	// ----------------------------------------
+	{
+		displayName: 'Query',
+		name: 'query',
+		description: '',
+		type: 'collection',
+		placeholder: 'Add Query',
+		options: [
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: '',
+					default: '',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
+		],
+		default: {},
+		displayOptions: {
+			show: {
+				resource: [
+					'messageFolder',
+				],
+				operation: [
+					'createOneMessageFolder',
+				],
+			},
+		},
+	},
+	{
+		displayName: 'Additional Fields',
+		name: 'additionalFields',
+		type: 'collection',
+		placeholder: 'Add Field',
+		default: {},
+		displayOptions: {
+			show: {
+				resource: [
+					'messageFolder',
+				],
+				operation: [
+					'createOneMessageFolder',
 				],
 			},
 		},
 		options: [
 			{
-				displayName: 'Company ID',
-				name: 'companyId',
+				displayName: 'Message Channel ID',
+				name: 'messageChannelId',
 				type: 'string',
 				default: '',
 			},
 			{
-				displayName: 'Favorite Folder ID',
-				name: 'favoriteFolderId',
+				displayName: 'Name',
+				name: 'name',
 				type: 'string',
 				default: '',
+				description: 'Folder name',
 			},
 			{
-				displayName: 'For Workspace Member ID',
-				name: 'forWorkspaceMemberId',
+				displayName: 'Sync Cursor',
+				name: 'syncCursor',
 				type: 'string',
 				default: '',
-			},
-			{
-				displayName: 'Note ID',
-				name: 'noteId',
-				type: 'string',
-				default: '',
-			},
-			{
-				displayName: 'Opportunity ID',
-				name: 'opportunityId',
-				type: 'string',
-				default: '',
-			},
-			{
-				displayName: 'Person ID',
-				name: 'personId',
-				type: 'string',
-				default: '',
-			},
-			{
-				displayName: 'Position',
-				name: 'position',
-				type: 'number',
-				default: 0,
-				description: 'Favorite position',
-			},
-			{
-				displayName: 'Task ID',
-				name: 'taskId',
-				type: 'string',
-				default: '',
-			},
-			{
-				displayName: 'View ID',
-				name: 'viewId',
-				type: 'string',
-				default: '',
-			},
-			{
-				displayName: 'Workflow ID',
-				name: 'workflowId',
-				type: 'string',
-				default: '',
-			},
-			{
-				displayName: 'Workflow Run ID',
-				name: 'workflowRunId',
-				type: 'string',
-				default: '',
-			},
-			{
-				displayName: 'Workflow Version ID',
-				name: 'workflowVersionId',
-				type: 'string',
-				default: '',
+				description: 'Sync Cursor',
 			},
 		],
 	},
@@ -259,17 +206,17 @@ export const favoriteFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'favorite',
+						'messageFolder',
 					],
 					operation: [
-						'createOneFavorite',
+						'createOneMessageFolder',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//       favorite: deleteOneFavorite
+	//  messageFolder: deleteOneMessageFolder
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -281,10 +228,10 @@ export const favoriteFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'favorite',
+					'messageFolder',
 				],
 				operation: [
-					'deleteOneFavorite',
+					'deleteOneMessageFolder',
 				],
 			},
 		},
@@ -297,17 +244,99 @@ export const favoriteFields: INodeProperties[] = [
 			displayOptions: {
 				show: {
 					resource: [
-						'favorite',
+						'messageFolder',
 					],
 					operation: [
-						'deleteOneFavorite',
+						'deleteOneMessageFolder',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//     favorite: findFavoriteDuplicates
+	//  messageFolder: findManyMessageFolders
+	// ----------------------------------------
+	{
+		displayName: 'Query',
+		name: 'query',
+		description: '',
+		type: 'collection',
+		placeholder: 'Add Query',
+		options: [
+				{
+					displayName: 'Depth',
+					name: 'depth',
+					type: '',
+					default: '',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+				},
+				{
+					displayName: 'Ending Before',
+					name: 'ending_before',
+					type: '',
+					default: '',
+					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
+				},
+				{
+					displayName: 'Filter',
+					name: 'filter',
+					type: '',
+					default: '',
+					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **containsAny**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
+				},
+				{
+					displayName: 'Limit',
+					name: 'limit',
+					type: '',
+					default: '',
+					description: 'Limits the number of objects returned.',
+				},
+				{
+					displayName: 'Order By',
+					name: 'order_by',
+					type: '',
+					default: '',
+					description: 'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
+				},
+				{
+					displayName: 'Starting After',
+					name: 'starting_after',
+					type: '',
+					default: '',
+					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
+				},
+		],
+		default: {},
+		displayOptions: {
+			show: {
+				resource: [
+					'messageFolder',
+				],
+				operation: [
+					'findManyMessageFolders',
+				],
+			},
+		},
+	},
+		{
+			displayName: 'Scope',
+			name: 'scope',
+			type: 'hidden',
+			default: '',
+			displayOptions: {
+				show: {
+					resource: [
+						'messageFolder',
+					],
+					operation: [
+						'findManyMessageFolders',
+					],
+				},
+			},
+		},
+	
+	// ----------------------------------------
+	// messageFolder: findMessageFolderDuplicates
 	// ----------------------------------------
 	{
 		displayName: 'Query',
@@ -328,10 +357,10 @@ export const favoriteFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'favorite',
+					'messageFolder',
 				],
 				operation: [
-					'findFavoriteDuplicates',
+					'findMessageFolderDuplicates',
 				],
 			},
 		},
@@ -345,10 +374,10 @@ export const favoriteFields: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: [
-					'favorite',
+					'messageFolder',
 				],
 				operation: [
-					'findFavoriteDuplicates',
+					'findMessageFolderDuplicates',
 				],
 			},
 		},
@@ -441,18 +470,36 @@ default: '',
 			displayOptions: {
 				show: {
 					resource: [
-						'favorite',
+						'messageFolder',
 					],
 					operation: [
-						'findFavoriteDuplicates',
+						'findMessageFolderDuplicates',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//       favorite: findManyFavorites
+	//   messageFolder: findOneMessageFolder
 	// ----------------------------------------
+	{
+		displayName: 'ID',
+		name: 'id',
+		description: 'Object id.',
+		type: '',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: [
+					'messageFolder',
+				],
+				operation: [
+					'findOneMessageFolder',
+				],
+			},
+		},
+	},
 	{
 		displayName: 'Query',
 		name: 'query',
@@ -467,50 +514,15 @@ default: '',
 					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
-				{
-					displayName: 'Ending Before',
-					name: 'ending_before',
-					type: '',
-					default: '',
-					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
-				},
-				{
-					displayName: 'Filter',
-					name: 'filter',
-					type: '',
-					default: '',
-					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **containsAny**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
-				},
-				{
-					displayName: 'Limit',
-					name: 'limit',
-					type: '',
-					default: '',
-					description: 'Limits the number of objects returned.',
-				},
-				{
-					displayName: 'Order By',
-					name: 'order_by',
-					type: '',
-					default: '',
-					description: 'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
-				},
-				{
-					displayName: 'Starting After',
-					name: 'starting_after',
-					type: '',
-					default: '',
-					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
-				},
 		],
 		default: {},
 		displayOptions: {
 			show: {
 				resource: [
-					'favorite',
+					'messageFolder',
 				],
 				operation: [
-					'findManyFavorites',
+					'findOneMessageFolder',
 				],
 			},
 		},
@@ -523,17 +535,17 @@ default: '',
 			displayOptions: {
 				show: {
 					resource: [
-						'favorite',
+						'messageFolder',
 					],
 					operation: [
-						'findManyFavorites',
+						'findOneMessageFolder',
 					],
 				},
 			},
 		},
 	
 	// ----------------------------------------
-	//        favorite: findOneFavorite
+	//  messageFolder: updateOneMessageFolder
 	// ----------------------------------------
 	{
 		displayName: 'ID',
@@ -545,10 +557,10 @@ default: '',
 		displayOptions: {
 			show: {
 				resource: [
-					'favorite',
+					'messageFolder',
 				],
 				operation: [
-					'findOneFavorite',
+					'updateOneMessageFolder',
 				],
 			},
 		},
@@ -572,75 +584,10 @@ default: '',
 		displayOptions: {
 			show: {
 				resource: [
-					'favorite',
+					'messageFolder',
 				],
 				operation: [
-					'findOneFavorite',
-				],
-			},
-		},
-	},
-		{
-			displayName: 'Scope',
-			name: 'scope',
-			type: 'hidden',
-			default: '',
-			displayOptions: {
-				show: {
-					resource: [
-						'favorite',
-					],
-					operation: [
-						'findOneFavorite',
-					],
-				},
-			},
-		},
-	
-	// ----------------------------------------
-	//       favorite: updateOneFavorite
-	// ----------------------------------------
-	{
-		displayName: 'ID',
-		name: 'id',
-		description: 'Object id.',
-		type: '',
-		required: true,
-		default: '',
-		displayOptions: {
-			show: {
-				resource: [
-					'favorite',
-				],
-				operation: [
-					'updateOneFavorite',
-				],
-			},
-		},
-	},
-	{
-		displayName: 'Query',
-		name: 'query',
-		description: '',
-		type: 'collection',
-		placeholder: 'Add Query',
-		options: [
-				{
-					displayName: 'Depth',
-					name: 'depth',
-					type: '',
-					default: '',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
-				},
-		],
-		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'favorite',
-				],
-				operation: [
-					'updateOneFavorite',
+					'updateOneMessageFolder',
 				],
 			},
 		},
@@ -654,86 +601,33 @@ default: '',
 		displayOptions: {
 			show: {
 				resource: [
-					'favorite',
+					'messageFolder',
 				],
 				operation: [
-					'updateOneFavorite',
+					'updateOneMessageFolder',
 				],
 			},
 		},
 		options: [
 			{
-				displayName: 'Company ID',
-				name: 'companyId',
+				displayName: 'Message Channel ID',
+				name: 'messageChannelId',
 				type: 'string',
 				default: '',
 			},
 			{
-				displayName: 'Favorite Folder ID',
-				name: 'favoriteFolderId',
+				displayName: 'Name',
+				name: 'name',
 				type: 'string',
 				default: '',
+				description: 'Folder name',
 			},
 			{
-				displayName: 'For Workspace Member ID',
-				name: 'forWorkspaceMemberId',
+				displayName: 'Sync Cursor',
+				name: 'syncCursor',
 				type: 'string',
 				default: '',
-			},
-			{
-				displayName: 'Note ID',
-				name: 'noteId',
-				type: 'string',
-				default: '',
-			},
-			{
-				displayName: 'Opportunity ID',
-				name: 'opportunityId',
-				type: 'string',
-				default: '',
-			},
-			{
-				displayName: 'Person ID',
-				name: 'personId',
-				type: 'string',
-				default: '',
-			},
-			{
-				displayName: 'Position',
-				name: 'position',
-				type: 'number',
-				default: 0,
-				description: 'Favorite position',
-			},
-			{
-				displayName: 'Task ID',
-				name: 'taskId',
-				type: 'string',
-				default: '',
-			},
-			{
-				displayName: 'View ID',
-				name: 'viewId',
-				type: 'string',
-				default: '',
-			},
-			{
-				displayName: 'Workflow ID',
-				name: 'workflowId',
-				type: 'string',
-				default: '',
-			},
-			{
-				displayName: 'Workflow Run ID',
-				name: 'workflowRunId',
-				type: 'string',
-				default: '',
-			},
-			{
-				displayName: 'Workflow Version ID',
-				name: 'workflowVersionId',
-				type: 'string',
-				default: '',
+				description: 'Sync Cursor',
 			},
 		],
 	},
@@ -745,10 +639,10 @@ default: '',
 			displayOptions: {
 				show: {
 					resource: [
-						'favorite',
+						'messageFolder',
 					],
 					operation: [
-						'updateOneFavorite',
+						'updateOneMessageFolder',
 					],
 				},
 			},

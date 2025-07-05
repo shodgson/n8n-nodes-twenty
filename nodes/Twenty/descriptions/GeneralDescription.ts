@@ -19,7 +19,7 @@ export const generalOperations: INodeProperties[] = [
 			{
 				name: 'Get Open Api Schema',
 				value: 'getOpenApiSchema',
-				action: 'Get open api schema',
+				action: 'Get Open Api Schema',
 			},
 		],
 		default: 'getOpenApiSchema',

@@ -19,43 +19,43 @@ export const calendarChannelOperations: INodeProperties[] = [
 			{
 				name: 'Create Many Calendar Channels',
 				value: 'createManyCalendarChannels',
-				action: 'Create many calendar channels',
+				action: 'Create Many calendarChannels',
 			},
 			{
 				name: 'Create One Calendar Channel',
 				value: 'createOneCalendarChannel',
 				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **calendarChannels**',
-				action: 'Create one calendar channel',
+				action: 'Create One calendarChannel',
 			},
 			{
 				name: 'Delete One Calendar Channel',
 				value: 'deleteOneCalendarChannel',
 				description: '**depth** can be provided to request your **calendarChannel**',
-				action: 'Delete one calendar channel',
+				action: 'Delete One calendarChannel',
 			},
 			{
 				name: 'Find Calendar Channel Duplicates',
 				value: 'findCalendarChannelDuplicates',
 				description: '**depth** can be provided to request your **calendarChannel**',
-				action: 'Find calendar channel duplicates',
+				action: 'Find calendarChannel Duplicates',
 			},
 			{
 				name: 'Find Many Calendar Channels',
 				value: 'findManyCalendarChannels',
 				description: '**order_by**, **filter**, **limit**, **depth**, **starting_after** or **ending_before** can be provided to request your **calendarChannels**',
-				action: 'Find many calendar channels',
+				action: 'Find Many calendarChannels',
 			},
 			{
 				name: 'Find One Calendar Channel',
 				value: 'findOneCalendarChannel',
 				description: '**depth** can be provided to request your **calendarChannel**',
-				action: 'Find one calendar channel',
+				action: 'Find One calendarChannel',
 			},
 			{
 				name: 'Update One Calendar Channel',
 				value: 'updateOneCalendarChannel',
 				description: '**depth** can be provided to request your **calendarChannel**',
-				action: 'Update one calendar channel',
+				action: 'Update One calendarChannel',
 			},
 		],
 		default: 'createManyCalendarChannels',
@@ -69,29 +69,15 @@ export const calendarChannelFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -149,51 +135,19 @@ export const calendarChannelFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
-		displayOptions: {
-			show: {
-				resource: [
-					'calendarChannel',
-				],
-				operation: [
-					'createOneCalendarChannel',
-				],
-			},
-		},
-	},
-	{
-		displayName: 'Connected Account ID',
-		name: 'connectedAccountId',
-		description: 'Connected Account ID foreign key',
-		type: 'string',
-		required: true,
-		default: '',
 		displayOptions: {
 			show: {
 				resource: [
@@ -223,11 +177,17 @@ export const calendarChannelFields: INodeProperties[] = [
 		},
 		options: [
 			{
+				displayName: 'Connected Account ID',
+				name: 'connectedAccountId',
+				type: 'string',
+				default: '',
+			},
+			{
 				displayName: 'Contact Auto Creation Policy',
 				name: 'contactAutoCreationPolicy',
 				type: 'options',
-				default: 'AS_ORGANIZER',
-				description: 'Automatically create records for people you participated with in an event',
+				default: '',
+				description: 'Automatically create records for people you participated with in an event.',
 				options: [
 					{
 						name: 'As Organizer',
@@ -252,40 +212,36 @@ export const calendarChannelFields: INodeProperties[] = [
 				name: 'handle',
 				type: 'string',
 				default: '',
-
+				description: 'Handle',
 			},
 			{
 				displayName: 'Is Contact Auto Creation Enabled',
 				name: 'isContactAutoCreationEnabled',
 				type: 'boolean',
 				default: false,
-
+				description: 'Is Contact Auto Creation Enabled',
 			},
 			{
 				displayName: 'Is Sync Enabled',
 				name: 'isSyncEnabled',
 				type: 'boolean',
 				default: false,
-
+				description: 'Is Sync Enabled',
 			},
 			{
 				displayName: 'Sync Cursor',
 				name: 'syncCursor',
 				type: 'string',
 				default: '',
-				description: 'Sync Cursor. Used for syncing events from the calendar provider.',
+				description: 'Sync Cursor. Used for syncing events from the calendar provider',
 			},
 			{
 				displayName: 'Sync Stage',
 				name: 'syncStage',
 				type: 'options',
-				default: 'CALENDAR_EVENTS_IMPORT_ONGOING',
-
+				default: '',
+				description: 'Sync stage',
 				options: [
-					{
-						name: 'Calendar Event List Fetch Ongoing',
-						value: 'CALENDAR_EVENT_LIST_FETCH_ONGOING',
-					},
 					{
 						name: 'Calendar Events Import Ongoing',
 						value: 'CALENDAR_EVENTS_IMPORT_ONGOING',
@@ -293,6 +249,10 @@ export const calendarChannelFields: INodeProperties[] = [
 					{
 						name: 'Calendar Events Import Pending',
 						value: 'CALENDAR_EVENTS_IMPORT_PENDING',
+					},
+					{
+						name: 'Calendar Event List Fetch Ongoing',
+						value: 'CALENDAR_EVENT_LIST_FETCH_ONGOING',
 					},
 					{
 						name: 'Failed',
@@ -313,14 +273,14 @@ export const calendarChannelFields: INodeProperties[] = [
 				name: 'syncStageStartedAt',
 				type: 'dateTime',
 				default: '',
-
+				description: 'Sync stage started at',
 			},
 			{
 				displayName: 'Sync Status',
 				name: 'syncStatus',
 				type: 'options',
-				default: 'ACTIVE',
-
+				default: '',
+				description: 'Sync status',
 				options: [
 					{
 						name: 'Active',
@@ -356,14 +316,14 @@ export const calendarChannelFields: INodeProperties[] = [
 				name: 'throttleFailureCount',
 				type: 'number',
 				default: 0,
-
+				description: 'Throttle Failure Count',
 			},
 			{
 				displayName: 'Visibility',
 				name: 'visibility',
 				type: 'options',
-				default: 'METADATA',
-
+				default: '',
+				description: 'Visibility',
 				options: [
 					{
 						name: 'Metadata',
@@ -400,8 +360,8 @@ export const calendarChannelFields: INodeProperties[] = [
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -438,29 +398,15 @@ export const calendarChannelFields: INodeProperties[] = [
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -504,159 +450,73 @@ displayName: 'Data Fields',
 name: 'dataFields',
 values: [
 {
-displayName: 'Handle',
-name: 'handle',
-type: 'string',
+displayName: '0',
+name: '0',
+type: 'undefined',
 default: '',
 },
 {
-displayName: 'Sync Status',
-name: 'syncStatus',
-type: 'options',
-options: [
-{
-name: 'Active',
-value: 'ACTIVE',
-},
-{
-name: 'Failed Insufficient Permissions',
-value: 'FAILED_INSUFFICIENT_PERMISSIONS',
-},
-{
-name: 'Failed Unknown',
-value: 'FAILED_UNKNOWN',
-},
-{
-name: 'Not Synced',
-value: 'NOT_SYNCED',
-},
-{
-name: 'Ongoing',
-value: 'ONGOING',
-},
-],
-default: 'ACTIVE',
-},
-{
-displayName: 'Sync Stage',
-name: 'syncStage',
-type: 'options',
-options: [
-{
-name: 'Calendar Event List Fetch Ongoing',
-value: 'CALENDAR_EVENT_LIST_FETCH_ONGOING',
-},
-{
-name: 'Calendar Events Import Ongoing',
-value: 'CALENDAR_EVENTS_IMPORT_ONGOING',
-},
-{
-name: 'Calendar Events Import Pending',
-value: 'CALENDAR_EVENTS_IMPORT_PENDING',
-},
-{
-name: 'Failed',
-value: 'FAILED',
-},
-{
-name: 'Full Calendar Event List Fetch Pending',
-value: 'FULL_CALENDAR_EVENT_LIST_FETCH_PENDING',
-},
-{
-name: 'Partial Calendar Event List Fetch Pending',
-value: 'PARTIAL_CALENDAR_EVENT_LIST_FETCH_PENDING',
-},
-],
-default: 'CALENDAR_EVENTS_IMPORT_ONGOING',
-},
-{
-displayName: 'Visibility',
-name: 'visibility',
-type: 'options',
-options: [
-{
-name: 'Metadata',
-value: 'METADATA',
-},
-{
-name: 'Share Everything',
-value: 'SHARE_EVERYTHING',
-},
-],
-default: 'METADATA',
-},
-{
-displayName: 'Is Contact Auto Creation Enabled',
-name: 'isContactAutoCreationEnabled',
-type: 'boolean',
-default: false,
-},
-{
-displayName: 'Contact Auto Creation Policy',
-name: 'contactAutoCreationPolicy',
-type: 'options',
-options: [
-{
-name: 'As Organizer',
-value: 'AS_ORGANIZER',
-},
-{
-name: 'As Participant',
-value: 'AS_PARTICIPANT',
-},
-{
-name: 'As Participant And Organizer',
-value: 'AS_PARTICIPANT_AND_ORGANIZER',
-},
-{
-name: 'None',
-value: 'NONE',
-},
-],
-default: 'AS_ORGANIZER',
-description: 'Automatically create records for people you participated with in an event',
-},
-{
-displayName: 'Is Sync Enabled',
-name: 'isSyncEnabled',
-type: 'boolean',
-default: false,
-},
-{
-displayName: 'Sync Cursor',
-name: 'syncCursor',
-type: 'string',
-default: '',
-description: 'Sync Cursor. Used for syncing events from the calendar provider.',
-},
-{
-displayName: 'Synced At',
-name: 'syncedAt',
-type: 'dateTime',
-default: '',
-description: 'Last sync date',
-},
-{
-displayName: 'Sync Stage Started At',
-name: 'syncStageStartedAt',
-type: 'dateTime',
+displayName: '1',
+name: '1',
+type: 'undefined',
 default: '',
 },
 {
-displayName: 'Throttle Failure Count',
-name: 'throttleFailureCount',
-type: 'number',
-default: 0,
+displayName: '2',
+name: '2',
+type: 'undefined',
+default: '',
 },
 {
-displayName: 'Connected Account ID',
-name: 'connectedAccountId',
-type: 'string',
+displayName: '3',
+name: '3',
+type: 'undefined',
 default: '',
-description: 'Connected Account ID foreign key',
+},
+{
+displayName: '4',
+name: '4',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '5',
+name: '5',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '6',
+name: '6',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '7',
+name: '7',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '8',
+name: '8',
+type: 'undefined',
+default: '',
+},
+{
+displayName: '9',
+name: '9',
+type: 'undefined',
+default: '',
 },
 ]}],
 },
+			{
+				displayName: 'IDs',
+				name: 'ids',
+				type: 'string',
+				default: [],
+			},
 		],
 	},
 		{
@@ -682,68 +542,51 @@ description: 'Connected Account ID foreign key',
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 				{
 					displayName: 'Ending Before',
 					name: 'ending_before',
-					type: 'string',
+					type: '',
 					default: '',
-					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+					description: 'Returns objects ending before a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
 				},
 				{
 					displayName: 'Filter',
 					name: 'filter',
-					type: 'string',
+					type: '',
 					default: '',
 					description: 'Filters objects returned. Should have the following shape: **field_1[COMPARATOR]:value_1,field_2[COMPARATOR]:value_2... To filter on composite type fields use **field.subField[COMPARATOR]:value_1 ** Available comparators are **eq**, **neq**, **in**, **containsAny**, **is**, **gt**, **gte**, **lt**, **lte**, **startsWith**, **like**, **ilike**. You can create more complex filters using conjunctions **or**, **and**, **not**. Default root conjunction is **and**. To filter **null** values use **field[is]:NULL** or **field[is]:NOT_NULL** To filter using **boolean** values use **field[eq]:true** or **field[eq]:false**',
 				},
 				{
 					displayName: 'Limit',
 					name: 'limit',
-					type: 'number',
-					typeOptions: {
-						minValue: 1,
-					},
-					default: 50,
-					description: 'Max number of results to return',
+					type: '',
+					default: '',
+					description: 'Limits the number of objects returned.',
 				},
 				{
 					displayName: 'Order By',
 					name: 'order_by',
-					type: 'string',
+					type: '',
 					default: '',
 					description: 'Sorts objects returned. Should have the following shape: **field_name_1,field_name_2[DIRECTION_2],...** Available directions are **AscNullsFirst**, **AscNullsLast**, **DescNullsFirst**, **DescNullsLast**. Default direction is **AscNullsFirst**',
 				},
 				{
 					displayName: 'Starting After',
 					name: 'starting_after',
-					type: 'string',
+					type: '',
 					default: '',
-					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data.',
+					description: 'Returns objects starting after a specific cursor. You can find cursors in **startCursor** and **endCursor** in **pageInfo** in response data',
 				},
 		],
 		default: {},
@@ -781,8 +624,8 @@ description: 'Connected Account ID foreign key',
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -799,29 +642,15 @@ description: 'Connected Account ID foreign key',
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -860,8 +689,8 @@ description: 'Connected Account ID foreign key',
 	{
 		displayName: 'ID',
 		name: 'id',
-		description: 'Object ID',
-		type: 'string',
+		description: 'Object id.',
+		type: '',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -878,29 +707,15 @@ description: 'Connected Account ID foreign key',
 	{
 		displayName: 'Query',
 		name: 'query',
-
+		description: '',
 		type: 'collection',
 		placeholder: 'Add Query',
 		options: [
 				{
 					displayName: 'Depth',
 					name: 'depth',
-					type: 'options',
-					options: [
-						{
-							name: '0',
-							value: '0',
-						},
-						{
-							name: '1',
-							value: '1',
-						},
-						{
-							name: '2',
-							value: '2',
-						},
-					],
-					default: '1',
+					type: '',
+					default: '',
 					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
@@ -938,14 +753,13 @@ description: 'Connected Account ID foreign key',
 				name: 'connectedAccountId',
 				type: 'string',
 				default: '',
-				description: 'Connected Account ID foreign key',
 			},
 			{
 				displayName: 'Contact Auto Creation Policy',
 				name: 'contactAutoCreationPolicy',
 				type: 'options',
-				default: 'AS_ORGANIZER',
-				description: 'Automatically create records for people you participated with in an event',
+				default: '',
+				description: 'Automatically create records for people you participated with in an event.',
 				options: [
 					{
 						name: 'As Organizer',
@@ -970,40 +784,36 @@ description: 'Connected Account ID foreign key',
 				name: 'handle',
 				type: 'string',
 				default: '',
-
+				description: 'Handle',
 			},
 			{
 				displayName: 'Is Contact Auto Creation Enabled',
 				name: 'isContactAutoCreationEnabled',
 				type: 'boolean',
 				default: false,
-
+				description: 'Is Contact Auto Creation Enabled',
 			},
 			{
 				displayName: 'Is Sync Enabled',
 				name: 'isSyncEnabled',
 				type: 'boolean',
 				default: false,
-
+				description: 'Is Sync Enabled',
 			},
 			{
 				displayName: 'Sync Cursor',
 				name: 'syncCursor',
 				type: 'string',
 				default: '',
-				description: 'Sync Cursor. Used for syncing events from the calendar provider.',
+				description: 'Sync Cursor. Used for syncing events from the calendar provider',
 			},
 			{
 				displayName: 'Sync Stage',
 				name: 'syncStage',
 				type: 'options',
-				default: 'CALENDAR_EVENTS_IMPORT_ONGOING',
-
+				default: '',
+				description: 'Sync stage',
 				options: [
-					{
-						name: 'Calendar Event List Fetch Ongoing',
-						value: 'CALENDAR_EVENT_LIST_FETCH_ONGOING',
-					},
 					{
 						name: 'Calendar Events Import Ongoing',
 						value: 'CALENDAR_EVENTS_IMPORT_ONGOING',
@@ -1011,6 +821,10 @@ description: 'Connected Account ID foreign key',
 					{
 						name: 'Calendar Events Import Pending',
 						value: 'CALENDAR_EVENTS_IMPORT_PENDING',
+					},
+					{
+						name: 'Calendar Event List Fetch Ongoing',
+						value: 'CALENDAR_EVENT_LIST_FETCH_ONGOING',
 					},
 					{
 						name: 'Failed',
@@ -1031,14 +845,14 @@ description: 'Connected Account ID foreign key',
 				name: 'syncStageStartedAt',
 				type: 'dateTime',
 				default: '',
-
+				description: 'Sync stage started at',
 			},
 			{
 				displayName: 'Sync Status',
 				name: 'syncStatus',
 				type: 'options',
-				default: 'ACTIVE',
-
+				default: '',
+				description: 'Sync status',
 				options: [
 					{
 						name: 'Active',
@@ -1074,14 +888,14 @@ description: 'Connected Account ID foreign key',
 				name: 'throttleFailureCount',
 				type: 'number',
 				default: 0,
-
+				description: 'Throttle Failure Count',
 			},
 			{
 				displayName: 'Visibility',
 				name: 'visibility',
 				type: 'options',
-				default: 'METADATA',
-
+				default: '',
+				description: 'Visibility',
 				options: [
 					{
 						name: 'Metadata',
