@@ -38,6 +38,11 @@ npm run generate
 
 Copy src/output/ files to n8n node. Keep GenericFunctions and the top of Twenty.node.ts
 
+5. Build the node
+```sh
+npm run build
+```
+
 
 ## Testing
 
