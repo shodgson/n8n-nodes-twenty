@@ -19,44 +19,43 @@ This is an n8n community node. It lets you use **Twenty CRM** in your n8n workfl
 Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
 
 ## Operations
-
 	- General
-	- ApiKey
-	- Attachment
-	- AuditLog
-	- Blocklist
-	- CalendarChannel
-	- CalendarChannelEventAssociation
-	- CalendarEvent
-	- CalendarEventParticipant
-	- Company
-	- ConnectedAccount
-	- Favorite
-	- FavoriteFolder
-	- Message
-	- MessageChannel
-	- MessageChannelMessageAssociation
-	- MessageParticipant
-	- MessageThread
-	- Note
-	- NoteTarget
-	- Opportunity
-	- Person
-	- Task
-	- TaskTarget
-	- TimelineActivity
-	- View
-	- ViewField
-	- ViewFilter
-	- ViewFilterGroup
-	- ViewGroup
-	- ViewSort
-	- Webhook
-	- Workflow
-	- WorkflowEventListener
-	- WorkflowRun
-	- WorkflowVersion
-	- WorkspaceMember
+	- Api Keys
+	- Attachments
+	- Blocklists
+	- Calendar Channel Event Associations
+	- Calendar Channels
+	- Calendar Event Participants
+	- Calendar Events
+	- Companies
+	- Connected Accounts
+	- Favorite Folders
+	- Favorites
+	- Message Channel Message Associations
+	- Message Channels
+	- Message Folders
+	- Message Participants
+	- Messages
+	- Message Threads
+	- Notes
+	- Note Targets
+	- Opportunities
+	- People
+	- Tasks
+	- Task Targets
+	- Timeline Activities
+	- View Fields
+	- View Filter Groups
+	- View Filters
+	- View Groups
+	- Views
+	- View Sorts
+	- Webhooks
+	- Workflow Automated Triggers
+	- Workflow Runs
+	- Workflows
+	- Workflow Versions
+	- Workspace Members
 
 ## Credentials
 
@@ -66,7 +65,7 @@ Copy the API key. Click 'Add Credential' in n8n and search for 'Twenty API'. Pro
 
 ## Compatibility
 
-Compatible and tested with Twenty v0.40.7 and n8n v1.9.3.
+Compatible and tested with Twenty v1.0.3 and n8n v1.91.3.
 
 ## Resources
 
@@ -74,6 +73,9 @@ Compatible and tested with Twenty v0.40.7 and n8n v1.9.3.
 * [Twenty developer documentation](https://twenty.com/developers/)
 
 ## Version history
+
+#### v0.0.5
+Simplified to build on n8n-openapi-node
 
 #### v0.0.4
 Compatible with Twenty's updated API in v0.40.7
@@ -86,5 +88,5 @@ Initial release
 
 ## Credit
 
-Special thanks to [ivov](https://github.com/ivov) and [feelgood-interface](https://github.com/feelgood-interface) for the work on generic n8n nodebuilders for OpenAPI specs.
+Almost all credit goes to [devlikeapro](https://github.com/devlikeapro/n8n-openapi-node) for the work on generic n8n nodebuilders for OpenAPI specs. Previous versions relied on similar tools from [ivov](https://github.com/ivov) and [feelgood-interface](https://github.com/feelgood-interface).
 
