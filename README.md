@@ -21,6 +21,7 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 ## Operations
 
 Core:
+
 	- Access Groups
 	- Agent Chat Thread Participants
 	- Agent Chat Thread Targets
@@ -63,6 +64,7 @@ Core:
 	- Workspace Members
 
 Metadata:
+
 	- Api Keys
 	- Fields
 	- Objects
@@ -112,5 +114,6 @@ Initial release
 
 ## Credit
 
-Almost all credit goes to [devlikeapro](https://github.com/devlikeapro/n8n-openapi-node) for the work on generic n8n nodebuilders for OpenAPI specs. Previous versions relied on similar tools from [ivov](https://github.com/ivov) and [feelgood-interface](https://github.com/feelgood-interface).
+- Almost all credit goes to [devlikeapro](https://github.com/devlikeapro/n8n-openapi-node) for the work on generic n8n nodebuilders for OpenAPI specs. Previous versions relied on similar tools from [ivov](https://github.com/ivov) and [feelgood-interface](https://github.com/feelgood-interface).
+- Julius Haring for v0.0.6
 
