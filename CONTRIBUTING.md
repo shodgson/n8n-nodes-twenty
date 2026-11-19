@@ -16,12 +16,16 @@ set API_KEY <API_key_from_Twenty_settings>
 
 ```sh
 curl --request GET \
-        --url $TWENTY_URL/open-api/core \
+        --url $TWENTY_URL/rest/open-api/core \
         --header "Accept: application/json" \
         --header "Authorization: Bearer $API_KEY" > src/input/openApi/twenty.json
 ```
 
-E.g. `set TWENTY_URL https://api-demo.twenty.com`
+E.g. `set TWENTY_URL http://localhost:3000`
+
+Twenty generates OpenAPI per workspace (includes custom objects). Auth is required for the full schema; without a key you only get the empty base document.
+
+After download, rewrite paths so they keep the `/rest` prefix (Twenty serves `servers.url = {domain}/rest/` with paths like `/companies`). This node expects paths such as `/rest/companies` and a credential domain **without** `/rest`.
 
 Modify api:
 ```sh

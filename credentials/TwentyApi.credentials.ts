@@ -36,7 +36,7 @@ export class TwentyApi implements ICredentialType {
 	test: ICredentialTestRequest = {
 		request: {
 			baseURL: '={{$credentials?.domain}}',
-			url: '/open-api/core',
+			url: '/rest/open-api/core',
 		},
 	};
 }

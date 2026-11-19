@@ -3,7 +3,7 @@ import {
 	INodeTypeDescription,
 } from 'n8n-workflow';
 import { N8NPropertiesBuilder, N8NPropertiesBuilderConfig } from '@devlikeapro/n8n-openapi-node';
-import * as doc from './twenty-v1.0.3-openapi.json';
+import * as doc from './twenty-v2.59.3-openapi.json';
 
 const config: N8NPropertiesBuilderConfig = {};
 const parser = new N8NPropertiesBuilder(doc, config);
