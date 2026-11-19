@@ -19,60 +19,84 @@ This is an n8n community node. It lets you use **Twenty CRM** in your n8n workfl
 Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
 
 ## Operations
-	- General
-	- Api Keys
+
+Core:
+	- Access Groups
+	- Agent Chat Thread Participants
+	- Agent Chat Thread Targets
+	- Agent Chat Threads
+	- Agent Message Parts
+	- Agent Message Reactions
+	- Agent Messages
+	- Agent Turns
 	- Attachments
 	- Blocklists
 	- Calendar Channel Event Associations
-	- Calendar Channels
 	- Calendar Event Participants
+	- Calendar Event Targets
 	- Calendar Events
+	- Call Recordings
+	- Campaign Deliveries
 	- Companies
-	- Connected Accounts
-	- Favorite Folders
-	- Favorites
+	- Dashboards
+	- Message Campaigns
+	- Message Channel Message Association Message Folders
 	- Message Channel Message Associations
-	- Message Channels
-	- Message Folders
+	- Message List Members
+	- Message Lists
 	- Message Participants
-	- Messages
+	- Message Suppressions
+	- Message Thread Targets
 	- Message Threads
-	- Notes
+	- Messages
 	- Note Targets
+	- Notes
 	- Opportunities
 	- People
-	- Tasks
+	- Record Shares
+	- Short Links
 	- Task Targets
+	- Tasks
 	- Timeline Activities
+	- Workflow Runs
+	- Workflow Versions
+	- Workspace Members
+
+Metadata:
+	- Api Keys
+	- Fields
+	- Objects
+	- Page Layout Tabs
+	- Page Layout Widgets
+	- Page Layouts
 	- View Fields
 	- View Filter Groups
 	- View Filters
 	- View Groups
-	- Views
 	- View Sorts
+	- Views
 	- Webhooks
-	- Workflow Automated Triggers
-	- Workflow Runs
-	- Workflows
-	- Workflow Versions
-	- Workspace Members
 
 ## Credentials
 
-Generate an API key in Twenty by following the [Twenty docs](https://twenty.com/user-guide/section/functions/api-webhooks). In summary, create an API key in the Settings -> Developers section.
+Generate an API key in Twenty by following the [Twenty docs](https://docs.twenty.com/developers/extend/api). In summary, create an API key in Settings → Developers → API.
 
-Copy the API key. Click 'Add Credential' in n8n and search for 'Twenty API'. Provide the API key and your Twenty domain (e.g. http://localhost:5020, https://n8n.example.org). Do _not_ use the 'API Base URL', e.g. https://n8n.example.org/rest/.
+Copy the API key. Click 'Add Credential' in n8n and search for 'Twenty API'. Provide the API key and your Twenty domain (e.g. http://localhost:3000, https://crm.example.org). Do _not_ use the 'API Base URL', e.g. https://crm.example.org/rest/.
 
 ## Compatibility
 
-Compatible and tested with Twenty v1.0.3 and n8n v1.91.3.
+Compatible and tested with Twenty v2.59.3 (OpenAPI from `/rest/open-api/core` and `/rest/open-api/metadata`).
 
 ## Resources
 
 * [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
-* [Twenty developer documentation](https://twenty.com/developers/)
+* [Twenty developer documentation](https://docs.twenty.com/developers/extend/api)
+* Per-workspace OpenAPI: `GET {domain}/rest/open-api/core` and `GET {domain}/rest/open-api/metadata` (Bearer API key)
 
 ## Version history
+
+#### v0.0.6
+Updated OpenAPI to Twenty v2.59.3 (core + metadata)
 
 #### v0.0.5
 Simplified to build on n8n-openapi-node
