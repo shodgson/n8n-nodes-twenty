@@ -19,6 +19,8 @@ This is an n8n community node. It lets you use **Twenty CRM** in your n8n workfl
 Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
 
 ## Operations
+
+Core:
 	- Access Groups
 	- Agent Chat Thread Participants
 	- Agent Chat Thread Targets
@@ -60,6 +62,21 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 	- Workflow Versions
 	- Workspace Members
 
+Metadata:
+	- Api Keys
+	- Fields
+	- Objects
+	- Page Layout Tabs
+	- Page Layout Widgets
+	- Page Layouts
+	- View Fields
+	- View Filter Groups
+	- View Filters
+	- View Groups
+	- View Sorts
+	- Views
+	- Webhooks
+
 ## Credentials
 
 Generate an API key in Twenty by following the [Twenty docs](https://docs.twenty.com/developers/extend/api). In summary, create an API key in Settings → Developers → API.
@@ -68,18 +85,18 @@ Copy the API key. Click 'Add Credential' in n8n and search for 'Twenty API'. Pro
 
 ## Compatibility
 
-Compatible and tested with Twenty v2.59.3 (OpenAPI from `/rest/open-api/core`).
+Compatible and tested with Twenty v2.59.3 (OpenAPI from `/rest/open-api/core` and `/rest/open-api/metadata`).
 
 ## Resources
 
 * [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
 * [Twenty developer documentation](https://docs.twenty.com/developers/extend/api)
-* Per-workspace OpenAPI: `GET {domain}/rest/open-api/core` (Bearer API key)
+* Per-workspace OpenAPI: `GET {domain}/rest/open-api/core` and `GET {domain}/rest/open-api/metadata` (Bearer API key)
 
 ## Version history
 
 #### v0.0.6
-Updated OpenAPI to Twenty v2.59.3
+Updated OpenAPI to Twenty v2.59.3 (core + metadata)
 
 #### v0.0.5
 Simplified to build on n8n-openapi-node

@@ -18,12 +18,17 @@ set API_KEY <API_key_from_Twenty_settings>
 curl --request GET \
         --url $TWENTY_URL/rest/open-api/core \
         --header "Accept: application/json" \
-        --header "Authorization: Bearer $API_KEY" > src/input/openApi/twenty.json
+        --header "Authorization: Bearer $API_KEY" > src/input/openApi/twenty-core.json
+
+curl --request GET \
+        --url $TWENTY_URL/rest/open-api/metadata \
+        --header "Accept: application/json" \
+        --header "Authorization: Bearer $API_KEY" > src/input/openApi/twenty-metadata.json
 ```
 
 E.g. `set TWENTY_URL http://localhost:3000`
 
-Twenty generates OpenAPI per workspace (includes custom objects). Auth is required for the full schema; without a key you only get the empty base document.
+Twenty generates OpenAPI per workspace (includes custom objects). Auth is required for the full schema; without a key you only get the empty base document. Fetch **both** `core` and `metadata` and merge them into the node OpenAPI document so the n8n node covers the complete REST API.
 
 After download, rewrite paths so they keep the `/rest` prefix (Twenty serves `servers.url = {domain}/rest/` with paths like `/companies`). This node expects paths such as `/rest/companies` and a credential domain **without** `/rest`.
 
